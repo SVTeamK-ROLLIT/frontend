@@ -1,6 +1,32 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Welcome from './Page/Welcome';
+import Login from './Page/Login';
+import Register from './Page/Register';
+import MyPage from './Page/MyPage';
+import MakeRolling from './Page/MakeRolling';
+import Rolling from './Page/Rolling';
 
 function App() {
-  return <h1>Welcome::Team-K</h1>;
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          {/* 첫 시작 화면 */}
+          <Route path="/Welcome" element={<Welcome />} />
+          {/* 로그인 페이지 */}
+          <Route path="/Login" element={<Login />} />
+          {/* 회원가입 페이지 */}
+          <Route path="/Register" element={<Register />} />
+          {/* 마이페이지 */}
+          <Route path="/MyPage" element={<MyPage />} />
+          {/* 롤링페이지 생성하는 페이지 */}
+          <Route path="/MakeRolling" element={<MakeRolling />} />
+          {/* 롤링페이지 화면 */}
+          <Route path="/Rolling" element={<Rolling />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 export default App;
