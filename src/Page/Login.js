@@ -5,6 +5,7 @@ import PW from '../Image/PW.png';
 
 function Login() {
   return (
+<<<<<<< develop
     <div className="w-[1440px] h-[1024px] relative overflow-hidden bg-[#fcedb0]">
       <div className="w-[1555px] h-[987px] absolute left-[-58px] top-[67px]">
         <div className="w-[1203px] h-[716px] absolute left-[175px] top-[150px] bg-white" />
@@ -60,6 +61,11 @@ function Login() {
           회원가입
         </p>
       </div>
+=======
+    <div>
+      <h1>Login</h1>
+      <h2>hi</h2>
+>>>>>>> feat:hi
     </div>
   );
 }
