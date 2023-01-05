@@ -5,10 +5,13 @@ import PW from '../Image/PW.png';
 
 function Login() {
   return (
+<<<<<<< HEAD
 <<<<<<< develop
 <<<<<<< develop
 =======
 >>>>>>> feat:스케치북 이미지추가, 피그마에서 코드 내보낸것 적용, 테일윈드 설치하기 전
+=======
+>>>>>>> #4-LoingPaegDesign
     <div className="w-[1440px] h-[1024px] relative overflow-hidden bg-[#fcedb0]">
       <div className="w-[1555px] h-[987px] absolute left-[-58px] top-[67px]">
         <div className="w-[1203px] h-[716px] absolute left-[175px] top-[150px] bg-white" />
@@ -64,6 +67,7 @@ function Login() {
           회원가입
         </p>
       </div>
+<<<<<<< HEAD
 <<<<<<< develop
 =======
     <div>
@@ -72,6 +76,8 @@ function Login() {
 >>>>>>> feat:hi
 =======
 >>>>>>> feat:스케치북 이미지추가, 피그마에서 코드 내보낸것 적용, 테일윈드 설치하기 전
+=======
+>>>>>>> #4-LoingPaegDesign
     </div>
   );
 }
