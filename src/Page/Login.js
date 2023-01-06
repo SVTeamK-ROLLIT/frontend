@@ -1,13 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 
-<<<<<<< Updated upstream
-import sketchbook from '../Image/Sketchbook2.png';
-// import ID from '../Image/ID.png';
-// import PW from '../Image/PW.png';
-
-function Login() {
-  return <div>hi</div>;
-=======
 import sketchbook from '../Image/sketchbook.png';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
@@ -183,7 +176,6 @@ function Login() {
       </BoxWrap>
     </AllWrap>
   );
->>>>>>> Stashed changes
 }
 
 export default Login;
