@@ -118,7 +118,7 @@ const LoginBtn = styled.button`
 
 function Register() {
   return (
-    <div>
+    <div className="register">
       <Background>
         <KeysWrap>
           <TextWrap>
