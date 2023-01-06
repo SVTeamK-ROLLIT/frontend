@@ -7,7 +7,7 @@ body .register {
   background-position: center;
 }
 @media screen and (max-width: 63rem) {
-  body {
+  body .register {
     background-size: 50rem 40rem;
   }
 }
