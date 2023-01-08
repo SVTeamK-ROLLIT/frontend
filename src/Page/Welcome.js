@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import sketchbook from '../Image/sketchbook.png';
+import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.img`
   //뒷 배경
@@ -11,6 +12,16 @@ const SketchbookImg = styled.img`
   @media screen and (max-width: 70vh) {
     top: 55%;
   }
+`;
+
+const PencilImg = styled.img`
+  width: 15vh;
+  height: 8vh;
+  // 스캐치북 위에 올리기
+  position: absolute;
+  top: 70%;
+  left: 42%;
+  transform: translate(-50%, -50%);
 `;
 
 const ImgWrap = styled.div`
@@ -45,6 +56,7 @@ const LoginBtn = styled.button`
   z-index: 10;
   color: white;
   font-family: 'Cafe24Ssurround';
+  text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
@@ -63,6 +75,7 @@ const SignupBtn = styled.button`
   z-index: 10;
   color: white;
   font-family: 'Cafe24Ssurround';
+  text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
@@ -71,8 +84,7 @@ const StartBtn = styled.button`
   width: 24vh;
   height: 8vh;
   border-radius: 1rem;
-  background: #3a3a3a;
-  font-size: 3.6vh;
+  font-size: 4vh;
   font-weight: 800;
   // 스캐치북 위에 올리기
   position: absolute;
@@ -80,10 +92,14 @@ const StartBtn = styled.button`
   left: 51%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  color: #fff;
+  font-family: 'Cafe24Ssurround';
+  color: white;
+  text-shadow: 1.5px 1.5px 1.5px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
 `;
 
-function Login() {
+function Welcome() {
   return (
     <AllWrap>
       <LoginBtn>로그인</LoginBtn>
@@ -92,10 +108,11 @@ function Login() {
         <ImgWrap>
           <SketchbookImg src={sketchbook} />
         </ImgWrap>
+        <PencilImg src={pencil} />
         <StartBtn>만들어보기</StartBtn>
       </BoxWrap>
     </AllWrap>
   );
 }
 
-export default Login;
+export default Welcome;

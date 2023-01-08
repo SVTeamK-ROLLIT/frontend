@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Page/Welcome';
 import Login from './Page/Login';
-import Register from './Page/Register';
 import MyPage from './Page/MyPage';
 import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
 import Memo from './Page/Memo';
+import Register from './Page/Register';
 import './App.css';
 
 function App() {
