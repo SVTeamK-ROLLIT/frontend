@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import './Welcome.css';
-
 import sketchbook from '../Image/sketchbook.png';
 
 const SketchbookImg = styled.img`
