@@ -5,8 +5,8 @@ import Login from './Page/Login';
 import MyPage from './Page/MyPage';
 import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
-import Memo from './Page/Memo';
 import Register from './Page/Register';
+import Memo from './Page/Memo';
 
 import './App.css';
 
