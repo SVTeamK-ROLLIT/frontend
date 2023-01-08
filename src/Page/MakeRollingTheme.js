@@ -5,16 +5,16 @@ function MakeRollingTheme() {
   return (
     <ThemeWrap>
       <ThemeItem>
-        <ThemeImg />
+        <ThemeImg alt="1번" />
       </ThemeItem>
       <ThemeItem>
-        <ThemeImg />
+        <ThemeImg alt="2번" />
       </ThemeItem>
       <ThemeItem>
-        <ThemeImg />
+        <ThemeImg alt="3번" />
       </ThemeItem>
       <ThemeItem>
-        <ThemeImg />
+        <ThemeImg alt="4번" />
       </ThemeItem>
     </ThemeWrap>
   );
@@ -23,7 +23,7 @@ function MakeRollingTheme() {
 const ThemeWrap = styled.div`
   width: 100%;
   height: 60rem;
-  background-color: red;
+  background-color: white;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
