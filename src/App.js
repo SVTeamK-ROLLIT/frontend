@@ -27,7 +27,7 @@ function App() {
           <Route path="/MakeRolling" element={<MakeRolling />} />
           {/* 롤링페이지 화면 */}
           <Route path="/Rolling" element={<Rolling />} />
-          {/* 메모작성 화면 */}
+          {/* 메모작성페이지 화면 */}
           <Route path="/Memo" element={<Memo />} />
         </Routes>
       </Router>
