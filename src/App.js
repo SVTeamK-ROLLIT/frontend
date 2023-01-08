@@ -6,6 +6,8 @@ import MyPage from './Page/MyPage';
 import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
 import Memo from './Page/Memo';
+import Register from './Page/Register';
+
 import './App.css';
 
 function App() {

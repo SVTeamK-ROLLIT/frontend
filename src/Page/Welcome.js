@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import sketchbook from '../Image/sketchbook.png';
+import sketchbook from '../Image/sketchbookWelcome.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.img`
@@ -101,17 +101,19 @@ const StartBtn = styled.button`
 
 function Welcome() {
   return (
-    <AllWrap>
-      <LoginBtn>로그인</LoginBtn>
-      <SignupBtn>회원가입</SignupBtn>
-      <BoxWrap>
-        <ImgWrap>
-          <SketchbookImg src={sketchbook} />
-        </ImgWrap>
-        <PencilImg src={pencil} />
-        <StartBtn>만들어보기</StartBtn>
-      </BoxWrap>
-    </AllWrap>
+    <div className="welcome">
+      <AllWrap>
+        <LoginBtn>로그인</LoginBtn>
+        <SignupBtn>회원가입</SignupBtn>
+        <BoxWrap>
+          <ImgWrap>
+            <SketchbookImg src={sketchbook} />
+          </ImgWrap>
+          <PencilImg src={pencil} />
+          <StartBtn>만들어보기</StartBtn>
+        </BoxWrap>
+      </AllWrap>
+    </div>
   );
 }
 
