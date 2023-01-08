@@ -1,7 +1,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import './Register.css';
+import './Background.css';
 import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';

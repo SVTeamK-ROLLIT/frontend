@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import './Register.css';
+import './Background.css';
 
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';

@@ -6,7 +6,7 @@ import Theme from './MakeRollingTheme';
 
 function MakeRolling() {
   return (
-    <div>
+    <div className="makerolling">
       <MakeRoll />
       <RollTitle />
       <RollText />

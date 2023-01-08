@@ -1,3 +1,16 @@
+body .welcome {
+  background: url(../Image/sketchbookWelcome.png);
+  background-repeat: no-repeat;
+  background-color: #fcedb0;
+  background-size: cover;
+  background-size: 100rem 100rem;
+}
+@media screen and (max-width: 63rem) {
+  body .welcome {
+    background-size: 60rem 40rem;
+  }
+}
+
 body .register {
   background: url(../Image/sketchbookLogin.png);
   background-repeat: no-repeat;
@@ -12,15 +25,10 @@ body .register {
   }
 }
 
-/* body .mypage {
-  background: url(../Image/sketchbook.png);
-  background-repeat: no-repeat;
-  background-color: #fcedb0;
-  background-size: cover;
-  background-size: 80rem 22rem;
-  background-position-x: center;
-} */
-
 body .mypage {
+  background-color: #fcedb0;
+}
+
+body .makerolling {
   background-color: #fcedb0;
 }
