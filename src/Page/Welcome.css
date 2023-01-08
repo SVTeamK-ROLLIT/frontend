@@ -1,0 +1,12 @@
+body {
+    background: url(../Image/Sketchbook2.png);
+    background-repeat: no-repeat;
+    background-color: #fcedb0;
+    background-size: cover;
+    background-size: 100rem 100rem;
+}
+@media screen and (max-width: 63rem) {
+body {
+    background-size: 60rem 40rem;
+    }
+}
