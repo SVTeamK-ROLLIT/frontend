@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import sketchbook from '../Image/sketchbook.png';
+import sketchbook from '../Image/sketchbookLogin.png';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
