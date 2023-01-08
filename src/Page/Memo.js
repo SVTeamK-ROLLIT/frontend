@@ -2,11 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 import sketchbook from '../Image/Sketchbook2.png';
+import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.img`
   //스케치북 이미지
   width: 100vh;
   height: 60vh;
+`;
+
+const PencilImg = styled.img`
+  width: 15vh;
+  height: 8vh;
+  // 스캐치북 위에 올리기
+  position: absolute;
+  top: 89.5%;
+  left: 47.5%;
+  transform: translate(-50%, -50%);
 `;
 
 const ImgWrap = styled.div``;
@@ -55,8 +66,8 @@ const BackgroundColorText = styled.div`
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 21%;
+  left: 9%;
   transform: translate(-50%, -50%);
   z-index: 10;
   color: white;
@@ -90,7 +101,7 @@ const FontSetText = styled.div`
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
   position: absolute;
-  top: 67%;
+  top: 69%;
   left: 10%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -130,7 +141,7 @@ const MakeText = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function MakeRolling() {
+function Memo() {
   return (
     <div>
       <WriteLimitText>내용은 최대 100자까지 입력 가능합니다.</WriteLimitText>
@@ -146,9 +157,10 @@ function MakeRolling() {
           <SketchbookImg src={sketchbook} />
         </ImgWrap>
       </AllWrap>
+      <PencilImg src={pencil} />
       <MakeText>만들기</MakeText>
     </div>
   );
 }
 
-export default MakeRolling;
+export default Memo;
