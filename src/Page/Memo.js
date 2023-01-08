@@ -130,7 +130,7 @@ const MakeText = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function Memo() {
+function MakeRolling() {
   return (
     <div>
       <WriteLimitText>내용은 최대 100자까지 입력 가능합니다.</WriteLimitText>
@@ -151,4 +151,4 @@ function Memo() {
   );
 }
 
-export default Memo;
+export default MakeRolling;
