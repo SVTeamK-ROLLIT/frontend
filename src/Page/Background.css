@@ -1,4 +1,4 @@
-<<<<<<< HEAD:src/Page/Background.css
+
 body .welcome {
   background: url(../Image/sketchbookWelcome.png);
   background-repeat: no-repeat;
@@ -11,8 +11,6 @@ body .welcome {
     background-size: 60rem 40rem;
   }
 }
-=======
->>>>>>> #12-MemoPageDesign:src/Page/Register.css
 
 body .register {
   background: url(../Image/sketchbookLogin.png);
