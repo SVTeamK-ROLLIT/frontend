@@ -126,7 +126,7 @@ function Register() {
           </TextWrap>
           <KeyWrap border="0.938rem 0.938rem 0 0">
             <IconImg src={ID} alt="" />
-            <KeyInput type="id" placeholder="아이디" />
+            <KeyInput type="id" placeholder="이메일" />
           </KeyWrap>
           <KeyWrap>
             <IconImg src={PW} alt="" />
@@ -135,10 +135,6 @@ function Register() {
           <KeyWrap>
             <IconImg src={PW} alt="" />
             <KeyInput type="password" placeholder="비밀번호 확인" />
-          </KeyWrap>
-          <KeyWrap>
-            <IconImg src={ID} alt="" />
-            <KeyInput type="e-mail" placeholder="이메일" />
           </KeyWrap>
           <KeyWrap border="0 0 0.938rem 0.938rem">
             <IconImg src={ID} alt="" />
