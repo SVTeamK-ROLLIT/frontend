@@ -14,16 +14,6 @@ const SketchbookImg = styled.img`
   }
 `;
 
-const PencilImg = styled.img`
-  width: 15vh;
-  height: 8vh;
-  // 스캐치북 위에 올리기
-  position: absolute;
-  top: 70%;
-  left: 42%;
-  transform: translate(-50%, -50%);
-`;
-
 const ImgWrap = styled.div`
   position: relative;
   text-align: center;
@@ -78,6 +68,16 @@ const SignupBtn = styled.button`
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
+`;
+
+const PencilImg = styled.img`
+  width: 15vh;
+  height: 8vh;
+  // 스캐치북 위에 올리기
+  position: absolute;
+  top: 70%;
+  left: 42%;
+  transform: translate(-50%, -50%);
 `;
 
 const StartBtn = styled.button`
