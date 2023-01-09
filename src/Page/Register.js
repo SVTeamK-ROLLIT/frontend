@@ -6,6 +6,11 @@ import './Background.css';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
+const [email, setemail] = React.useState('');
+const [pwd, setpwd] = React.useState('');
+const [pwdchk, setpwdchk] = React.useState('');
+const [nickname, setnickname] = React.useState('');
+
 // 배경화면을 꽉 채워주기 위한 divx태그입니다
 const Background = styled.div`
   width: 100vw;
@@ -126,7 +131,7 @@ function Register() {
           </TextWrap>
           <KeyWrap border="0.938rem 0.938rem 0 0">
             <IconImg src={ID} alt="" />
-            <KeyInput type="id" placeholder="이메일" />
+            <KeyInput type="email" placeholder="이메일" />
           </KeyWrap>
           <KeyWrap>
             <IconImg src={PW} alt="" />
