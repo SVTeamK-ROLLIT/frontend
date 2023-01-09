@@ -119,10 +119,16 @@ const LoginBtn = styled.button`
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email address format')
-    .required('Email is required'),
+    .required('이메일 형식을 지켜주세요'),
   password: Yup.string()
+    .min(4, 'Password must be 4 characters at minimum')
+    .required('패스워드 4자 이상 입력해주세요'),
+  passwordcheck: Yup.string()
+    .min(4, 'Password must be 4 characters at minimum')
+    .required('패스워드 4자 이상 입력해주세요'),
+  nickname: Yup.string()
     .min(3, 'Password must be 3 characters at minimum')
-    .required('Password is required'),
+    .required('닉네임 3자 이상 입력해주세요'),
 });
 
 function Register() {
@@ -146,7 +152,7 @@ function Register() {
               <Form>
                 <KeyWrap border="0.938rem 0.938rem 0 0">
                   <IconImg src={ID} alt="" />
-                  <Field type="email" name="email" placeholder="Enter email" />
+                  <Field type="email" name="email" placeholder="이메일" />
                 </KeyWrap>
                 <ErrorMessage
                   component="div"
@@ -158,7 +164,7 @@ function Register() {
                   <Field
                     type="password"
                     name="password"
-                    placeholder="Enter password"
+                    placeholder="비밀번호"
                     className={`form-control ${
                       touched.password && errors.password ? 'is-invalid' : ''
                     }`}
@@ -173,40 +179,22 @@ function Register() {
                   <IconImg src={ID} alt="" />
                   <Field
                     type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    className={`form-control ${
-                      touched.password && errors.password ? 'is-invalid' : ''
-                    }`}
+                    name="passwordcheck"
+                    placeholder="비밀번호 확인"
                   />
                 </KeyWrap>
                 <ErrorMessage
                   component="div"
-                  name="password"
+                  name="passwordcheck"
                   className="invalid-feedback"
                 />
                 <KeyWrap border="0 0 0.938rem 0.938rem">
                   <IconImg src={ID} alt="" />
-                  <Field
-                    type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    className={`form-control ${
-                      touched.password && errors.password ? 'is-invalid' : ''
-                    }`}
-                  />
+                  <Field type="password" name="nickname" placeholder="닉네임" />
                 </KeyWrap>
-                <ErrorMessage
-                  component="div"
-                  name="password"
-                  className="invalid-feedback"
-                />
+                <ErrorMessage component="div" name="nickname" />
 
-                <SignupBtn
-                  type="submit"
-                  className="btn btn-primary btn-block"
-                  disabled={isSubmitting}
-                >
+                <SignupBtn type="submit" disabled={isSubmitting}>
                   {isSubmitting ? 'Please wait...' : '회원가입'}
                 </SignupBtn>
                 <LoginBtn>로그인</LoginBtn>
