@@ -118,17 +118,18 @@ const LoginBtn = styled.button`
 `;
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Invalid email address format')
-    .required('이메일 형식을 지켜주세요'),
+    .email('이메일 형식을 지켜주세요')
+    .required('비어있습니다!'),
   password: Yup.string()
-    .min(4, 'Password must be 4 characters at minimum')
-    .required('패스워드 4자 이상 입력해주세요'),
+    .min(4, '패스워드 4자 이상 입력해주세요')
+    .required('비어있습니다!'),
   passwordcheck: Yup.string()
-    .min(4, 'Password must be 4 characters at minimum')
-    .required('패스워드 4자 이상 입력해주세요'),
+    .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다!')
+    .min(4, '패스워드 4자 이상 입력해주세요')
+    .required('비어있습니다!'),
   nickname: Yup.string()
-    .min(3, 'Password must be 3 characters at minimum')
-    .required('닉네임 3자 이상 입력해주세요'),
+    .min(3, '닉네임 3자 이상 입력해주세요')
+    .required('비어있습니다!'),
 });
 
 function Register() {
