@@ -1,7 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './Background.css';
 
@@ -133,6 +137,35 @@ const LoginSchema = Yup.object().shape({
 });
 
 function Register() {
+  const submit = async values => {
+    const { email, nickname, password } = values;
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
+        email,
+        password,
+        nickname,
+      });
+      toast.success(
+        <h3>
+          회원가입이 완료되었습니다.
+          <br />
+          로그인 하세요😎
+        </h3>,
+        {
+          position: 'top-center',
+          autoClose: 2000,
+        },
+      );
+      setTimeout(() => {
+        <Link to="/Login" />;
+      }, 2000);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      toast.error(`${e.response.data.message}😭`, {
+        position: 'top-center',
+      });
+    }
+  };
   return (
     <div className="register">
       <Background>
@@ -143,17 +176,19 @@ function Register() {
           <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={LoginSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              alert('Form is validated! Submitting the form...');
-              console.log(values);
-              setSubmitting(false);
-            }}
+            onSubmit={submit}
           >
-            {({ touched, errors, isSubmitting }) => (
-              <Form>
+            {({ touched, errors, values, handleSubmit, handleChange }) => (
+              <Form onSubmit={handleSubmit}>
                 <KeyWrap border="0.938rem 0.938rem 0 0">
                   <IconImg src={ID} alt="" />
-                  <Field type="email" name="email" placeholder="이메일" />
+                  <Field
+                    value={values.email}
+                    name="email"
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="이메일"
+                  />
                 </KeyWrap>
                 <ErrorMessage
                   component="div"
@@ -166,6 +201,8 @@ function Register() {
                     type="password"
                     name="password"
                     placeholder="비밀번호"
+                    value={values.password}
+                    onChange={handleChange}
                     className={`form-control ${
                       touched.password && errors.password ? 'is-invalid' : ''
                     }`}
@@ -179,7 +216,9 @@ function Register() {
                 <KeyWrap>
                   <IconImg src={ID} alt="" />
                   <Field
-                    type="password"
+                    value={values.passwordcheck}
+                    onChange={handleChange}
+                    type="passwordcheck"
                     name="passwordcheck"
                     placeholder="비밀번호 확인"
                   />
@@ -191,13 +230,17 @@ function Register() {
                 />
                 <KeyWrap border="0 0 0.938rem 0.938rem">
                   <IconImg src={ID} alt="" />
-                  <Field type="password" name="nickname" placeholder="닉네임" />
+                  <Field
+                    value={values.nickname}
+                    onChange={handleChange}
+                    type="text"
+                    name="nickname"
+                    placeholder="닉네임"
+                  />
                 </KeyWrap>
                 <ErrorMessage component="div" name="nickname" />
 
-                <SignupBtn type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Please wait...' : '회원가입'}
-                </SignupBtn>
+                <SignupBtn type="submit">회원가입</SignupBtn>
                 <LoginBtn>로그인</LoginBtn>
               </Form>
             )}
