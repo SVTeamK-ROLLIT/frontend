@@ -1,5 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
+import * as Yup from 'yup';
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './Background.css';
 
@@ -15,7 +21,6 @@ const Background = styled.div`
 // 회원가입 Text를 감싸줍니다
 const TextWrap = styled.div`
   text-align: center; /*"회원가입"을 가운데 정렬시켜줍니다*/
-
   @media screen and (max-width: 63rem) {
     display: none; /*화면이 작아지면 "회원가입 글씨를 사라지게 합니다"*/
   }
@@ -71,26 +76,26 @@ const IconImg = styled.img`
 `;
 
 // 아이디,패스워드,이메일,닉네임을 입력하는 input태그입니다
-const KeyInput = styled.input`
-  //placeholder스타일
-  width: 2.25rem;
-  height: 2.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  /////
-  padding-left: 0.5rem;
-  margin: auto 1rem auto 0rem;
-  width: 31.25rem;
-  &:focus {
-    outline: none;
-  }
-`;
+// const KeyInput = styled.input`
+//   //placeholder스타일
+//   width: 2.25rem;
+//   height: 2.5rem;
+//   font-size: 1.5rem;
+//   font-weight: 500;
+//   /////
+//   padding-left: 0.5rem;
+//   margin: auto 1rem auto 0rem;
+//   width: 31.25rem;
+//   &:focus {
+//     outline: none;
+//   }
+// `;
 
-// 로그인, 회원가입을 감싸기 위한 div태그입니다
-const BtnWrap = styled.div`
-  text-align: center;
-  display: block;
-`;
+// // 로그인, 회원가입을 감싸기 위한 div태그입니다
+// const BtnWrap = styled.div`
+//   text-align: center;
+//   display: block;
+// `;
 
 // 회원가입 버튼
 const SignupBtn = styled.button`
@@ -116,7 +121,54 @@ const LoginBtn = styled.button`
   margin: 0rem auto 0rem;
 `;
 
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('이메일 형식을 지켜주세요')
+    .required('비어있습니다!'),
+  password: Yup.string()
+    .min(4, '패스워드 4자 이상 입력해주세요')
+    .required('비어있습니다!'),
+  passwordcheck: Yup.string()
+    .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다!')
+    .min(4, '패스워드 4자 이상 입력해주세요')
+    .required('비어있습니다!'),
+  nickname: Yup.string()
+    .min(3, '닉네임 3자 이상 입력해주세요')
+    .required('비어있습니다!'),
+});
+
 function Register() {
+  const navigate = useNavigate();
+  const submit = async values => {
+    const { email, nickname, password } = values;
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
+        email,
+        password,
+        nickname,
+      });
+
+      toast.success(
+        <h3>
+          회원가입이 완료되었습니다.
+          <br />
+          로그인 하세요😎
+        </h3>,
+        {
+          position: 'top-center',
+          autoClose: 2000,
+        },
+      );
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      toast.error(`${e.response.data.message}😭`, {
+        position: 'top-center',
+      });
+    }
+  };
   return (
     <div className="register">
       <Background>
@@ -124,30 +176,85 @@ function Register() {
           <TextWrap>
             <RegText>회원가입</RegText>
           </TextWrap>
-          <KeyWrap border="0.938rem 0.938rem 0 0">
-            <IconImg src={ID} alt="" />
-            <KeyInput type="id" placeholder="아이디" />
-          </KeyWrap>
-          <KeyWrap>
-            <IconImg src={PW} alt="" />
-            <KeyInput type="password" placeholder="비밀번호" />
-          </KeyWrap>
-          <KeyWrap>
-            <IconImg src={PW} alt="" />
-            <KeyInput type="password" placeholder="비밀번호 확인" />
-          </KeyWrap>
-          <KeyWrap>
-            <IconImg src={ID} alt="" />
-            <KeyInput type="e-mail" placeholder="이메일" />
-          </KeyWrap>
-          <KeyWrap border="0 0 0.938rem 0.938rem">
-            <IconImg src={ID} alt="" />
-            <KeyInput type="text" placeholder="닉네임" />
-          </KeyWrap>
-          <BtnWrap>
-            <SignupBtn>회원가입</SignupBtn>
-            <LoginBtn>로그인</LoginBtn>
-          </BtnWrap>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+              passwordcheck: '',
+              nickname: '',
+            }}
+            validationSchema={LoginSchema}
+            onSubmit={submit}
+          >
+            {({ touched, errors, values, handleSubmit, handleChange }) => (
+              <div>
+                <ToastContainer />
+                <Form onSubmit={handleSubmit}>
+                  <KeyWrap border="0.938rem 0.938rem 0 0">
+                    <IconImg src={ID} alt="" />
+                    <Field
+                      value={values.email}
+                      name="email"
+                      onChange={handleChange}
+                      type="email"
+                      placeholder="이메일"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
+                    name="email"
+                    className="invalid-feedback"
+                  />
+                  <KeyWrap>
+                    <IconImg src={PW} alt="" />
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="비밀번호"
+                      value={values.password}
+                      onChange={handleChange}
+                      className={`form-control ${
+                        touched.password && errors.password ? 'is-invalid' : ''
+                      }`}
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
+                    name="password"
+                    className="invalid-feedback"
+                  />
+                  <KeyWrap>
+                    <IconImg src={PW} alt="" />
+                    <Field
+                      value={values.passwordcheck}
+                      onChange={handleChange}
+                      type="password"
+                      name="passwordcheck"
+                      placeholder="비밀번호 확인"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
+                    name="passwordcheck"
+                    className="invalid-feedback"
+                  />
+                  <KeyWrap border="0 0 0.938rem 0.938rem">
+                    <IconImg src={ID} alt="" />
+                    <Field
+                      value={values.nickname}
+                      onChange={handleChange}
+                      type="text"
+                      name="nickname"
+                      placeholder="닉네임"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage component="div" name="nickname" />
+                  <SignupBtn type="submit">회원가입</SignupBtn>
+                </Form>
+                <LoginBtn onClick={() => navigate('/login')}>로그인</LoginBtn>
+              </div>
+            )}
+          </Formik>
         </KeysWrap>
       </Background>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Welcome from './Page/Welcome';
 import Login from './Page/Login';
 import MyPage from './Page/MyPage';
