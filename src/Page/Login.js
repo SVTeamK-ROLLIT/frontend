@@ -118,17 +118,19 @@ function Register() {
           password,
         },
       );
-      console.log(data);
       toast.success(<h3>로그인 성공😎</h3>, {
         position: 'top-center',
         autoClose: 2000,
       });
+      console.log(data);
+      localStorage.clear();
+      localStorage.setItem('id', data.user_id);
       setTimeout(() => {
         navigate('/welcome');
-      }, 2000);
+      }, 3000);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
-      toast.error(`${e.response.data.message}😭`, {
+      toast.error(`${e.response.data.message} 😭`, {
         position: 'top-center',
       });
     }
