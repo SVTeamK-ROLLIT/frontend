@@ -51,6 +51,24 @@ const LoginBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
+const MypageBtn = styled.button`
+  //상단 로그인 버튼
+  width: 12vh;
+  height: 5.5vh;
+  font-size: 3.7vh;
+  font-weight: 1000;
+  position: absolute;
+  top: 7%;
+  left: 72%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 1.5px 1.5px 1.5px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
+`;
+
 const SignupBtn = styled.button`
   //상단 회원가입 버튼
   width: 15vh;
@@ -103,6 +121,7 @@ function Welcome() {
   return (
     <div className="welcome">
       <AllWrap>
+        <MypageBtn>마이페이지</MypageBtn>
         <LoginBtn>로그인</LoginBtn>
         <SignupBtn>회원가입</SignupBtn>
         <BoxWrap>
