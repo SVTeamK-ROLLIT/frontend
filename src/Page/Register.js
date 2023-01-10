@@ -3,8 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './Background.css';
@@ -120,6 +120,7 @@ const LoginBtn = styled.button`
   display: block;
   margin: 0rem auto 0rem;
 `;
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('이메일 형식을 지켜주세요')
@@ -137,8 +138,8 @@ const LoginSchema = Yup.object().shape({
 });
 
 function Register() {
+  const navigate = useNavigate();
   const submit = async values => {
-    console.log(values);
     const { email, nickname, password } = values;
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
@@ -159,7 +160,7 @@ function Register() {
         },
       );
       setTimeout(() => {
-        <Link to="/Login" />;
+        navigate('/login');
       }, 2000);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
@@ -186,70 +187,72 @@ function Register() {
             onSubmit={submit}
           >
             {({ touched, errors, values, handleSubmit, handleChange }) => (
-              <Form onSubmit={handleSubmit}>
-                <KeyWrap border="0.938rem 0.938rem 0 0">
-                  <IconImg src={ID} alt="" />
-                  <Field
-                    value={values.email}
+              <div>
+                <ToastContainer />
+                <Form onSubmit={handleSubmit}>
+                  <KeyWrap border="0.938rem 0.938rem 0 0">
+                    <IconImg src={ID} alt="" />
+                    <Field
+                      value={values.email}
+                      name="email"
+                      onChange={handleChange}
+                      type="email"
+                      placeholder="이메일"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
                     name="email"
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="이메일"
+                    className="invalid-feedback"
                   />
-                </KeyWrap>
-                <ErrorMessage
-                  component="div"
-                  name="email"
-                  className="invalid-feedback"
-                />
-                <KeyWrap>
-                  <IconImg src={PW} alt="" />
-                  <Field
-                    type="password"
+                  <KeyWrap>
+                    <IconImg src={PW} alt="" />
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="비밀번호"
+                      value={values.password}
+                      onChange={handleChange}
+                      className={`form-control ${
+                        touched.password && errors.password ? 'is-invalid' : ''
+                      }`}
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
                     name="password"
-                    placeholder="비밀번호"
-                    value={values.password}
-                    onChange={handleChange}
-                    className={`form-control ${
-                      touched.password && errors.password ? 'is-invalid' : ''
-                    }`}
+                    className="invalid-feedback"
                   />
-                </KeyWrap>
-                <ErrorMessage
-                  component="div"
-                  name="password"
-                  className="invalid-feedback"
-                />
-                <KeyWrap>
-                  <IconImg src={ID} alt="" />
-                  <Field
-                    value={values.passwordcheck}
-                    onChange={handleChange}
-                    type="password"
+                  <KeyWrap>
+                    <IconImg src={PW} alt="" />
+                    <Field
+                      value={values.passwordcheck}
+                      onChange={handleChange}
+                      type="password"
+                      name="passwordcheck"
+                      placeholder="비밀번호 확인"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage
+                    component="div"
                     name="passwordcheck"
-                    placeholder="비밀번호 확인"
+                    className="invalid-feedback"
                   />
-                </KeyWrap>
-                <ErrorMessage
-                  component="div"
-                  name="passwordcheck"
-                  className="invalid-feedback"
-                />
-                <KeyWrap border="0 0 0.938rem 0.938rem">
-                  <IconImg src={ID} alt="" />
-                  <Field
-                    value={values.nickname}
-                    onChange={handleChange}
-                    type="text"
-                    name="nickname"
-                    placeholder="닉네임"
-                  />
-                </KeyWrap>
-                <ErrorMessage component="div" name="nickname" />
-
-                <SignupBtn type="submit">회원가입</SignupBtn>
-                <LoginBtn>로그인</LoginBtn>
-              </Form>
+                  <KeyWrap border="0 0 0.938rem 0.938rem">
+                    <IconImg src={ID} alt="" />
+                    <Field
+                      value={values.nickname}
+                      onChange={handleChange}
+                      type="text"
+                      name="nickname"
+                      placeholder="닉네임"
+                    />
+                  </KeyWrap>
+                  <ErrorMessage component="div" name="nickname" />
+                  <SignupBtn type="submit">회원가입</SignupBtn>
+                </Form>
+                <LoginBtn onClick={() => navigate('/login')}>로그인</LoginBtn>
+              </div>
             )}
           </Formik>
         </KeysWrap>
