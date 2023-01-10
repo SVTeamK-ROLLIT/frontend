@@ -127,7 +127,7 @@ function Register() {
       localStorage.setItem('id', data.user_id);
       setTimeout(() => {
         navigate('/welcome');
-      }, 3000);
+      }, 1000);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       toast.error(`${e.response.data.message} 😭`, {
