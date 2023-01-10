@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -138,6 +138,7 @@ const LoginSchema = Yup.object().shape({
 
 function Register() {
   const submit = async values => {
+    console.log(values);
     const { email, nickname, password } = values;
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
@@ -145,6 +146,7 @@ function Register() {
         password,
         nickname,
       });
+
       toast.success(
         <h3>
           회원가입이 완료되었습니다.
@@ -174,7 +176,12 @@ function Register() {
             <RegText>회원가입</RegText>
           </TextWrap>
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{
+              email: '',
+              password: '',
+              passwordcheck: '',
+              nickname: '',
+            }}
             validationSchema={LoginSchema}
             onSubmit={submit}
           >
@@ -218,7 +225,7 @@ function Register() {
                   <Field
                     value={values.passwordcheck}
                     onChange={handleChange}
-                    type="passwordcheck"
+                    type="password"
                     name="passwordcheck"
                     placeholder="비밀번호 확인"
                   />
