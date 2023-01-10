@@ -12,4 +12,5 @@ CMD ["yarn", "dev"]
 # RUN yarn
 # RUN yarn global add serve
 # COPY . ./
-# RUN yarn build
+# # RUN yarn build
+# RUN yarn start
