@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
 
 export default function App() {
   const nodeRef = useRef(null);
@@ -33,24 +31,9 @@ export default function App() {
   const handleEnd2 = () => {
     setOpacity2(false);
   };
-  const changePosition = async posi => {
-    const { xcoor, ycoor } = posi;
-    try {
-      await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
-        xcoor,
-        ycoor,
-      });
-    } catch (e) {
-      // 서버에서 받은 에러 메시지 출력
-      toast.error(`${e.response.data.message}😭`, {
-        position: 'top-center',
-      });
-    }
-  };
 
   return (
     <div className="App">
-      <ToastContainer />
       <Draggable
         nodeRef={nodeRef}
         onDrag={(e, data) => trackPos(data)}
