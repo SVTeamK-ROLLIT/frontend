@@ -121,7 +121,7 @@ const AllWrap = styled.div`
   z-index: 90;
 `;
 const MyPageBtn = styled.button`
-  margin: 2rem 14rem 0 auto;
+  margin: 2% 11% 0 auto;
   /* background-color: red; */
   height: 4rem;
   display: block;
