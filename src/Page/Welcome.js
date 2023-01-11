@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
@@ -121,10 +122,10 @@ const StartBtn = styled.button`
 `;
 
 function Welcome() {
+  const navigate = useNavigate();
   const [logState, setLogState] = useState();
   useEffect(() => {
     setLogState(localStorage.getItem('id'));
-    console.log(logState);
   }, [logState]);
 
   const onClick = () => {
@@ -141,7 +142,9 @@ function Welcome() {
             <SketchbookImg src={sketchbook} />
           </ImgWrap>
           <PencilImg src={pencil} />
-          <StartBtn>만들어보기</StartBtn>
+          <StartBtn onClick={() => navigate('/makerolling')}>
+            만들어보기
+          </StartBtn>
         </BoxWrap>
       </AllWrap>
     </div>
