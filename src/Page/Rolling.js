@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import blackboard from '../Image/image2.png';
+import Memo from './RollingMemo';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -101,6 +102,7 @@ function Rolling() {
   return (
     <div className="rolling">
       <SketchBookImg>
+        <Memo />
         <AllWrap>
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
