@@ -4,16 +4,19 @@ import blackboard from '../Image/blackboard.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
+import usericon from '../Image/usericon.png';
 
 const SketchBookImg = styled.div`
   // border: 5px solid #535353;
+  width: 100rem;
   height: 100%;
   /* background-color: #fcedb0; */
-  background-size: contain;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   background-position-x: center;
   background-image: url(${blackboard});
   margin: 0 auto;
+  background-size: contain;
 `;
 
 const AllWrap = styled.div`
@@ -41,11 +44,35 @@ const Text = styled.div`
   /* background-color: red; */
   height: 5rem;
   width: 100%;
-
+  color: white;
   text-align: center;
   font-size: 50px;
   font-weight: 700;
 `;
+
+const UserWrap = styled.div`
+  padding-right: 5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 4rem;
+`;
+const UserIcon = styled.img`
+  width: 2rem;
+  height: 2rem;
+`;
+const UserNum = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 1rem;
+  text-align: center;
+
+  color: #ffffff;
+`;
+
 const MemoWrap = styled.div`
   /* background-color: yellow; */
   height: 50rem;
@@ -77,6 +104,10 @@ function Rolling() {
         <AllWrap>
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
+          <UserWrap>
+            <UserIcon src={usericon} alt="" />
+            <UserNum>12</UserNum>
+          </UserWrap>
           <MemoWrap />
           <IconWrap>
             <IconBtn>
