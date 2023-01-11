@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 // import sketchbook from '../Image/sketchbookLogin.png';
 import blackboard from '../Image/blackboard.png';
+import pencilicon from '../Image/pencilicon.png';
+import galleryicon from '../Image/galleryicon.png';
+import memoicon from '../Image/memoicon.svg';
 
 // import GlobalStyle from './GlobalStyle';
 
@@ -146,6 +149,23 @@ const MemoWrap = styled.div`
   margin: 0 auto;
 `;
 
+const IconBtn = styled.button`
+  width: 2rem;
+  height: 2rem;
+  /* background-color: red; */
+  /* border: 1px solid black; */
+  margin: 0.5rem;
+`;
+
+const IconWrap = styled.div`
+  position: fixed;
+  display: flex;
+  top: 77%;
+  left: 85%;
+  flex-direction: column;
+  margin: 0 6rem 4rem auto;
+`;
+
 function Rolling() {
   return (
     <div className="rolling">
@@ -154,6 +174,17 @@ function Rolling() {
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
           <MemoWrap />
+          <IconWrap>
+            <IconBtn>
+              <img src={pencilicon} alt="" />
+            </IconBtn>
+            <IconBtn>
+              <img src={galleryicon} alt="" />
+            </IconBtn>
+            <IconBtn>
+              <img src={memoicon} alt="" />
+            </IconBtn>
+          </IconWrap>
         </AllWrap>
       </SketchBookImg>
     </div>
