@@ -89,12 +89,13 @@ const IconBtn = styled.button`
 `;
 
 const IconWrap = styled.div`
-  position: fixed;
+  padding-right: 5rem;
+  height: 2rem;
   display: flex;
-  top: 77%;
-  left: 85%;
+  align-items: end;
+  padding-bottom: 5rem;
+  justify-content: flex-end;
   flex-direction: column;
-  margin: 0 6rem 4rem auto;
 `;
 
 function Rolling() {
