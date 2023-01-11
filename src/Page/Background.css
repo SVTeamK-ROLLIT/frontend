@@ -24,6 +24,15 @@ body .register {
     background-size: 50rem 40rem;
   }
 }
+
+body .mypage {
+  background-color: #fcedb0;
+}
+
+body .makerolling {
+  background-color: #fcedb0;
+}
+
 body .login {
   background: url(../Image/sketchbookLogin.png);
   background-repeat: no-repeat;
@@ -36,12 +45,4 @@ body .login {
   body .login {
     background-size: 50rem 40rem;
   }
-}
-
-body .mypage {
-  background-color: #fcedb0;
-}
-
-body .makerolling {
-  background-color: #fcedb0;
 }
