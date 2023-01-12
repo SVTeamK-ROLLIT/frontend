@@ -15,11 +15,12 @@ const Text = styled.div`
   height: 140px;
   font-size: 40px;
   font-weight: 700;
-  color: #000;
+  color: black;
   text-align: center;
   margin: auto;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  font-family: 'Cafe24Ssurround';
 `;
 
 export default MakeRollingText;

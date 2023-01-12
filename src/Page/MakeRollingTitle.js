@@ -14,18 +14,18 @@ const To = styled.div`
 
 const TitleInput = styled.input`
   width: 867px;
-  height: 68px;
+  height: 30px;
   background: #ffffff;
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin: auto;
-  padding: 2rem;
+  padding: 1.7rem;
   display: block;
   &:focus {
     outline: none;
   }
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 700;
   ::placeholder {
     color: #d9d9d9;

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 const MypageBtn = styled.button`
   //상단 로그인 버튼
-  width: 12vh;
+  width: 20vh;
   height: 5.5vh;
   font-size: 3.7vh;
   font-weight: 1000;
   position: absolute;
   top: 7%;
-  left: 80%;
+  left: 78%;
   transform: translate(-50%, -50%);
   z-index: 10;
   color: white;

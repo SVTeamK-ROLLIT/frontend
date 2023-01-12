@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
@@ -116,15 +117,16 @@ const StartBtn = styled.button`
   font-family: 'Cafe24Ssurround';
   color: white;
   text-shadow: 1.5px 1.5px 1.5px gray;
+  opacity: 0.8;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
 
 function Welcome() {
+  const navigate = useNavigate();
   const [logState, setLogState] = useState();
   useEffect(() => {
     setLogState(localStorage.getItem('id'));
-    console.log(logState);
   }, [logState]);
 
   const onClick = () => {
@@ -141,7 +143,9 @@ function Welcome() {
             <SketchbookImg src={sketchbook} />
           </ImgWrap>
           <PencilImg src={pencil} />
-          <StartBtn>만들어보기</StartBtn>
+          <StartBtn onClick={() => navigate('/makerolling')}>
+            만들어보기
+          </StartBtn>
         </BoxWrap>
       </AllWrap>
     </div>
