@@ -3,8 +3,9 @@ import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 
-export default function App() {
+export default function App({ list }) {
   const nodeRef = useRef(null);
+  console.log(list);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -49,6 +50,7 @@ export default function App() {
       onDrag={(e, data) => trackPos(data)}
       onStart={handleStart}
       onStop={handleEnd}
+      //   defaultPosition={{ xcoor, ycoor }}
     >
       <div
         ref={nodeRef}
