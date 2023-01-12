@@ -117,6 +117,7 @@ const StartBtn = styled.button`
   font-family: 'Cafe24Ssurround';
   color: white;
   text-shadow: 1.5px 1.5px 1.5px gray;
+  opacity: 0.8;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
