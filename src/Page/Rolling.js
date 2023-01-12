@@ -94,8 +94,8 @@ const IconWrap = styled.div`
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
-  height: calc(100vh - 50px);
-  width: calc(100vw - 50px);
+  height: calc(100vh);
+  width: calc(100vw);
   padding: 20px;
   position: absolute;
 `;
@@ -118,7 +118,6 @@ function Rolling() {
     getMemos();
   }, []);
 
-  // console.log(items);
   return (
     <div className="rolling">
       <SketchBookImg>
