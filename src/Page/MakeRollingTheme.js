@@ -18,19 +18,19 @@ const StyledSlider = styled(Slider)`
   .slick-arrow {
     display: flex;
     z-index: 1;
-    width: 1vw;
     height: 1vw;
+    position: absolute;
+    right: 1vw;
+    width: 60vw;
   }
 `;
 
-const ImageContainer = styled.div`
-  margin: 0 16px;
-`;
+const ImageContainer = styled.div``;
 
 const Image = styled.img`
-  max-width: 50vw;
-  max-height: 30vh;
-  margin-left: 32.5vw;
+  width: 27vw;
+  height: 30vh;
+  margin-left: 33vw;
 `;
 
 const Text = styled.button`
@@ -41,23 +41,25 @@ const Text = styled.button`
   color: #fff;
   text-align: center;
   margin-top: 5vh;
-  margin-left: 36vw;
-  margin-bottom: 3rem;
+  margin-left: 35vw;
   font-family: 'Cafe24Ssurround';
+  text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
 `;
 
-const imgUrl = require('../Image/sketchbook3.png');
-const imgUrl2 = require('../Image/blackboard.png');
-const imgUrl3 = require('../Image/bgrabbit.png');
-const imgUrl4 = require('../Image/bgimg.png');
+const imgUrl = require('../Image/image1.png');
+const imgUrl2 = require('../Image/image2.png');
+const imgUrl3 = require('../Image/image3.png');
+const imgUrl4 = require('../Image/image4.png');
+const imgUrl5 = require('../Image/image5.png');
 
 const items = [
   { id: 1, url: imgUrl },
   { id: 2, url: imgUrl2 },
   { id: 3, url: imgUrl3 },
   { id: 4, url: imgUrl4 },
+  { id: 5, url: imgUrl5 },
 ];
 
 export default class SimpleSlider extends Component {
@@ -75,8 +77,6 @@ export default class SimpleSlider extends Component {
       <Container>
         <StyledSlider {...settings}>
           {items.map(item => {
-            // eslint-disable-next-line no-console
-            console.log(item);
             return (
               <div key={item.id}>
                 <ImageContainer>
