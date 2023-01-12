@@ -5,7 +5,6 @@ import axios from 'axios';
 
 export default function App({ list }) {
   const nodeRef = useRef(null);
-  console.log(list);
   const { xcoor, ycoor, content } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
