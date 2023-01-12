@@ -103,8 +103,8 @@ function Rolling() {
   return (
     <div className="rolling">
       <SketchBookImg>
-        <Memo />
         <AllWrap>
+          <Memo />
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
           <UserWrap>

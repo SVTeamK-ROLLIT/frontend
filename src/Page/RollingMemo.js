@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 
@@ -33,8 +34,9 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <Container>
       <Draggable
+        bounds="parent"
         nodeRef={nodeRef}
         onDrag={(e, data) => trackPos(data)}
         onStart={handleStart}
@@ -43,7 +45,11 @@ export default function App() {
         <div
           ref={nodeRef}
           className="box"
-          style={{ opacity: Opacity ? '0.6' : '1' }}
+          style={{
+            opacity: Opacity ? '0.6' : '1',
+            width: 300,
+            display: 'inline-block',
+          }}
         >
           <div>BOX</div>
           <div>
@@ -70,6 +76,37 @@ export default function App() {
           </div>
         </div>
       </Draggable>
-    </div>
+
+      <Draggable
+        bounds="parent"
+        nodeRef={nodeRef}
+        onDrag={(e, data) => trackPos(data)}
+        onStart={handleStart}
+        onStop={handleEnd}
+      >
+        <div
+          ref={nodeRef}
+          className="box"
+          style={{
+            opacity: Opacity ? '0.6' : '1',
+            width: 50,
+            display: 'inline-block',
+            position: 'absolute',
+          }}
+        >
+          <div>BOX</div>
+          <div>
+            x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
+          </div>
+        </div>
+      </Draggable>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  height: calc(100vh - 50px);
+  width: calc(100vw - 50px);
+  padding: 20px;
+  position: absolute;
+`;
