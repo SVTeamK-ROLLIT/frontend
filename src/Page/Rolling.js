@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Memo from './RollingMemo';
@@ -7,8 +7,6 @@ import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
-
-const [items, setItems] = useState('');
 
 const SketchBookImg = styled.div`
   width: 100rem;
@@ -102,19 +100,24 @@ const Container = styled.div`
   position: absolute;
 `;
 
-const getMemos = async () => {
-  try {
-    const memos = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/1');
-    console.log('successGet');
-    setItems(memos);
-  } catch (e) {
-    // 서버에서 받은 에러 메시지 출력
-    console.log(e);
-  }
-};
-
 function Rolling() {
-  getMemos();
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const getMemos = async () => {
+      try {
+        const memos = await axios.get(
+          'http://127.0.0.1:8080/api/v1/papers/1/1',
+        );
+        console.log('successGet');
+        setItems(memos.data);
+      } catch (e) {
+        // 서버에서 받은 에러 메시지 출력
+        console.log(e);
+      }
+    };
+    getMemos();
+  }, []);
+
   console.log(items);
   return (
     <div className="rolling">
