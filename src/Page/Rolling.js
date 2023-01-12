@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import Memo from './RollingMemo';
 import blackboard from '../Image/blackboard.png';
 import pencilicon from '../Image/pencilicon.png';
@@ -7,12 +8,11 @@ import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
 
+const [items, setItems] = useState('');
+
 const SketchBookImg = styled.div`
-  // border: 5px solid #535353;
   width: 100rem;
   height: 100%;
-  /* background-color: #fcedb0; */
-  /* background-size: cover; */
   background-repeat: no-repeat;
   background-position-x: center;
   background-image: url(${blackboard});
@@ -21,7 +21,6 @@ const SketchBookImg = styled.div`
 `;
 
 const AllWrap = styled.div`
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -31,7 +30,6 @@ const AllWrap = styled.div`
 const MyPageBtn = styled.button`
   margin: 2% 11% 0 auto;
   z-index: 100;
-  /* background-color: red; */
   height: 4rem;
   display: block;
   width: 12rem;
@@ -43,7 +41,6 @@ const MyPageBtn = styled.button`
   line-height: 47px;
 `;
 const Text = styled.div`
-  /* background-color: red; */
   height: 5rem;
   width: 100%;
   color: white;
@@ -76,7 +73,6 @@ const UserNum = styled.div`
 `;
 
 const MemoWrap = styled.div`
-  /* background-color: yellow; */
   height: 50rem;
   width: 80rem;
   margin: 0 auto;
@@ -85,8 +81,6 @@ const MemoWrap = styled.div`
 const IconBtn = styled.button`
   width: 2rem;
   height: 2rem;
-  /* background-color: red; */
-  /* border: 1px solid black; */
   margin: 0.5rem;
   z-index: 100;
 `;
@@ -101,13 +95,27 @@ const IconWrap = styled.div`
   flex-direction: column;
 `;
 const Container = styled.div`
+  //메모가 움직이는 영역입니다.
   height: calc(100vh - 50px);
   width: calc(100vw - 50px);
   padding: 20px;
   position: absolute;
 `;
 
+const getMemos = async () => {
+  try {
+    const memos = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/1');
+    console.log('successGet');
+    setItems(memos);
+  } catch (e) {
+    // 서버에서 받은 에러 메시지 출력
+    console.log(e);
+  }
+};
+
 function Rolling() {
+  getMemos();
+  console.log(items);
   return (
     <div className="rolling">
       <SketchBookImg>
