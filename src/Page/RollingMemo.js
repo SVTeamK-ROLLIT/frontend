@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function App({ list }) {
   const nodeRef = useRef(null);
   console.log(list);
-
+  const { xcoor, ycoor } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -50,7 +50,7 @@ export default function App({ list }) {
       onDrag={(e, data) => trackPos(data)}
       onStart={handleStart}
       onStop={handleEnd}
-      //   defaultPosition={{ xcoor, ycoor }}
+      defaultPosition={{ x: xcoor, y: ycoor }}
     >
       <div
         ref={nodeRef}
