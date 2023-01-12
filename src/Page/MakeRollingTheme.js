@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/prefer-stateless-function */
@@ -31,6 +33,7 @@ const Image = styled.img`
   width: 27vw;
   height: 30vh;
   margin-left: 33vw;
+  z-index: 10;
 `;
 
 const Text = styled.button`
@@ -63,6 +66,16 @@ const items = [
 ];
 
 export default class SimpleSlider extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      oldSlide: 0,
+      activeSlide: 0,
+      activeSlide2: 0,
+    };
+  }
+
   render() {
     const settings = {
       dots: true,
@@ -72,6 +85,9 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1,
       arrows: true,
       centerMode: true,
+      beforeChange: (current, next) =>
+        this.setState({ oldSlide: current, activeSlide: next }),
+      afterChange: current => this.setState({ activeSlide2: current }),
     };
     return (
       <Container>
@@ -86,6 +102,10 @@ export default class SimpleSlider extends Component {
             );
           })}
         </StyledSlider>
+
+        <p>
+          <strong>{this.state.activeSlide}</strong>
+        </p>
         <Text>생성하기</Text>
       </Container>
     );
