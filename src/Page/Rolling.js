@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import blackboard from '../Image/image2.png';
+import Memo from './RollingMemo';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
 
 const SketchBookImg = styled.div`
-  // border: 5px solid #535353;
   width: 100%;
-  /* background-color: #fcedb0; */
-  /* background-size: cover; */
+  height: 100%;
   background-repeat: no-repeat;
   background-position-x: center;
   background-image: url(${blackboard});
@@ -19,7 +19,6 @@ const SketchBookImg = styled.div`
 `;
 
 const AllWrap = styled.div`
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -28,7 +27,7 @@ const AllWrap = styled.div`
 `;
 const MyPageBtn = styled.button`
   margin: 2% 11% 0 auto;
-  /* background-color: red; */
+  z-index: 100;
   height: 4rem;
   display: block;
   width: 12rem;
@@ -40,7 +39,6 @@ const MyPageBtn = styled.button`
   line-height: 47px;
 `;
 const Text = styled.div`
-  /* background-color: red; */
   height: 5rem;
   width: 100%;
   color: white;
@@ -73,7 +71,6 @@ const UserNum = styled.div`
 `;
 
 const MemoWrap = styled.div`
-  /* background-color: yellow; */
   height: 50rem;
   width: 80rem;
   margin: 0 auto;
@@ -82,25 +79,56 @@ const MemoWrap = styled.div`
 const IconBtn = styled.button`
   width: 2rem;
   height: 2rem;
-  /* background-color: red; */
-  /* border: 1px solid black; */
   margin: 0.5rem;
+  z-index: 100;
 `;
 
 const IconWrap = styled.div`
-  position: fixed;
+  padding-right: 5rem;
+  height: 2rem;
   display: flex;
-  top: 77%;
-  left: 85%;
+  align-items: end;
+  padding-bottom: 5rem;
+  justify-content: flex-end;
   flex-direction: column;
-  margin: 0 6rem 4rem auto;
+`;
+const Container = styled.div`
+  //메모가 움직이는 영역입니다.
+  height: calc(100vh);
+  width: calc(100vw);
+  padding: 20px;
+  position: absolute;
 `;
 
 function Rolling() {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const getMemos = async () => {
+      try {
+        const memos = await axios.get(
+          'http://127.0.0.1:8080/api/v1/papers/1/1',
+        );
+        console.log('successGet');
+        setItems(memos.data);
+      } catch (e) {
+        // 서버에서 받은 에러 메시지 출력
+        console.log(e);
+      }
+    };
+    getMemos();
+  }, []);
+
   return (
     <div className="rolling">
       <SketchBookImg>
         <AllWrap>
+          <Container>
+            {items.memo &&
+              items.memo.map(list => {
+                return <Memo list={list} key={list.id} />;
+              })}
+          </Container>
+
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
           <UserWrap>
