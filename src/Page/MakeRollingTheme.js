@@ -9,9 +9,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Container = styled.div`
-  overflow: hidden;
-`;
+const Container = styled.div``;
 
 const StyledSlider = styled(Slider)`
   .slick-slide div {
@@ -36,20 +34,31 @@ const Image = styled.img`
   z-index: 10;
 `;
 
-const Text = styled.button`
-  width: 30vw;
-  height: 10vh;
+const Count = styled.button`
+  height: 20vh;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 1000;
   color: #fff;
   text-align: center;
-  margin-top: 5vh;
-  margin-left: 35vw;
+  margin-left: 45vw;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
 `;
+
+// const Text = styled.button`
+//   width: 30vw;
+//   font-size: 40px;
+//   font-weight: 700;
+//   color: #fff;
+//   text-align: center;
+//   margin-left: 35vw;
+//   font-family: 'Cafe24Ssurround';
+//   text-shadow: 1.5px 1.5px 1.5px gray;
+//   -webkit-text-stroke-width: 1.3px;
+//   -webkit-text-stroke-color: black;
+// `;
 
 const imgUrl = require('../Image/image1.png');
 const imgUrl2 = require('../Image/image2.png');
@@ -103,10 +112,11 @@ export default class SimpleSlider extends Component {
           })}
         </StyledSlider>
 
-        <p>
-          <strong>{this.state.activeSlide}</strong>
-        </p>
-        <Text>생성하기</Text>
+        <Count>
+          <strong>테마 {this.state.activeSlide + 1}</strong>
+          <br />
+          생성하기
+        </Count>
       </Container>
     );
   }
