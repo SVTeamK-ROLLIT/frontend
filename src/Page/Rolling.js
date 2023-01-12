@@ -118,13 +118,16 @@ function Rolling() {
     getMemos();
   }, []);
 
-  console.log(items);
+  // console.log(items);
   return (
     <div className="rolling">
       <SketchBookImg>
         <AllWrap>
           <Container>
-            <Memo />
+            {items.memo &&
+              items.memo.map(list => {
+                return <Memo list={list} key={list.id} />;
+              })}
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>
