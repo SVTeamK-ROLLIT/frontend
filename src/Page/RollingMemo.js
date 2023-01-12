@@ -1,4 +1,4 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function App({ list }) {
   const nodeRef = useRef(null);
   console.log(list);
-  const { xcoor, ycoor } = list;
+  const { xcoor, ycoor, content } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -52,21 +52,23 @@ export default function App({ list }) {
       onStop={handleEnd}
       defaultPosition={{ x: xcoor, y: ycoor }}
     >
-      <div
+      <MemoBox
         ref={nodeRef}
         className="box"
         style={{
           opacity: Opacity ? '0.6' : '1',
-          width: 30,
-          display: 'inline-block',
           position: 'absolute',
         }}
       >
-        <div>BOX</div>
-        <div>
-          x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
-        </div>
-      </div>
+        <div>{content}</div>
+      </MemoBox>
     </Draggable>
   );
 }
+
+const MemoBox = styled.div`
+  width: 184px;
+  height: 174px;
+  background: rgba(255, 131, 129, 0.8);
+  border-radius: 15px;
+`;
