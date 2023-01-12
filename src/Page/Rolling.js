@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import blackboard from '../Image/blackboard.png';
+import blackboard from '../Image/image2.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -8,8 +8,7 @@ import usericon from '../Image/usericon.png';
 
 const SketchBookImg = styled.div`
   // border: 5px solid #535353;
-  width: 100rem;
-  height: 100%;
+  width: 100%;
   /* background-color: #fcedb0; */
   /* background-size: cover; */
   background-repeat: no-repeat;
