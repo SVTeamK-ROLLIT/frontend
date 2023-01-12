@@ -1,112 +1,70 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import axios from 'axios';
 
 export default function App() {
   const nodeRef = useRef(null);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [position2, setPosition2] = useState({ x: 50, y: 50 });
 
   const [Opacity, setOpacity] = useState(false);
-  const [Opacity2, setOpacity2] = useState(false);
 
   const trackPos = data => {
     setPosition({ x: data.x, y: data.y });
   };
 
-  const trackPos2 = data => {
-    setPosition2({ x: data.x, y: data.y });
+  const submit = async () => {
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
+        content: '다음에 또 가자',
+        nickname: '익명',
+        font: '안성탕면체',
+        password: '1234',
+        color: 'red',
+        xcoor: position.x,
+        ycoor: position.y,
+        rotate: 0,
+      });
+
+      console.log('success');
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      console.log(e);
+    }
   };
 
   const handleStart = () => {
     setOpacity(true);
   };
   const handleEnd = () => {
+    submit();
     setOpacity(false);
   };
 
-  const handleStart2 = () => {
-    setOpacity2(true);
-  };
-  const handleEnd2 = () => {
-    setOpacity2(false);
-  };
-
   return (
-    <Container>
-      <Draggable
-        bounds="parent"
-        nodeRef={nodeRef}
-        onDrag={(e, data) => trackPos(data)}
-        onStart={handleStart}
-        onStop={handleEnd}
+    <Draggable
+      bounds="parent"
+      nodeRef={nodeRef}
+      onDrag={(e, data) => trackPos(data)}
+      onStart={handleStart}
+      onStop={handleEnd}
+    >
+      <div
+        ref={nodeRef}
+        className="box"
+        style={{
+          opacity: Opacity ? '0.6' : '1',
+          width: 30,
+          display: 'inline-block',
+          position: 'absolute',
+        }}
       >
-        <div
-          ref={nodeRef}
-          className="box"
-          style={{
-            opacity: Opacity ? '0.6' : '1',
-            width: 300,
-            display: 'inline-block',
-          }}
-        >
-          <div>BOX</div>
-          <div>
-            x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
-          </div>
+        <div>BOX</div>
+        <div>
+          x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
         </div>
-      </Draggable>
-
-      <Draggable
-        nodeRef={nodeRef}
-        onDrag={(e, data) => trackPos2(data)}
-        onStart={handleStart2}
-        onStop={handleEnd2}
-        scale={2}
-      >
-        <div
-          ref={nodeRef}
-          className="box box2"
-          style={{ opacity: Opacity2 ? '0.6' : '1' }}
-        >
-          <div>BOX with scale</div>
-          <div>
-            x: {position2.x.toFixed(0)}, y: {position2.y.toFixed(0)}
-          </div>
-        </div>
-      </Draggable>
-
-      <Draggable
-        bounds="parent"
-        nodeRef={nodeRef}
-        onDrag={(e, data) => trackPos(data)}
-        onStart={handleStart}
-        onStop={handleEnd}
-      >
-        <div
-          ref={nodeRef}
-          className="box"
-          style={{
-            opacity: Opacity ? '0.6' : '1',
-            width: 50,
-            display: 'inline-block',
-            position: 'absolute',
-          }}
-        >
-          <div>BOX</div>
-          <div>
-            x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
-          </div>
-        </div>
-      </Draggable>
-    </Container>
+      </div>
+    </Draggable>
   );
 }
-
-const Container = styled.div`
-  height: calc(100vh - 50px);
-  width: calc(100vw - 50px);
-  padding: 20px;
-  position: absolute;
-`;

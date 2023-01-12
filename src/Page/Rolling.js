@@ -30,6 +30,7 @@ const AllWrap = styled.div`
 `;
 const MyPageBtn = styled.button`
   margin: 2% 11% 0 auto;
+  z-index: 100;
   /* background-color: red; */
   height: 4rem;
   display: block;
@@ -87,6 +88,7 @@ const IconBtn = styled.button`
   /* background-color: red; */
   /* border: 1px solid black; */
   margin: 0.5rem;
+  z-index: 100;
 `;
 
 const IconWrap = styled.div`
@@ -98,13 +100,22 @@ const IconWrap = styled.div`
   justify-content: flex-end;
   flex-direction: column;
 `;
+const Container = styled.div`
+  height: calc(100vh - 50px);
+  width: calc(100vw - 50px);
+  padding: 20px;
+  position: absolute;
+`;
 
 function Rolling() {
   return (
     <div className="rolling">
       <SketchBookImg>
         <AllWrap>
-          <Memo />
+          <Container>
+            <Memo />
+          </Container>
+
           <MyPageBtn>마이페이지</MyPageBtn>
           <Text>to.Team_k</Text>
           <UserWrap>
