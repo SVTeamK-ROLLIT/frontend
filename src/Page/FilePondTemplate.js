@@ -1,13 +1,8 @@
-// https://github.com/pqina/react-filepond
-// https://pqina.nl/filepond/docs/getting-started/installation/react/#react-component-implementation
-// https://pqina.nl/filepond/docs/api/instance/methods/
-// https://github.com/pqina/filepond/issues/24 manual upload file
-
-// npm install react-filepond filepond --save
-import React, { useState } from 'react';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-return-assign */
+import React, { Component } from 'react';
 
 // Import React FilePond
-import { FilePond, registerPlugin } from 'react-filepond';
 
 // Import FilePond styles
 import 'filepond/dist/filepond.min.css';
@@ -18,138 +13,67 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
-import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
-import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import FilePondPluginImageResize from 'filepond-plugin-image-resize';
-import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
-
-import { Button } from '@chakra-ui/react';
+import { FilePond, registerPlugin } from './react-filepond';
 
 // Register the plugins
-registerPlugin(
-  FilePondPluginImageExifOrientation,
-  FilePondPluginImagePreview,
-  FilePondPluginFileEncode,
-  FilePondPluginFileValidateSize,
-  FilePondPluginFileValidateType,
-  FilePondPluginImageResize,
-  FilePondPluginImageCrop,
-  FilePondPluginImageTransform,
-);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-// Our app
-export default function FilePondTemplate() {
-  const [files, setFiles] = useState([]);
-  // console.log("files", files);
-  let pond = null;
+// Component
+class FilePondTemplate extends Component {
+  constructor(props) {
+    super(props);
 
-  const onSubmit = () => {
-    const formData = new FormData();
-    files
-      .map(item => item.file)
-      .forEach(file => formData.append('my-file', file));
-    console.log(formData);
-    console.log('pond', pond);
-
-    if (pond) {
-      pond.setOptions({
-        server: {
-          url: 'https://httpbin.org/post',
-          timeout: 7000,
-          process: {
-            url: './process',
-            method: 'POST',
-            headers: {
-              'x-customheader': 'Hello World',
-            },
-            withCredentials: false,
-            onload: response => response.key,
-            onerror: response => response.data,
-            // eslint-disable-next-line no-shadow
-            ondata: formData => {
-              formData.append('Hello', 'World');
-              return formData;
-            },
+    this.state = {
+      // Set initial files, type 'local' means this is a file
+      // that has already been uploaded to the server (see docs)
+      files: [
+        {
+          source: 'photo.jpeg',
+          options: {
+            type: 'local',
           },
-          revert: './revert',
-          restore: './restore/',
-          load: './load/',
-          fetch: './fetch/',
         },
-      });
+      ],
+    };
+  }
 
-      // eslint-disable-next-line no-shadow
-      const files = pond.getFiles();
-      files.forEach(file => {
-        console.log('each file', file, file.getFileEncodeBase64String());
-      });
+  handleInit() {
+    console.log('FilePond instance has initialised', this.pond);
+  }
 
-      pond
-        .processFiles(files)
-        .then(res => console.log(res))
-        .catch(error => console.log('err', error));
-    }
-  };
-
-  return (
-    <div className="App">
-      <FilePond
-        files={files}
-        ref={ref => {
-          pond = ref;
-        }}
-        required
-        acceptedFileTypes={['application/pdf', 'image/*']}
-        fileValidateTypeDetectType={(source, type) =>
-          // Note: we need this here to activate the file type validations and filtering
-          new Promise(resolve => {
-            // Do custom type detection here and return with promise
-            resolve(type);
-          })
-        }
-        allowFileEncode
-        allowImageTransform
-        imagePreviewHeight={400}
-        imageCropAspectRatio="1:1"
-        imageResizeTargetWidth={100}
-        imageResizeTargetHeight={100}
-        imageResizeMode="cover"
-        imageTransformOutputQuality={50}
-        imageTransformOutputQualityMode="optional"
-        imageTransformBeforeCreateBlob={canvas =>
-          new Promise(resolve => {
-            // Do something with the canvas, like drawing some text on it
-            const ctx = canvas.getContext('2d');
-            ctx.font = '48px serif';
-            ctx.fillText('Hello world', 10, 50);
-
-            console.log('imageTransformBeforeCreateBlob', ctx, canvas);
-
-            // return canvas to the plugin for further processing
-            resolve(canvas);
-          })
-        }
-        imageTransformAfterCreateBlob={blob =>
-          new Promise(resolve => {
-            // do something with the blob, for instance send it to a custom compression alogrithm
-            console.log('imageTransformAfterCreateBlob', blob);
-
-            // return the blob to the plugin for further processing
-            resolve(blob);
-          })
-        }
-        onupdatefiles={setFiles}
-        instantUpload={false}
-        allowMultiple={false}
-        maxFiles={3}
-        server="https://httpbin.org/post"
-        name="files"
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-      />
-
-      <Button onClick={onSubmit}>Submit</Button>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <FilePond
+          ref={ref => (this.pond = ref)}
+          files={this.state.files}
+          allowMultiple
+          server={{
+            // fake server to simulate loading a 'local' server file and processing a file
+            process: (fieldName, file, metadata, load) => {
+              // simulates uploading a file
+              setTimeout(() => {
+                load(Date.now());
+              }, 1500);
+            },
+            load: (source, load) => {
+              // simulates loading a file from the server
+              fetch(source)
+                .then(res => res.blob())
+                .then(load);
+            },
+          }}
+          oninit={() => this.handleInit()}
+          onupdatefiles={fileItems => {
+            // Set currently active file objects to this.state
+            this.setState({
+              files: fileItems.map(fileItem => fileItem.file),
+            });
+          }}
+        />
+      </div>
+    );
+  }
 }
+
+export default FilePondTemplate;
