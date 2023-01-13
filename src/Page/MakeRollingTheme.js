@@ -40,7 +40,7 @@ const Count = styled.button`
   font-weight: 1000;
   color: #fff;
   text-align: center;
-  margin-left: 45vw;
+  margin-left: 43.8vw;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
@@ -115,7 +115,7 @@ export default class SimpleSlider extends Component {
         <Count>
           <strong>테마 {this.state.activeSlide + 1}</strong>
           <br />
-          생성하기
+          만들어보기
         </Count>
       </Container>
     );
