@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import Modal from './LoginModal';
 
 const SignupBtn = styled.button`
   //상단 회원가입 버튼
@@ -37,9 +38,14 @@ const LoginBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 function Onlog() {
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
   return (
     <div>
-      <LoginBtn>로그인</LoginBtn>
+      <LoginBtn type="button" value="Open modal" onClick={openModal}>
+        로그인
+      </LoginBtn>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
       <SignupBtn>회원가입</SignupBtn>
     </div>
   );
