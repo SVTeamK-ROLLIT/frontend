@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ColorDiv = styled.div`
-  flex-grow: 2;
+  flex-grow: 1;
   height: 100vh;
   background-color: #fcedb0;
 `;
@@ -84,6 +84,26 @@ const FontSelect = styled.select`
     padding: 0px 2px 1px;
   }
 `;
+const WriterText = styled.div`
+  width: 10vw;
+  height: 7vh;
+  margin-top: 1.5vh;
+  font-size: 2.4vw;
+  font-weight: 700;
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: black;
+`;
+
+const Writer = styled.input`
+  //배경색
+  width: 34vh;
+  height: 4.5vh;
+  margin: 1vh;
+  border-radius: 1vh;
+  border: 1px solid #999;
+`;
 function MemoColor() {
   return (
     <ColorDiv>
@@ -113,6 +133,8 @@ function MemoColor() {
           <option value="3">맑은고딕체</option>
           <option value="4">카페24 써라운드체</option>
         </FontSelect>
+        <WriterText>작성자</WriterText>
+        <Writer />
       </ColorWrap>
     </ColorDiv>
   );
