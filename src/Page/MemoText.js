@@ -39,6 +39,13 @@ const SketchbookImg = styled.div`
   align-items: center;
 `;
 
+const InputMemo = styled.textarea`
+  width: 15vw;
+  height: 30vh;
+  background-color: red;
+  border-radius: 5%;
+  margin-right: 10vh;
+  font-size: 2rem;
 `;
 
 const PencilImg = styled.img`
@@ -73,6 +80,7 @@ function MemoText() {
     <InputWrap>
       <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
       <SketchbookImg>
+        <InputMemo />
       </SketchbookImg>
       <PencilImg src={pencil} />
       <MakeBtn>만들기</MakeBtn>
