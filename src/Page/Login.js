@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
@@ -6,16 +6,44 @@ import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 
 import './Background.css';
 
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
+// 모달 스타일
+const modalStyle = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.45)',
+    zIndex: 10,
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: '#ffffe7',
+    overflow: 'auto',
+    top: '20vh',
+    left: '20vw',
+    right: '20vw',
+    bottom: '20vh',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '14px',
+    outline: 'none',
+    zIndex: 10,
+  },
+};
+
 // 배경화면을 꽉 채워주기 위한 divx태그입니다
 const Background = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 80rem;
+  height: 30rem;
 `;
 
 // 회원가입 Text를 감싸줍니다
@@ -26,7 +54,7 @@ const TextWrap = styled.div`
   }
 `;
 
-// "회원가입"div 태그입니다
+// "로그인"div 태그입니다
 const RegText = styled.div`
   display: flex;
   font-size: 2.5rem;
@@ -106,7 +134,9 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required('비어있습니다!'),
 });
 
-function Register() {
+function Register({ isOpen, setIsOpen, setLogState }) {
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
   const navigate = useNavigate();
   const submit = async values => {
     const { email, password } = values;
@@ -122,12 +152,12 @@ function Register() {
         position: 'top-center',
         autoClose: 2000,
       });
-      console.log(data);
       localStorage.clear();
       localStorage.setItem('id', data.user_id);
       setTimeout(() => {
-        navigate('/welcome');
-      }, 1000);
+        setLogState(false);
+        closeModal();
+      }, 2000);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       toast.error(`${e.response.data.message} 😭`, {
@@ -136,71 +166,75 @@ function Register() {
     }
   };
   return (
-    <div className="login">
-      <Background>
-        <KeysWrap>
-          <TextWrap>
-            <RegText>로그인</RegText>
-          </TextWrap>
-          <Formik
-            initialValues={{
-              email: '',
-              password: '',
-              passwordcheck: '',
-              nickname: '',
-            }}
-            validationSchema={LoginSchema}
-            onSubmit={submit}
-          >
-            {({ touched, errors, values, handleSubmit, handleChange }) => (
-              <div>
-                <ToastContainer />
-                <Form onSubmit={handleSubmit}>
-                  <KeyWrap border="0.938rem 0.938rem 0 0">
-                    <IconImg src={ID} alt="" />
-                    <Field
-                      value={values.email}
+    <div className>
+      <Modal isOpen={isOpen} onRequestClose={closeModal} style={modalStyle}>
+        <Background>
+          <KeysWrap>
+            <TextWrap>
+              <RegText>로그인</RegText>
+            </TextWrap>
+            <Formik
+              initialValues={{
+                email: '',
+                password: '',
+                passwordcheck: '',
+                nickname: '',
+              }}
+              validationSchema={LoginSchema}
+              onSubmit={submit}
+            >
+              {({ touched, errors, values, handleSubmit, handleChange }) => (
+                <div>
+                  <ToastContainer />
+                  <Form onSubmit={handleSubmit}>
+                    <KeyWrap border="0.938rem 0.938rem 0 0">
+                      <IconImg src={ID} alt="" />
+                      <Field
+                        value={values.email}
+                        name="email"
+                        onChange={handleChange}
+                        type="email"
+                        placeholder="이메일"
+                      />
+                    </KeyWrap>
+                    <ErrorMessage
+                      component="div"
                       name="email"
-                      onChange={handleChange}
-                      type="email"
-                      placeholder="이메일"
+                      className="invalid-feedback"
                     />
-                  </KeyWrap>
-                  <ErrorMessage
-                    component="div"
-                    name="email"
-                    className="invalid-feedback"
-                  />
-                  <KeyWrap border="0 0 0.938rem 0.938rem">
-                    <IconImg src={PW} alt="" />
-                    <Field
-                      type="password"
+                    <KeyWrap border="0 0 0.938rem 0.938rem">
+                      <IconImg src={PW} alt="" />
+                      <Field
+                        type="password"
+                        name="password"
+                        placeholder="비밀번호"
+                        value={values.password}
+                        onChange={handleChange}
+                        className={`form-control ${
+                          touched.password && errors.password
+                            ? 'is-invalid'
+                            : ''
+                        }`}
+                      />
+                    </KeyWrap>
+                    <ErrorMessage
+                      component="div"
                       name="password"
-                      placeholder="비밀번호"
-                      value={values.password}
-                      onChange={handleChange}
-                      className={`form-control ${
-                        touched.password && errors.password ? 'is-invalid' : ''
-                      }`}
+                      className="invalid-feedback"
                     />
-                  </KeyWrap>
-                  <ErrorMessage
-                    component="div"
-                    name="password"
-                    className="invalid-feedback"
-                  />
 
-                  <ErrorMessage component="div" name="nickname" />
-                  <SignupBtn type="submit">로그인</SignupBtn>
-                </Form>
-                <LoginBtn onClick={() => navigate('/register')}>
-                  회원가입
-                </LoginBtn>
-              </div>
-            )}
-          </Formik>
-        </KeysWrap>
-      </Background>
+                    <ErrorMessage component="div" name="nickname" />
+                    <SignupBtn type="submit">로그인</SignupBtn>
+                  </Form>
+                  <LoginBtn onClick={() => navigate('/register')}>
+                    회원가입
+                  </LoginBtn>
+                </div>
+              )}
+            </Formik>
+          </KeysWrap>
+        </Background>
+      </Modal>
     </div>
   );
 }

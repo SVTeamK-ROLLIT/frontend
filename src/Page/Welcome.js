@@ -113,7 +113,7 @@ const StartBtn = styled.button`
   top: 70%;
   left: 51%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+
   font-family: 'Cafe24Ssurround';
   color: white;
   text-shadow: 1.5px 1.5px 1.5px gray;
@@ -137,7 +137,11 @@ function Welcome() {
   return (
     <div className="welcome">
       <AllWrap>
-        {logState === null ? <OnLog /> : <Outlog onClick={onClick} />}
+        {logState === null ? (
+          <OnLog setLogState={setLogState} />
+        ) : (
+          <Outlog onClick={onClick} />
+        )}
         <BoxWrap>
           <ImgWrap>
             <SketchbookImg src={sketchbook} />
