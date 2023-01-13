@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import axios from 'axios';
 import Welcome from './Page/Welcome';
-import Login from './Page/Login';
 import MyPage from './Page/MyPage';
 import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
@@ -18,8 +17,6 @@ function App() {
         <Routes>
           {/* 첫 시작 화면 */}
           <Route path="/Welcome" element={<Welcome />} />
-          {/* 로그인 페이지 */}
-          <Route path="/Login" element={<Login />} />
           {/* 회원가입 페이지 */}
           <Route path="/Register" element={<Register />} />
           {/* 마이페이지 */}

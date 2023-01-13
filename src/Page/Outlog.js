@@ -11,7 +11,7 @@ const MypageBtn = styled.button`
   top: 7%;
   left: 78%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+
   color: white;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
@@ -30,7 +30,7 @@ const SignupBtn = styled.button`
   top: 7%;
   left: 88%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+
   color: white;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
