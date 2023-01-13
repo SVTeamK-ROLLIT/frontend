@@ -1,8 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-return-assign */
-import React, { Component } from 'react';
-
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 // Import React FilePond
+import { FilePond, File, registerPlugin } from 'react-filepond';
 
 // Import FilePond styles
 import 'filepond/dist/filepond.min.css';
@@ -13,67 +13,75 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import { FilePond, registerPlugin } from './react-filepond';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-// Component
-class FilePondTemplate extends Component {
-  constructor(props) {
-    super(props);
+function FilePondTemplate() {
+  const [files, setFiles] = useState([]);
 
-    this.state = {
-      // Set initial files, type 'local' means this is a file
-      // that has already been uploaded to the server (see docs)
-      files: [
-        {
-          source: 'photo.jpeg',
-          options: {
-            type: 'local',
-          },
+  const pond = null;
+
+  const onSubmit = () => {
+    const formData = new FormData();
+    // files
+    //   .map((item) => item.file)
+    //   .forEach((file) => formData.append("my-file", file));
+    // console.log(formData);
+    console.log('pond', pond);
+
+    if (pond) {
+      pond.setOptions({
+        server: {
+          url: 'https://httpbin.org/post',
+          timeout: 7000,
+          // process: {
+          //   url: "./process",
+          //   method: "POST",
+          //   headers: {
+          //     "x-customheader": "Hello World"
+          //   },
+          //   withCredentials: false,
+          //   onload: (response) => response.key,
+          //   onerror: (response) => response.data,
+          //   ondata: (formData) => {
+          //     formData.append("Hello", "World");
+          //     return formData;
+          //   }
+          // },
+          // revert: "./revert",
+          // restore: "./restore/",
+          // load: "./load/",
+          // fetch: "./fetch/"
         },
-      ],
-    };
-  }
+      });
 
-  handleInit() {
-    console.log('FilePond instance has initialised', this.pond);
-  }
+      // eslint-disable-next-line no-shadow
+      const files = pond.getFiles();
+      // files.forEach(file => {
+      //   console.log('each file', file, file.getFileEncodeBase64String());
+      // });
 
-  render() {
-    return (
-      <div className="App">
-        <FilePond
-          ref={ref => (this.pond = ref)}
-          files={this.state.files}
-          allowMultiple
-          server={{
-            // fake server to simulate loading a 'local' server file and processing a file
-            process: (fieldName, file, metadata, load) => {
-              // simulates uploading a file
-              setTimeout(() => {
-                load(Date.now());
-              }, 1500);
-            },
-            load: (source, load) => {
-              // simulates loading a file from the server
-              fetch(source)
-                .then(res => res.blob())
-                .then(load);
-            },
-          }}
-          oninit={() => this.handleInit()}
-          onupdatefiles={fileItems => {
-            // Set currently active file objects to this.state
-            this.setState({
-              files: fileItems.map(fileItem => fileItem.file),
-            });
-          }}
-        />
-      </div>
-    );
-  }
+      pond
+        .processFiles(files)
+        .then(res => console.log(res))
+        .catch(error => console.log('err', error));
+    }
+  };
+  return (
+    <div className="App">
+      <FilePond
+        files={files}
+        allowMultiple={false}
+        onupdatefiles={setFiles}
+        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+      />
+      {console.log(files)}
+      <button type="button" onClick={onSubmit}>
+        Submit
+      </button>
+    </div>
+  );
 }
 
 export default FilePondTemplate;
