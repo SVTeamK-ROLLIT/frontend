@@ -24,13 +24,21 @@ const Text = styled.div`
   display: block;
 `;
 
-const SketchbookImg = styled.img`
+const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 115vh;
   height: 60vh;
   margin-top: 4vh;
   padding-left: 5vw;
-  display: block;
+  /* background-color: red; */
+  /* background-size: 80rem 25rem; */
+  background-size: 100% 100%;
+  background-image: url(${sketchbook});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 `;
 
 const PencilImg = styled.img`
@@ -63,8 +71,9 @@ const MakeBtn = styled.button`
 function MemoText() {
   return (
     <InputWrap>
-      <Text>내용은 최대 100자 까지 입력이 가능합니다.</Text>
-      <SketchbookImg src={sketchbook} />
+      <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
+      <SketchbookImg>
+      </SketchbookImg>
       <PencilImg src={pencil} />
       <MakeBtn>만들기</MakeBtn>
     </InputWrap>
