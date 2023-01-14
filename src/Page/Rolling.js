@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import blackboard from '../Image/image2.png';
+import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
+import blackboard from '../Image/image2.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -23,11 +24,11 @@ const AllWrap = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 100%;
-  z-index: 90;
+  z-index: 50;
 `;
 const MyPageBtn = styled.button`
   margin: 2% 11% 0 auto;
-  z-index: 100;
+  z-index: 50;
   height: 4rem;
   display: block;
   width: 12rem;
@@ -80,7 +81,7 @@ const IconBtn = styled.button`
   width: 2rem;
   height: 2rem;
   margin: 0.5rem;
-  z-index: 100;
+  z-index: 50;
 `;
 
 const IconWrap = styled.div`
@@ -101,6 +102,12 @@ const Container = styled.div`
 `;
 
 function Rolling() {
+  // 모달창
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
+  // 모닫창
   const [items, setItems] = useState([]);
   useEffect(() => {
     const getMemos = async () => {
@@ -125,6 +132,7 @@ function Rolling() {
           <Container>
             {items.memo &&
               items.memo.map(list => {
+                console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
           </Container>
@@ -140,7 +148,8 @@ function Rolling() {
             <IconBtn>
               <img src={pencilicon} alt="" />
             </IconBtn>
-            <IconBtn>
+            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
+            <IconBtn type="button" value="Open modal" onClick={openModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
             <IconBtn>

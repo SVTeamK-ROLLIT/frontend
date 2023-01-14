@@ -47,3 +47,26 @@ body .login {
     background-size: 50rem 40rem;
   }
 }
+
+body .filepond--root,
+.filepond--root {
+  height: 30rem;
+  background-color: #dfd3c3;
+  margin: auto;
+  border-color: #9f8772;
+  border-width: 10px;
+  border-style: dashed;
+  box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+body .filepond--drop-label {
+  height: 29rem;
+  background-color: #dfd3c3;
+  background-image: url(../Image/upload.png);
+  background-position: center;
+
+  background-repeat: no-repeat;
+  border-radius: 10px;
+
+  /* box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25); */
+}

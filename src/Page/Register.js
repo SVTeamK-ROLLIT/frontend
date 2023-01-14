@@ -75,28 +75,6 @@ const IconImg = styled.img`
   margin: auto 1rem auto 1rem;
 `;
 
-// 아이디,패스워드,이메일,닉네임을 입력하는 input태그입니다
-// const KeyInput = styled.input`
-//   //placeholder스타일
-//   width: 2.25rem;
-//   height: 2.5rem;
-//   font-size: 1.5rem;
-//   font-weight: 500;
-//   /////
-//   padding-left: 0.5rem;
-//   margin: auto 1rem auto 0rem;
-//   width: 31.25rem;
-//   &:focus {
-//     outline: none;
-//   }
-// `;
-
-// // 로그인, 회원가입을 감싸기 위한 div태그입니다
-// const BtnWrap = styled.div`
-//   text-align: center;
-//   display: block;
-// `;
-
 // 회원가입 버튼
 const SignupBtn = styled.button`
   width: 16.25rem;

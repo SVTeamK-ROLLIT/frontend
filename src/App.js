@@ -7,6 +7,7 @@ import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
 import Register from './Page/Register';
 import Memo from './Page/Memo';
+import Photo from './Page/FilePondTemplate';
 
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/Rolling" element={<Rolling />} />
           {/* 메모작성페이지 화면 */}
           <Route path="/Memo" element={<Memo />} />
+          <Route path="/photo" element={<Photo />} />
         </Routes>
       </Router>
     </div>
