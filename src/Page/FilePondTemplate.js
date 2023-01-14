@@ -76,9 +76,7 @@ const modalStyle = {
     zIndex: 9999,
   },
 };
-function FilePondTemplate({ isOpen, setIsOpen }) {
-  const closeModal = useCallback(() => setIsOpen(false), []);
-
+function FilePondTemplate({ isOpen, closeModal }) {
   const [files, setFiles] = useState([]);
   const onSubmit = e => {
     e.preventDefault();
@@ -107,33 +105,40 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
       });
   };
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      style={modalStyle}
-      ariaHideApp={false}
-    >
-      <CloseBtn onClick={closeModal}>
-        <BsX />
-      </CloseBtn>
-      <ToastContainer />
-      <FilePond
-        files={files}
-        allowMultiple={false}
-        onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
-        imagePreviewHeight={400}
-        labelIdle=""
-      />
-
-      <SumbitBtn
-        type="button"
-        onClick={onSubmit}
-        variant="contained"
-        component="label"
+    <div>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        style={modalStyle}
+        ariaHideApp={false}
       >
-        업로드
-      </SumbitBtn>
-    </Modal>
+        <CloseBtn
+          type="button"
+          onClick={() => {
+            closeModal();
+          }}
+        >
+          <BsX />
+        </CloseBtn>
+        <ToastContainer />
+        <FilePond
+          // files={files}
+          allowMultiple={false}
+          onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
+          imagePreviewHeight={400}
+          labelIdle=""
+        />
+
+        <SumbitBtn
+          type="button"
+          onClick={onSubmit}
+          variant="contained"
+          component="label"
+        >
+          업로드
+        </SumbitBtn>
+      </Modal>
+    </div>
   );
 }
 

@@ -105,6 +105,8 @@ function Rolling() {
   // 모달창
   const [isOpen, setIsOpen] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
   // 모닫창
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -145,8 +147,8 @@ function Rolling() {
             <IconBtn>
               <img src={pencilicon} alt="" />
             </IconBtn>
+            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
             <IconBtn type="button" value="Open modal" onClick={openModal}>
-              <PhotoModal isOpen={isOpen} setIsOpen={setIsOpen} />
               <img src={galleryicon} alt="" />
             </IconBtn>
             <IconBtn>
