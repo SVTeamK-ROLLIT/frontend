@@ -2,6 +2,8 @@
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import './Background.css';
+import Button from '@mui/material-next/Button';
 
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond';
@@ -74,12 +76,18 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
         files={files}
         allowMultiple={false}
         onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
-        labelIdle="Drag & Drop your files"
+        imagePreviewHeight={400}
+        labelIdle="파일을 끌어당기거나 눌러서 이미지를 업로드해주세요"
       />
 
-      <button type="button" onClick={onSubmit}>
-        Submit
-      </button>
+      <Button
+        type="button"
+        onClick={onSubmit}
+        variant="contained"
+        component="label"
+      >
+        Upload
+      </Button>
     </Modal>
   );
 }
