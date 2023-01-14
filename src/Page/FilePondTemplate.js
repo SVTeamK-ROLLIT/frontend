@@ -83,13 +83,19 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
       .then(res => {
         console.log(formData);
         console.log(res);
+        closeModal();
       })
       .catch(err => {
         console.log('fail');
       });
   };
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal} style={modalStyle}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      style={modalStyle}
+      ariaHideApp={false}
+    >
       <FilePond
         files={files}
         allowMultiple={false}
