@@ -13,70 +13,40 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+import axios from 'axios';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 function FilePondTemplate() {
   const [files, setFiles] = useState([]);
-
-  const pond = null;
-
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     const formData = new FormData();
-    // files
-    //   .map((item) => item.file)
-    //   .forEach((file) => formData.append("my-file", file));
-    // console.log(formData);
-    console.log('pond', pond);
-
-    if (pond) {
-      pond.setOptions({
-        server: {
-          url: 'https://httpbin.org/post',
-          timeout: 7000,
-          // process: {
-          //   url: "./process",
-          //   method: "POST",
-          //   headers: {
-          //     "x-customheader": "Hello World"
-          //   },
-          //   withCredentials: false,
-          //   onload: (response) => response.key,
-          //   onerror: (response) => response.data,
-          //   ondata: (formData) => {
-          //     formData.append("Hello", "World");
-          //     return formData;
-          //   }
-          // },
-          // revert: "./revert",
-          // restore: "./restore/",
-          // load: "./load/",
-          // fetch: "./fetch/"
-        },
+    formData.append('image', files[0].file);
+    formData.append('password', '1234');
+    formData.append('xcoor', '12');
+    formData.append('ycoor', '12');
+    formData.append('rotate', '20');
+    axios
+      .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
+      .then(res => {
+        console.log(formData);
+        console.log(res);
+      })
+      .catch(err => {
+        console.log('fail');
       });
-
-      // eslint-disable-next-line no-shadow
-      const files = pond.getFiles();
-      // files.forEach(file => {
-      //   console.log('each file', file, file.getFileEncodeBase64String());
-      // });
-
-      pond
-        .processFiles(files)
-        .then(res => console.log(res))
-        .catch(error => console.log('err', error));
-    }
   };
   return (
     <div className="App">
       <FilePond
         files={files}
         allowMultiple={false}
-        onupdatefiles={setFiles}
+        onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
       />
-      {console.log(files)}
+
       <button type="button" onClick={onSubmit}>
         Submit
       </button>
