@@ -101,7 +101,7 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function Rolling(setLogState) {
+function Rolling() {
   // 모달창
   const [isOpen, setIsOpen] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
@@ -146,11 +146,7 @@ function Rolling(setLogState) {
               <img src={pencilicon} alt="" />
             </IconBtn>
             <IconBtn type="button" value="Open modal" onClick={openModal}>
-              <PhotoModal
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-                setLogState={setLogState}
-              />
+              <PhotoModal isOpen={isOpen} setIsOpen={setIsOpen} />
               <img src={galleryicon} alt="" />
             </IconBtn>
             <IconBtn>
