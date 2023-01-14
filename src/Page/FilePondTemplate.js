@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond';
 
@@ -18,7 +20,35 @@ import axios from 'axios';
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-function FilePondTemplate() {
+// 모달 스타일
+const modalStyle = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.45)',
+    zIndex: 10,
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: '#ffffe7',
+    overflow: 'auto',
+    top: '20vh',
+    left: '20vw',
+    right: '20vw',
+    bottom: '20vh',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '14px',
+    outline: 'none',
+    zIndex: 10,
+  },
+};
+function FilePondTemplate({ isOpen, setIsOpen }) {
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
   const [files, setFiles] = useState([]);
   const onSubmit = e => {
     e.preventDefault();
@@ -39,7 +69,7 @@ function FilePondTemplate() {
       });
   };
   return (
-    <div className="App">
+    <Modal isOpen={isOpen} onRequestClose={closeModal} style={modalStyle}>
       <FilePond
         files={files}
         allowMultiple={false}
@@ -50,7 +80,7 @@ function FilePondTemplate() {
       <button type="button" onClick={onSubmit}>
         Submit
       </button>
-    </div>
+    </Modal>
   );
 }
 

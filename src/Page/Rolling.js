@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import blackboard from '../Image/image2.png';
+import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
+import blackboard from '../Image/image2.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -100,7 +101,11 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function Rolling() {
+function Rolling(setLogState) {
+  // 모달창
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
+  // 모닫창
   const [items, setItems] = useState([]);
   useEffect(() => {
     const getMemos = async () => {
@@ -140,7 +145,12 @@ function Rolling() {
             <IconBtn>
               <img src={pencilicon} alt="" />
             </IconBtn>
-            <IconBtn>
+            <IconBtn type="button" value="Open modal" onClick={openModal}>
+              <PhotoModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                setLogState={setLogState}
+              />
               <img src={galleryicon} alt="" />
             </IconBtn>
             <IconBtn>
