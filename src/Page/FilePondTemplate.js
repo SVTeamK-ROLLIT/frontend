@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import './Background.css';
 import styled from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond';
@@ -82,11 +84,18 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
       .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
       .then(res => {
         console.log(formData);
-        console.log(res);
-        closeModal();
+        toast.success(<h3>업로드 성공😎</h3>, {
+          position: 'top-center',
+          autoClose: 2000,
+        });
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
       })
       .catch(err => {
-        console.log('fail');
+        toast.error(`${err.response.data.message} 😭`, {
+          position: 'top-center',
+        });
       });
   };
   return (
@@ -96,6 +105,7 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
       style={modalStyle}
       ariaHideApp={false}
     >
+      <ToastContainer />
       <FilePond
         files={files}
         allowMultiple={false}
