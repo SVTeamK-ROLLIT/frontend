@@ -32,9 +32,9 @@ const modalStyle = {
     zIndex: 10,
   },
   content: {
-    display: 'flex',
+    // display: 'flex',
     justifyContent: 'center',
-    background: '#ffffe7',
+    // background: '#ffffe7',
     overflow: 'auto',
     top: '20vh',
     left: '20vw',
@@ -74,7 +74,7 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
         files={files}
         allowMultiple={false}
         onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+        labelIdle="Drag & Drop your files"
       />
 
       <button type="button" onClick={onSubmit}>
