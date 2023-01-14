@@ -24,11 +24,11 @@ const AllWrap = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 100%;
-  z-index: 90;
+  z-index: 50;
 `;
 const MyPageBtn = styled.button`
   margin: 2% 11% 0 auto;
-  z-index: 100;
+  z-index: 50;
   height: 4rem;
   display: block;
   width: 12rem;
@@ -81,7 +81,7 @@ const IconBtn = styled.button`
   width: 2rem;
   height: 2rem;
   margin: 0.5rem;
-  z-index: 100;
+  z-index: 50;
 `;
 
 const IconWrap = styled.div`

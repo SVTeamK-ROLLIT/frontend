@@ -21,6 +21,8 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import axios from 'axios';
 
+import { BsX } from 'react-icons/bs';
+
 const SumbitBtn = styled.button`
   width: 100px;
   height: 35px;
@@ -38,6 +40,12 @@ const SumbitBtn = styled.button`
     cursor: pointer;
   }
 `;
+const CloseBtn = styled.button`
+  background-color: red;
+  margin: 0 0 1rem auto;
+  padding-top: 0;
+  display: block;
+`;
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -51,21 +59,21 @@ const modalStyle = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(255, 255, 255, 0.45)',
-    zIndex: 10,
+    zIndex: 9998,
   },
   content: {
     // display: 'flex',
     justifyContent: 'center',
     // background: '#ffffe7',
     overflow: 'auto',
-    top: '19vh',
-    left: '19vw',
+    top: '16vh',
+    left: '16vw',
     right: '20vw',
     bottom: '20vh',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '14px',
     outline: 'none',
-    zIndex: 10,
+    zIndex: 9999,
   },
 };
 function FilePondTemplate({ isOpen, setIsOpen }) {
@@ -105,6 +113,9 @@ function FilePondTemplate({ isOpen, setIsOpen }) {
       style={modalStyle}
       ariaHideApp={false}
     >
+      <CloseBtn onClick={closeModal}>
+        <BsX />
+      </CloseBtn>
       <ToastContainer />
       <FilePond
         files={files}
