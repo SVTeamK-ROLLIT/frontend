@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const ColorDiv = styled.div`
@@ -112,8 +112,8 @@ function MemoColor({ setRollBackColor, setRollTypeColor }) {
   const ontypeClick = a => {
     setRollTypeColor(a);
   };
-  // useEffect(onbackClick, [rollBackColor]);
-  // useEffect(ontypeClick, [rollTypeColor]);
+  useCallback(onbackClick, [rollBackColor]);
+  useCallback(ontypeClick, [rollTypeColor]);
   return (
     <ColorDiv>
       <ColorWrap>
