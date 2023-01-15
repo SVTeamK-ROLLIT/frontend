@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import MemoText from './MemoText';
@@ -9,11 +9,16 @@ const AllWrap = styled.div`
 `;
 
 function Memo() {
+  const [rollBackColor, setRollBackColor] = useState('white');
+  // console.log(rollBackColor);
   return (
     <div>
       <AllWrap>
-        <MemoText />
-        <MemoColor />
+        <MemoText rollBackColor={rollBackColor} />
+        <MemoColor
+          rollBackColor={rollBackColor}
+          setRollBackColor={setRollBackColor}
+        />
       </AllWrap>
     </div>
   );

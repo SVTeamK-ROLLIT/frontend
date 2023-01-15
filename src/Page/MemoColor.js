@@ -104,19 +104,64 @@ const Writer = styled.input`
   border-radius: 1vh;
   border: 1px solid #999;
 `;
-function MemoColor() {
+function MemoColor({ setRollBackColor }) {
+  // console.log(rollBackColor);
+  const onClick = a => {
+    setRollBackColor(a);
+  };
+  // useEffect(onClick, [rollBackColor]);
   return (
     <ColorDiv>
       <ColorWrap>
         <BgColorText>배경색</BgColorText>
-        <BgColorSet color="white"> </BgColorSet>
-        <BgColorSet color="#FF8381"> </BgColorSet>
-        <BgColorSet color="#FC95FC"> </BgColorSet>
-        <BgColorSet color="#9BFE99"> </BgColorSet>
-        <BgColorSet color="#6FA1F9"> </BgColorSet>
-        <BgColorSet color="#8086FF"> </BgColorSet>
-        <BgColorSet color="#B57DFD"> </BgColorSet>
-        <BgColorSet color="#504E4A"> </BgColorSet>
+        <BgColorSet
+          color="white"
+          onClick={() => {
+            onClick('white');
+          }}
+        />
+        <BgColorSet
+          color="#FF8381"
+          onClick={() => {
+            onClick('#FF8381');
+          }}
+        />
+        <BgColorSet
+          color="#FC95FC"
+          onClick={() => {
+            onClick('#FC95FC');
+          }}
+        />
+        <BgColorSet
+          color="#9BFE99"
+          onClick={() => {
+            onClick('#9BFE99');
+          }}
+        />
+        <BgColorSet
+          color="#6FA1F9"
+          onClick={() => {
+            onClick('#6FA1F9');
+          }}
+        />
+        <BgColorSet
+          color="#8086FF"
+          onClick={() => {
+            onClick('#8086FF');
+          }}
+        />
+        <BgColorSet
+          color="#B57DFD"
+          onClick={() => {
+            onClick('#B57DFD');
+          }}
+        />
+        <BgColorSet
+          color="#504E4A"
+          onClick={() => {
+            onClick('#504E4A');
+          }}
+        />
         <FontColorText>글자색</FontColorText>
         <BgColorSet2 color="white"> </BgColorSet2>
         <BgColorSet2 color="#FF8381"> </BgColorSet2>
