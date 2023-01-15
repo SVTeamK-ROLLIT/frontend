@@ -42,7 +42,8 @@ const SketchbookImg = styled.div`
 const InputMemo = styled.textarea`
   width: 15vw;
   height: 30vh;
-  background-color: ${props => props.color};
+  background-color: ${props => props.bkcolor};
+  color: ${props => props.tycolor};
   border-radius: 5%;
   margin-right: 10vh;
   font-size: 2rem;
@@ -76,14 +77,14 @@ const MakeBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function MemoText({ rollBackColor }) {
+function MemoText({ rollBackColor, rollTypeColor }) {
   // console.log(rollBackColor);
 
   return (
     <InputWrap>
       <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
       <SketchbookImg>
-        <InputMemo color={rollBackColor} />
+        <InputMemo bkcolor={rollBackColor} tycolor={rollTypeColor} />
       </SketchbookImg>
       <PencilImg src={pencil} />
       <MakeBtn>만들기</MakeBtn>

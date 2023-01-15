@@ -10,14 +10,18 @@ const AllWrap = styled.div`
 
 function Memo() {
   const [rollBackColor, setRollBackColor] = useState('white');
-  // console.log(rollBackColor);
+  const [rollTypeColor, setRollTypeColor] = useState('black');
+  // console.log('배경색: ', rollBackColor);
+  // console.log('글씨색: ', rollTypeColor);
   return (
     <div>
       <AllWrap>
-        <MemoText rollBackColor={rollBackColor} />
+        <MemoText rollBackColor={rollBackColor} rollTypeColor={rollTypeColor} />
         <MemoColor
           rollBackColor={rollBackColor}
           setRollBackColor={setRollBackColor}
+          rollTypeColor={rollTypeColor}
+          setRollTypeColor={setRollTypeColor}
         />
       </AllWrap>
     </div>

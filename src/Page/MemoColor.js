@@ -104,12 +104,16 @@ const Writer = styled.input`
   border-radius: 1vh;
   border: 1px solid #999;
 `;
-function MemoColor({ setRollBackColor }) {
-  // console.log(rollBackColor);
-  const onClick = a => {
+function MemoColor({ setRollBackColor, setRollTypeColor }) {
+  // console.log(rollTypeColor);
+  const onbackClick = a => {
     setRollBackColor(a);
   };
-  // useEffect(onClick, [rollBackColor]);
+  const ontypeClick = a => {
+    setRollTypeColor(a);
+  };
+  // useEffect(onbackClick, [rollBackColor]);
+  // useEffect(ontypeClick, [rollTypeColor]);
   return (
     <ColorDiv>
       <ColorWrap>
@@ -117,60 +121,100 @@ function MemoColor({ setRollBackColor }) {
         <BgColorSet
           color="white"
           onClick={() => {
-            onClick('white');
+            onbackClick('white');
           }}
         />
         <BgColorSet
           color="#FF8381"
           onClick={() => {
-            onClick('#FF8381');
+            onbackClick('#FF8381');
           }}
         />
         <BgColorSet
           color="#FC95FC"
           onClick={() => {
-            onClick('#FC95FC');
+            onbackClick('#FC95FC');
           }}
         />
         <BgColorSet
           color="#9BFE99"
           onClick={() => {
-            onClick('#9BFE99');
+            onbackClick('#9BFE99');
           }}
         />
         <BgColorSet
           color="#6FA1F9"
           onClick={() => {
-            onClick('#6FA1F9');
+            onbackClick('#6FA1F9');
           }}
         />
         <BgColorSet
           color="#8086FF"
           onClick={() => {
-            onClick('#8086FF');
+            onbackClick('#8086FF');
           }}
         />
         <BgColorSet
           color="#B57DFD"
           onClick={() => {
-            onClick('#B57DFD');
+            onbackClick('#B57DFD');
           }}
         />
         <BgColorSet
           color="#504E4A"
           onClick={() => {
-            onClick('#504E4A');
+            onbackClick('#504E4A');
           }}
         />
         <FontColorText>글자색</FontColorText>
-        <BgColorSet2 color="white"> </BgColorSet2>
-        <BgColorSet2 color="#FF8381"> </BgColorSet2>
-        <BgColorSet2 color="#FC95FC"> </BgColorSet2>
-        <BgColorSet2 color="#9BFE99"> </BgColorSet2>
-        <BgColorSet2 color="#6FA1F9"> </BgColorSet2>
-        <BgColorSet2 color="#8086FF"> </BgColorSet2>
-        <BgColorSet2 color="#B57DFD"> </BgColorSet2>
-        <BgColorSet2 color="#504E4A"> </BgColorSet2>
+        <BgColorSet2
+          color="white"
+          onClick={() => {
+            ontypeClick('white');
+          }}
+        />
+        <BgColorSet2
+          color="#FF8381"
+          onClick={() => {
+            ontypeClick('#FF8381');
+          }}
+        />
+        <BgColorSet2
+          color="#FC95FC"
+          onClick={() => {
+            ontypeClick('#FC95FC');
+          }}
+        />
+        <BgColorSet2
+          color="#9BFE99"
+          onClick={() => {
+            ontypeClick('#9BFE99');
+          }}
+        />
+        <BgColorSet2
+          color="#6FA1F9"
+          onClick={() => {
+            ontypeClick('#6FA1F9');
+          }}
+        />
+        <BgColorSet2
+          color="#8086FF"
+          onClick={() => {
+            ontypeClick('#8086FF');
+          }}
+        />
+        <BgColorSet2
+          color="#B57DFD"
+          onClick={() => {
+            ontypeClick('#B57DFD');
+          }}
+        />
+        <BgColorSet2
+          color="#504E4A"
+          onClick={() => {
+            ontypeClick('#504E4A');
+          }}
+        />
         <FontSetText>폰트설정</FontSetText>
         <FontSelect>
           <option value="1">궁서체</option>
