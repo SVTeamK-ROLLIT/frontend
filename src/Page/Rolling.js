@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
+import NewMemo from './newMemo';
 import blackboard from '../Image/image2.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
@@ -124,7 +125,15 @@ function Rolling() {
     };
     getMemos();
   }, []);
-
+  const textcase = {
+    content: '가지말자',
+    nickname: '익명',
+    font: '안성탕면체',
+    password: '1234',
+    xcoor: 12,
+    ycoor: 12,
+    rotate: 30,
+  };
   return (
     <div className="rolling">
       <SketchBookImg>
@@ -135,6 +144,7 @@ function Rolling() {
                 console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
+            <NewMemo list={textcase} />
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>

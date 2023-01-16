@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 
-export default function App({ list }) {
+export default function newMemo({ list }) {
   const nodeRef = useRef(null);
   const { xcoor, ycoor, content } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -50,7 +50,6 @@ export default function App({ list }) {
       onStart={handleStart}
       onStop={handleEnd}
       defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
     >
       <MemoBox
         ref={nodeRef}
@@ -69,6 +68,6 @@ export default function App({ list }) {
 const MemoBox = styled.div`
   width: 184px;
   height: 174px;
-  background: rgba(255, 131, 129, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
 `;
