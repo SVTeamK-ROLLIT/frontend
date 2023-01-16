@@ -1,9 +1,5 @@
 import React from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
-// import { Formik, Form, ErrorMessage, Field } from 'formik';
-// import * as Yup from 'yup';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -93,30 +89,18 @@ function MemoText({
   rollTypeColor,
 }) {
   const navigate = useNavigate();
-  const submit = async () => {
-    // const { content, nickname, font, color, fontColor } = values;
-    const paperId = localStorage.getItem('paperId');
-    try {
-      await axios.post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/memos`, {
-        nickname: { memoName },
-        font: { pontType },
-        color: { rollBackColor },
-        font_color: { rollTypeColor },
-      });
+  const textcase = {
+    content: memoContent,
+    nickname: memoName,
+    font: pontType,
+    color: rollBackColor,
+    font_color: rollTypeColor,
+    password: 1,
+  };
 
-      toast.success(<h3>글이 작성되었습니다😎</h3>, {
-        position: 'top-center',
-        autoClose: 2000,
-      });
-      setTimeout(() => {
-        navigate('/Rolling');
-      }, 2000);
-    } catch (e) {
-      // 서버에서 받은 에러 메시지 출력
-      toast.error(`${e.response.data.message}😭`, {
-        position: 'top-center',
-      });
-    }
+  const submit = async () => {
+    localStorage.setItem('textcase', JSON.stringify({ textcase }));
+    navigate('/Rolling');
   };
   const handleInputChange = e => {
     setMemoContent(e.target.value);
