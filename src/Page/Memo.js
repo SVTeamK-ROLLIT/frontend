@@ -17,6 +17,7 @@ function Memo() {
     <div>
       <AllWrap>
         <MemoText
+          memoName={memoName}
           pontType={pontType}
           rollBackColor={rollBackColor}
           rollTypeColor={rollTypeColor}

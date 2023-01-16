@@ -103,7 +103,6 @@ const Writer = styled.input`
   margin: 1vh;
   border-radius: 1vh;
   border: 1px solid #999;
-  placeh
 `;
 
 function MemoColor({
