@@ -9,6 +9,7 @@ import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
+// import { useNavigate } from 'react-router-dom';
 
 const SketchBookImg = styled.div`
   width: 100%;
@@ -102,11 +103,49 @@ const Container = styled.div`
   position: absolute;
 `;
 
+const SaveWrap = styled.div`
+  padding-right: 5rem;
+  height: 2rem;
+  display: flex;
+  align-items: end;
+  padding-bottom: 5rem;
+  justify-content: flex-end;
+  flex-direction: column;
+`;
+const SaveBtn = styled.button`
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+  z-index: 50;
+  background-color: black;
+`;
+
 function Rolling() {
+  // const navigate = useNavigate();
+
   // 모달창
   const [isOpen, setIsOpen] = useState(false);
+  const [isMemo, setIsMemo] = useState(false);
+
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
+  const openMemo = useCallback(() => {
+    // navigate('/Memo');
+    setIsMemo(true);
+  }, []);
+
+  const submitSave = async ({ testcase }) => {
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
+        testcase,
+      });
+
+      console.log('success');
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      console.log(e);
+    }
+  };
 
   // 모닫창
   const [items, setItems] = useState([]);
@@ -134,6 +173,7 @@ function Rolling() {
     ycoor: 12,
     rotate: 30,
   };
+
   return (
     <div className="rolling">
       <SketchBookImg>
@@ -154,18 +194,24 @@ function Rolling() {
             <UserNum>12</UserNum>
           </UserWrap>
           <MemoWrap />
-          <IconWrap>
-            <IconBtn>
-              <img src={pencilicon} alt="" />
-            </IconBtn>
-            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
-            <IconBtn type="button" value="Open modal" onClick={openModal}>
-              <img src={galleryicon} alt="" />
-            </IconBtn>
-            <IconBtn>
-              <img src={memoicon} alt="" />
-            </IconBtn>
-          </IconWrap>
+          {isMemo ? (
+            <SaveWrap>
+              <SaveBtn onClick={submitSave}>저장하기</SaveBtn>
+            </SaveWrap>
+          ) : (
+            <IconWrap>
+              <IconBtn>
+                <img src={pencilicon} alt="" />
+              </IconBtn>
+              <PhotoModal isOpen={isOpen} closeModal={closeModal} />
+              <IconBtn type="button" value="Open modal" onClick={openModal}>
+                <img src={galleryicon} alt="" />
+              </IconBtn>
+              <IconBtn onClick={openMemo}>
+                <img src={memoicon} alt="" />
+              </IconBtn>
+            </IconWrap>
+          )}
         </AllWrap>
       </SketchBookImg>
     </div>
