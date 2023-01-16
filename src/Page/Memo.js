@@ -13,10 +13,13 @@ function Memo() {
   const [rollTypeColor, setRollTypeColor] = useState('black');
   const [pontType, setPontType] = useState('Cafe24Ssurround');
   const [memoName, setMemoName] = useState('');
+  const [memoContent, setMemoContent] = useState('');
   return (
     <div>
       <AllWrap>
         <MemoText
+          memoContent={memoContent}
+          setMemoContent={setMemoContent}
           memoName={memoName}
           pontType={pontType}
           rollBackColor={rollBackColor}

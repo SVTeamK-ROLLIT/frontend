@@ -84,7 +84,14 @@ const MakeBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function MemoText({ memoName, pontType, rollBackColor, rollTypeColor }) {
+function MemoText({
+  memoContent,
+  setMemoContent,
+  memoName,
+  pontType,
+  rollBackColor,
+  rollTypeColor,
+}) {
   const navigate = useNavigate();
   const submit = async () => {
     // const { content, nickname, font, color, fontColor } = values;
@@ -111,6 +118,11 @@ function MemoText({ memoName, pontType, rollBackColor, rollTypeColor }) {
       });
     }
   };
+  const handleInputChange = e => {
+    setMemoContent(e.target.value);
+    // eslint-disable-next-line
+    console.log('작성내용: ', memoContent);
+  };
   return (
     <InputWrap>
       <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
@@ -119,6 +131,9 @@ function MemoText({ memoName, pontType, rollBackColor, rollTypeColor }) {
           bkcolor={rollBackColor}
           tycolor={rollTypeColor}
           pontType={pontType}
+          onChange={handleInputChange}
+          value={memoContent}
+          placeholder="내용을 입력해주세요"
         />
       </SketchbookImg>
       <PencilImg src={pencil} />
