@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 import sketchbook from '../Image/Sketchbook2.png';
 import pencil from '../Image/pencil.png';
@@ -24,13 +26,31 @@ const Text = styled.div`
   display: block;
 `;
 
-const SketchbookImg = styled.img`
+const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 115vh;
   height: 60vh;
   margin-top: 4vh;
   padding-left: 5vw;
-  display: block;
+  /* background-color: red; */
+  /* background-size: 80rem 25rem; */
+  background-size: 100% 100%;
+  background-image: url(${sketchbook});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InputMemo = styled.textarea`
+  width: 15vw;
+  height: 30vh;
+  background-color: ${props => props.bkcolor};
+  color: ${props => props.tycolor};
+  font-family: ${props => props.pontType};
+  border-radius: 5%;
+  margin-right: 10vh;
+  font-size: 2rem;
+  border: 0 solid black;
 `;
 
 const PencilImg = styled.img`
@@ -60,13 +80,50 @@ const MakeBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function MemoText() {
+function MemoText({
+  memoContent,
+  setMemoContent,
+  memoName,
+  pontType,
+  rollBackColor,
+  rollTypeColor,
+}) {
+  const navigate = useNavigate();
+  const textcase = {
+    content: memoContent,
+    nickname: memoName,
+    font: pontType,
+    color: rollBackColor,
+    font_color: rollTypeColor,
+    password: 1,
+  };
+
+  const submit = async () => {
+    localStorage.setItem('textcase', JSON.stringify({ textcase }));
+    navigate('/Rolling');
+  };
+  const handleInputChange = e => {
+    setMemoContent(e.target.value);
+    // eslint-disable-next-line
+    console.log('작성내용: ', memoContent);
+  };
   return (
     <InputWrap>
-      <Text>내용은 최대 100자 까지 입력이 가능합니다.</Text>
-      <SketchbookImg src={sketchbook} />
+      <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
+      <SketchbookImg>
+        <InputMemo
+          bkcolor={rollBackColor}
+          tycolor={rollTypeColor}
+          pontType={pontType}
+          onChange={handleInputChange}
+          value={memoContent}
+          placeholder="내용을 입력해주세요"
+        />
+      </SketchbookImg>
       <PencilImg src={pencil} />
-      <MakeBtn>만들기</MakeBtn>
+      <MakeBtn type="submit" onClick={submit}>
+        만들기
+      </MakeBtn>
     </InputWrap>
   );
 }

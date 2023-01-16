@@ -1,6 +1,61 @@
-.App {
-  @font-face {
-    font-family: Cafe24Ssurround;
-    src: URL('./Styles/fonts/Cafe24Ssurround.ttf');
-  }
+.App{}
+@font-face {
+  font-family: Cafe24Ssurround;
+  src: URL('./Styles/fonts/Cafe24Ssurround.ttf');
 }
+
+@font-face {
+  font-family: establishRoomNo703OTF;
+  src: URL('./Styles/fonts/establishRoomNo703OTF.ttf');
+}
+
+@font-face {
+  font-family: KyoboHandwriting2021sjy;
+  src: URL('./Styles/fonts/KyoboHandwriting2021sjy.ttf');
+}
+
+@font-face {
+  font-family: TTTtangsbudaejjigaeB;
+  src: URL('./Styles/fonts/TTTtangsbudaejjigaeB.ttf');
+}
+
+@font-face {
+  font-family: Ansungtangmyun;
+  src: URL('./Styles/fonts/Ansungtangmyun.ttf');
+}
+
+/* 카페24서라운드 */
+/* @font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 땅스부대찌개 글씨체 */
+/* @font-face {
+  font-family: 'TTTtangsbudaejjigaeB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+} */
+/* 교보문고 손글씨 성도연 */
+/* @font-face {
+  font-family: 'KyoboHandwriting2021sjy';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} */
+/* 안성탕면체 */
+/* @font-face {
+  font-family: 'Ansungtangmyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} */
+/* 칠백삼체 유서연 */
+/* @font-face {
+  font-family: 'establishRoomNo703OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRoomNo703OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */ 
