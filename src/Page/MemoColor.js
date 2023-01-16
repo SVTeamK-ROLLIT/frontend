@@ -103,9 +103,12 @@ const Writer = styled.input`
   margin: 1vh;
   border-radius: 1vh;
   border: 1px solid #999;
+  placeh
 `;
 
 function MemoColor({
+  memoName,
+  setMemoName,
   rollBackColor,
   rollTypeColor,
   setRollBackColor,
@@ -146,10 +149,12 @@ function MemoColor({
     // eslint-disable-next-line
     console.log('글씨: ', rollTypeColor);
   };
-  // const handleselect = e => {
-  //   setPontType(e.currentTarget.value);
-  // console.log('글씨체: ', pontType);
-  // };
+
+  const handleInputChange = e => {
+    setMemoName(e.target.value);
+    // eslint-disable-next-line
+    console.log('작성: ', memoName);
+  };
   useCallback(onbackClick, [rollBackColor]);
   useCallback(ontypeClick, [rollTypeColor]);
   // useCallback(handleSelect, [pontType]);
@@ -271,7 +276,12 @@ function MemoColor({
           ))}
         </FontSelect> */}
         <WriterText>작성자</WriterText>
-        <Writer />
+        <Writer
+          type="text"
+          value={memoName}
+          onChange={handleInputChange}
+          placeholder="미작성시 익명으로 전달됩니다"
+        />
       </ColorWrap>
     </ColorDiv>
   );

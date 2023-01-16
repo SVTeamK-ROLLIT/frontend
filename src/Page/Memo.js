@@ -12,10 +12,7 @@ function Memo() {
   const [rollBackColor, setRollBackColor] = useState('white');
   const [rollTypeColor, setRollTypeColor] = useState('black');
   const [pontType, setPontType] = useState('Cafe24Ssurround');
-  // console.log('배경색: ', rollBackColor);
-  // console.log('글씨색: ', rollTypeColor);
-  // useEffect(setRollBackColor, [rollBackColor]);
-  // useEffect(setRollTypeColor, [rollTypeColor]);
+  const [memoName, setMemoName] = useState('');
   return (
     <div>
       <AllWrap>
@@ -25,6 +22,8 @@ function Memo() {
           rollTypeColor={rollTypeColor}
         />
         <MemoColor
+          memoName={memoName}
+          setMemoName={setMemoName}
           pontType={pontType}
           setPontType={setPontType}
           rollBackColor={rollBackColor}

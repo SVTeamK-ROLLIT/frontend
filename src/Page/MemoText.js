@@ -79,7 +79,7 @@ const MakeBtn = styled.button`
 `;
 
 function MemoText({ pontType, rollBackColor, rollTypeColor }) {
-  console.log(pontType);
+  // console.log(pontType);
 
   return (
     <InputWrap>
