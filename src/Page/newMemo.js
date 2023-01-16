@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 export default function newMemo({ list }) {
   const nodeRef = useRef(null);
   console.log(list);
-  const { content } = list;
+  const { content, color, font, fontColor } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -31,6 +31,9 @@ export default function newMemo({ list }) {
       defaultPosition={{ x: position.x, y: position.y }}
     >
       <MemoBox
+        background={color}
+        font={font}
+        color={fontColor}
         ref={nodeRef}
         className="box"
         style={{
@@ -47,6 +50,8 @@ export default function newMemo({ list }) {
 const MemoBox = styled.div`
   width: 184px;
   height: 174px;
-  background: rgba(255, 255, 255, 0.8);
+  background: ${props => props.background};
   border-radius: 15px;
+  font-family: ${props => props.font};
+  color: ${props => props.color};
 `;
