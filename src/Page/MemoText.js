@@ -1,5 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+// import { Formik, Form, ErrorMessage, Field } from 'formik';
+// import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 import sketchbook from '../Image/Sketchbook2.png';
 import pencil from '../Image/pencil.png';
@@ -78,9 +84,33 @@ const MakeBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
-function MemoText({ pontType, rollBackColor, rollTypeColor }) {
-  // console.log(pontType);
+function MemoText({ memoName, pontType, rollBackColor, rollTypeColor }) {
+  const navigate = useNavigate();
+  const submit = async () => {
+    // const { content, nickname, font, color, fontColor } = values;
+    const paperId = localStorage.getItem('paperId');
+    try {
+      await axios.post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/memos`, {
+        nickname: { memoName },
+        font: { pontType },
+        color: { rollBackColor },
+        font_color: { rollTypeColor },
+      });
 
+      toast.success(<h3>글이 작성되었습니다😎</h3>, {
+        position: 'top-center',
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        navigate('/Rolling');
+      }, 2000);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      toast.error(`${e.response.data.message}😭`, {
+        position: 'top-center',
+      });
+    }
+  };
   return (
     <InputWrap>
       <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
@@ -92,7 +122,9 @@ function MemoText({ pontType, rollBackColor, rollTypeColor }) {
         />
       </SketchbookImg>
       <PencilImg src={pencil} />
-      <MakeBtn>만들기</MakeBtn>
+      <MakeBtn type="submit" onClick={submit}>
+        만들기
+      </MakeBtn>
     </InputWrap>
   );
 }
