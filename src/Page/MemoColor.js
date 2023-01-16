@@ -104,16 +104,55 @@ const Writer = styled.input`
   border-radius: 1vh;
   border: 1px solid #999;
 `;
-function MemoColor({ setRollBackColor, setRollTypeColor }) {
+
+function MemoColor({
+  rollBackColor,
+  rollTypeColor,
+  setRollBackColor,
+  setRollTypeColor,
+  pontType,
+  setPontType,
+}) {
+  // const [pontType, setPontType] = useState('Cafe24Ssurround');
+
+  // const pontList = [
+  //   '카페24서라운드',
+  //   '땅스부대찌개',
+  //   '교보문고손글씨',
+  //   '안성탕면체',
+  //   '칠백삼체',
+  // ];
+  // const handleSelect = () => {
+  //   setPontType({ evalue });
+  //   console.log('글씨체: ', pontType);
+  // };
+  const onChange = useCallback(
+    e => {
+      setPontType(e.target.value);
+    },
+    [pontType],
+  );
+  // eslint-disable-next-line
+  console.log('글씨체: ', pontType);
+
   // console.log(rollTypeColor);
   const onbackClick = a => {
     setRollBackColor(a);
+    // eslint-disable-next-line
+    console.log('배경: ', rollBackColor);
   };
   const ontypeClick = a => {
     setRollTypeColor(a);
+    // eslint-disable-next-line
+    console.log('글씨: ', rollTypeColor);
   };
+  // const handleselect = e => {
+  //   setPontType(e.currentTarget.value);
+  // console.log('글씨체: ', pontType);
+  // };
   useCallback(onbackClick, [rollBackColor]);
   useCallback(ontypeClick, [rollTypeColor]);
+  // useCallback(handleSelect, [pontType]);
   return (
     <ColorDiv>
       <ColorWrap>
@@ -216,12 +255,21 @@ function MemoColor({ setRollBackColor, setRollTypeColor }) {
           }}
         />
         <FontSetText>폰트설정</FontSetText>
-        <FontSelect>
-          <option value="1">궁서체</option>
-          <option value="2">돋움체</option>
-          <option value="3">맑은고딕체</option>
-          <option value="4">카페24 써라운드체</option>
+        <FontSelect onChange={onChange}>
+          <option selected="selected">선택해주세요</option>
+          <option value="Cafe24Ssurround">카페24서라운드</option>
+          <option value="TTTtangsbudaejjigaeB">땅스부대찌개</option>
+          <option value="KyoboHandwriting2021sjy">손글씨</option>
+          <option value="Ansungtangmyun">안성탕면체</option>
+          <option value="establishRoomNo703OTF">칠백삼체</option>
         </FontSelect>
+        {/* <FontSelect onChange={onChange} value={pontType}>
+          {pontList.map(item => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
+        </FontSelect> */}
         <WriterText>작성자</WriterText>
         <Writer />
       </ColorWrap>
