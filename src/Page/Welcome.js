@@ -134,6 +134,14 @@ function Welcome() {
     setLogState(null);
   };
 
+  const onClick2 = () => {
+    if (localStorage.getItem('id') === null) {
+      navigate('../login');
+      return;
+    }
+    navigate('../makeRolling');
+  };
+
   return (
     <div className="welcome">
       <AllWrap>
@@ -147,9 +155,7 @@ function Welcome() {
             <SketchbookImg src={sketchbook} />
           </ImgWrap>
           <PencilImg src={pencil} />
-          <StartBtn onClick={() => navigate('/makerolling')}>
-            만들어보기
-          </StartBtn>
+          <StartBtn onClick={onClick2}>만들어보기</StartBtn>
         </BoxWrap>
       </AllWrap>
     </div>

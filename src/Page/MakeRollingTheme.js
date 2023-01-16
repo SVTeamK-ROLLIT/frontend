@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -8,8 +9,41 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
 
 const Container = styled.div``;
+
+const To = styled.div`
+  width: 88px;
+  height: 60px;
+  font-size: 50px;
+  font-weight: 700;
+  color: #000;
+  margin: auto;
+  padding-right: 55rem;
+  margin-bottom: 1rem;
+`;
+
+const TitleInput = styled.input`
+  width: 867px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-left: 21vw;
+  margin-bottom: 10vh;
+  padding: 1.7rem;
+  display: block;
+  &:focus {
+    outline: none;
+  }
+  font-size: 30px;
+  font-weight: 700;
+  ::placeholder {
+    color: #d9d9d9;
+  }
+`;
 
 const StyledSlider = styled(Slider)`
   .slick-slide div {
@@ -40,7 +74,7 @@ const Count = styled.button`
   font-weight: 1000;
   color: #fff;
   text-align: center;
-  margin-left: 45vw;
+  margin-left: 43.8vw;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
@@ -82,6 +116,7 @@ export default class SimpleSlider extends Component {
       oldSlide: 0,
       activeSlide: 0,
       activeSlide2: 0,
+      value: '',
     };
   }
 
@@ -96,10 +131,39 @@ export default class SimpleSlider extends Component {
       centerMode: true,
       beforeChange: (current, next) =>
         this.setState({ oldSlide: current, activeSlide: next }),
-      afterChange: current => this.setState({ activeSlide2: current }),
     };
+    const submit = async () => {
+      const userId = localStorage.getItem('id');
+      console.log(userId);
+
+      try {
+        await axios.post(
+          `http://127.0.0.1:8080/api/v1/users/${userId}/papers`,
+          {
+            user_id: userId,
+            paper_url: this.state.activeSlide + 1,
+            title: this.state.value,
+          },
+        );
+        console.log('success');
+      } catch (e) {
+        // 서버에서 받은 에러 메시지 출력
+        console.log('fail');
+      }
+    };
+
     return (
       <Container>
+        {console.log(this.state.value)}
+        <To>To.</To>
+        <TitleInput
+          type="text"
+          name="message"
+          placeholder="제목을 입력해주세요"
+          onChange={e => {
+            this.setState({ value: e.target.value });
+          }}
+        />
         <StyledSlider {...settings}>
           {items.map(item => {
             return (
@@ -111,12 +175,12 @@ export default class SimpleSlider extends Component {
             );
           })}
         </StyledSlider>
-
-        <Count>
+        <Count type="submit" onClick={submit}>
           <strong>테마 {this.state.activeSlide + 1}</strong>
           <br />
-          생성하기
+          만들어보기
         </Count>
+        {console.log(this.state.activeSlide + 1)}
       </Container>
     );
   }
