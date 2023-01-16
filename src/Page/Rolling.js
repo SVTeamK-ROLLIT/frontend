@@ -164,15 +164,20 @@ function Rolling() {
     };
     getMemos();
   }, []);
-  const textcase = {
-    content: '가지말자',
-    nickname: '익명',
-    font: '안성탕면체',
-    password: '1234',
-    xcoor: 12,
-    ycoor: 12,
-    rotate: 30,
-  };
+
+  const textcaseString = localStorage.getItem('textcase');
+  const textcase = JSON.parse(textcaseString);
+  console.log(textcase.textcase);
+  // const text2 = {
+  //   content: '다음에 또 가자',
+  //   nickname: '익명',
+  //   font: '안성탕면체',
+  //   password: '1234',
+  //   xcoor: 12,
+  //   ycoor: 12,
+  //   rotate: 30,
+  // };
+  // console.log(text2);
 
   return (
     <div className="rolling">
@@ -181,10 +186,10 @@ function Rolling() {
           <Container>
             {items.memo &&
               items.memo.map(list => {
-                console.log(list);
+                // console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
-            <NewMemo list={textcase} />
+            <NewMemo list={textcase.textcase} />
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>

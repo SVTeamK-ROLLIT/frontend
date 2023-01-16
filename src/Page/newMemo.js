@@ -4,6 +4,7 @@ import Draggable from 'react-draggable';
 
 export default function newMemo({ list }) {
   const nodeRef = useRef(null);
+  console.log(list);
   const { content } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
