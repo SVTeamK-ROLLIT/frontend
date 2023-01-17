@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
@@ -9,7 +10,6 @@ import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
-// import { useNavigate } from 'react-router-dom';
 
 const SketchBookImg = styled.div`
   width: 100%;
@@ -121,17 +121,23 @@ const SaveBtn = styled.button`
 `;
 
 function Rolling() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // 모달창
   const [isOpen, setIsOpen] = useState(false);
   const [isMemo, setIsMemo] = useState(false);
 
+  console.log(setIsMemo);
+  // useEffect(() => {
+  //   if (localStorage.getItem('textcase') !== null) {
+  //     setIsMemo(true);
+  //   }
+  // }, []);
+
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const openMemo = useCallback(() => {
-    // navigate('/Memo');
-    setIsMemo(true);
+    navigate('/Memo');
   }, []);
 
   const submitSave = async ({ testcase }) => {
@@ -167,7 +173,7 @@ function Rolling() {
 
   const textcaseString = localStorage.getItem('textcase');
   const textcase = JSON.parse(textcaseString);
-  console.log(textcase.textcase);
+
   // const text2 = {
   //   content: '다음에 또 가자',
   //   nickname: '익명',
@@ -189,7 +195,7 @@ function Rolling() {
                 // console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
-            <NewMemo list={textcase.textcase} />
+            {isMemo ? <NewMemo list={textcase.textcase} /> : <div />}
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>
