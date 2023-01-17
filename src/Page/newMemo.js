@@ -1,14 +1,10 @@
-/* eslint-disable camelcase */
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-// import axios from 'axios';
 
-export default function App({ list }) {
+export default function newMemo({ list, setCoor }) {
   const nodeRef = useRef(null);
-
-  const { xcoor, ycoor, content, font, font_color, color } = list;
-  // eslint-disable-next-line no-unused-vars
+  const { content, color, font, fontColor } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -17,32 +13,12 @@ export default function App({ list }) {
     setPosition({ x: data.x, y: data.y });
   };
 
-  //   const submit = async () => {
-  //     try {
-  //       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
-  //         content: '다음에 또 가자',
-  //         nickname: '익명',
-  //         font: '안성탕면체',
-  //         password: '1234',
-  //         color: 'red',
-  //         xcoor: position.x,
-  //         ycoor: position.y,
-  //         rotate: 0,
-  //       });
-
-  //       console.log('success');
-  //     } catch (e) {
-  //       // 서버에서 받은 에러 메시지 출력
-  //       console.log(e);
-  //     }
-  //   };
-
   const handleStart = () => {
     setOpacity(true);
   };
   const handleEnd = () => {
-    // submit();
     setOpacity(false);
+    setCoor(position);
   };
 
   return (
@@ -52,13 +28,12 @@ export default function App({ list }) {
       onDrag={(e, data) => trackPos(data)}
       onStart={handleStart}
       onStop={handleEnd}
-      defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
+      defaultPosition={{ x: position.x, y: position.y }}
     >
       <MemoBox
         background={color}
         font={font}
-        color={font_color}
+        color={fontColor}
         ref={nodeRef}
         className="box"
         style={{
@@ -75,7 +50,7 @@ export default function App({ list }) {
 const MemoBox = styled.div`
   width: 184px;
   height: 174px;
-  background-color: ${props => props.background};
+  background: ${props => props.background};
   border-radius: 15px;
   font-family: ${props => props.font};
   color: ${props => props.color};

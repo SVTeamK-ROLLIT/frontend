@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
+import NewMemo from './newMemo';
 import blackboard from '../Image/image2.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
@@ -101,11 +103,71 @@ const Container = styled.div`
   position: absolute;
 `;
 
+const SaveWrap = styled.div`
+  padding-right: 5rem;
+  height: 2rem;
+  display: flex;
+  align-items: end;
+  padding-bottom: 5rem;
+  justify-content: flex-end;
+  flex-direction: column;
+`;
+const SaveBtn = styled.button`
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+  z-index: 50;
+  background-color: black;
+`;
+
 function Rolling() {
+  const navigate = useNavigate();
+
   // 모달창
+  const [coor, setCoor] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [isMemo, setIsMemo] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('textcase') !== null) {
+      setIsMemo(true);
+    }
+  }, []);
+
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
+  const openMemo = useCallback(() => {
+    navigate('/Memo');
+  }, []);
+
+  // post로 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
+
+  // console.log(textcase.textcase);
+  const submitSave = async () => {
+    const textcaseString = localStorage.getItem('textcase');
+    const textcase = JSON.parse(textcaseString);
+    textcase.textcase.xcoor = coor.x;
+    textcase.textcase.ycoor = coor.y;
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
+        content: textcase.textcase.content,
+        nickname: textcase.textcase.nickname,
+        font: textcase.textcase.font,
+        password: textcase.textcase.password,
+        color: textcase.textcase.color,
+        font_color: textcase.textcase.fontColor,
+        xcoor: textcase.textcase.xcoor,
+        ycoor: textcase.textcase.ycoor,
+      });
+
+      console.log('successSave!!!!');
+      setIsMemo(false);
+      localStorage.removeItem('textcase');
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      console.log(e);
+    }
+  };
 
   // 모닫창
   const [items, setItems] = useState([]);
@@ -117,13 +179,25 @@ function Rolling() {
         );
         console.log('successGet');
         setItems(memos.data);
+        console.log(memos.data);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
-        console.log(e);
+        console.log('FailGet');
       }
     };
     getMemos();
-  }, []);
+  }, [isMemo]);
+
+  // const text2 = {
+  //   content: '다음에 또 가자',
+  //   nickname: '익명',
+  //   font: '안성탕면체',
+  //   password: '1234',
+  //   xcoor: 12,
+  //   ycoor: 12,
+  //   rotate: 30,
+  // };
+  // console.log(text2);
 
   return (
     <div className="rolling">
@@ -132,9 +206,17 @@ function Rolling() {
           <Container>
             {items.memo &&
               items.memo.map(list => {
-                console.log(list);
+                // console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
+            {isMemo ? (
+              <NewMemo
+                setCoor={setCoor}
+                list={JSON.parse(localStorage.getItem('textcase')).textcase}
+              />
+            ) : (
+              <div />
+            )}
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>
@@ -144,18 +226,24 @@ function Rolling() {
             <UserNum>12</UserNum>
           </UserWrap>
           <MemoWrap />
-          <IconWrap>
-            <IconBtn>
-              <img src={pencilicon} alt="" />
-            </IconBtn>
-            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
-            <IconBtn type="button" value="Open modal" onClick={openModal}>
-              <img src={galleryicon} alt="" />
-            </IconBtn>
-            <IconBtn>
-              <img src={memoicon} alt="" />
-            </IconBtn>
-          </IconWrap>
+          {isMemo ? (
+            <SaveWrap>
+              <SaveBtn onClick={submitSave}>저장하기</SaveBtn>
+            </SaveWrap>
+          ) : (
+            <IconWrap>
+              <IconBtn>
+                <img src={pencilicon} alt="" />
+              </IconBtn>
+              <PhotoModal isOpen={isOpen} closeModal={closeModal} />
+              <IconBtn type="button" value="Open modal" onClick={openModal}>
+                <img src={galleryicon} alt="" />
+              </IconBtn>
+              <IconBtn onClick={openMemo}>
+                <img src={memoicon} alt="" />
+              </IconBtn>
+            </IconWrap>
+          )}
         </AllWrap>
       </SketchBookImg>
     </div>

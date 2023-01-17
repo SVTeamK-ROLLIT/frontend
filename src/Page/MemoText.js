@@ -94,7 +94,7 @@ function MemoText({
     nickname: memoName,
     font: pontType,
     color: rollBackColor,
-    font_color: rollTypeColor,
+    fontColor: rollTypeColor,
     password: 1,
   };
 
