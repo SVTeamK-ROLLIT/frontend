@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from './Login';
 
 import './Background.css';
 
@@ -115,8 +116,10 @@ const LoginSchema = Yup.object().shape({
     .required('비어있습니다!'),
 });
 
-function Register() {
+function Register({ setLogState }) {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
   const submit = async values => {
     const { email, nickname, password } = values;
     try {
@@ -229,12 +232,13 @@ function Register() {
                   <ErrorMessage component="div" name="nickname" />
                   <SignupBtn type="submit">회원가입</SignupBtn>
                 </Form>
-                <LoginBtn onClick={() => navigate('/login')}>로그인</LoginBtn>
+                <LoginBtn onClick={openModal}>로그인</LoginBtn>
               </div>
             )}
           </Formik>
         </KeysWrap>
       </Background>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );
 }
