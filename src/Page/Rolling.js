@@ -127,12 +127,11 @@ function Rolling() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMemo, setIsMemo] = useState(false);
 
-  console.log(setIsMemo);
-  // useEffect(() => {
-  //   if (localStorage.getItem('textcase') !== null) {
-  //     setIsMemo(true);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('textcase') !== null) {
+      setIsMemo(true);
+    }
+  }, []);
 
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
@@ -169,7 +168,7 @@ function Rolling() {
       }
     };
     getMemos();
-  }, []);
+  }, [isMemo]);
 
   const textcaseString = localStorage.getItem('textcase');
   const textcase = JSON.parse(textcaseString);
