@@ -141,12 +141,13 @@ function Rolling() {
   }, []);
 
   // post로 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
-  const textcaseString = localStorage.getItem('textcase');
-  const textcase = JSON.parse(textcaseString);
-  textcase.textcase.xcoor = coor.x;
-  textcase.textcase.ycoor = coor.y;
+
   // console.log(textcase.textcase);
   const submitSave = async () => {
+    const textcaseString = localStorage.getItem('textcase');
+    const textcase = JSON.parse(textcaseString);
+    textcase.textcase.xcoor = coor.x;
+    textcase.textcase.ycoor = coor.y;
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
         content: textcase.textcase.content,
@@ -208,7 +209,10 @@ function Rolling() {
                 return <Memo list={list} key={list.id} />;
               })}
             {isMemo ? (
-              <NewMemo setCoor={setCoor} list={textcase.textcase} />
+              <NewMemo
+                setCoor={setCoor}
+                list={JSON.parse(localStorage.getItem('textcase')).textcase}
+              />
             ) : (
               <div />
             )}
