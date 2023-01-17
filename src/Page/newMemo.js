@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 
-export default function newMemo({ list }) {
+export default function newMemo({ list, setCoor }) {
   const nodeRef = useRef(null);
   const { content, color, font, fontColor } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -18,6 +18,7 @@ export default function newMemo({ list }) {
   };
   const handleEnd = () => {
     setOpacity(false);
+    setCoor(position);
   };
 
   return (

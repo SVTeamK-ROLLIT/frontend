@@ -124,6 +124,7 @@ function Rolling() {
   const navigate = useNavigate();
 
   // 모달창
+  const [coor, setCoor] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [isMemo, setIsMemo] = useState(false);
 
@@ -138,9 +139,13 @@ function Rolling() {
   const openMemo = useCallback(() => {
     navigate('/Memo');
   }, []);
+
+  // post로 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
   const textcaseString = localStorage.getItem('textcase');
   const textcase = JSON.parse(textcaseString);
-
+  textcase.textcase.xcoor = coor.x;
+  textcase.textcase.ycoor = coor.y;
+  console.log(textcase);
   const submitSave = async () => {
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
@@ -195,7 +200,11 @@ function Rolling() {
                 // console.log(list);
                 return <Memo list={list} key={list.id} />;
               })}
-            {isMemo ? <NewMemo list={textcase.textcase} /> : <div />}
+            {isMemo ? (
+              <NewMemo setCoor={setCoor} list={textcase.textcase} />
+            ) : (
+              <div />
+            )}
           </Container>
 
           <MyPageBtn>마이페이지</MyPageBtn>
