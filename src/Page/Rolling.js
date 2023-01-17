@@ -11,6 +11,7 @@ import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
+import StickerModal from './StickerModal';
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
@@ -256,6 +257,7 @@ function Rolling() {
         )}
       </AllWrap>
     </SketchBookImg>
+            <StickerModal isOpen={isOpen} closeModal={closeModal} />
   );
 }
 
