@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import MyPageItem from './MyPageItem';
 
-function MyPageItems() {
+function MyPageItems({ myRollPageData }) {
+  console.log(myRollPageData?.paper_data);
+
   return (
     <ItemsWrap>
       <MyPageItem />

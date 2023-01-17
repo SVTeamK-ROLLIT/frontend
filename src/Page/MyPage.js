@@ -35,7 +35,7 @@ function MyPage() {
     <div className="mypage">
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
-      <MyPageItems />
+      <MyPageItems myRollPageData={myRollPageData} />
     </div>
   );
 }

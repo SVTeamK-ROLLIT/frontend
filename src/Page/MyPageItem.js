@@ -3,17 +3,28 @@ import styled from 'styled-components';
 
 function MyPageItem() {
   return (
-    <PageItem>
-      <LinkBtn>링크복사</LinkBtn>
-    </PageItem>
+    <div>
+      <TitleItem>제목</TitleItem>
+      <PageItem>
+        <LinkBtn>링크복사</LinkBtn>
+      </PageItem>
+    </div>
   );
 }
 
+const TitleItem = styled.div`
+  width: 298px;
+  height: 100px;
+  background: red;
+  font-size: 2em;
+  text-align: center;
+`;
+
 const PageItem = styled.div`
   width: 298px;
-  height: 343px;
+  height: 300px;
   background: #f5f5f5;
-  margin: 2rem;
+  margin: 0 2rem 2rem 0;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
