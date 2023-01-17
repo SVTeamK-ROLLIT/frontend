@@ -173,7 +173,7 @@ function Rolling() {
         setItems(memos.data);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
-        console.log(e);
+        console.log('FailGet');
       }
     };
     getMemos();
