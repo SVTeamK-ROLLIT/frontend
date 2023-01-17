@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
@@ -6,7 +7,7 @@ import Draggable from 'react-draggable';
 export default function App({ list }) {
   const nodeRef = useRef(null);
 
-  const { xcoor, ycoor, content, font, fontColor, color } = list;
+  const { xcoor, ycoor, content, font, font_color, color } = list;
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -57,7 +58,7 @@ export default function App({ list }) {
       <MemoBox
         background={color}
         font={font}
-        color={fontColor}
+        color={font_color}
         ref={nodeRef}
         className="box"
         style={{
