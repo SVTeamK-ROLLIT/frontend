@@ -2,12 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 function MyPageItem({ dataColumn }) {
+  const handleCopyClipBoard = async text => {
+    try {
+      await navigator.clipboard.writeText(text);
+
+      alert('복사 성공!');
+    } catch (error) {
+      alert('복사 실패!');
+    }
+  };
   console.log(dataColumn.title);
   return (
     <div>
       <TitleItem>{dataColumn.title}</TitleItem>
       <PageItem>
-        <LinkBtn>링크복사</LinkBtn>
+        <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.paper_url}`)}>
+          링크복사
+        </LinkBtn>
       </PageItem>
     </div>
   );
