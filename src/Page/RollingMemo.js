@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function App({ list }) {
   const nodeRef = useRef(null);
-  const { xcoor, ycoor, content } = list;
+
+  const { xcoor, ycoor, content, font, fontColor, color } = list;
+  // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -14,31 +16,31 @@ export default function App({ list }) {
     setPosition({ x: data.x, y: data.y });
   };
 
-  const submit = async () => {
-    try {
-      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
-        content: '다음에 또 가자',
-        nickname: '익명',
-        font: '안성탕면체',
-        password: '1234',
-        color: 'red',
-        xcoor: position.x,
-        ycoor: position.y,
-        rotate: 0,
-      });
+  //   const submit = async () => {
+  //     try {
+  //       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
+  //         content: '다음에 또 가자',
+  //         nickname: '익명',
+  //         font: '안성탕면체',
+  //         password: '1234',
+  //         color: 'red',
+  //         xcoor: position.x,
+  //         ycoor: position.y,
+  //         rotate: 0,
+  //       });
 
-      console.log('success');
-    } catch (e) {
-      // 서버에서 받은 에러 메시지 출력
-      console.log(e);
-    }
-  };
+  //       console.log('success');
+  //     } catch (e) {
+  //       // 서버에서 받은 에러 메시지 출력
+  //       console.log(e);
+  //     }
+  //   };
 
   const handleStart = () => {
     setOpacity(true);
   };
   const handleEnd = () => {
-    submit();
+    // submit();
     setOpacity(false);
   };
 
@@ -53,6 +55,9 @@ export default function App({ list }) {
       disabled
     >
       <MemoBox
+        background={color}
+        font={font}
+        color={fontColor}
         ref={nodeRef}
         className="box"
         style={{
@@ -69,6 +74,8 @@ export default function App({ list }) {
 const MemoBox = styled.div`
   width: 184px;
   height: 174px;
-  background: rgba(255, 131, 129, 0.8);
+  background-color: ${props => props.background};
   border-radius: 15px;
+  font-family: ${props => props.font};
+  color: ${props => props.color};
 `;
