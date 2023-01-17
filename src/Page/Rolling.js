@@ -138,14 +138,18 @@ function Rolling() {
   const openMemo = useCallback(() => {
     navigate('/Memo');
   }, []);
+  const textcaseString = localStorage.getItem('textcase');
+  const textcase = JSON.parse(textcaseString);
 
-  const submitSave = async ({ testcase }) => {
+  const submitSave = async () => {
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
-        testcase,
+        textcase,
       });
 
-      console.log('success');
+      console.log('successSave!!!!');
+      useCallback(() => setIsMemo(false));
+      localStorage.removeItem('textcase');
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       console.log(e);
@@ -169,9 +173,6 @@ function Rolling() {
     };
     getMemos();
   }, [isMemo]);
-
-  const textcaseString = localStorage.getItem('textcase');
-  const textcase = JSON.parse(textcaseString);
 
   // const text2 = {
   //   content: '다음에 또 가자',
