@@ -145,15 +145,22 @@ function Rolling() {
   const textcase = JSON.parse(textcaseString);
   textcase.textcase.xcoor = coor.x;
   textcase.textcase.ycoor = coor.y;
-  console.log(textcase);
+  // console.log(textcase.textcase);
   const submitSave = async () => {
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
-        textcase,
+        content: textcase.textcase.content,
+        nickname: textcase.textcase.nickname,
+        font: textcase.textcase.font,
+        password: textcase.textcase.password,
+        color: textcase.textcase.color,
+        font_color: textcase.textcase.fontColor,
+        xcoor: textcase.textcase.xcoor,
+        ycoor: textcase.textcase.ycoor,
       });
 
       console.log('successSave!!!!');
-      useCallback(() => setIsMemo(false));
+      setIsMemo(false);
       localStorage.removeItem('textcase');
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
