@@ -13,10 +13,10 @@ const SketchBookImg = styled.div`
   margin: auto;
 `;
 
-function SketchBook() {
+function SketchBook({ myRollPageData }) {
   return (
     <SketchBookImg>
-      <Profile />
+      <Profile myRollPageData={myRollPageData} />
     </SketchBookImg>
   );
 }
