@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MyPageItem() {
+function MyPageItem({ dataColumn }) {
+  console.log(dataColumn.title);
   return (
     <div>
-      <TitleItem>제목</TitleItem>
+      <TitleItem>{dataColumn.title}</TitleItem>
       <PageItem>
         <LinkBtn>링크복사</LinkBtn>
       </PageItem>
