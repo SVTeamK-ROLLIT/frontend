@@ -12,13 +12,12 @@ import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
 
 const SketchBookImg = styled.div`
-  width: 100%;
-  height: 100%;
   background-repeat: no-repeat;
-  background-position-x: center;
+  width: 100%;
   background-image: url(${blackboard});
-  margin: 0 auto;
-  background-size: contain;
+  /* margin: 0 auto; */
+  background-size: cover;
+  background-position: center;
 `;
 
 const AllWrap = styled.div`
@@ -26,6 +25,7 @@ const AllWrap = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 100%;
+  width: 100%;
   z-index: 50;
 `;
 const MyPageBtn = styled.button`
@@ -200,53 +200,51 @@ function Rolling() {
   // console.log(text2);
 
   return (
-    <div className="rolling">
-      <SketchBookImg>
-        <AllWrap>
-          <Container>
-            {items.memo &&
-              items.memo.map(list => {
-                // console.log(list);
-                return <Memo list={list} key={list.id} />;
-              })}
-            {isMemo ? (
-              <NewMemo
-                setCoor={setCoor}
-                list={JSON.parse(localStorage.getItem('textcase')).textcase}
-              />
-            ) : (
-              <div />
-            )}
-          </Container>
-
-          <MyPageBtn>마이페이지</MyPageBtn>
-          <Text>to.Team_k</Text>
-          <UserWrap>
-            <UserIcon src={usericon} alt="" />
-            <UserNum>12</UserNum>
-          </UserWrap>
-          <MemoWrap />
+    <SketchBookImg>
+      <AllWrap>
+        <Container>
+          {items.memo &&
+            items.memo.map(list => {
+              // console.log(list);
+              return <Memo list={list} key={list.id} />;
+            })}
           {isMemo ? (
-            <SaveWrap>
-              <SaveBtn onClick={submitSave}>저장하기</SaveBtn>
-            </SaveWrap>
+            <NewMemo
+              setCoor={setCoor}
+              list={JSON.parse(localStorage.getItem('textcase')).textcase}
+            />
           ) : (
-            <IconWrap>
-              <IconBtn onClick={openMemo}>
-                <img src={pencilicon} alt="" />
-              </IconBtn>
-              <PhotoModal isOpen={isOpen} closeModal={closeModal} />
-              <IconBtn type="button" value="Open modal" onClick={openModal}>
-                <img src={galleryicon} alt="" />
-              </IconBtn>
-              <IconBtn>
-                <img src={memoicon} alt="" />
-              </IconBtn>
-            </IconWrap>
+            <div />
           )}
-        </AllWrap>
-      </SketchBookImg>
-    </div>
+        </Container>
+
+        <MyPageBtn>마이페이지</MyPageBtn>
+        <Text>to.Team_k</Text>
+        <UserWrap>
+          <UserIcon src={usericon} alt="" />
+          <UserNum>12</UserNum>
+        </UserWrap>
+        <MemoWrap />
+        {isMemo ? (
+          <SaveWrap>
+            <SaveBtn onClick={submitSave}>저장하기</SaveBtn>
+          </SaveWrap>
+        ) : (
+          <IconWrap>
+            <IconBtn onClick={openMemo}>
+              <img src={pencilicon} alt="" />
+            </IconBtn>
+            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
+            <IconBtn type="button" value="Open modal" onClick={openModal}>
+              <img src={galleryicon} alt="" />
+            </IconBtn>
+            <IconBtn>
+              <img src={memoicon} alt="" />
+            </IconBtn>
+          </IconWrap>
+        )}
+      </AllWrap>
+    </SketchBookImg>
   );
 }
 
