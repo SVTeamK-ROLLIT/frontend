@@ -42,6 +42,7 @@ export default function newMemo({ list, setCoor }) {
         }}
       >
         <div>{content}</div>
+        <Name>작성자: </Name>
       </MemoBox>
     </Draggable>
   );
@@ -54,4 +55,13 @@ const MemoBox = styled.div`
   border-radius: 15px;
   font-family: ${props => props.font};
   color: ${props => props.color};
+  display: flex;
+  align-items: flex-start;
+`;
+
+const Name = styled.div`
+  background-color: red;
+  order: 1;
+  width: 7rem;
+  align-self: flex-end;
 `;
