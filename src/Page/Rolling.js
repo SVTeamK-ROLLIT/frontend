@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { FcExpand } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -95,7 +96,7 @@ const IconWrap = styled.div`
   margin-top: 1rem;
   /* width: 12rem; */
   text-align: center;
-  height: 10rem;
+  height: ${props => props.height};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,21 +113,20 @@ const Container = styled.div`
   position: absolute;
 `;
 
-const SaveWrap = styled.div`
-  padding-right: 5rem;
-  height: 2rem;
-  display: flex;
-  align-items: end;
-  padding-bottom: 5rem;
-  justify-content: flex-end;
-  flex-direction: column;
-`;
+// const SaveWrap = styled.div`
+//   padding-right: 5rem;
+//   height: 2rem;
+//   display: flex;
+//   align-items: end;
+//   padding-bottom: 5rem;
+//   justify-content: flex-end;
+//   flex-direction: column;
+// `;
 const SaveBtn = styled.button`
   width: 2rem;
   height: 2rem;
   margin: 0.5rem;
   z-index: 50;
-  background-color: black;
 `;
 
 function Rolling() {
@@ -235,11 +235,13 @@ function Rolling() {
         </UserWrap>
         <MemoWrap />
         {isMemo ? (
-          <SaveWrap>
-            <SaveBtn onClick={submitSave}>저장하기</SaveBtn>
-          </SaveWrap>
+          <IconWrap height="5rem">
+            <SaveBtn onClick={submitSave}>
+              <FcExpand size="30" />
+            </SaveBtn>
+          </IconWrap>
         ) : (
-          <IconWrap>
+          <IconWrap height="10rem">
             <IconBtn onClick={openMemo}>
               <img src={pencilicon} alt="" />
             </IconBtn>
