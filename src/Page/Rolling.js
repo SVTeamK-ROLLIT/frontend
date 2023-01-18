@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
+import Sticky from './RollingSticky';
 import NewMemo from './newMemo';
 import NewSticky from './NewSticky';
 import blackboard from '../Image/image4.png';
@@ -143,8 +144,6 @@ function Rolling() {
   const [isActive, setIsActive] = useState(false); // 스티커, 사진, 메모지가 수정중인지 확인
   const [sticky, setSticky] = useState();
   const [skickyUrl, setStickyUrl] = useState();
-  console.log(setIsSticky);
-  console.log(sticky);
 
   useEffect(() => {
     // 로컬에 메모지 내용이 들어있으면
@@ -195,8 +194,8 @@ function Rolling() {
       await axios.post('http://127.0.0.1:8080/api/v1/papers/1/stickers', {
         default_sticker_id: sticky,
         password: '1',
-        xcoor: 12,
-        ycoor: 12,
+        xcoor: coor.x,
+        ycoor: coor.y,
         rotate: 30,
       });
 
@@ -255,6 +254,11 @@ function Rolling() {
             items.memo.map(list => {
               // console.log(list);
               return <Memo list={list} key={list.id} />;
+            })}
+          {items.sticker &&
+            items.sticker.map(list => {
+              // console.log(list);
+              return <Sticky list={list} key={list.id} />;
             })}
           {isItem()}
         </Container>
