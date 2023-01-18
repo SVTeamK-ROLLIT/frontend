@@ -224,7 +224,18 @@ function Rolling() {
               list={JSON.parse(localStorage.getItem('textcase')).textcase}
             />
           ) : (
-            <div />
+            <IconWrap>
+              <IconBtn>
+                <img src={pencilicon} alt="" />
+              </IconBtn>
+              <PhotoModal isOpen={isOpen} closeModal={closeModal} />
+              <IconBtn type="button" value="Open modal" onClick={openModal}>
+                <img src={galleryicon} alt="" />
+              </IconBtn>
+              <IconBtn onClick={openMemo}>
+                <img src={memoicon} alt="" />
+              </IconBtn>
+            </IconWrap>
           )}
         </Container>
 
