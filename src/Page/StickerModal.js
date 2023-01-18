@@ -15,11 +15,11 @@ import axios from 'axios';
 import { BsX } from 'react-icons/bs';
 
 const CloseBtn = styled.button`
-  background-color: red;
-  margin: 0 0 1rem auto;
-  padding-top: 0;
   display: flex;
   height: 16px;
+  background-color: red;
+  border-radius: 10px;
+  color: white;
 `;
 
 // 모달 스타일
@@ -35,10 +35,8 @@ const modalStyle = {
   },
   content: {
     display: 'flex',
-    justifyContent: 'center',
-    background: '#ffffe7',
-    height: '70vh',
-    overflow: 'auto',
+    flexWrap: 'wrap',
+    background: '#fff',
     top: '16vh',
     left: '16vw',
     right: '20vw',
@@ -75,20 +73,6 @@ function StickerModal({ isOpen, closeModal }) {
         style={modalStyle}
         ariaHideApp={false}
       >
-        {files &&
-          files.data.data.map(file => {
-            return (
-              <div key={file.default_sticker_id} height="100px" display="flex">
-                <img
-                  src={file.sticker_url}
-                  alt=""
-                  width="150px"
-                  height="150px"
-                  display="flex"
-                />
-              </div>
-            );
-          })}{' '}
         <CloseBtn
           type="button"
           onClick={() => {
@@ -97,6 +81,14 @@ function StickerModal({ isOpen, closeModal }) {
         >
           <BsX />
         </CloseBtn>
+        {files &&
+          files.data.data.map(file => {
+            return (
+              <button type="button" key={file.default_sticker_id}>
+                <img src={file.sticker_url} alt="" width="100vw" />
+              </button>
+            );
+          })}{' '}
         <ToastContainer />
       </Modal>
     </div>
