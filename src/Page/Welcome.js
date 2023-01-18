@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import Modal from './Login';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
@@ -124,6 +125,8 @@ const StartBtn = styled.button`
 
 function Welcome() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
   const [logState, setLogState] = useState();
   useEffect(() => {
     setLogState(localStorage.getItem('id'));
@@ -136,7 +139,7 @@ function Welcome() {
 
   const onClick2 = () => {
     if (localStorage.getItem('id') === null) {
-      navigate('../login');
+      openModal();
       return;
     }
     navigate('../makeRolling');
@@ -158,6 +161,7 @@ function Welcome() {
           <StartBtn onClick={onClick2}>만들어보기</StartBtn>
         </BoxWrap>
       </AllWrap>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );
 }

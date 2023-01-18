@@ -10,6 +10,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div``;
 
@@ -108,7 +109,14 @@ const items = [
   { id: 5, url: imgUrl5 },
 ];
 
-export default class SimpleSlider extends Component {
+// eslint-disable-next-line no-shadow
+function withNavigation(Component) {
+  return function (props) {
+    return <Component {...props} navigate={useNavigate()} />;
+  };
+}
+
+class SimpleSlider extends Component {
   constructor(props) {
     super(props);
 
@@ -146,6 +154,7 @@ export default class SimpleSlider extends Component {
           },
         );
         console.log('success');
+        this.props.navigate('/rolling');
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('fail');
@@ -185,3 +194,5 @@ export default class SimpleSlider extends Component {
     );
   }
 }
+
+export default withNavigation(SimpleSlider);
