@@ -226,7 +226,7 @@ function Rolling() {
       }
     };
     getMemos();
-  }, []);
+  }, [isActive]);
 
   // 스티커?메모지?사진? 확인해주기
   function isItem() {
