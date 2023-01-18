@@ -93,17 +93,17 @@ const IconWrap = styled.div`
   border-radius: 100px;
   padding: 0.2rem;
   margin-top: 1rem;
-  width: 12rem;
+  /* width: 12rem; */
   text-align: center;
-  /* height: 5rem; */
+  height: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   z-index: 1000;
-  right: 50%;
-  top: 0%;
-  transform: translate(50%, 0%);
+  right: 3%;
+  bottom: 5%;
+  transform: translate(0%, 0%);
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
