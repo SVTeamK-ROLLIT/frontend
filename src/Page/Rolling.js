@@ -5,7 +5,7 @@ import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import NewMemo from './newMemo';
-import blackboard from '../Image/image2.png';
+import blackboard from '../Image/image3.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -13,11 +13,11 @@ import usericon from '../Image/usericon.png';
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
-  width: 100%;
+  width: 90rem;
   background-image: url(${blackboard});
-  /* margin: 0 auto; */
-  background-size: cover;
-  background-position: center;
+  margin: 0 auto;
+  background-size: auto;
+  /* background-position: center; */
 `;
 
 const AllWrap = styled.div`
@@ -97,9 +97,8 @@ const IconWrap = styled.div`
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
-  height: calc(100vh);
-  width: calc(100vw);
-  padding: 20px;
+  height: 100%;
+  width: 90rem; // 배경과 같은 너비
   position: absolute;
 `;
 
