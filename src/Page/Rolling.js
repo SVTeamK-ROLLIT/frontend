@@ -56,7 +56,7 @@ const UserWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 4rem;
+  margin-right: 1rem;
   z-index: 100;
 `;
 const UserIcon = styled.img`
