@@ -57,6 +57,7 @@ const UserWrap = styled.div`
   align-items: center;
   justify-content: flex-end;
   margin-right: 4rem;
+  z-index: 100;
 `;
 const UserIcon = styled.img`
   width: 2rem;
@@ -83,17 +84,20 @@ const IconBtn = styled.button`
   width: 2rem;
   height: 2rem;
   margin: 0.5rem;
-  z-index: 50;
+  z-index: 10000;
 `;
 
 const IconWrap = styled.div`
-  padding-right: 5rem;
-  height: 2rem;
-  display: flex;
+  position: fixed;
+  /* padding-right: 5rem; */
+  height: 10rem;
+  /* display: flex; */
   align-items: end;
-  padding-bottom: 5rem;
+  /* padding-bottom: 5rem; */
   justify-content: flex-end;
   flex-direction: column;
+  z-index: 1000;
+  top: 80%;
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
