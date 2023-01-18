@@ -138,6 +138,7 @@ function Rolling() {
   const [isPhotoOpen, setPhotoIsOpen] = useState(false);
   const [isStickyOpen, setStickyIsOpen] = useState(false);
   const [isMemo, setIsMemo] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem('textcase') !== null) {
@@ -175,6 +176,7 @@ function Rolling() {
 
       console.log('successSave!!!!');
       setIsMemo(false);
+      setIsActive(false);
       localStorage.removeItem('textcase');
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
@@ -199,7 +201,7 @@ function Rolling() {
       }
     };
     getMemos();
-  }, [isMemo]);
+  }, [isActive]);
 
   // const text2 = {
   //   content: '다음에 또 가자',
@@ -238,7 +240,7 @@ function Rolling() {
           <UserNum>12</UserNum>
         </UserWrap>
         <MemoWrap />
-        {isMemo ? (
+        {isActive ? (
           <IconWrap height="5rem">
             <SaveBtn onClick={submitSave}>
               <FcExpand size="30" />
