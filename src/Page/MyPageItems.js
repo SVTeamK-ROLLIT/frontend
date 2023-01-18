@@ -2,16 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import MyPageItem from './MyPageItem';
 
-function MyPageItems() {
+function MyPageItems({ myRollPageData }) {
+  // console.log(myRollPageData?.paper_data);
+  // const [isLoading, setIsLoading] = useState(false);
+  const a = myRollPageData?.paper_data;
+  // console.log(a);
+  // console.log(typeof a);
+  const paperList =
+    a && a.map(dataColumn => <MyPageItem dataColumn={dataColumn} />);
+  // setIsLoading(true);
+  // if (isLoading) <div>Loading</div>;
   return (
     <ItemsWrap>
-      <MyPageItem />
-      <MyPageItem />
-      <MyPageItem />
-      <MyPageItem />
-      <MyPageItem />
-      <MyPageItem />
-      <MyPageItem />
+      {/* <MyPageItem /> */}
+      {paperList}
     </ItemsWrap>
   );
 }

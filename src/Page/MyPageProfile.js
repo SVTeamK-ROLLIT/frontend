@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Profile() {
+function Profile({ myRollPageData }) {
   return (
     <ChoiceContainer>
       <LeftWrap>
@@ -9,12 +9,16 @@ function Profile() {
       </LeftWrap>
       <RightWrap>
         <RightUpWrap>
-          <NickName margin="0rem 0rem 0rem 2rem">Team_k 님</NickName>
-          <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn>
+          <NickName margin="0rem 0rem 0rem 2rem">
+            {myRollPageData?.user_data[0].nickname} 님
+          </NickName>
+          {/* <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn> */}
         </RightUpWrap>
         <RightDownWrap>
-          <NickName margin="1.5rem 0rem 0 2rem">team-k@gmail.com</NickName>
-          <ChangeBtn margin="2rem 14rem 0 auto">변경</ChangeBtn>
+          <NickName margin="1.5rem 0rem 0 2rem">
+            {myRollPageData?.user_data[0].email}
+          </NickName>
+          {/* <ChangeBtn margin="2rem 14rem 0 auto">변경</ChangeBtn> */}
         </RightDownWrap>
       </RightWrap>
     </ChoiceContainer>
@@ -70,17 +74,17 @@ const NickName = styled.div`
   margin: ${props => props.margin};
 `;
 
-const ChangeBtn = styled.button`
-  width: 100px;
-  height: 56px;
-  border-radius: 13px;
-  background: #3a3a3a;
-  font-size: 28px;
-  font-weight: 700;
-  margin: ${props => props.margin};
-  color: #fff;
-  justify-content: flex-end;
-`;
+// const ChangeBtn = styled.button`
+//   width: 100px;
+//   height: 56px;
+//   border-radius: 13px;
+//   background: #3a3a3a;
+//   font-size: 28px;
+//   font-weight: 700;
+//   margin: ${props => props.margin};
+//   color: #fff;
+//   justify-content: flex-end;
+// `;
 
 const RightDownWrap = styled.div`
   //background-color: tomato;

@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MyPageLine() {
-  return <Line>Teamk님의 롤링페이지 목록입니다</Line>;
+function MyPageLine({ myRollPageData }) {
+  return (
+    <Line>
+      {myRollPageData?.user_data[0].nickname}
+      님의 롤링페이지 목록입니다
+    </Line>
+  );
 }
 
 export default MyPageLine;
