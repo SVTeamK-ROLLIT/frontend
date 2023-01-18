@@ -6,6 +6,7 @@ import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import NewMemo from './newMemo';
+import NewSticky from './NewSticky';
 import blackboard from '../Image/image4.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
@@ -135,28 +136,33 @@ function Rolling() {
 
   // 모달창
   const [coor, setCoor] = useState({}); // x좌표 y좌표 저장하는 상태
-  const [isPhotoOpen, setPhotoIsOpen] = useState(false); // 사진 모달창이 열려있는가?
-  const [isStickyOpen, setStickyIsOpen] = useState(false); // 스티커 모달창이 열려있는가?
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false); // 사진 모달창이 열려있는가?
+  const [isStickyOpen, setIsStickyOpen] = useState(false); // 스티커 모달창이 열려있는가?
   const [isMemo, setIsMemo] = useState(false); // 메모지 수정중인가?
+  const [isSticky, setIsSticky] = useState(false); // 스티커 수정중인가?
   const [isActive, setIsActive] = useState(false); // 스티커, 사진, 메모지가 수정중인지 확인
+  const [sticky, setSticky] = useState();
+  const [skickyUrl, setStickyUrl] = useState();
+  console.log(setIsSticky);
+  console.log(sticky);
 
   useEffect(() => {
+    // 로컬에 메모지 내용이 들어있으면
     if (localStorage.getItem('textcase') !== null) {
       setIsMemo(true);
       setIsActive(true);
     }
   }, []);
 
-  const openPhotoModal = useCallback(() => setPhotoIsOpen(true), []);
-  const closePhotoModal = useCallback(() => setPhotoIsOpen(false), []);
-  const openStickyModal = useCallback(() => setStickyIsOpen(true), []);
-  const closeStickyModal = useCallback(() => setStickyIsOpen(false), []);
+  const openPhotoModal = useCallback(() => setIsPhotoOpen(true), []);
+  const closePhotoModal = useCallback(() => setIsPhotoOpen(false), []);
+  const openStickyModal = useCallback(() => setIsStickyOpen(true), []);
+  const closeStickyModal = useCallback(() => setIsStickyOpen(false), []);
   const openMemo = useCallback(() => {
     navigate('/Memo');
   }, []);
 
-  // post로 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
-
+  // post로 메모지 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
   const submitSave = async () => {
     const textcaseString = localStorage.getItem('textcase');
     const textcase = JSON.parse(textcaseString);
@@ -184,8 +190,27 @@ function Rolling() {
     }
   };
 
+  const submitSticky = async () => {
+    try {
+      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/stickers', {
+        default_sticker_id: sticky,
+        password: '1',
+        xcoor: 12,
+        ycoor: 12,
+        rotate: 30,
+      });
+
+      console.log('successSticky!!!!');
+      setIsSticky(false);
+      setIsActive(false);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      console.log(e);
+    }
+  };
+
   // 모닫창
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
   useEffect(() => {
     const getMemos = async () => {
       try {
@@ -201,18 +226,26 @@ function Rolling() {
       }
     };
     getMemos();
-  }, [isActive]);
+  }, []);
 
-  // const text2 = {
-  //   content: '다음에 또 가자',
-  //   nickname: '익명',
-  //   font: '안성탕면체',
-  //   password: '1234',
-  //   xcoor: 12,
-  //   ycoor: 12,
-  //   rotate: 30,
-  // };
-  // console.log(text2);
+  // 스티커?메모지?사진? 확인해주기
+  function isItem() {
+    // eslint-disable-next-line no-nested-ternary
+    return isMemo ? (
+      <NewMemo
+        setCoor={setCoor}
+        list={JSON.parse(localStorage.getItem('textcase')).textcase}
+      />
+    ) : isSticky ? (
+      <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
+    ) : (
+      <div />
+    );
+  }
+  function isSubmit() {
+    // eslint-disable-next-line no-nested-ternary
+    return isMemo ? submitSave() : isSticky ? submitSticky() : <div />;
+  }
 
   return (
     <SketchBookImg>
@@ -223,14 +256,7 @@ function Rolling() {
               // console.log(list);
               return <Memo list={list} key={list.id} />;
             })}
-          {isMemo ? (
-            <NewMemo
-              setCoor={setCoor}
-              list={JSON.parse(localStorage.getItem('textcase')).textcase}
-            />
-          ) : (
-            <div />
-          )}
+          {isItem()}
         </Container>
 
         <MyPageBtn>마이페이지</MyPageBtn>
@@ -242,7 +268,11 @@ function Rolling() {
         <MemoWrap />
         {isActive ? (
           <IconWrap height="5rem">
-            <SaveBtn onClick={submitSave}>
+            <SaveBtn
+              onClick={() => {
+                isSubmit();
+              }}
+            >
               <FcExpand size="30" />
             </SaveBtn>
           </IconWrap>
@@ -255,7 +285,14 @@ function Rolling() {
             <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
-            <StickerModal isOpen={isStickyOpen} closeModal={closeStickyModal} />
+            <StickerModal
+              isOpen={isStickyOpen}
+              closeModal={closeStickyModal}
+              setSticky={setSticky}
+              setStickyUrl={setStickyUrl}
+              setIsActive={setIsActive}
+              setIsSticky={setIsSticky}
+            />
             <IconBtn type="button" value="Open modal" onClick={openStickyModal}>
               <img src={memoicon} alt="" />
             </IconBtn>
