@@ -5,7 +5,7 @@ import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import NewMemo from './newMemo';
-import blackboard from '../Image/image3.png';
+import blackboard from '../Image/image4.png';
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -97,7 +97,7 @@ const IconWrap = styled.div`
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
-  height: 100%;
+  height: 67rem;
   width: 90rem; // 배경과 같은 너비
   position: absolute;
 `;
