@@ -16,7 +16,7 @@ const SketchBookImg = styled.div`
   width: 90rem;
   background-image: url(${blackboard});
   margin: 0 auto;
-  background-size: auto;
+  background-size: cover;
   /* background-position: center; */
 `;
 
@@ -89,19 +89,20 @@ const IconBtn = styled.button`
 
 const IconWrap = styled.div`
   position: fixed;
-  /* padding-right: 5rem; */
-  height: 10rem;
-  /* display: flex; */
+  /* height: 5rem; */
+  /* width: 4rem;  */
+  display: flex;
   align-items: end;
-  /* padding-bottom: 5rem; */
+  margin: auto 0 0 auto;
   justify-content: flex-end;
   flex-direction: column;
   z-index: 1000;
-  top: 80%;
+  bottom: 5%;
+  right: 10%;
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
-  height: 67rem;
+  height: 63rem;
   width: 90rem; // 배경과 같은 너비
   position: absolute;
 `;
