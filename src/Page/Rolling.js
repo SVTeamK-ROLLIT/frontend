@@ -240,12 +240,12 @@ function Rolling() {
               <IconBtn type="button" value="Open modal" onClick={openModal}>
                 <img src={galleryicon} alt="" />
               </IconBtn>
+              <StickerModal isOpen={isOpen} closeModal={closeModal} />
               <IconBtn onClick={openMemo}>
                 <img src={memoicon} alt="" />
               </IconBtn>
             </IconWrap>
           )}
-            <StickerModal isOpen={isOpen} closeModal={closeModal} />
         </AllWrap>
       </SketchBookImg>
     </div>

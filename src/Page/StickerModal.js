@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import './Background.css';
@@ -18,7 +18,8 @@ const CloseBtn = styled.button`
   background-color: red;
   margin: 0 0 1rem auto;
   padding-top: 0;
-  display: block;
+  display: flex;
+  height: 16px;
 `;
 
 // 모달 스타일
@@ -33,9 +34,10 @@ const modalStyle = {
     zIndex: 9998,
   },
   content: {
-    // display: 'flex',
+    display: 'flex',
     justifyContent: 'center',
-    // background: '#ffffe7',
+    background: '#ffffe7',
+    height: '70vh',
     overflow: 'auto',
     top: '16vh',
     left: '16vw',
@@ -49,16 +51,22 @@ const modalStyle = {
 };
 
 function StickerModal({ isOpen, closeModal }) {
-  const GetStickers = async () => {
-    try {
-      const files = await axios.get(
-        `http://127.0.0.1:8080/api/v1/papers/sticker_list`,
-      );
-      console.log(files);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const [files, setFiles] = useState();
+  useEffect(() => {
+    const GetStickers = async () => {
+      try {
+        setFiles(
+          await axios.get(`http://127.0.0.1:8080/api/v1/papers/sticker_list`),
+        );
+        console.log(files);
+        console.log('filesget');
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    GetStickers();
+  }, []);
+
   return (
     <div>
       <Modal
@@ -67,6 +75,20 @@ function StickerModal({ isOpen, closeModal }) {
         style={modalStyle}
         ariaHideApp={false}
       >
+        {files &&
+          files.data.data.map(file => {
+            return (
+              <div key={file.default_sticker_id} height="100px" display="flex">
+                <img
+                  src={file.sticker_url}
+                  alt=""
+                  width="150px"
+                  height="150px"
+                  display="flex"
+                />
+              </div>
+            );
+          })}{' '}
         <CloseBtn
           type="button"
           onClick={() => {
