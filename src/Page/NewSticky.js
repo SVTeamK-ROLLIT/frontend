@@ -29,25 +29,23 @@ export default function NewSticky({ skickyUrl, setCoor }) {
       onStop={handleEnd}
       defaultPosition={{ x: position.x, y: position.y }}
     >
-      <MemoBox>
-        <img
-          ref={nodeRef}
-          src={skickyUrl}
-          className="box"
-          style={{
-            opacity: Opacity ? '0.6' : '1',
-            position: 'absolute',
-          }}
-          alt=""
-        />
-      </MemoBox>
+      <MemoBox
+        ref={nodeRef}
+        className="box"
+        style={{
+          opacity: Opacity ? '0.6' : '1',
+          position: 'absolute',
+        }}
+        background={skickyUrl}
+      />
     </Draggable>
   );
 }
 
 const MemoBox = styled.div`
-  width: 184px;
-  height: 174px;
-  background: yellow;
+  width: 80px;
+  height: 80px;
+  background: url(${props => props.background});
+  background-size: cover;
   border-radius: 15px;
 `;
