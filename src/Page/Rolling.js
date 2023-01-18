@@ -252,12 +252,10 @@ function Rolling() {
         <Container>
           {items.memo &&
             items.memo.map(list => {
-              // console.log(list);
               return <Memo list={list} key={list.id} />;
             })}
           {items.sticker &&
             items.sticker.map(list => {
-              // console.log(list);
               return <Sticky list={list} key={list.id} />;
             })}
           {isItem()}
