@@ -134,15 +134,16 @@ function Rolling() {
   const navigate = useNavigate();
 
   // 모달창
-  const [coor, setCoor] = useState({});
-  const [isPhotoOpen, setPhotoIsOpen] = useState(false);
-  const [isStickyOpen, setStickyIsOpen] = useState(false);
-  const [isMemo, setIsMemo] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [coor, setCoor] = useState({}); // x좌표 y좌표 저장하는 상태
+  const [isPhotoOpen, setPhotoIsOpen] = useState(false); // 사진 모달창이 열려있는가?
+  const [isStickyOpen, setStickyIsOpen] = useState(false); // 스티커 모달창이 열려있는가?
+  const [isMemo, setIsMemo] = useState(false); // 메모지 수정중인가?
+  const [isActive, setIsActive] = useState(false); // 스티커, 사진, 메모지가 수정중인지 확인
 
   useEffect(() => {
     if (localStorage.getItem('textcase') !== null) {
       setIsMemo(true);
+      setIsActive(true);
     }
   }, []);
 
@@ -156,7 +157,6 @@ function Rolling() {
 
   // post로 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
 
-  // console.log(textcase.textcase);
   const submitSave = async () => {
     const textcaseString = localStorage.getItem('textcase');
     const textcase = JSON.parse(textcaseString);
