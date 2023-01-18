@@ -7,7 +7,7 @@ import Draggable from 'react-draggable';
 export default function App({ list }) {
   const nodeRef = useRef(null);
 
-  const { sticker_url, xcoor, ycoor } = list;
+  const { sticker_url, xcoor, ycoor } = list; // 좌표랑, 스티커주소 불러옴
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -49,6 +49,7 @@ export default function App({ list }) {
 }
 
 const MemoBox = styled.div`
+  //스티커 크기 지정
   width: 80px;
   height: 80px;
   background: url(${props => props.background});

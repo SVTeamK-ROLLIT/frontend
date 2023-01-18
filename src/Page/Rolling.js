@@ -116,15 +116,6 @@ const Container = styled.div`
   position: absolute;
 `;
 
-// const SaveWrap = styled.div`
-//   padding-right: 5rem;
-//   height: 2rem;
-//   display: flex;
-//   align-items: end;
-//   padding-bottom: 5rem;
-//   justify-content: flex-end;
-//   flex-direction: column;
-// `;
 const SaveBtn = styled.button`
   width: 2rem;
   height: 2rem;
@@ -142,27 +133,29 @@ function Rolling() {
   const [isMemo, setIsMemo] = useState(false); // 메모지 수정중인가?
   const [isSticky, setIsSticky] = useState(false); // 스티커 수정중인가?
   const [isActive, setIsActive] = useState(false); // 스티커, 사진, 메모지가 수정중인지 확인
-  const [sticky, setSticky] = useState();
-  const [skickyUrl, setStickyUrl] = useState();
+  const [sticky, setSticky] = useState(); // 스티커 ID저장
+  const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
 
   useEffect(() => {
-    // 로컬에 메모지 내용이 들어있으면
+    // 로컬에 ###메모지#### 내용이 들어있으면
     if (localStorage.getItem('textcase') !== null) {
       setIsMemo(true);
       setIsActive(true);
     }
   }, []);
 
-  const openPhotoModal = useCallback(() => setIsPhotoOpen(true), []);
-  const closePhotoModal = useCallback(() => setIsPhotoOpen(false), []);
-  const openStickyModal = useCallback(() => setIsStickyOpen(true), []);
-  const closeStickyModal = useCallback(() => setIsStickyOpen(false), []);
+  const openPhotoModal = useCallback(() => setIsPhotoOpen(true), []); // 사진 모달창 열기
+  const closePhotoModal = useCallback(() => setIsPhotoOpen(false), []); // 사진 모달창 닫기
+  const openStickyModal = useCallback(() => setIsStickyOpen(true), []); // 스티커 모달창 열기
+  const closeStickyModal = useCallback(() => setIsStickyOpen(false), []); // 스티커 모달창 닫기
+
+  // 모달창 열면 메모지로 이동
   const openMemo = useCallback(() => {
     navigate('/Memo');
   }, []);
 
-  // post로 메모지 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
-  const submitSave = async () => {
+  // post로 ###메모지### 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
+  const submitMemo = async () => {
     const textcaseString = localStorage.getItem('textcase');
     const textcase = JSON.parse(textcaseString);
     textcase.textcase.xcoor = coor.x;
@@ -180,9 +173,9 @@ function Rolling() {
       });
 
       console.log('successSave!!!!');
-      setIsMemo(false);
-      setIsActive(false);
-      localStorage.removeItem('textcase');
+      setIsMemo(false); // 메모기능 비활성화
+      setIsActive(false); // 수정기능 비활성화
+      localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       console.log(e);
@@ -200,8 +193,8 @@ function Rolling() {
       });
 
       console.log('successSticky!!!!');
-      setIsSticky(false);
-      setIsActive(false);
+      setIsSticky(false); // 스티커 기능 비활성화
+      setIsActive(false); // 수정 기능 비활성화
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       console.log(e);
@@ -213,12 +206,10 @@ function Rolling() {
   useEffect(() => {
     const getMemos = async () => {
       try {
-        const memos = await axios.get(
-          'http://127.0.0.1:8080/api/v1/papers/1/1',
-        );
+        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/1');
         console.log('successGet');
-        setItems(memos.data);
-        console.log(memos.data);
+        setItems(item.data);
+        console.log(item.data);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -227,7 +218,7 @@ function Rolling() {
     getMemos();
   }, [isActive]);
 
-  // 스티커?메모지?사진? 확인해주기
+  // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     // eslint-disable-next-line no-nested-ternary
     return isMemo ? (
@@ -241,9 +232,11 @@ function Rolling() {
       <div />
     );
   }
+
+  // 스티커?메모지?사진? 확인해주고 저장할때 어떤 post를 보낼지 정해주는 함수
   function isSubmit() {
     // eslint-disable-next-line no-nested-ternary
-    return isMemo ? submitSave() : isSticky ? submitSticky() : <div />;
+    return isMemo ? submitMemo() : isSticky ? submitSticky() : <div />;
   }
 
   return (
