@@ -135,7 +135,8 @@ function Rolling() {
 
   // 모달창
   const [coor, setCoor] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
+  const [isPhotoOpen, setPhotoIsOpen] = useState(false);
+  const [isStickyOpen, setStickyIsOpen] = useState(false);
   const [isMemo, setIsMemo] = useState(false);
 
   useEffect(() => {
@@ -144,8 +145,10 @@ function Rolling() {
     }
   }, []);
 
-  const openModal = useCallback(() => setIsOpen(true), []);
-  const closeModal = useCallback(() => setIsOpen(false), []);
+  const openPhotoModal = useCallback(() => setPhotoIsOpen(true), []);
+  const closePhotoModal = useCallback(() => setPhotoIsOpen(false), []);
+  const openStickyModal = useCallback(() => setStickyIsOpen(true), []);
+  const closeStickyModal = useCallback(() => setStickyIsOpen(false), []);
   const openMemo = useCallback(() => {
     navigate('/Memo');
   }, []);
@@ -224,18 +227,7 @@ function Rolling() {
               list={JSON.parse(localStorage.getItem('textcase')).textcase}
             />
           ) : (
-            <IconWrap>
-              <IconBtn>
-                <img src={pencilicon} alt="" />
-              </IconBtn>
-              <PhotoModal isOpen={isOpen} closeModal={closeModal} />
-              <IconBtn type="button" value="Open modal" onClick={openModal}>
-                <img src={galleryicon} alt="" />
-              </IconBtn>
-              <IconBtn onClick={openMemo}>
-                <img src={memoicon} alt="" />
-              </IconBtn>
-            </IconWrap>
+            <div />
           )}
         </Container>
 
@@ -257,18 +249,18 @@ function Rolling() {
             <IconBtn onClick={openMemo}>
               <img src={pencilicon} alt="" />
             </IconBtn>
-            <PhotoModal isOpen={isOpen} closeModal={closeModal} />
-            <IconBtn type="button" value="Open modal" onClick={openModal}>
+            <PhotoModal isOpen={isPhotoOpen} closeModal={closePhotoModal} />
+            <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
-            <IconBtn>
+            <StickerModal isOpen={isStickyOpen} closeModal={closeStickyModal} />
+            <IconBtn type="button" value="Open modal" onClick={openStickyModal}>
               <img src={memoicon} alt="" />
             </IconBtn>
           </IconWrap>
         )}
       </AllWrap>
     </SketchBookImg>
-            <StickerModal isOpen={isOpen} closeModal={closeModal} />
   );
 }
 
