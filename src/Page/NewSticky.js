@@ -1,14 +1,9 @@
-/* eslint-disable camelcase */
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-// import axios from 'axios';
 
-export default function App({ list }) {
+export default function NewSticky({ skickyUrl, setCoor }) {
   const nodeRef = useRef(null);
-
-  const { xcoor, ycoor, content, font, font_color, color } = list;
-  // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -21,8 +16,8 @@ export default function App({ list }) {
     setOpacity(true);
   };
   const handleEnd = () => {
-    // submit();
     setOpacity(false);
+    setCoor(position);
   };
 
   return (
@@ -32,31 +27,25 @@ export default function App({ list }) {
       onDrag={(e, data) => trackPos(data)}
       onStart={handleStart}
       onStop={handleEnd}
-      defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
+      defaultPosition={{ x: position.x, y: position.y }}
     >
       <MemoBox
-        background={color}
-        font={font}
-        color={font_color}
         ref={nodeRef}
         className="box"
         style={{
           opacity: Opacity ? '0.6' : '1',
           position: 'absolute',
         }}
-      >
-        <div>{content}</div>
-      </MemoBox>
+        background={skickyUrl}
+      />
     </Draggable>
   );
 }
 
 const MemoBox = styled.div`
-  width: 184px;
-  height: 174px;
-  background-color: ${props => props.background};
+  width: 80px;
+  height: 80px;
+  background: url(${props => props.background});
+  background-size: cover;
   border-radius: 15px;
-  font-family: ${props => props.font};
-  color: ${props => props.color};
 `;

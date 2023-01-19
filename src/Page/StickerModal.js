@@ -48,8 +48,16 @@ const modalStyle = {
   },
 };
 
-function StickerModal({ isOpen, closeModal }) {
+function StickerModal({
+  isOpen,
+  closeModal,
+  setSticky,
+  setStickyUrl,
+  setIsSticky,
+  setIsActive,
+}) {
   const [files, setFiles] = useState();
+
   useEffect(() => {
     const GetStickers = async () => {
       try {
@@ -84,7 +92,17 @@ function StickerModal({ isOpen, closeModal }) {
         {files &&
           files.data.data.map(file => {
             return (
-              <button type="button" key={file.default_sticker_id}>
+              <button
+                type="button"
+                key={file.default_sticker_id}
+                onClick={() => {
+                  setSticky(file.default_sticker_id);
+                  setStickyUrl(file.sticker_url);
+                  closeModal();
+                  setIsSticky(true);
+                  setIsActive(true);
+                }}
+              >
                 <img src={file.sticker_url} alt="" width="100vw" />
               </button>
             );

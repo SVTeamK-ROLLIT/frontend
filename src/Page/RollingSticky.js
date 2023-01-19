@@ -7,7 +7,7 @@ import Draggable from 'react-draggable';
 export default function App({ list }) {
   const nodeRef = useRef(null);
 
-  const { xcoor, ycoor, content, font, font_color, color } = list;
+  const { sticker_url, xcoor, ycoor } = list; // 좌표랑, 스티커주소 불러옴
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -36,27 +36,23 @@ export default function App({ list }) {
       disabled
     >
       <MemoBox
-        background={color}
-        font={font}
-        color={font_color}
         ref={nodeRef}
         className="box"
         style={{
           opacity: Opacity ? '0.6' : '1',
           position: 'absolute',
         }}
-      >
-        <div>{content}</div>
-      </MemoBox>
+        background={sticker_url}
+      />
     </Draggable>
   );
 }
 
 const MemoBox = styled.div`
-  width: 184px;
-  height: 174px;
-  background-color: ${props => props.background};
+  //스티커 크기 지정
+  width: 80px;
+  height: 80px;
+  background: url(${props => props.background});
+  background-size: cover;
   border-radius: 15px;
-  font-family: ${props => props.font};
-  color: ${props => props.color};
 `;
