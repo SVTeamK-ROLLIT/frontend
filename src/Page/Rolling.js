@@ -4,7 +4,7 @@ import { FcExpand } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
@@ -229,25 +229,18 @@ function Rolling() {
     const formData = new FormData();
     formData.append('image', photo);
     formData.append('password', '1234');
-    formData.append('xcoor', coor.x);
-    formData.append('ycoor', coor.y);
+    formData.append('xcoor', coor.left2);
+    formData.append('ycoor', coor.top2);
     formData.append('rotate', '20');
     axios
       .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
       .then(() => {
-        // console.log(formData);
-        toast.success(<h3>업로드 성공😎</h3>, {
-          position: 'top-center',
-          autoClose: 2000,
-        });
-        setTimeout(() => {
-          closePhotoModal();
-        }, 2000);
+        console.log('successPhoto!!!!');
+        setIsPhoto(false); // 사진 기능 비활성화
+        setIsActive(false); // 수정 기능 비활성화
       })
       .catch(err => {
-        toast.error(`${err.response.data.message} 😭`, {
-          position: 'top-center',
-        });
+        console.log(err.response.data.message);
       });
   };
 
@@ -268,6 +261,11 @@ function Rolling() {
     getMemos();
   }, [isActive]);
 
+  const parentFunction = positon => {
+    setCoor(positon);
+    console.log(coor);
+  };
+
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (
@@ -278,7 +276,7 @@ function Rolling() {
     ) : isSticky ? (
       <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
     ) : isPhoto ? (
-      <NewPhoto setCoor={setCoor} photo={photo} />
+      <NewPhoto parentFunction={parentFunction} photo={photo} />
     ) : (
       <div />
     );
@@ -300,7 +298,6 @@ function Rolling() {
   return (
     <SketchBookImg>
       <AllWrap>
-        <ToastContainer />
         <Container>
           {items.memo &&
             items.memo.map(list => {
