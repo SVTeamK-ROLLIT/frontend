@@ -22,6 +22,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
+import Cartoonize from './Cartoonize';
 
 const SumbitBtn = styled.button`
   width: 100px;
@@ -149,6 +150,7 @@ function FilePondTemplate({
         >
           업로드
         </SumbitBtn>
+        <Cartoonize files={files} />
       </Modal>
     </div>
   );
