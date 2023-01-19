@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FcExpand } from 'react-icons/fc';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
@@ -124,8 +124,15 @@ const SaveBtn = styled.button`
 `;
 
 function Rolling() {
+  const location = useLocation();
   const navigate = useNavigate();
-
+  // useEffect(() => {
+  //   console.log(location);
+  // }, [location]);
+  // console.log('location 값: ', location.pathname);
+  // console.log('슬라이싱 값: ', location.pathname.slice(9));
+  const paperId = location.pathname.slice(9); // 이거 url에서 paperId를 가져옴
+  // console.log('test: ', paperId); // 이거 url에서 paperId를 가져옴
   // 모달창
   const [coor, setCoor] = useState({}); // x좌표 y좌표 저장하는 상태
   const [isPhotoOpen, setIsPhotoOpen] = useState(false); // 사진 모달창이 열려있는가?
@@ -161,7 +168,7 @@ function Rolling() {
     textcase.textcase.xcoor = coor.x;
     textcase.textcase.ycoor = coor.y;
     try {
-      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/memos', {
+      await axios.post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/memos`, {
         content: textcase.textcase.content,
         nickname: textcase.textcase.nickname,
         font: textcase.textcase.font,
@@ -184,13 +191,16 @@ function Rolling() {
 
   const submitSticky = async () => {
     try {
-      await axios.post('http://127.0.0.1:8080/api/v1/papers/1/stickers', {
-        default_sticker_id: sticky,
-        password: '1',
-        xcoor: coor.x,
-        ycoor: coor.y,
-        rotate: 30,
-      });
+      await axios.post(
+        `http://127.0.0.1:8080/api/v1/papers/${paperId}/stickers`,
+        {
+          default_sticker_id: sticky,
+          password: '1',
+          xcoor: coor.x,
+          ycoor: coor.y,
+          rotate: 30,
+        },
+      );
 
       console.log('successSticky!!!!');
       setIsSticky(false); // 스티커 기능 비활성화
@@ -206,7 +216,9 @@ function Rolling() {
   useEffect(() => {
     const getMemos = async () => {
       try {
-        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/1');
+        const item = await axios.get(
+          `http://127.0.0.1:8080/api/v1/papers/${paperId}`,
+        );
         console.log('successGet');
         setItems(item.data);
         console.log(item.data);
