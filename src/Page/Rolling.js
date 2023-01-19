@@ -217,7 +217,7 @@ function Rolling() {
     const getMemos = async () => {
       try {
         const item = await axios.get(
-          `http://127.0.0.1:8080/api/v1/papers/${paperId}`,
+          `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
         );
         console.log('successGet');
         setItems(item.data);

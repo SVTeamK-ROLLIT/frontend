@@ -22,6 +22,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
+import Cartoonize from './Cartoonize';
 
 const SumbitBtn = styled.button`
   width: 100px;
@@ -89,7 +90,7 @@ function FilePondTemplate({ isOpen, closeModal }) {
     axios
       .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
       .then(res => {
-        console.log(formData);
+        // console.log(formData);
         toast.success(<h3>업로드 성공😎</h3>, {
           position: 'top-center',
           autoClose: 2000,
@@ -137,6 +138,7 @@ function FilePondTemplate({ isOpen, closeModal }) {
         >
           업로드
         </SumbitBtn>
+        <Cartoonize files={files} />
       </Modal>
     </div>
   );
