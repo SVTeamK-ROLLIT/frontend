@@ -42,11 +42,23 @@ function Cartoonize({ files }) {
         url,
       );
       console.log(response2.data);
+      setTaskId(response2.data);
+      console.log('taskId: ', taskId);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+    try {
+      const response3 = await axios.post(
+        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+        taskId,
+      );
+      console.log(response3.data);
     } catch (err) {
       console.log('Error >>', err);
     }
   };
-  //   console.log(url); // url까지 반환 성공
+
+  //   console.log(response.data.url);
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
