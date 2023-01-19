@@ -25,7 +25,7 @@ function App() {
           {/* 롤링페이지 생성하는 페이지 */}
           <Route path="/MakeRolling" element={<MakeRolling />} />
           {/* 롤링페이지 화면 */}
-          <Route path="/Rolling" element={<Rolling />} />
+          <Route path="/Rolling/:paperId" element={<Rolling />} />
           {/* 메모작성페이지 화면 */}
           <Route path="/Memo" element={<Memo />} />
           <Route path="/photo" element={<Photo />} />

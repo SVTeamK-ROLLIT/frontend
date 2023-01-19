@@ -145,7 +145,7 @@ class SimpleSlider extends Component {
       console.log(userId);
 
       try {
-        await axios.post(
+        const { data } = await axios.post(
           `http://127.0.0.1:8080/api/v1/users/${userId}/papers`,
           {
             user_id: userId,
@@ -154,7 +154,8 @@ class SimpleSlider extends Component {
           },
         );
         console.log('success');
-        this.props.navigate('/rolling');
+        console.log(data.paper_id);
+        this.props.navigate(`/rolling/${data.paper_id}`);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('fail');
