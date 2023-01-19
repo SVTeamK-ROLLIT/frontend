@@ -8,6 +8,7 @@ import axios from 'axios';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
+import Photo from './RollingPhoto';
 import NewMemo from './newMemo';
 import NewPhoto from './NewPhoto';
 import NewSticky from './NewSticky';
@@ -318,6 +319,10 @@ function Rolling() {
           {items.sticker &&
             items.sticker.map(list => {
               return <Sticky list={list} key={list.id} />;
+            })}
+          {items.image &&
+            items.image.map(list => {
+              return <Photo list={list} key={list.id} />;
             })}
           {isItem()}
         </Container>
