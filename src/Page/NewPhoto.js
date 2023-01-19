@@ -3,20 +3,19 @@ import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
 // import img from '../Image/ID.png';
 
-export default function NewPhoto(setCoor, photo) {
-  const [width2, setWidth] = useState(200);
-  const [height2, setHeight] = useState(100);
-  const [top2, setTop] = useState(100);
-  const [left2, setLeft] = useState(100);
-  const [rotateAngle, setRotateAngle] = useState(0);
-  //   const [position, setPosition] = useState({
-  //     width: width2,
-  //     height: height2,
-  //     top: top2,
-  //     left: left2,
-  //     rotate: rotateAngle,
-  //   });
-  //   console.log(setPosition);
+export default function NewPhoto({ parentFunction, photo }) {
+  //   const [width2, setWidth] = useState(200);
+  //   const [height2, setHeight] = useState(100);
+  //   const [top2, setTop] = useState(100);
+  //   const [left2, setLeft] = useState(100);
+  //   const [rotateAngle, setRotateAngle] = useState(0);
+  const [position, setPosition] = useState({
+    width2: 200,
+    height2: 100,
+    top2: 100,
+    left2: 100,
+    rotate2: 0,
+  });
 
   // eslint-disable-next-line no-unused-vars
   const handleResize = (style, isShiftKey, type) => {
@@ -25,40 +24,53 @@ export default function NewPhoto(setCoor, photo) {
     left = Math.round(left);
     width = Math.round(width);
     height = Math.round(height);
-    setWidth(width);
-    setHeight(height);
-    setTop(top);
-    setLeft(left);
+    setPosition(prevState => ({
+      ...prevState,
+      width2: width,
+      top2: top,
+      height2: height,
+      left2: left,
+    }));
+    // console.log(position);
   };
   const handleRotate = rotateAngle2 => {
-    setRotateAngle(rotateAngle2);
+    setPosition(prevState => ({
+      ...prevState,
+      rotate2: rotateAngle2,
+    }));
+    // console.log(position);
   };
 
   const handleDrag = (deltaX, deltaY) => {
-    setLeft(left2 + deltaX);
-    setTop(top2 + deltaY);
+    setPosition(prevState => ({
+      ...prevState,
+      top2: position.top2 + deltaY,
+      left2: position.left2 + deltaX,
+    }));
+    // console.log(position);
   };
+  parentFunction(position);
 
   return (
     <div>
       <img
         src={photo}
         style={{
-          width: width2,
-          height: height2,
-          left: left2 + 1,
-          top: top2 + 1,
-          rotate: `${rotateAngle}deg`,
+          width: position.width2,
+          height: position.height2,
+          left: position.left2 + 1,
+          top: position.top2 + 1,
+          rotate: `${position.rotate2}deg`,
           position: 'absolute',
         }}
         alt=""
       />
       <ResizableRect
-        left={left2}
-        top={top2}
-        width={width2}
-        height={height2}
-        rotateAngle={rotateAngle}
+        left={position.left2}
+        top={position.top2}
+        width={position.width2}
+        height={position.height2}
+        rotateAngle={position.rotate2}
         minWidth={100} // 최소크기
         // aspectRatio={false}
         // minWidth={10}
