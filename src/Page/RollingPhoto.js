@@ -7,7 +7,7 @@ import Draggable from 'react-draggable';
 export default function App({ list }) {
   const nodeRef = useRef(null);
 
-  const { image_url, xcoor, ycoor } = list; // 좌표랑, 스티커주소 불러옴
+  const { image_url, xcoor, ycoor, rotate } = list; // 좌표랑, 스티커주소 불러옴
   console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -27,25 +27,28 @@ export default function App({ list }) {
   };
 
   return (
-    <Draggable
-      bounds="parent"
-      nodeRef={nodeRef}
-      onDrag={(e, data) => trackPos(data)}
-      onStart={handleStart}
-      onStop={handleEnd}
-      defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
-    >
-      <MemoBox
-        ref={nodeRef}
-        className="box"
-        style={{
-          opacity: Opacity ? '0.6' : '1',
-          position: 'absolute',
-        }}
-        background={image_url}
-      />
-    </Draggable>
+    <div style={{ transform: `rotate(${rotate}deg)` }}>
+      <Draggable
+        bounds="parent"
+        nodeRef={nodeRef}
+        onDrag={(e, data) => trackPos(data)}
+        onStart={handleStart}
+        onStop={handleEnd}
+        defaultPosition={{ x: xcoor, y: ycoor }}
+        disabled
+      >
+        <MemoBox
+          ref={nodeRef}
+          className="box"
+          style={{
+            opacity: Opacity ? '0.6' : '1',
+            position: 'absolute',
+          }}
+          background={image_url}
+          // rotate={`${rotate}deg`}
+        />
+      </Draggable>
+    </div>
   );
 }
 
@@ -56,4 +59,5 @@ const MemoBox = styled.div`
   background: url(${props => props.background});
   background-size: cover;
   border-radius: 15px;
+  transform: rotate(20deg);
 `;
