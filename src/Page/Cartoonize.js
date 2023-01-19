@@ -21,6 +21,7 @@ const CartoonBtn = styled.button`
 
 function Cartoonize({ files }) {
   const [url, seturl] = useState('');
+  const [taskId, setTaskId] = useState('');
 
   const onSubmit = async () => {
     try {
@@ -30,14 +31,22 @@ function Cartoonize({ files }) {
         'http://127.0.0.1:8080/api/v1/photos',
         formData,
       );
-      //   const s3url = response.data;
-      //   console.log(s3url);
-      seturl(response.data.image_url);
+      seturl(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+    try {
+      const response2 = await axios.post(
+        'http://127.0.0.1:8080/api/v1/papers/cartoons',
+        url,
+      );
+      console.log(response2.data);
     } catch (err) {
       console.log('Error >>', err);
     }
   };
-  console.log(url); // url까지 반환 성공
+  //   console.log(url); // url까지 반환 성공
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
