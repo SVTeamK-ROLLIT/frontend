@@ -40,7 +40,7 @@ export default function NewPhoto() {
           height: height2,
           left: left2 + 1,
           top: top2 + 1,
-          rotateAngle: rotateAngle + 1,
+          rotate: `${rotateAngle}deg`,
           position: 'absolute',
         }}
         alt=""
