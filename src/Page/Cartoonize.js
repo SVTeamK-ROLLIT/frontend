@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
@@ -28,7 +28,7 @@ const CartoonBtn = styled.button`
 //   const [intervalId, setIntervalId] = useState(null);
 
 function Cartoonize({ files }) {
-  const [resultImage, setResultImage] = useState({});
+  const [url, seturl] = useState('');
 
   async function run1() {
     const formData = new FormData();
@@ -50,34 +50,12 @@ function Cartoonize({ files }) {
         'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
         response2.data,
       );
-      console.log('함수내부2', resultImage);
-
-      if (result.data.message === 'still working') {
-        count += 1;
-      } else if (result.data.url) {
-        setResultImage(result.data.url);
-        clearInterval(interval);
-        console.log('* get result success *');
-        console.log('함수내부1', resultImage);
-      } else if (count <= 20) {
-        // interval();
-        count += 1;
-      } else {
-        clearInterval(interval);
-        count += 1;
-        console.log('* time out *');
-      }
-    }, 1000);
-    console.log('함수외부', resultImage);
-    await useEffect(() => {
-      const s3Url = resultImage;
-      fetch(s3Url)
-        .then(response => response.blob())
-        .then(blob => {
-          const localUrl = URL.createObjectURL(blob);
-          setImageUrl(localUrl);
-        });
-    }, []);
+      //   const s3url = response.data;
+      //   console.log(s3url);
+      seturl(response.data.image_url);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
   };
   console.log('@@@@@', imageUrl);
 
