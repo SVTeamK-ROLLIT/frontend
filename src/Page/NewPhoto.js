@@ -1,7 +1,7 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
-// import img from '../Image/ID.png';
+import img from '../Image/ID.png';
 
 export default function NewPhoto() {
   const [width2, setWidth] = useState(200);
@@ -32,7 +32,19 @@ export default function NewPhoto() {
   };
 
   return (
-    <div className="App">
+    <div>
+      <img
+        src={img}
+        style={{
+          width: width2,
+          height: height2,
+          left: left2 + 1,
+          top: top2 + 1,
+          rotateAngle: rotateAngle + 1,
+          position: 'absolute',
+        }}
+        alt=""
+      />
       <ResizableRect
         left={left2}
         top={top2}
@@ -54,17 +66,23 @@ export default function NewPhoto() {
         // onDragStart={this.handleDragStart}
         onDrag={handleDrag}
         // onDragEnd={this.handleDragEnd}
-        style={{ backgroundColor: 'red' }}
-      />
+        handleStyles
+      >
+        <MemoBox />
+      </ResizableRect>
     </div>
   );
 }
 
-// const MemoBox = styled.div`
-//   width: 160px;
-//   height: 160px;
-//   background: url(${props => props.background});
-//   background-color: yellow;
-//   background-size: cover;
-//   border-radius: 15px;
+// const Image = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047);
+//   background-size: 100% 100%;
 // `;
+const MemoBox = styled.div`
+  width: 160px;
+  height: 160px;
+  background-color: yellow;
+  border-radius: 15px;
+`;
