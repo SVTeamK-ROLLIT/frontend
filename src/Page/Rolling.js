@@ -232,7 +232,7 @@ function Rolling() {
     formData.append('password', '1234');
     formData.append('xcoor', coor.left2);
     formData.append('ycoor', coor.top2);
-    formData.append('rotate', '20');
+    formData.append('rotate', coor.rotate2);
     axios
       .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
       .then(() => {

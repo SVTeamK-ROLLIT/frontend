@@ -27,7 +27,13 @@ export default function App({ list }) {
   };
 
   return (
-    <div style={{ transform: `rotate(${rotate}deg)` }}>
+    <div
+      style={{
+        transform: `rotate(${rotate}deg)`,
+        width: '160px',
+        height: '160px',
+      }}
+    >
       <Draggable
         bounds="parent"
         nodeRef={nodeRef}
@@ -54,10 +60,10 @@ export default function App({ list }) {
 
 const MemoBox = styled.div`
   //스티커 크기 지정
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   background: url(${props => props.background});
   background-size: cover;
   border-radius: 15px;
-  transform: rotate(20deg);
+  transform: translate(-50%, -50%);
 `;
