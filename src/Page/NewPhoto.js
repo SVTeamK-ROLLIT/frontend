@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 // import img from '../Image/ID.png';
+import { Resizable } from 're-resizable';
+import { red } from '@mui/material/colors';
 
 export default function NewPhoto({ photo, setCoor }) {
   const nodeRef = useRef(null);
@@ -10,6 +12,7 @@ export default function NewPhoto({ photo, setCoor }) {
 
   const [Opacity, setOpacity] = useState(false);
 
+  console.log(Opacity);
   const trackPos = data => {
     setPosition({ x: data.x, y: data.y });
   };
@@ -39,24 +42,26 @@ export default function NewPhoto({ photo, setCoor }) {
       onStop={handleEnd}
       defaultPosition={{ x: position.x, y: position.y }}
     >
-      <MemoBox
-        ref={nodeRef}
-        className="box"
-        style={{
-          opacity: Opacity ? '0.6' : '1',
-          position: 'absolute',
+      <Resizable
+        defaultSize={{
+          width: 320,
+          height: 200,
         }}
-        background={rawLog}
-      />
+        style={{
+          backgroundColor: red,
+        }}
+      >
+        Sample with default size
+      </Resizable>
     </Draggable>
   );
 }
 
-const MemoBox = styled.div`
-  width: 160px;
-  height: 160px;
-  background: url(${props => props.background});
-  background-color: yellow;
-  background-size: cover;
-  border-radius: 15px;
-`;
+// const MemoBox = styled.div`
+//   width: 160px;
+//   height: 160px;
+//   background: url(${props => props.background});
+//   background-color: yellow;
+//   background-size: cover;
+//   border-radius: 15px;
+// `;
