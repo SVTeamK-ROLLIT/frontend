@@ -102,6 +102,8 @@ function Cartoonize({
   };
   console.log('@@@@@', imageUrl);
 
+  //   console.log(response.data.url);
+
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
       <ToastContainer />
