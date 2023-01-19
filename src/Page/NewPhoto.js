@@ -51,10 +51,18 @@ export default function NewPhoto({ parentFunction, photo }) {
   };
   parentFunction(position);
 
+  const [rawLog, setRawLog] = useState();
+  const reader = new FileReader();
+  reader.readAsDataURL(photo); // 파일을 읽는 메서드
+  reader.onload = () => {
+    setRawLog(reader.result);
+    console.log(rawLog);
+  };
+
   return (
     <div>
       <img
-        src={photo}
+        src={rawLog}
         style={{
           width: position.width2,
           height: position.height2,
