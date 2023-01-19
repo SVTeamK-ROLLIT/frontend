@@ -1,12 +1,15 @@
+/* eslint-disable no-nested-ternary */
 import React, { useCallback, useEffect, useState } from 'react';
 import { FcExpand } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
 import NewMemo from './newMemo';
+import NewPhoto from './NewPhoto';
 import NewSticky from './NewSticky';
 import blackboard from '../Image/image4.png';
 import pencilicon from '../Image/pencilicon.png';
@@ -14,6 +17,7 @@ import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
 import StickerModal from './StickerModal';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
@@ -132,9 +136,11 @@ function Rolling() {
   const [isStickyOpen, setIsStickyOpen] = useState(false); // 스티커 모달창이 열려있는가?
   const [isMemo, setIsMemo] = useState(false); // 메모지 수정중인가?
   const [isSticky, setIsSticky] = useState(false); // 스티커 수정중인가?
+  const [isPhoto, setIsPhoto] = useState(false); // 사진 수정중인가?
   const [isActive, setIsActive] = useState(false); // 스티커, 사진, 메모지가 수정중인지 확인
   const [sticky, setSticky] = useState(); // 스티커 ID저장
   const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
+  const [photo, setPhoto] = useState();
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -201,6 +207,50 @@ function Rolling() {
     }
   };
 
+  // const submitPhoto = async () => {
+  //   try {
+  //     await axios.post('http://127.0.0.1:8080/ api/v1/papers/1/photos', {
+  //       default_sticker_id: sticky,
+  //       password: '1',
+  //       xcoor: coor.x,
+  //       ycoor: coor.y,
+  //       rotate: 30,
+  //     });
+
+  //     console.log('successSticky!!!!');
+  //     setIsPhoto(false); // 스티커 기능 비활성화
+  //     setIsActive(false); // 수정 기능 비활성화
+  //   } catch (e) {
+  //     // 서버에서 받은 에러 메시지 출력
+  //     console.log(e);
+  //   }
+  // };
+  const submitPhoto = () => {
+    const formData = new FormData();
+    formData.append('image', photo);
+    formData.append('password', '1234');
+    formData.append('xcoor', coor.x);
+    formData.append('ycoor', coor.y);
+    formData.append('rotate', '20');
+    axios
+      .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
+      .then(() => {
+        // console.log(formData);
+        toast.success(<h3>업로드 성공😎</h3>, {
+          position: 'top-center',
+          autoClose: 2000,
+        });
+        setTimeout(() => {
+          closePhotoModal();
+        }, 2000);
+      })
+      .catch(err => {
+        toast.error(`${err.response.data.message} 😭`, {
+          position: 'top-center',
+        });
+      });
+  };
+
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
   useEffect(() => {
@@ -220,7 +270,6 @@ function Rolling() {
 
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
-    // eslint-disable-next-line no-nested-ternary
     return isMemo ? (
       <NewMemo
         setCoor={setCoor}
@@ -228,6 +277,8 @@ function Rolling() {
       />
     ) : isSticky ? (
       <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
+    ) : isPhoto ? (
+      <NewPhoto setCoor={setCoor} photo={photo} />
     ) : (
       <div />
     );
@@ -235,13 +286,21 @@ function Rolling() {
 
   // 스티커?메모지?사진? 확인해주고 저장할때 어떤 post를 보낼지 정해주는 함수
   function isSubmit() {
-    // eslint-disable-next-line no-nested-ternary
-    return isMemo ? submitMemo() : isSticky ? submitSticky() : <div />;
+    return isMemo ? (
+      submitMemo()
+    ) : isSticky ? (
+      submitSticky()
+    ) : isPhoto ? (
+      submitPhoto()
+    ) : (
+      <div />
+    );
   }
 
   return (
     <SketchBookImg>
       <AllWrap>
+        <ToastContainer />
         <Container>
           {items.memo &&
             items.memo.map(list => {
@@ -276,7 +335,13 @@ function Rolling() {
             <IconBtn onClick={openMemo}>
               <img src={pencilicon} alt="" />
             </IconBtn>
-            <PhotoModal isOpen={isPhotoOpen} closeModal={closePhotoModal} />
+            <PhotoModal
+              isOpen={isPhotoOpen}
+              closeModal={closePhotoModal}
+              setIsActive={setIsActive}
+              setIsPhoto={setIsPhoto}
+              setPhoto={setPhoto}
+            />
             <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
