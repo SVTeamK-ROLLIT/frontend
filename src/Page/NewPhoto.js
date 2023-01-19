@@ -1,14 +1,22 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
-import img from '../Image/ID.png';
+// import img from '../Image/ID.png';
 
-export default function NewPhoto() {
+export default function NewPhoto(setCoor, photo) {
   const [width2, setWidth] = useState(200);
   const [height2, setHeight] = useState(100);
   const [top2, setTop] = useState(100);
   const [left2, setLeft] = useState(100);
   const [rotateAngle, setRotateAngle] = useState(0);
+  //   const [position, setPosition] = useState({
+  //     width: width2,
+  //     height: height2,
+  //     top: top2,
+  //     left: left2,
+  //     rotate: rotateAngle,
+  //   });
+  //   console.log(setPosition);
 
   // eslint-disable-next-line no-unused-vars
   const handleResize = (style, isShiftKey, type) => {
@@ -34,7 +42,7 @@ export default function NewPhoto() {
   return (
     <div>
       <img
-        src={img}
+        src={photo}
         style={{
           width: width2,
           height: height2,
@@ -66,10 +74,7 @@ export default function NewPhoto() {
         // onDragStart={this.handleDragStart}
         onDrag={handleDrag}
         // onDragEnd={this.handleDragEnd}
-        handleStyles
-      >
-        <MemoBox />
-      </ResizableRect>
+      />
     </div>
   );
 }
@@ -80,9 +85,9 @@ export default function NewPhoto() {
 //   background-image: url(https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047);
 //   background-size: 100% 100%;
 // `;
-const MemoBox = styled.div`
-  width: 160px;
-  height: 160px;
-  background-color: yellow;
-  border-radius: 15px;
-`;
+// const MemoBox = styled.div`
+//   width: 160px;
+//   height: 160px;
+//   background-color: yellow;
+//   border-radius: 15px;
+// `;
