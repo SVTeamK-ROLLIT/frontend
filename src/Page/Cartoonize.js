@@ -29,6 +29,7 @@ const CartoonBtn = styled.button`
 
 function Cartoonize({ files }) {
   const [url, seturl] = useState('');
+  const [taskId, setTaskId] = useState('');
 
   async function run1() {
     const formData = new FormData();
@@ -50,9 +51,17 @@ function Cartoonize({ files }) {
         'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
         response2.data,
       );
-      //   const s3url = response.data;
-      //   console.log(s3url);
-      seturl(response.data.image_url);
+      seturl(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+    try {
+      const response2 = await axios.post(
+        'http://127.0.0.1:8080/api/v1/papers/cartoons',
+        url,
+      );
+      console.log(response2.data);
     } catch (err) {
       console.log('Error >>', err);
     }
