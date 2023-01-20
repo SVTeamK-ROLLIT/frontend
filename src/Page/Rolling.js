@@ -4,7 +4,11 @@ import { FcExpand } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import image1 from '../Image/image1.png';
+import image2 from '../Image/image2.png';
+import image3 from '../Image/image3.png';
+import image4 from '../Image/image4.png';
+import image5 from '../Image/image5.png';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
@@ -12,7 +16,7 @@ import Photo from './RollingPhoto';
 import NewMemo from './newMemo';
 import NewPhoto from './NewPhoto';
 import NewSticky from './NewSticky';
-import blackboard from '../Image/image4.png';
+
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -22,8 +26,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
-  width: 90rem;
-  background-image: url(${blackboard});
+  width: 90rem; //Props 사용하기
+  background-image: url(${props => props.bgimage});
   margin: 0 auto;
   background-size: cover;
   /* background-position: center; */
@@ -127,17 +131,27 @@ const SaveBtn = styled.button`
   margin: 0.5rem;
   z-index: 50;
 `;
+// const [background, setBackground] = useState();
 
 function Rolling() {
   const location = useLocation();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   console.log(location);
-  // }, [location]);
-  // console.log('location 값: ', location.pathname);
-  // console.log('슬라이싱 값: ', location.pathname.slice(9));
+  const [backgroundImg, setBackgroundImg] = useState();
+  function bgimage(paperUrl) {
+    if (paperUrl === '1') {
+      setBackgroundImg(image1);
+    } else if (paperUrl === '2') {
+      setBackgroundImg(image2);
+    } else if (paperUrl === '3') {
+      setBackgroundImg(image3);
+    } else if (paperUrl === '4') {
+      setBackgroundImg(image4);
+    } else if (paperUrl === '5') {
+      setBackgroundImg(image5);
+    }
+  }
+
   const paperId = location.pathname.slice(9); // 이거 url에서 paperId를 가져옴
-  // console.log('test: ', paperId); // 이거 url에서 paperId를 가져옴
   // 모달창
   const [coor, setCoor] = useState({}); // x좌표 y좌표 저장하는 상태
   const [isPhotoOpen, setIsPhotoOpen] = useState(false); // 사진 모달창이 열려있는가?
@@ -268,7 +282,6 @@ function Rolling() {
         const item = await axios.get(
           `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
         );
-        console.log('successGet');
         setItems(item.data);
         console.log(item.data);
         setLength(
@@ -276,6 +289,9 @@ function Rolling() {
             item.data.image.length +
             item.data.sticker.length,
         );
+        console.log(item.data.paper_url);
+        bgimage(item.data.paper_url);
+        // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -283,7 +299,7 @@ function Rolling() {
     };
     getMemos();
   }, [isActive]);
-
+  console.log(backgroundImg);
   const parentFunction = positon => {
     setCoor(positon);
     console.log(coor);
@@ -318,7 +334,7 @@ function Rolling() {
     );
   }
   return (
-    <SketchBookImg>
+    <SketchBookImg bgimage={backgroundImg}>
       <AllWrap>
         <Container>
           {items.memo &&
