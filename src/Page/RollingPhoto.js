@@ -11,7 +11,7 @@ export default function NewPhoto({ list }) {
   //   const [top2, setTop] = useState(100);
   //   const [left2, setLeft] = useState(100);
   //   const [rotateAngle, setRotateAngle] = useState(0);
-  const { image_url, xcoor, ycoor, rotate } = list;
+  const { image_url, xcoor, ycoor, rotate, width, height } = list;
   console.log(list);
   const [position, setPosition] = useState({
     width2: 200,
@@ -20,6 +20,7 @@ export default function NewPhoto({ list }) {
     left2: 100,
     rotate2: 0,
   });
+  console.log(position);
   console.log(setPosition);
 
   // eslint-disable-next-line no-unused-vars
@@ -60,20 +61,21 @@ export default function NewPhoto({ list }) {
     <div>
       <div
         style={{
-          width: position.width2,
-          height: position.height2,
+          width,
+          height,
           left: xcoor + 1,
           top: ycoor + 1,
           position: 'absolute',
           rotate: `${rotate}deg`,
           border: '1px solid black',
+          zIndex: 1,
         }}
       />
       <img
         src={image_url}
         style={{
-          width: position.width2,
-          height: position.height2,
+          width,
+          height,
           left: xcoor + 1,
           top: ycoor + 1,
           rotate: `${rotate}deg`,
@@ -85,8 +87,8 @@ export default function NewPhoto({ list }) {
       <ResizableRect
         left={xcoor + 1}
         top={ycoor + 1}
-        width={position.width2}
-        height={position.height2}
+        width={width}
+        height={height}
         rotateAngle={rotate}
         minWidth={100} // 최소크기
         // aspectRatio={false}
