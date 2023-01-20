@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 // import styled from 'styled-components';
+
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
 // import img from '../Image/ID.png';
@@ -57,6 +58,17 @@ export default function NewPhoto({ list }) {
 
   return (
     <div>
+      <div
+        style={{
+          width: position.width2,
+          height: position.height2,
+          left: xcoor + 1,
+          top: ycoor + 1,
+          position: 'absolute',
+          rotate: `${rotate}deg`,
+          border: '1px solid black',
+        }}
+      />
       <img
         src={image_url}
         style={{
@@ -66,6 +78,7 @@ export default function NewPhoto({ list }) {
           top: ycoor + 1,
           rotate: `${rotate}deg`,
           position: 'absolute',
+          zIndex: 1,
         }}
         alt=""
       />

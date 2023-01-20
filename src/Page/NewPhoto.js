@@ -60,7 +60,16 @@ export default function NewPhoto({ parentFunction, photo }) {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        width: position.width2,
+        height: position.height2,
+        // left: position.left2 + 1,
+        // top: position.top2 + 1,
+        position: 'absolute',
+        zIndex: 1,
+      }}
+    >
       <img
         src={rawLog}
         style={{
