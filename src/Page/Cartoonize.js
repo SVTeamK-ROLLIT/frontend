@@ -20,42 +20,32 @@ const CartoonBtn = styled.button`
 `;
 
 function Cartoonize({ files }) {
-  const [url, seturl] = useState('');
-  const [taskId, setTaskId] = useState('');
+  //   const [url, seturl] = useState('');
+  //   const [taskId, setTaskId] = useState('');
 
   const onSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append('image', files[0].file);
-      const response = await axios.post(
-        'http://127.0.0.1:8080/api/v1/photos',
-        formData,
-      );
-      seturl(response.data);
-      console.log(response.data);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
-    try {
-      const response2 = await axios.post(
-        'http://127.0.0.1:8080/api/v1/papers/cartoons',
-        url,
-      );
-      console.log(response2.data);
-      setTaskId(response2.data);
-      console.log('taskId: ', taskId);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
-    try {
-      const response3 = await axios.post(
-        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-        taskId,
-      );
-      console.log(response3.data);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
+    const formData = new FormData();
+    formData.append('image', files[0].file);
+    const response = await axios.post(
+      'http://127.0.0.1:8080/api/v1/photos',
+      formData,
+    );
+    // seturl(response.data);
+    console.log(response.data);
+
+    const response2 = await axios.post(
+      'http://127.0.0.1:8080/api/v1/papers/cartoons',
+      response.data,
+    );
+
+    console.log(response2.data);
+    // setTaskId(response2.data);
+
+    const response3 = await axios.post(
+      'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+      response2.data,
+    );
+    console.log(response3.data);
   };
 
   //   console.log(response.data.url);
