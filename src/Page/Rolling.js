@@ -23,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
   width: 90rem; //Props 사용하기
-  background-image: url(${props => props.bgimage});
+  background-image:url(${props => props.bgimage}) ;
   margin: 0 auto;
   background-size: cover;
   /* background-position: center; */
