@@ -4,7 +4,11 @@ import { FcExpand } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import image1 from '../Image/image1.png';
+import image2 from '../Image/image2.png';
+import image3 from '../Image/image3.png';
+import image4 from '../Image/image4.png';
+import image5 from '../Image/image5.png';
 import PhotoModal from './FilePondTemplate';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
@@ -23,7 +27,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
   width: 90rem; //Props 사용하기
-  background-image:url(${props => props.bgimage}) ;
+  background-image: url(${props => props.bgimage});
   margin: 0 auto;
   background-size: cover;
   /* background-position: center; */
@@ -135,15 +139,15 @@ function Rolling() {
   const [backgroundImg, setBackgroundImg] = useState();
   function bgimage(paperUrl) {
     if (paperUrl === '1') {
-      setBackgroundImg('../Image/image1.png');
+      setBackgroundImg(image1);
     } else if (paperUrl === '2') {
-      setBackgroundImg('../Image/image2.png');
+      setBackgroundImg(image2);
     } else if (paperUrl === '3') {
-      setBackgroundImg('../Image/image3.png');
+      setBackgroundImg(image3);
     } else if (paperUrl === '4') {
-      setBackgroundImg('../Image/image4.png');
+      setBackgroundImg(image4);
     } else if (paperUrl === '5') {
-      setBackgroundImg('../Image/image5.png');
+      setBackgroundImg(image5);
     }
   }
 
@@ -272,16 +276,12 @@ function Rolling() {
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
   const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
-  const backimg = items.paper_url;
-  console.log(items.paper_url);
   useEffect(() => {
     const getMemos = async () => {
       try {
         const item = await axios.get(
           `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
         );
-        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/2/');
-        console.log('successGet');
         setItems(item.data);
         console.log(item.data);
         setLength(
@@ -289,8 +289,9 @@ function Rolling() {
             item.data.image.length +
             item.data.sticker.length,
         );
+        console.log(item.data.paper_url);
         bgimage(item.data.paper_url);
-        console.log(backgroundImg);
+        // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -298,7 +299,7 @@ function Rolling() {
     };
     getMemos();
   }, [isActive]);
-
+  console.log(backgroundImg);
   const parentFunction = positon => {
     setCoor(positon);
     console.log(coor);
