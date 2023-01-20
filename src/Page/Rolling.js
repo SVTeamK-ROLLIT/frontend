@@ -243,6 +243,8 @@ function Rolling() {
     formData.append('xcoor', coor.left2);
     formData.append('ycoor', coor.top2);
     formData.append('rotate', coor.rotate2);
+    formData.append('width', coor.width2);
+    formData.append('height', coor.height2);
     axios
       .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
       .then(() => {
