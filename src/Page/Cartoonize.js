@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
@@ -27,82 +27,50 @@ const CartoonBtn = styled.button`
 //   const [count, setCount] = useState(0);
 //   const [intervalId, setIntervalId] = useState(null);
 
-//   useEffect(() => {
-//     if (intervalId === null) {
-//       const id = setInterval(async () => {
-//         const response = await axios.post(
-//           'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-//           { taskId },
-//         );
-//         // eslint-disable-next-line
-//         const data = response.data;
-//         setResult(data.status);
-//         if (data.status !== 'still working' || count >= 10) {
-//           clearInterval(intervalId);
-//           setIntervalId(null);
-//         }
-//         setCount(count + 1);
-//       }, 2000);
-//       setIntervalId(id);
-//     }
-//   }, [intervalId, count, taskId]);
-//   console.log('result', result);
-// }
-function Cartoonize({
-  files,
-  closeModal,
-  setIsActive,
-  setIsPhoto,
-  setPhoto,
-  setRawLog,
-}) {
-  const [imageUrl, setImageUrl] = useState(null);
+function Cartoonize({ files }) {
+  const [resultImage, setResultImage] = useState({});
 
   async function run1() {
     const formData = new FormData();
     formData.append('image', files[0].file);
-    const response = await axios.post(`${backBaseUrl}/api/v1/photos`, formData);
+    const response = await axios.post(
+      'http://127.0.0.1:8080/api/v1/photos',
+      formData,
+    );
     console.log(response.data);
     const response2 = await axios.post(
       `${backBaseUrl}/api/v1/papers/cartoons`,
       response.data,
     );
-    // console.log(response2.data);
-    return response2.data;
-  }
+    console.log(response2.data);
+    let count = 0;
 
-  const onSubmit = async () => {
-    const run1Result = await run1();
-    console.log('2번쨰 데이터 값 ', run1Result.task_id);
-    let counter = 0;
-    const interval = setInterval(() => {
-      const datas = axios
-        .get(
-          `${backBaseUrl}/api/v1/papers/cartoons/results/${run1Result.task_id}`,
-        )
-        .then(response => {
-          /* eslint-disable no-plusplus */
-          counter++;
-          if (counter >= 10 || response.data.url) {
-            console.log('response: ', response.data);
-            setImageUrl(response.data.url);
-            clearInterval(interval);
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          clearInterval(interval);
-        });
-      console.log('datas: ', datas);
-    }, 2000);
-    await closeModal();
-    await setRawLog(imageUrl);
-    await setIsPhoto(true);
-    await setIsActive(true);
+    const interval = await setInterval(async () => {
+      const result = await axios.post(
+        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+        response2.data,
+      );
+      console.log('함수내부2', resultImage);
+
+      if (result.data.message === 'still working') {
+        count += 1;
+      } else if (result.data.url) {
+        setResultImage(result.data.url);
+        clearInterval(interval);
+        console.log('* get result success *');
+        console.log('함수내부1', resultImage);
+      } else if (count <= 20) {
+        // interval();
+        count += 1;
+      } else {
+        clearInterval(interval);
+        count += 1;
+        console.log('* time out *');
+      }
+    }, 1000);
+    console.log('함수외부', resultImage);
   };
   console.log('@@@@@', imageUrl);
-
-  //   console.log(response.data.url);
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
