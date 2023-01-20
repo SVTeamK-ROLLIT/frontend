@@ -165,6 +165,8 @@ function Rolling() {
 
   // 모달창 열면 메모지로 이동
   const openMemo = useCallback(() => {
+    localStorage.removeItem('paperId');
+    localStorage.setItem('paperId', paperId);
     navigate('/Memo');
   }, []);
 
@@ -246,7 +248,7 @@ function Rolling() {
     formData.append('width', coor.width2);
     formData.append('height', coor.height2);
     axios
-      .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
+      .post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/photos`, formData)
       .then(() => {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
@@ -263,9 +265,8 @@ function Rolling() {
     const getMemos = async () => {
       try {
         const item = await axios.get(
-          `http://127.0.0.1:8080/api/v1/papers/${paperId}`,
+          `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
         );
-        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/');
         console.log('successGet');
         setItems(item.data);
         console.log(item.data);
