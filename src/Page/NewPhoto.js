@@ -10,7 +10,7 @@ export default function NewPhoto({ parentFunction, photo }) {
   //   const [left2, setLeft] = useState(100);
   //   const [rotateAngle, setRotateAngle] = useState(0);
   const [position, setPosition] = useState({
-    width2: 200,
+    width2: 100,
     height2: 100,
     top2: 100,
     left2: 100,
@@ -90,8 +90,7 @@ export default function NewPhoto({ parentFunction, photo }) {
         rotateAngle={position.rotate2}
         minWidth={100} // 최소크기
         // aspectRatio={false}
-        // minWidth={10}
-        // minHeight={10}
+        minHeight={100}
         zoomable="n, w, s, e, nw, ne, se, sw"
         // rotatable={true}
         // onRotateStart={this.handleRotateStart}
