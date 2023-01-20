@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
@@ -28,8 +28,7 @@ const CartoonBtn = styled.button`
 //   const [intervalId, setIntervalId] = useState(null);
 
 function Cartoonize({ files }) {
-  //   const [url, seturl] = useState('');
-  //   const [taskId, setTaskId] = useState('');
+  const [resultImage, setResultImage] = useState({});
 
   async function run1() {
     const formData = new FormData();
@@ -78,8 +77,6 @@ function Cartoonize({ files }) {
     }
   };
   console.log('@@@@@', imageUrl);
-
-  //   console.log(response.data.url);
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
