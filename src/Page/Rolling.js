@@ -12,11 +12,7 @@ import Photo from './RollingPhoto';
 import NewMemo from './newMemo';
 import NewPhoto from './NewPhoto';
 import NewSticky from './NewSticky';
-import background1 from '../Image/image1.png';
-import background2 from '../Image/image2.png';
-import background3 from '../Image/image3.png';
-import background4 from '../Image/image4.png';
-import background5 from '../Image/image5.png';
+
 import pencilicon from '../Image/pencilicon.png';
 import galleryicon from '../Image/galleryicon.png';
 import memoicon from '../Image/memoicon.svg';
@@ -27,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
   width: 90rem; //Props 사용하기
-  background-image:url(${props => props.bgimage}) ;
+  background-image: url(${props => props.bgimage});
   margin: 0 auto;
   background-size: cover;
   /* background-position: center; */
@@ -136,18 +132,18 @@ const SaveBtn = styled.button`
 function Rolling() {
   const location = useLocation();
   const navigate = useNavigate();
-  let backgroundImage;
+  const [backgroundImg, setBackgroundImg] = useState();
   function bgimage(paperUrl) {
     if (paperUrl === '1') {
-      backgroundImage = background1;
+      setBackgroundImg('../Image/image1.png');
     } else if (paperUrl === '2') {
-      backgroundImage = background2;
+      setBackgroundImg('../Image/image2.png');
     } else if (paperUrl === '3') {
-      backgroundImage = background3;
+      setBackgroundImg('../Image/image3.png');
     } else if (paperUrl === '4') {
-      backgroundImage = background4;
+      setBackgroundImg('../Image/image4.png');
     } else if (paperUrl === '5') {
-      backgroundImage = background5;
+      setBackgroundImg('../Image/image5.png');
     }
   }
 
@@ -278,7 +274,6 @@ function Rolling() {
   const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   const backimg = items.paper_url;
   console.log(items.paper_url);
-  bgimage(backimg);
   useEffect(() => {
     const getMemos = async () => {
       try {
@@ -294,6 +289,8 @@ function Rolling() {
             item.data.image.length +
             item.data.sticker.length,
         );
+        bgimage(item.data.paper_url);
+        console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -336,7 +333,7 @@ function Rolling() {
     );
   }
   return (
-    <SketchBookImg bgimage=${background2}>
+    <SketchBookImg bgimage={backgroundImg}>
       <AllWrap>
         <Container>
           {items.memo &&
