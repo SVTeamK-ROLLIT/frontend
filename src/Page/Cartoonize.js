@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 // Import React FilePond
@@ -20,8 +20,7 @@ const CartoonBtn = styled.button`
 `;
 
 function Cartoonize({ files }) {
-  //   const [url, seturl] = useState('');
-  //   const [taskId, setTaskId] = useState('');
+  const [resultImage, setResultImage] = useState({});
 
   const onSubmit = async () => {
     const formData = new FormData();
@@ -30,25 +29,39 @@ function Cartoonize({ files }) {
       'http://127.0.0.1:8080/api/v1/photos',
       formData,
     );
-    // seturl(response.data);
     console.log(response.data);
-
     const response2 = await axios.post(
       'http://127.0.0.1:8080/api/v1/papers/cartoons',
       response.data,
     );
-
     console.log(response2.data);
-    // setTaskId(response2.data);
+    let count = 0;
 
-    const response3 = await axios.post(
-      'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-      response2.data,
-    );
-    console.log(response3.data);
+    const interval = await setInterval(async () => {
+      const result = await axios.post(
+        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+        response2.data,
+      );
+      console.log('함수내부2', resultImage);
+
+      if (result.data.message === 'still working') {
+        count += 1;
+      } else if (result.data.url) {
+        setResultImage(result.data.url);
+        clearInterval(interval);
+        console.log('* get result success *');
+        console.log('함수내부1', resultImage);
+      } else if (count <= 20) {
+        // interval();
+        count += 1;
+      } else {
+        clearInterval(interval);
+        count += 1;
+        console.log('* time out *');
+      }
+    }, 1000);
+    console.log('함수외부', resultImage);
   };
-
-  //   console.log(response.data.url);
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
