@@ -261,6 +261,7 @@ function Rolling() {
 
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
+  const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   useEffect(() => {
     const getMemos = async () => {
       try {
@@ -270,6 +271,11 @@ function Rolling() {
         console.log('successGet');
         setItems(item.data);
         console.log(item.data);
+        setLength(
+          item.data.memo.length +
+            item.data.image.length +
+            item.data.sticker.length,
+        );
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -311,7 +317,6 @@ function Rolling() {
       <div />
     );
   }
-
   return (
     <SketchBookImg>
       <AllWrap>
@@ -332,10 +337,10 @@ function Rolling() {
         </Container>
 
         <MyPageBtn>마이페이지</MyPageBtn>
-        <Text>to.Team_k</Text>
+        <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
-          <UserNum>12</UserNum>
+          <UserNum>{length}</UserNum>
         </UserWrap>
         <MemoWrap />
         {isActive ? (
