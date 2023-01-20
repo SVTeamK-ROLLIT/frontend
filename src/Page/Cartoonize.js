@@ -63,8 +63,6 @@ function Cartoonize({ files }) {
     console.log('함수외부', resultImage);
   };
 
-  //   console.log(response.data.url);
-
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
       <ToastContainer />
