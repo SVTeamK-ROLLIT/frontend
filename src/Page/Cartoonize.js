@@ -28,8 +28,8 @@ const CartoonBtn = styled.button`
 //   const [intervalId, setIntervalId] = useState(null);
 
 function Cartoonize({ files }) {
-  const [url, seturl] = useState('');
-  const [taskId, setTaskId] = useState('');
+  //   const [url, seturl] = useState('');
+  //   const [taskId, setTaskId] = useState('');
 
   async function run1() {
     const formData = new FormData();
