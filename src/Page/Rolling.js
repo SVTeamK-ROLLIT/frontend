@@ -165,6 +165,8 @@ function Rolling() {
 
   // 모달창 열면 메모지로 이동
   const openMemo = useCallback(() => {
+    localStorage.removeItem('paperId');
+    localStorage.setItem('paperId', paperId);
     navigate('/Memo');
   }, []);
 
@@ -246,7 +248,7 @@ function Rolling() {
     formData.append('width', coor.width2);
     formData.append('height', coor.height2);
     axios
-      .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
+      .post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/photos`, formData)
       .then(() => {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
@@ -259,16 +261,21 @@ function Rolling() {
 
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
+  const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   useEffect(() => {
     const getMemos = async () => {
       try {
         const item = await axios.get(
-          `http://127.0.0.1:8080/api/v1/papers/${paperId}`,
+          `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
         );
-        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/');
         console.log('successGet');
         setItems(item.data);
         console.log(item.data);
+        setLength(
+          item.data.memo.length +
+            item.data.image.length +
+            item.data.sticker.length,
+        );
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
@@ -310,7 +317,6 @@ function Rolling() {
       <div />
     );
   }
-
   return (
     <SketchBookImg>
       <AllWrap>
@@ -331,10 +337,10 @@ function Rolling() {
         </Container>
 
         <MyPageBtn>마이페이지</MyPageBtn>
-        <Text>to.Team_k</Text>
+        <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
-          <UserNum>12</UserNum>
+          <UserNum>{length}</UserNum>
         </UserWrap>
         <MemoWrap />
         {isActive ? (

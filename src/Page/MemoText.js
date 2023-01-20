@@ -100,7 +100,8 @@ function MemoText({
 
   const submit = async () => {
     localStorage.setItem('textcase', JSON.stringify({ textcase }));
-    navigate('/Rolling');
+    const paperId = localStorage.getItem('paperId');
+    navigate(`/rolling/${paperId}`);
   };
   const handleInputChange = e => {
     setMemoContent(e.target.value);
