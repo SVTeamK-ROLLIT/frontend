@@ -265,6 +265,7 @@ function Rolling() {
         const item = await axios.get(
           `http://127.0.0.1:8080/api/v1/papers/${paperId}`,
         );
+        const item = await axios.get('http://127.0.0.1:8080/api/v1/papers/1/');
         console.log('successGet');
         setItems(item.data);
         console.log(item.data);
