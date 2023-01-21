@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import anonymous from './anonymous';
 
 export default function newMemo({ list, setCoor }) {
   const nodeRef = useRef(null);
-  const { content, color, font, fontColor, nickname } = list;
+  const { content, color, font, fontColor } = list;
+  let { nickname } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
   const [Opacity, setOpacity] = useState(false);
+
+  if (nickname === '') {
+    nickname = anonymous();
+  }
 
   const trackPos = data => {
     setPosition({ x: data.x, y: data.y });
