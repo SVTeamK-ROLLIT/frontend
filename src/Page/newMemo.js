@@ -32,8 +32,6 @@ export default function newMemo({ list, setCoor }) {
     >
       <MemoBox
         background={color}
-        font={font}
-        color={fontColor}
         ref={nodeRef}
         className="box"
         style={{
@@ -41,27 +39,37 @@ export default function newMemo({ list, setCoor }) {
           position: 'absolute',
         }}
       >
-        <div>{content}</div>
-        <Name>작성자:{nickname} </Name>
+        <MemoText font={font} color={fontColor}>
+          {content}
+        </MemoText>
+        <Name>
+          <b>from.</b>
+          {nickname}{' '}
+        </Name>
       </MemoBox>
     </Draggable>
   );
 }
 
 const MemoBox = styled.div`
+  padding: 0.4rem;
   width: 184px;
   height: 174px;
   background: ${props => props.background};
   border-radius: 15px;
-  font-family: ${props => props.font};
-  color: ${props => props.color};
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const MemoText = styled.div`
+  width: 170px;
+  word-break: break-all;
+  color: ${props => props.color};
+  font-family: ${props => props.font};
 `;
 
 const Name = styled.div`
-  background-color: red;
-  order: 1;
-  width: 7rem;
-  align-self: flex-end;
+  text-align: right;
+  align-items: end;
 `;
