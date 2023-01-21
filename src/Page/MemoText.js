@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import anonymous from './anonymous';
 
 import sketchbook from '../Image/Sketchbook2.png';
 import pencil from '../Image/pencil.png';
@@ -99,6 +100,9 @@ function MemoText({
   };
 
   const submit = async () => {
+    if (textcase.nickname === '') {
+      textcase.nickname = anonymous();
+    }
     localStorage.setItem('textcase', JSON.stringify({ textcase }));
     const paperId = localStorage.getItem('paperId');
     navigate(`/rolling/${paperId}`);
