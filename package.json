@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.2.1",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.2",
+    "babel-eslint": "^10.1.0",
     "browser-image-compression": "^2.0.0",
     "carousel": "^0.0.3",
     "eslint-config-airbnb": "^19.0.4",
