@@ -4,7 +4,7 @@ import Draggable from 'react-draggable';
 
 export default function newMemo({ list, setCoor }) {
   const nodeRef = useRef(null);
-  const { content, color, font, fontColor } = list;
+  const { content, color, font, fontColor, nickname } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const [Opacity, setOpacity] = useState(false);
@@ -42,7 +42,7 @@ export default function newMemo({ list, setCoor }) {
         }}
       >
         <div>{content}</div>
-        <Name>작성자: </Name>
+        <Name>작성자:{nickname} </Name>
       </MemoBox>
     </Draggable>
   );
