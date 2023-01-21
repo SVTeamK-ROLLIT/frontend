@@ -65,6 +65,9 @@ const MemoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  :hover {
+    z-index: 1000;
+  }
 `;
 
 const MemoText = styled.div`
