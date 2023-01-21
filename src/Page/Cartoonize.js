@@ -69,6 +69,15 @@ function Cartoonize({ files }) {
       }
     }, 1000);
     console.log('함수외부', resultImage);
+    await useEffect(() => {
+      const s3Url = resultImage;
+      fetch(s3Url)
+        .then(response => response.blob())
+        .then(blob => {
+          const localUrl = URL.createObjectURL(blob);
+          setImageUrl(localUrl);
+        });
+    }, []);
   };
   console.log('@@@@@', imageUrl);
 
