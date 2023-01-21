@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useCallback, useEffect, useState } from 'react';
+import Snowfall from 'react-snowfall';
 import { FcExpand } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -23,6 +24,8 @@ import memoicon from '../Image/memoicon.svg';
 import usericon from '../Image/usericon.png';
 import StickerModal from './StickerModal';
 import 'react-toastify/dist/ReactToastify.css';
+
+import './snow.css';
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
@@ -334,7 +337,8 @@ function Rolling() {
     );
   }
   return (
-    <SketchBookImg bgimage={backgroundImg}>
+    <SketchBookImg className="snow" bgimage={backgroundImg}>
+      <Snowfall />
       <AllWrap>
         <Container>
           {items.memo &&
@@ -351,7 +355,6 @@ function Rolling() {
             })}
           {isItem()}
         </Container>
-
         <MyPageBtn>마이페이지</MyPageBtn>
         <Text>to.{items.title}</Text>
         <UserWrap>
