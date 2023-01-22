@@ -51,7 +51,7 @@ const Error = styled(ErrorMessage)`
   width: 15vw;
 `;
 const InputMemo = styled(Field)`
-  width: 15vw;
+  width: 20vw;
   height: 30vh;
   background-color: ${props => props.bkcolor};
   color: ${props => props.tycolor};
@@ -60,7 +60,7 @@ const InputMemo = styled(Field)`
   margin-right: 10vh;
   font-size: 1.5rem;
   border: 0 solid black;
-  padding: '1rem';
+  padding: 1rem;
   resize: none;
 `;
 
@@ -111,7 +111,6 @@ function MemoText({
       password: 1,
     };
     console.log(textcase);
-
     if (textcase.nickname === '') {
       textcase.nickname = anonymous();
     }
