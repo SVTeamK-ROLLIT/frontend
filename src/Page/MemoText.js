@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
+import * as Yup from 'yup';
 import anonymous from './anonymous';
 
 import sketchbook from '../Image/Sketchbook2.png';
@@ -42,17 +44,17 @@ const SketchbookImg = styled.div`
   align-items: center;
 `;
 
-const InputMemo = styled.textarea`
-  width: 15vw;
-  height: 30vh;
-  background-color: ${props => props.bkcolor};
-  color: ${props => props.tycolor};
-  font-family: ${props => props.pontType};
-  border-radius: 5%;
-  margin-right: 10vh;
-  font-size: 2rem;
-  border: 0 solid black;
-`;
+// const InputMemo = styled.textarea`
+//   width: 15vw;
+//   height: 30vh;
+//   background-color: ${props => props.bkcolor};
+//   color: ${props => props.tycolor};
+//   font-family: ${props => props.pontType};
+//   border-radius: 5%;
+//   margin-right: 10vh;
+//   font-size: 2rem;
+//   border: 0 solid black;
+// `;
 
 const PencilImg = styled.img`
   width: 15vh;
@@ -83,7 +85,7 @@ const MakeBtn = styled.button`
 
 function MemoText({
   memoContent,
-  setMemoContent,
+  // setMemoContent,
   memoName,
   pontType,
   rollBackColor,
@@ -107,29 +109,47 @@ function MemoText({
     const paperId = localStorage.getItem('paperId');
     navigate(`/rolling/${paperId}`);
   };
-  const handleInputChange = e => {
-    setMemoContent(e.target.value);
-    // eslint-disable-next-line
-    console.log('작성내용: ', memoContent);
-  };
+  // const handleInputChange = e => {
+  //   setMemoContent(e.target.value);
+  //   // eslint-disable-next-line
+  //   console.log('작성내용: ', memoContent);
+  // };
+  const MemoSchema = Yup.object().shape({
+    text: Yup.string().required('비어있습니다!'),
+  });
+
   return (
-    <InputWrap>
-      <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
-      <SketchbookImg>
-        <InputMemo
-          bkcolor={rollBackColor}
-          tycolor={rollTypeColor}
-          pontType={pontType}
-          onChange={handleInputChange}
-          value={memoContent}
-          placeholder="내용을 입력해주세요"
-        />
-      </SketchbookImg>
-      <PencilImg src={pencil} />
-      <MakeBtn type="submit" onClick={submit}>
-        만들기
-      </MakeBtn>
-    </InputWrap>
+    <Formik
+      initialValues={{
+        text: '',
+      }}
+      validationSchema={MemoSchema}
+      onSubmit={submit}
+    >
+      {({ values, handleSubmit, handleChange }) => (
+        <Form onSubmit={handleSubmit}>
+          <InputWrap>
+            <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
+            <SketchbookImg>
+              <Field
+                value={values.email}
+                name="text"
+                onChange={handleChange}
+                type="text"
+                placeholder="이메일"
+              />
+              <ErrorMessage
+                component="div"
+                name="text"
+                className="invalid-feedback"
+              />
+              <MakeBtn type="submit">만들기</MakeBtn>
+            </SketchbookImg>
+            <PencilImg src={pencil} />
+          </InputWrap>
+        </Form>
+      )}
+    </Formik>
   );
 }
 
