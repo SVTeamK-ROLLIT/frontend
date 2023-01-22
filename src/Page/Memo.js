@@ -21,6 +21,7 @@ function Memo() {
           memoContent={memoContent}
           setMemoContent={setMemoContent}
           memoName={memoName}
+          setMemoName={setMemoName}
           pontType={pontType}
           rollBackColor={rollBackColor}
           rollTypeColor={rollTypeColor}

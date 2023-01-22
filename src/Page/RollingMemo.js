@@ -7,7 +7,7 @@ import Draggable from 'react-draggable';
 export default function App({ list }) {
   const nodeRef = useRef(null);
 
-  const { xcoor, ycoor, content, font, font_color, color } = list;
+  const { xcoor, ycoor, content, font, font_color, color, nickname } = list;
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -37,8 +37,6 @@ export default function App({ list }) {
     >
       <MemoBox
         background={color}
-        font={font}
-        color={font_color}
         ref={nodeRef}
         className="box"
         style={{
@@ -46,17 +44,40 @@ export default function App({ list }) {
           position: 'absolute',
         }}
       >
-        <div>{content}</div>
+        <MemoText font={font} color={font_color}>
+          {content}
+        </MemoText>
+        <Name>
+          <b>from.</b>
+          {nickname}{' '}
+        </Name>
       </MemoBox>
     </Draggable>
   );
 }
 
 const MemoBox = styled.div`
+  padding: 0.4rem;
   width: 184px;
   height: 174px;
-  background-color: ${props => props.background};
+  background: ${props => props.background};
   border-radius: 15px;
-  font-family: ${props => props.font};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  :hover {
+    z-index: 1000;
+  }
+`;
+
+const MemoText = styled.div`
+  width: 170px;
+  word-break: break-all;
   color: ${props => props.color};
+  font-family: ${props => props.font};
+`;
+
+const Name = styled.div`
+  text-align: right;
+  align-items: end;
 `;
