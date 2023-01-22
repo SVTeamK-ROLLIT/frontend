@@ -8,7 +8,7 @@ const ColorDiv = styled.div`
 `;
 
 const ColorWrap = styled.div`
-  width: 20vw;
+  width: 20rem; //vw로 해서 화면이 망가졌던 것
   height: 62vh;
   margin-right: 5vw;
 `;
