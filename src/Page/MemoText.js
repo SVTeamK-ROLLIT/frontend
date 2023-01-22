@@ -40,21 +40,29 @@ const SketchbookImg = styled.div`
   background-size: 100% 100%;
   background-image: url(${sketchbook});
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-// const InputMemo = styled.textarea`
-//   width: 15vw;
-//   height: 30vh;
-//   background-color: ${props => props.bkcolor};
-//   color: ${props => props.tycolor};
-//   font-family: ${props => props.pontType};
-//   border-radius: 5%;
-//   margin-right: 10vh;
-//   font-size: 2rem;
-//   border: 0 solid black;
-// `;
+const Error = styled(ErrorMessage)`
+  color: red;
+  text-align: center;
+  width: 15vw;
+`;
+const InputMemo = styled(Field)`
+  width: 15vw;
+  height: 30vh;
+  background-color: ${props => props.bkcolor};
+  color: ${props => props.tycolor};
+  font-family: ${props => props.pontType};
+  border-radius: 5%;
+  margin-right: 10vh;
+  font-size: 1.5rem;
+  border: 0 solid black;
+  padding: '1rem';
+  resize: none;
+`;
 
 const PencilImg = styled.img`
   width: 15vh;
@@ -84,7 +92,7 @@ const MakeBtn = styled.button`
 `;
 
 function MemoText({
-  memoContent,
+  // memoContent,
   // setMemoContent,
   memoName,
   pontType,
@@ -92,16 +100,18 @@ function MemoText({
   rollTypeColor,
 }) {
   const navigate = useNavigate();
-  const textcase = {
-    content: memoContent,
-    nickname: memoName,
-    font: pontType,
-    color: rollBackColor,
-    fontColor: rollTypeColor,
-    password: 1,
-  };
 
-  const submit = async () => {
+  const submit = async values => {
+    const textcase = {
+      content: values.text,
+      nickname: memoName,
+      font: pontType,
+      color: rollBackColor,
+      fontColor: rollTypeColor,
+      password: 1,
+    };
+    console.log(textcase);
+
     if (textcase.nickname === '') {
       textcase.nickname = anonymous();
     }
@@ -115,7 +125,7 @@ function MemoText({
   //   console.log('작성내용: ', memoContent);
   // };
   const MemoSchema = Yup.object().shape({
-    text: Yup.string().required('비어있습니다!'),
+    text: Yup.string().max(40, '40자가 넘었습니다!').required('비어있습니다!'),
   });
 
   return (
@@ -131,18 +141,17 @@ function MemoText({
           <InputWrap>
             <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
             <SketchbookImg>
-              <Field
-                value={values.email}
+              <InputMemo
+                value={values.text}
                 name="text"
+                bkcolor={rollBackColor}
+                tycolor={rollTypeColor}
+                pontType={pontType}
                 onChange={handleChange}
-                type="text"
-                placeholder="이메일"
+                component="textarea" // 안해주면 defaul #input으로 적용돼서 줄바꿈이 안됨
+                placeholder="내용을 입력해주세요"
               />
-              <ErrorMessage
-                component="div"
-                name="text"
-                className="invalid-feedback"
-              />
+              <Error component="div" name="text" className="invalid-feedback" />
             </SketchbookImg>
             <PencilImg src={pencil} />
             <MakeBtn type="submit">만들기</MakeBtn>
