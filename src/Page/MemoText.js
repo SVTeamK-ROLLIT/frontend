@@ -143,9 +143,9 @@ function MemoText({
                 name="text"
                 className="invalid-feedback"
               />
-              <MakeBtn type="submit">만들기</MakeBtn>
             </SketchbookImg>
             <PencilImg src={pencil} />
+            <MakeBtn type="submit">만들기</MakeBtn>
           </InputWrap>
         </Form>
       )}
