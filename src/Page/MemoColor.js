@@ -3,21 +3,21 @@ import styled from 'styled-components';
 
 const ColorDiv = styled.div`
   flex-grow: 1;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #fcedb0;
 `;
 
 const ColorWrap = styled.div`
   width: 20rem; //vw로 해서 화면이 망가졌던 것
-  height: 62vh;
-  margin-right: 5vw;
+  height: 20rem;
+  margin-right: 3rem;
 `;
 
 const BgColorText = styled.div`
-  width: 10vw;
-  height: 6vh;
-  margin-top: 15vh;
-  font-size: 2.4vw;
+  width: 10rem;
+  height: 3rem;
+  margin-top: 8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -26,19 +26,19 @@ const BgColorText = styled.div`
 `;
 const BgColorSet = styled.button`
   //배경색
-  width: 7vh;
-  height: 7vh;
-  border-radius: 2.4vh;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.1rem;
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
 `;
 
 const FontColorText = styled.div`
-  width: 10vw;
-  height: 6vh;
-  margin-top: 2vh;
-  font-size: 2.4vw;
+  width: 10rem;
+  height: 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -48,19 +48,19 @@ const FontColorText = styled.div`
 
 const BgColorSet2 = styled.button`
   //배경색
-  width: 7vh;
-  height: 7vh;
-  border-radius: 2.4vh;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.1rem;
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
 `;
 
 const FontSetText = styled.div`
-  width: 10vw;
-  height: 7vh;
+  width: 10rem;
+  height: 3rem;
   margin-top: 1.5vh;
-  font-size: 2.4vw;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -70,10 +70,10 @@ const FontSetText = styled.div`
 
 const FontSelect = styled.select`
   //배경색
-  width: 34vh;
-  height: 4.5vh;
+  width: 17rem;
+  height: 2.3rem;
   margin: 1vh;
-  border-radius: 1vh;
+  border-radius: 0.5rem;
   border: 1px solid #999;
   option {
     color: black;
@@ -85,7 +85,7 @@ const FontSelect = styled.select`
   }
 `;
 const WriterText = styled.div`
-  width: 10vw;
+  width: 8rem;
   height: 7vh;
   margin-top: 1.5vh;
   font-size: 2.4vw;
@@ -98,10 +98,11 @@ const WriterText = styled.div`
 
 const Writer = styled.input`
   //배경색
-  width: 34vh;
-  height: 4.5vh;
-  margin: 1vh;
-  border-radius: 1vh;
+  width: 17rem;
+  height: 2.3rem;
+  margin: 0.5rem;
+  padding-left: 0.8rem;
+  border-radius: 0.5rem;
   border: 1px solid #999;
 `;
 
