@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const ColorDiv = styled.div`
-  flex-grow: 1;
+  flex-grow: 2;
   /* height: 100vh; */
   /* background-color: #fcedb0; */
 `;

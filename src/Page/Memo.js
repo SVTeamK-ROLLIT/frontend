@@ -6,7 +6,8 @@ import MemoColor from './MemoColor';
 
 const AllWrap = styled.div`
   display: flex;
-  /* height: 100vw; */
+
+  margin: auto;
 `;
 
 function Memo() {

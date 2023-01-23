@@ -9,12 +9,15 @@ import anonymous from './anonymous';
 import sketchbook from '../Image/Sketchbook2.png';
 import pencil from '../Image/pencil.png';
 
+const Div = styled.div`
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+`;
+
 const InputWrap = styled.div`
   // 내용제한, 스케치북 이미지 묶음
-
-  /* height: 60rem; */
   background-color: #fcedb0;
-  flex-grow: 0.8;
 `;
 const Text = styled.div`
   //내용은 최대 40자 까지 입력가능합니다
@@ -131,38 +134,44 @@ function MemoText({
   });
 
   return (
-    <Formik
-      initialValues={{
-        text: '',
-      }}
-      validationSchema={MemoSchema}
-      onSubmit={submit}
-    >
-      {({ values, handleSubmit, handleChange }) => (
-        <Form onSubmit={handleSubmit}>
-          <InputWrap>
-            <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
-            <SketchbookImg>
-              <InputMemo
-                value={values.text}
-                name="text"
-                bkcolor={rollBackColor}
-                tycolor={rollTypeColor}
-                pontType={pontType}
-                onChange={handleChange}
-                component="textarea" // 안해주면 defaul #input으로 적용돼서 줄바꿈이 안됨
-                placeholder="내용을 입력해주세요"
-              />
-              <Error component="div" name="text" className="invalid-feedback" />
-            </SketchbookImg>
-            <BtnWrap>
-              <PencilImg src={pencil} />
-              <MakeBtn type="submit">만들기</MakeBtn>
-            </BtnWrap>
-          </InputWrap>
-        </Form>
-      )}
-    </Formik>
+    <Div>
+      <Formik
+        initialValues={{
+          text: '',
+        }}
+        validationSchema={MemoSchema}
+        onSubmit={submit}
+      >
+        {({ values, handleSubmit, handleChange }) => (
+          <Form onSubmit={handleSubmit}>
+            <InputWrap>
+              <Text>내용은 최대 40자 까지 입력이 가능합니다.</Text>
+              <SketchbookImg>
+                <InputMemo
+                  value={values.text}
+                  name="text"
+                  bkcolor={rollBackColor}
+                  tycolor={rollTypeColor}
+                  pontType={pontType}
+                  onChange={handleChange}
+                  component="textarea" // 안해주면 defaul #input으로 적용돼서 줄바꿈이 안됨
+                  placeholder="내용을 입력해주세요"
+                />
+                <Error
+                  component="div"
+                  name="text"
+                  className="invalid-feedback"
+                />
+              </SketchbookImg>
+              <BtnWrap>
+                <PencilImg src={pencil} />
+                <MakeBtn type="submit">만들기</MakeBtn>
+              </BtnWrap>
+            </InputWrap>
+          </Form>
+        )}
+      </Formik>
+    </Div>
   );
 }
 
