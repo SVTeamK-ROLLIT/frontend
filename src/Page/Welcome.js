@@ -9,15 +9,22 @@ import Outlog from './Outlog';
 import sketchbook from '../Image/sketchbookWelcome.png';
 import pencil from '../Image/pencil.png';
 
-const SketchbookImg = styled.img`
-  //뒷 배경
-  width: 150vh;
-  height: 85vh;
-
-  @media screen and (max-width: 70vh) {
-    top: 55%;
-  }
+const SketchbookImg = styled.div`
+  width: 122rem;
+  height: 65rem;
+  // border: 5px solid #535353;
+  background-image: url(${sketchbook});
 `;
+
+// const SketchbookImg = styled.img`
+//   //뒷 배경
+//   width: 150vh;
+//   height: 85vh;
+
+//   @media screen and (max-width: 70vh) {
+//     top: 55%;
+//   }
+// `;
 
 const ImgWrap = styled.div`
   position: relative;
@@ -92,28 +99,26 @@ const BoxWrap = styled.div`
 //   -webkit-text-stroke-width: 1.1px;
 //   -webkit-text-stroke-color: black;
 // `;
-
-const PencilImg = styled.img`
-  width: 15vh;
-  height: 8vh;
-  // 스캐치북 위에 올리기
-  position: absolute;
+const StartWrap = styled.div`
+  position: fixed;
   top: 70%;
-  left: 42%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+`;
+const PencilImg = styled.img`
+  width: 3.6rem;
+  height: 3rem;
+  margin-top: 3%;
+  // 스캐치북 위에 올리기
 `;
 
 const StartBtn = styled.button`
-  width: 24vh;
-  height: 8vh;
+  width: 15rem;
+  height: 3.5rem;
   border-radius: 1rem;
-  font-size: 4vh;
+  font-size: 3rem;
   font-weight: 800;
-  // 스캐치북 위에 올리기
-  position: absolute;
-  top: 70%;
-  left: 51%;
-  transform: translate(-50%, -50%);
 
   font-family: 'Cafe24Ssurround';
   color: white;
@@ -157,8 +162,10 @@ function Welcome() {
           <ImgWrap>
             <SketchbookImg src={sketchbook} />
           </ImgWrap>
-          <PencilImg src={pencil} />
-          <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+          <StartWrap>
+            <PencilImg src={pencil} />
+            <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+          </StartWrap>
         </BoxWrap>
       </AllWrap>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
