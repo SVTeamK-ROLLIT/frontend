@@ -9,6 +9,8 @@ const ColorDiv = styled.div`
   @media (max-width: 1100px) {
     margin: auto;
     padding-bottom: 3rem;
+    flex-grow: 1;
+    /* width: 60rem; */
   } ;
 `;
 

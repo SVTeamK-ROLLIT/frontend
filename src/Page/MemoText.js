@@ -17,7 +17,7 @@ const Div = styled.div`
 
 const InputWrap = styled.div`
   // 내용제한, 스케치북 이미지 묶음
-  background-color: #fcedb0;
+  /* background-color: #fcedb0; */
 `;
 const Text = styled.div`
   //내용은 최대 40자 까지 입력가능합니다
@@ -32,6 +32,10 @@ const Text = styled.div`
   padding-top: 8rem;
   color: black;
   display: block;
+  @media (max-width: 800px) {
+    padding-left: 5rem;
+    width: 40rem;
+  } ;
 `;
 
 const SketchbookImg = styled.div`
@@ -46,6 +50,10 @@ const SketchbookImg = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 800px) {
+    width: 43rem;
+    margin: auto;
+  } ;
 `;
 
 const Error = styled(ErrorMessage)`
