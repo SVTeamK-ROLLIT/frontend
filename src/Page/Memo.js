@@ -6,6 +6,13 @@ import MemoColor from './MemoColor';
 
 const AllWrap = styled.div`
   display: flex;
+  margin: auto;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fcedb0;
+  }
 `;
 
 function Memo() {
@@ -15,7 +22,7 @@ function Memo() {
   const [memoName, setMemoName] = useState('');
   const [memoContent, setMemoContent] = useState('');
   return (
-    <div>
+    <div className="mypage">
       <AllWrap>
         <MemoText
           memoContent={memoContent}

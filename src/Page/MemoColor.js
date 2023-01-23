@@ -2,78 +2,106 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const ColorDiv = styled.div`
-  flex-grow: 1;
-  height: 100vh;
+  flex-grow: 2;
+  /* height: 100rem; */
   background-color: #fcedb0;
+
+  @media (max-width: 1100px) {
+    margin: auto;
+    padding-bottom: 3rem;
+    flex-grow: 1;
+    /* width: 60rem; */
+  } ;
 `;
 
 const ColorWrap = styled.div`
-  width: 20vw;
-  height: 62vh;
-  margin-right: 5vw;
+  width: 20rem;
+  margin-right: 3rem;
+  @media (max-width: 1100px) {
+    width: 37rem;
+    margin: 0;
+  } ;
 `;
 
 const BgColorText = styled.div`
-  width: 10vw;
-  height: 6vh;
-  margin-top: 15vh;
-  font-size: 2.4vw;
+  //##배경색##
+  width: 10rem;
+  height: 3rem;
+  margin-top: 8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6rem;
+    margin-top: 2rem;
+  } ;
 `;
 const BgColorSet = styled.button`
-  //배경색
-  width: 7vh;
-  height: 7vh;
-  border-radius: 2.4vh;
+  //배경색버튼
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.1rem;
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
 `;
 
 const FontColorText = styled.div`
-  width: 10vw;
-  height: 6vh;
-  margin-top: 2vh;
-  font-size: 2.4vw;
+  //##글자색
+  width: 10rem;
+  height: 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const BgColorSet2 = styled.button`
-  //배경색
-  width: 7vh;
-  height: 7vh;
-  border-radius: 2.4vh;
+  //글자색 버튼
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.1rem;
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
 `;
 
 const FontSetText = styled.div`
-  width: 10vw;
-  height: 7vh;
-  margin-top: 1.5vh;
-  font-size: 2.4vw;
+  //##폰트설정##//
+  width: 10rem;
+  height: 3rem;
+  margin-top: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 7.8rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const FontSelect = styled.select`
-  //배경색
-  width: 34vh;
-  height: 4.5vh;
-  margin: 1vh;
-  border-radius: 1vh;
+  //폰트설정 필터
+  width: 17rem;
+  height: 2.3rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
   border: 1px solid #999;
   option {
     color: black;
@@ -83,26 +111,46 @@ const FontSelect = styled.select`
     min-height: 20px;
     padding: 0px 2px 1px;
   }
+  @media (max-width: 1100px) {
+    display: block;
+    margin: auto;
+    width: 25rem;
+    margin-top: 1rem;
+  } ;
 `;
 const WriterText = styled.div`
-  width: 10vw;
-  height: 7vh;
-  margin-top: 1.5vh;
-  font-size: 2.4vw;
+  //작성자//
+  width: 8rem;
+  height: 3rem;
+  margin-top: 1.2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6.5rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const Writer = styled.input`
-  //배경색
-  width: 34vh;
-  height: 4.5vh;
-  margin: 1vh;
-  border-radius: 1vh;
+  //##작성자
+  width: 17rem;
+  height: 2.3rem;
+  margin: 0.5rem;
+  padding-left: 0.8rem;
+  border-radius: 0.5rem;
   border: 1px solid #999;
+  @media (max-width: 1100px) {
+    display: block;
+    margin: auto;
+    width: 25rem;
+    height: 3rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 function MemoColor({
