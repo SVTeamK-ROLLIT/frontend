@@ -3,17 +3,16 @@ import styled from 'styled-components';
 
 const ColorDiv = styled.div`
   flex-grow: 2;
-  /* height: 100vh; */
-  /* background-color: #fcedb0; */
+  /* height: 100rem; */
+  background-color: #fcedb0;
 `;
 
 const ColorWrap = styled.div`
-  width: 20rem; //vw로 해서 화면이 망가졌던 것
-  height: 20rem;
   margin-right: 3rem;
 `;
 
 const BgColorText = styled.div`
+  //##배경색##
   width: 10rem;
   height: 3rem;
   margin-top: 8rem;
@@ -25,7 +24,7 @@ const BgColorText = styled.div`
   -webkit-text-stroke-color: black;
 `;
 const BgColorSet = styled.button`
-  //배경색
+  //배경색버튼
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1.1rem;
@@ -35,6 +34,7 @@ const BgColorSet = styled.button`
 `;
 
 const FontColorText = styled.div`
+  //##글자색
   width: 10rem;
   height: 3rem;
   margin-top: 1rem;
@@ -47,7 +47,7 @@ const FontColorText = styled.div`
 `;
 
 const BgColorSet2 = styled.button`
-  //배경색
+  //글자색 버튼
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1.1rem;
@@ -90,7 +90,7 @@ const WriterText = styled.div`
   width: 8rem;
   height: 3rem;
   margin-top: 1.2rem;
-  font-size: 2.4vw;
+  font-size: 2.2rem;
   font-weight: 700;
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -99,7 +99,7 @@ const WriterText = styled.div`
 `;
 
 const Writer = styled.input`
-  //배경색
+  //##작성자
   width: 17rem;
   height: 2.3rem;
   margin: 0.5rem;
