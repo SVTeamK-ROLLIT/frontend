@@ -57,9 +57,10 @@ const BgColorSet2 = styled.button`
 `;
 
 const FontSetText = styled.div`
+  //##폰트설정##//
   width: 10rem;
   height: 3rem;
-  margin-top: 1.5vh;
+  margin-top: 1.5rem;
   font-size: 2rem;
   font-weight: 700;
   color: white;
@@ -69,10 +70,10 @@ const FontSetText = styled.div`
 `;
 
 const FontSelect = styled.select`
-  //배경색
+  //폰트설정 필터
   width: 17rem;
   height: 2.3rem;
-  margin: 1vh;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #999;
   option {
@@ -85,9 +86,10 @@ const FontSelect = styled.select`
   }
 `;
 const WriterText = styled.div`
+  //작성자//
   width: 8rem;
-  height: 7vh;
-  margin-top: 1.5vh;
+  height: 3rem;
+  margin-top: 1.2rem;
   font-size: 2.4vw;
   font-weight: 700;
   color: white;

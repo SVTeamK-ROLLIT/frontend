@@ -12,27 +12,29 @@ import pencil from '../Image/pencil.png';
 const InputWrap = styled.div`
   // 내용제한, 스케치북 이미지 묶음
 
-  height: 100vh;
+  /* height: 60rem; */
   background-color: #fcedb0;
   flex-grow: 0.8;
 `;
 const Text = styled.div`
-  width: 90vh;
-  height: 1vh;
+  //내용은 최대 40자 까지 입력가능합니다
+  width: 55rem;
+  /* background-color: red; */
+  /* height: 1vh; */
   font-size: 3vh;
   font-weight: 800;
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
-  padding-left: 10vw;
-  padding-top: 15vh;
+  padding-left: 7rem;
+  padding-top: 8rem;
   color: black;
   display: block;
 `;
 
 const SketchbookImg = styled.div`
   //스케치북 이미지
-  width: 115vh;
-  height: 60vh;
+  width: 60rem;
+  height: 33rem;
   margin-top: 4vh;
   padding-left: 5vw;
   /* background-color: red; */
@@ -48,16 +50,16 @@ const SketchbookImg = styled.div`
 const Error = styled(ErrorMessage)`
   color: red;
   text-align: center;
-  width: 15vw;
 `;
 const InputMemo = styled(Field)`
-  width: 20vw;
-  height: 30vh;
+  //메모 입력하는 곳
+  width: 17rem;
+  height: 15rem;
   background-color: ${props => props.bkcolor};
   color: ${props => props.tycolor};
   font-family: ${props => props.pontType};
   border-radius: 5%;
-  margin-right: 10vh;
+  margin: 0 auto;
   font-size: 1.5rem;
   border: 0 solid black;
   padding: 1rem;
@@ -65,30 +67,33 @@ const InputMemo = styled(Field)`
 `;
 
 const PencilImg = styled.img`
-  width: 15vh;
-  height: 8vh;
+  width: 5rem;
+  height: 5rem;
+
   // 스캐치북 위에 올리기
-  position: absolute;
-  transform: translate(-50%, -50%);
-  margin-top: 10.7vh;
-  margin-left: 46.5vw;
+  /* position: absolute; */
+  /* transform: translate(-50%, -50%); */
+  /* padding-top: 7rem; */
+  /* margin-left: 46.5vw; */
 `;
 
 const MakeBtn = styled.button`
-  width: 24vh;
-  height: 8vh;
+  width: 8rem;
   border-radius: 1rem;
-  font-size: 4vh;
+  font-size: 2.5rem;
   font-weight: 800;
-  margin-top: 7vh;
-  margin-left: 45vw;
   // 스캐치북 위에 올리기
-  position: absolute;
   font-family: 'Cafe24Ssurround';
   color: white;
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
+`;
+
+const BtnWrap = styled.div`
+  //만들기랑 연필 이미지 버튼 감싸줌
+  display: flex;
+  justify-content: center;
 `;
 
 function MemoText({
@@ -152,8 +157,10 @@ function MemoText({
               />
               <Error component="div" name="text" className="invalid-feedback" />
             </SketchbookImg>
-            <PencilImg src={pencil} />
-            <MakeBtn type="submit">만들기</MakeBtn>
+            <BtnWrap>
+              <PencilImg src={pencil} />
+              <MakeBtn type="submit">만들기</MakeBtn>
+            </BtnWrap>
           </InputWrap>
         </Form>
       )}
