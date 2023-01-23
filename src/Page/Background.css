@@ -27,6 +27,7 @@ body .register {
 
 body .mypage {
   background-color: #fcedb0;
+  height: 100vh;
 }
 
 body .makerolling {

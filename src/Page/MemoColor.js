@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ColorDiv = styled.div`
   flex-grow: 1;
   /* height: 100vh; */
-  background-color: #fcedb0;
+  /* background-color: #fcedb0; */
 `;
 
 const ColorWrap = styled.div`

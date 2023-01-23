@@ -35,9 +35,7 @@ const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 60rem;
   height: 33rem;
-  margin-top: 4vh;
-  padding-left: 5vw;
-  /* background-color: red; */
+  margin-top: 2rem;
   /* background-size: 80rem 25rem; */
   background-size: 100% 100%;
   background-image: url(${sketchbook});

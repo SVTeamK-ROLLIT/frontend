@@ -6,6 +6,7 @@ import MemoColor from './MemoColor';
 
 const AllWrap = styled.div`
   display: flex;
+  /* height: 100vw; */
 `;
 
 function Memo() {
@@ -15,7 +16,7 @@ function Memo() {
   const [memoName, setMemoName] = useState('');
   const [memoContent, setMemoContent] = useState('');
   return (
-    <div>
+    <div className="mypage">
       <AllWrap>
         <MemoText
           memoContent={memoContent}
