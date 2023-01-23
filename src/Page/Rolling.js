@@ -27,6 +27,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './snow.css';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
   width: 90rem; //Props 사용하기
@@ -194,7 +196,7 @@ function Rolling() {
     textcase.textcase.xcoor = coor.x;
     textcase.textcase.ycoor = coor.y;
     try {
-      await axios.post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/memos`, {
+      await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/memos`, {
         content: textcase.textcase.content,
         nickname: textcase.textcase.nickname,
         font: textcase.textcase.font,
@@ -217,16 +219,13 @@ function Rolling() {
 
   const submitSticky = async () => {
     try {
-      await axios.post(
-        `http://127.0.0.1:8080/api/v1/papers/${paperId}/stickers`,
-        {
-          default_sticker_id: sticky,
-          password: '1',
-          xcoor: coor.x,
-          ycoor: coor.y,
-          rotate: 30,
-        },
-      );
+      await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/stickers`, {
+        default_sticker_id: sticky,
+        password: '1',
+        xcoor: coor.x,
+        ycoor: coor.y,
+        rotate: 30,
+      });
 
       console.log('successSticky!!!!');
       setIsSticky(false); // 스티커 기능 비활성화
@@ -265,7 +264,7 @@ function Rolling() {
     formData.append('width', coor.width2);
     formData.append('height', coor.height2);
     axios
-      .post(`http://127.0.0.1:8080/api/v1/papers/${paperId}/photos`, formData)
+      .post(`${backBaseUrl}/api/v1/papers/${paperId}/photos`, formData)
       .then(() => {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
@@ -283,7 +282,7 @@ function Rolling() {
     const getMemos = async () => {
       try {
         const item = await axios.get(
-          `http://127.0.0.1:8080/api/v1/papers/${paperId}/`,
+          `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
         setItems(item.data);
         console.log(item.data);

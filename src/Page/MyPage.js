@@ -8,6 +8,8 @@ import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 function MyPage() {
   const userId = localStorage.getItem('id');
   const [myRollPageData, setMyRollPageData] = useState();
@@ -15,9 +17,7 @@ function MyPage() {
   useEffect(() => {
     const GetPapers = async () => {
       try {
-        const datas = await axios.get(
-          `http://127.0.0.1:8080/api/v1/users/${userId}`,
-        );
+        const datas = await axios.get(`${backBaseUrl}/api/v1/users/${userId}`);
         // eslint-disable-next-line
         console.log('successGet');
         setMyRollPageData(datas.data);

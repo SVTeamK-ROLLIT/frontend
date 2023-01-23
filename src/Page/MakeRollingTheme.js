@@ -12,6 +12,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Container = styled.div``;
 
 const To = styled.div`
@@ -146,7 +148,7 @@ class SimpleSlider extends Component {
 
       try {
         const { data } = await axios.post(
-          `http://127.0.0.1:8080/api/v1/users/${userId}/papers`,
+          `${backBaseUrl}/api/v1/users/${userId}/papers`,
           {
             user_id: userId,
             paper_url: this.state.activeSlide + 1,

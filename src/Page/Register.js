@@ -13,6 +13,8 @@ import './Background.css';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 // 배경화면을 꽉 채워주기 위한 divx태그입니다
 const Background = styled.div`
   width: 100vw;
@@ -133,8 +135,9 @@ function Register({ setLogState }) {
     setIsSubmit(true);
 
     const { email, nickname, password } = values;
+    console.log(backBaseUrl);
     try {
-      await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
+      await axios.post(`${backBaseUrl}/api/v1/users/signup`, {
         email,
         password,
         nickname,

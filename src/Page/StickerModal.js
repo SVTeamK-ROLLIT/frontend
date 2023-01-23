@@ -14,6 +14,8 @@ import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const CloseBtn = styled.button`
   display: flex;
   height: 16px;
@@ -61,9 +63,7 @@ function StickerModal({
   useEffect(() => {
     const GetStickers = async () => {
       try {
-        setFiles(
-          await axios.get(`http://127.0.0.1:8080/api/v1/papers/sticker_list`),
-        );
+        setFiles(await axios.get(`${backBaseUrl}/api/v1/papers/sticker_list`));
         console.log(files);
         console.log('filesget');
       } catch (e) {

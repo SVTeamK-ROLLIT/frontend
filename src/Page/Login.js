@@ -13,6 +13,8 @@ import './Background.css';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 // 모달 스타일
 const modalStyle = {
   overlay: {
@@ -148,13 +150,10 @@ function Register({ isOpen, setIsOpen, setLogState }) {
   const submit = async values => {
     const { email, password } = values;
     try {
-      const { data } = await axios.post(
-        'http://127.0.0.1:8080/api/v1/users/login',
-        {
-          email,
-          password,
-        },
-      );
+      const { data } = await axios.post(`${backBaseUrl}/api/v1/users/login`, {
+        email,
+        password,
+      });
       toast.success(<h3>로그인 성공😎</h3>, {
         position: 'top-center',
         autoClose: 2000,
