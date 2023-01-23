@@ -126,6 +126,13 @@ const LoginBtn = styled.button`
   display: block;
   margin: 0rem auto 0rem;
 `;
+const FieldStyle = styled(Field)`
+  width: 100%;
+  margin-right: 2rem;
+  :focus {
+    outline: none;
+  }
+`;
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -190,7 +197,7 @@ function Register({ isOpen, setIsOpen, setLogState }) {
                   <Form onSubmit={handleSubmit}>
                     <KeyWrap border="0.938rem 0.938rem 0 0">
                       <IconImg src={ID} alt="" />
-                      <Field
+                      <FieldStyle
                         value={values.email}
                         name="email"
                         onChange={handleChange}
@@ -205,7 +212,7 @@ function Register({ isOpen, setIsOpen, setLogState }) {
                     />
                     <KeyWrap border="0 0 0.938rem 0.938rem">
                       <IconImg src={PW} alt="" />
-                      <Field
+                      <FieldStyle
                         type="password"
                         name="password"
                         placeholder="비밀번호"
@@ -225,9 +232,17 @@ function Register({ isOpen, setIsOpen, setLogState }) {
                     />
 
                     <ErrorMessage component="div" name="nickname" />
-                    <SignupBtn type="submit">로그인</SignupBtn>
+                    <SignupBtn
+                      disabled={localStorage.getItem('id')} // 로컬에 아이디 비번 들어갔을 경우 버튼 비활성화
+                      type="submit"
+                    >
+                      로그인
+                    </SignupBtn>
                   </Form>
-                  <LoginBtn onClick={() => navigate('/register')}>
+                  <LoginBtn
+                    disabled={localStorage.getItem('id')} // 로컬에 아이디 비번 들어갔을 경우 버튼 비활성화
+                    onClick={() => navigate('/register')}
+                  >
                     회원가입
                   </LoginBtn>
                 </div>

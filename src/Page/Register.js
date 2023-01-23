@@ -100,6 +100,14 @@ const LoginBtn = styled.button`
   margin: 0rem auto 0rem;
 `;
 
+const FieldStyle = styled(Field)`
+  width: 100%;
+  margin-right: 2rem;
+  :focus {
+    outline: none;
+  }
+`;
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('이메일 형식을 지켜주세요')
@@ -119,8 +127,11 @@ const LoginSchema = Yup.object().shape({
 function Register({ setLogState }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSumbit, setIsSubmit] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
   const submit = async values => {
+    setIsSubmit(true);
+
     const { email, nickname, password } = values;
     try {
       await axios.post('http://127.0.0.1:8080/api/v1/users/signup', {
@@ -128,7 +139,6 @@ function Register({ setLogState }) {
         password,
         nickname,
       });
-
       toast.success(
         <h3>
           회원가입이 완료되었습니다.
@@ -142,12 +152,16 @@ function Register({ setLogState }) {
       );
       setTimeout(() => {
         navigate('/welcome');
-      }, 2000);
+      }, 1800);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       toast.error(`${e.response.data.message}😭`, {
         position: 'top-center',
+        autoClose: 1800,
       });
+      setTimeout(() => {
+        setIsSubmit(false);
+      }, 2000);
     }
   };
   return (
@@ -173,7 +187,7 @@ function Register({ setLogState }) {
                 <Form onSubmit={handleSubmit}>
                   <KeyWrap border="0.938rem 0.938rem 0 0">
                     <IconImg src={ID} alt="" />
-                    <Field
+                    <FieldStyle
                       value={values.email}
                       name="email"
                       onChange={handleChange}
@@ -188,7 +202,7 @@ function Register({ setLogState }) {
                   />
                   <KeyWrap>
                     <IconImg src={PW} alt="" />
-                    <Field
+                    <FieldStyle
                       type="password"
                       name="password"
                       placeholder="비밀번호"
@@ -206,7 +220,7 @@ function Register({ setLogState }) {
                   />
                   <KeyWrap>
                     <IconImg src={PW} alt="" />
-                    <Field
+                    <FieldStyle
                       value={values.passwordcheck}
                       onChange={handleChange}
                       type="password"
@@ -221,7 +235,7 @@ function Register({ setLogState }) {
                   />
                   <KeyWrap border="0 0 0.938rem 0.938rem">
                     <IconImg src={ID} alt="" />
-                    <Field
+                    <FieldStyle
                       value={values.nickname}
                       onChange={handleChange}
                       type="text"
@@ -230,7 +244,9 @@ function Register({ setLogState }) {
                     />
                   </KeyWrap>
                   <ErrorMessage component="div" name="nickname" />
-                  <SignupBtn type="submit">회원가입</SignupBtn>
+                  <SignupBtn disabled={isSumbit} type="submit">
+                    회원가입
+                  </SignupBtn>
                 </Form>
                 <LoginBtn onClick={openModal}>로그인</LoginBtn>
               </div>
