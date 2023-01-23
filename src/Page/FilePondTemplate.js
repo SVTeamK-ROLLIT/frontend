@@ -85,6 +85,8 @@ function FilePondTemplate({
   setIsActive,
 }) {
   const [files, setFiles] = useState([]);
+
+  console.log('@@@@files', files);
   // const onSubmit = e => {
   //   e.preventDefault();
   //   const formData = new FormData();
@@ -150,7 +152,14 @@ function FilePondTemplate({
         >
           업로드
         </SumbitBtn>
-        <Cartoonize files={files} />
+        <Cartoonize
+          files={files}
+          isOpen={isOpen}
+          closeModal={closeModal}
+          setIsActive={setIsActive}
+          setIsPhoto={setIsPhoto}
+          setPhoto={setPhoto}
+        />
       </Modal>
     </div>
   );
