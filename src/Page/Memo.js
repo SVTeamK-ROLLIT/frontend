@@ -7,9 +7,12 @@ import MemoColor from './MemoColor';
 const AllWrap = styled.div`
   display: flex;
   margin: auto;
-  @media (max-width: 1200px) {
+
+  @media (max-width: 1100px) {
     flex-direction: column;
-  } ;
+    justify-content: center;
+    background-color: #fcedb0;
+  }
 `;
 
 function Memo() {

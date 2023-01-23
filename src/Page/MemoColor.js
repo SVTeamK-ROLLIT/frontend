@@ -5,10 +5,20 @@ const ColorDiv = styled.div`
   flex-grow: 2;
   /* height: 100rem; */
   background-color: #fcedb0;
+
+  @media (max-width: 1100px) {
+    margin: auto;
+    padding-bottom: 3rem;
+  } ;
 `;
 
 const ColorWrap = styled.div`
+  width: 20rem;
   margin-right: 3rem;
+  @media (max-width: 1100px) {
+    width: 37rem;
+    margin: 0;
+  } ;
 `;
 
 const BgColorText = styled.div`
@@ -22,6 +32,11 @@ const BgColorText = styled.div`
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6rem;
+    margin-top: 2rem;
+  } ;
 `;
 const BgColorSet = styled.button`
   //배경색버튼
@@ -44,6 +59,11 @@ const FontColorText = styled.div`
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const BgColorSet2 = styled.button`
@@ -67,6 +87,11 @@ const FontSetText = styled.div`
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 7.8rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const FontSelect = styled.select`
@@ -84,6 +109,12 @@ const FontSelect = styled.select`
     min-height: 20px;
     padding: 0px 2px 1px;
   }
+  @media (max-width: 1100px) {
+    display: block;
+    margin: auto;
+    width: 25rem;
+    margin-top: 1rem;
+  } ;
 `;
 const WriterText = styled.div`
   //작성자//
@@ -96,6 +127,11 @@ const WriterText = styled.div`
   font-family: 'Cafe24Ssurround';
   -webkit-text-stroke-width: 1.3px;
   -webkit-text-stroke-color: black;
+  @media (max-width: 1100px) {
+    margin: auto;
+    width: 6.5rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 const Writer = styled.input`
@@ -106,6 +142,13 @@ const Writer = styled.input`
   padding-left: 0.8rem;
   border-radius: 0.5rem;
   border: 1px solid #999;
+  @media (max-width: 1100px) {
+    display: block;
+    margin: auto;
+    width: 25rem;
+    height: 3rem;
+    margin-top: 1rem;
+  } ;
 `;
 
 function MemoColor({
