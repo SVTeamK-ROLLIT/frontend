@@ -79,32 +79,34 @@ const modalStyle = {
 };
 function FilePondTemplate({ isOpen, closeModal }) {
   const [files, setFiles] = useState([]);
-  const onSubmit = e => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('image', files[0].file);
-    formData.append('password', '1234');
-    formData.append('xcoor', '12');
-    formData.append('ycoor', '12');
-    formData.append('rotate', '20');
-    axios
-      .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
-      .then(res => {
-        console.log(formData);
-        toast.success(<h3>업로드 성공😎</h3>, {
-          position: 'top-center',
-          autoClose: 2000,
-        });
-        setTimeout(() => {
-          closeModal();
-        }, 2000);
-      })
-      .catch(err => {
-        toast.error(`${err.response.data.message} 😭`, {
-          position: 'top-center',
-        });
-      });
-  };
+
+  console.log('@@@@files', files);
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('image', files[0].file);
+  //   formData.append('password', '1234');
+  //   formData.append('xcoor', '12');
+  //   formData.append('ycoor', '12');
+  //   formData.append('rotate', '20');
+  //   axios
+  //     .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
+  //     .then(res => {
+  //       console.log(formData);
+  //       toast.success(<h3>업로드 성공😎</h3>, {
+  //         position: 'top-center',
+  //         autoClose: 2000,
+  //       });
+  //       setTimeout(() => {
+  //         closeModal();
+  //       }, 2000);
+  //     })
+  //     .catch(err => {
+  //       toast.error(`${err.response.data.message} 😭`, {
+  //         position: 'top-center',
+  //       });
+  //     });
+  // };
   return (
     <div>
       <Modal
@@ -138,7 +140,14 @@ function FilePondTemplate({ isOpen, closeModal }) {
         >
           업로드
         </SumbitBtn>
-        <Cartoonize files={files} />
+        <Cartoonize
+          files={files}
+          isOpen={isOpen}
+          closeModal={closeModal}
+          setIsActive={setIsActive}
+          setIsPhoto={setIsPhoto}
+          setPhoto={setPhoto}
+        />
       </Modal>
     </div>
   );
