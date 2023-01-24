@@ -13,6 +13,24 @@ import './Background.css';
 import ID from '../Image/ID.png';
 import PW from '../Image/PW.png';
 
+const HomeBtn = styled.button`
+  //상단 회원가입 버튼
+  width: 13rem;
+  height: 5.5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: absolute;
+  // 스캐치북 위에 올리기
+
+  clear: both;
+
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 2px 2px 2px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
+`;
+
 // 배경화면을 꽉 채워주기 위한 divx태그입니다
 const Background = styled.div`
   width: 100vw;
@@ -166,6 +184,7 @@ function Register({ setLogState }) {
   };
   return (
     <div className="register">
+      <HomeBtn onClick={() => navigate('/Welcome')}>ㅤ뒤로가기</HomeBtn>
       <Background>
         <KeysWrap>
           <TextWrap>
