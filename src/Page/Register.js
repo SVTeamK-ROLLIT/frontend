@@ -33,6 +33,7 @@ const HomeBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 
+  // 스캐치북 위에 올리기
 // 배경화면을 꽉 채워주기 위한 divx태그입니다
 const Background = styled.div`
   width: 100vw;
