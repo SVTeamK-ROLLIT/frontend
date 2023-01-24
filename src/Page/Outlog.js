@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LogoutWrap = styled.div`
@@ -42,10 +43,11 @@ const SignupBtn = styled.button`
 `;
 
 function Onlog({ onClick }) {
+  const navigate = useNavigate();
   return (
     <LogoutWrap>
       <SignupBtn onClick={onClick}>로그아웃</SignupBtn>
-      <MypageBtn>마이페이지</MypageBtn>
+      <MypageBtn onClick={() => navigate('/mypage')}>마이페이지</MypageBtn>
     </LogoutWrap>
   );
 }

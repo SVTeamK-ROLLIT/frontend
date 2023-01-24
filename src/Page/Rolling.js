@@ -354,7 +354,7 @@ function Rolling() {
             })}
           {isItem()}
         </Container>
-        <MyPageBtn>마이페이지</MyPageBtn>
+        <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
         <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
