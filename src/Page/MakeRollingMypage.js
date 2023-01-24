@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Mypagebtn = styled.button`
   width: 170px;
@@ -7,8 +8,6 @@ const Mypagebtn = styled.button`
   font-size: 30px;
   font-weight: 700;
   margin-top: 1vh;
-  margin-right: 2vw;
-  text-align: center;
   color: white;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
@@ -27,13 +26,13 @@ const Mypagebtn = styled.button`
 
 const BtnWrap = styled.div`
   display: flex;
-  justify-content: flex-end;
 `;
 
 function MakeRollingMypage() {
+  const navigate = useNavigate();
   return (
     <BtnWrap>
-      <Mypagebtn>마이페이지</Mypagebtn>
+      <Mypagebtn onClick={() => navigate('/welcome')}>ㅤ뒤로가기</Mypagebtn>
     </BtnWrap>
   );
 }
