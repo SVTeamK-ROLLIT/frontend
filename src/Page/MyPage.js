@@ -52,7 +52,7 @@ function MyPage() {
   const navigate = useNavigate();
   return (
     <div className="mypage">
-      <BackBtn onClick={() => navigate(-1)}>ㅤ뒤로가기</BackBtn>
+      <BackBtn onClick={() => navigate('/welcome')}>ㅤ뒤로가기</BackBtn>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />
