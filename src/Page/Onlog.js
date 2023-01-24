@@ -24,7 +24,7 @@ const SignupBtn = styled.button`
 
   color: white;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1.5px 1.5px 1.5px gray;
+  text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
@@ -38,7 +38,7 @@ const LoginBtn = styled.button`
 
   color: white;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1.5px 1.5px 1.5px gray;
+  text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;

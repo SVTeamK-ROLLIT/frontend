@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const LogoutWrap = styled.div`
   position: fixed;
   top: 7%;
-  left: 90%;
+  left: 88%;
   transform: translate(-50%, -50%);
   display: flex;
   z-index: 999;
@@ -20,7 +20,7 @@ const MypageBtn = styled.button`
 
   color: white;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1.5px 1.5px 1.5px gray;
+  text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
@@ -36,7 +36,7 @@ const SignupBtn = styled.button`
 
   color: white;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1.5px 1.5px 1.5px gray;
+  text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
 `;
@@ -44,8 +44,8 @@ const SignupBtn = styled.button`
 function Onlog({ onClick }) {
   return (
     <LogoutWrap>
-      <MypageBtn>마이페이지</MypageBtn>
       <SignupBtn onClick={onClick}>로그아웃</SignupBtn>
+      <MypageBtn>마이페이지</MypageBtn>
     </LogoutWrap>
   );
 }
