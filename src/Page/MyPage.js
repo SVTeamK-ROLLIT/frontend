@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 // import styled from 'styled-components';
 
@@ -9,6 +11,21 @@ import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
+const BackBtn = styled.button`
+  //상단 로그인 버튼
+  width: 14rem;
+  height: 5.5rem;
+
+  font-size: 2.5rem;
+  font-weight: 1000;
+
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 2px 2px 2px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
+`;
 
 function MyPage() {
   const userId = localStorage.getItem('id');
@@ -32,8 +49,10 @@ function MyPage() {
   }, []);
   // eslint-disable-next-line
   // console.log(myRollPageData);
+  const navigate = useNavigate();
   return (
     <div className="mypage">
+      <BackBtn onClick={() => navigate('/welcome')}>ㅤ뒤로가기</BackBtn>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />
