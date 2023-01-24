@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function MyPageItem({ dataColumn }) {
   const handleCopyClipBoard = async text => {
@@ -12,11 +13,14 @@ function MyPageItem({ dataColumn }) {
     }
   };
   console.log(dataColumn.title);
+  const navigate = useNavigate();
   return (
     <div>
-      <TitleItem>{dataColumn.title}</TitleItem>
+      <TitleItem onClick={() => navigate(`/rolling/${dataColumn.id}`)}>
+        {dataColumn.title}
+      </TitleItem>
       <PageItem>
-        <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.paper_url}`)}>
+        <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.id}`)}>
           링크복사
         </LinkBtn>
       </PageItem>
@@ -24,7 +28,7 @@ function MyPageItem({ dataColumn }) {
   );
 }
 
-const TitleItem = styled.div`
+const TitleItem = styled.button`
   width: 298px;
   height: 100px;
   background: red;
@@ -32,7 +36,7 @@ const TitleItem = styled.div`
   text-align: center;
 `;
 
-const PageItem = styled.div`
+const PageItem = styled.button`
   width: 298px;
   height: 300px;
   background: #f5f5f5;
