@@ -4,6 +4,7 @@ USER root
 WORKDIR /frontend
 COPY . /frontend
 
+RUN yarn config set network-timeout 300000
 RUN yarn --ignore-platform
 COPY . ./
 
