@@ -52,13 +52,15 @@ const ToTitleWrap = styled.div`
 const StyledSlider = styled(Slider)`
   .slick-slide div {
     outline: none;
+    margin-bottom: 0.3rem;
+    /* margin-left: -0.7rem; */
   }
   .slick-arrow {
     display: flex;
     z-index: 1;
     height: 1vw;
+    /* right: 1vw; */
     position: absolute;
-    right: 1vw;
     width: 60vw;
   }
 `;
@@ -78,7 +80,9 @@ const Count = styled.button`
   font-weight: 1000;
   color: #fff;
   text-align: center;
-  margin-left: 43.8vw;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
