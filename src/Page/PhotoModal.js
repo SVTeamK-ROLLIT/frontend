@@ -22,6 +22,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
+import Cartoonize from './Cartoonize';
 
 const SumbitBtn = styled.button`
   width: 100px;
@@ -76,7 +77,14 @@ const modalStyle = {
     zIndex: 9999,
   },
 };
-function PhotoModal({ isOpen, closeModal, setPhoto, setIsPhoto, setIsActive }) {
+function PhotoModal({
+  isOpen,
+  closeModal,
+  setPhoto,
+  setIsPhoto,
+  setIsActive,
+  setRawLog,
+}) {
   const [files, setFiles] = useState([]);
   return (
     <div>
@@ -117,6 +125,14 @@ function PhotoModal({ isOpen, closeModal, setPhoto, setIsPhoto, setIsActive }) {
         >
           업로드
         </SumbitBtn>
+        <Cartoonize
+          files={files}
+          closeModal={closeModal}
+          setIsActive={setIsActive}
+          setIsPhoto={setIsPhoto}
+          setPhoto={setPhoto}
+          setRawLog={setRawLog}
+        />
       </Modal>
     </div>
   );
