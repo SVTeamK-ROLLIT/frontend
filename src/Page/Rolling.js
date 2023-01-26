@@ -176,7 +176,6 @@ function Rolling() {
   const [sticky, setSticky] = useState(); // 스티커 ID저장
   const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
   const [photo, setPhoto] = useState();
-  const [isCancel, setIsCancel] = useState(false);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -199,13 +198,12 @@ function Rolling() {
   }, []);
 
   // post로 ###메모지### 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
-  const submitMemo = async () => {
-    console.log('hi');
-    if (setIsCancel) {
+  const submitMemo = async a => {
+    if (a) {
       // 취소 버튼을 눌렀을 경우
       setIsMemo(false); // 메모기능 비활성화
       setIsActive(false); // 수정기능 비활성화
-      setIsCancel(false);
+      // setIsCancel(false);
       localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
       return;
     }
@@ -235,14 +233,21 @@ function Rolling() {
       console.log(e);
     }
   };
+  // const submitMemoCancel = async () => {
+  //   setIsActive(false); // 수정기능 비활성화
+  //   setIsCancel(false);
+  //   localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
 
-  const submitSticky = async () => {
+  //   const textcaseString = localStorage.getItem('textcase');
+  //   const textcase = JSON.parse(textcaseString);
+  //   textcase.textcase.xcoor = coor.x;
+  // };
+  const submitSticky = async a => {
     try {
-      if (isCancel) {
+      if (a) {
         // 취소 버튼을 눌렀을 경우
-        setIsSticky(false); // 메모기능 비활성화
+        setIsSticky(false); // 스티커기능 비활성화
         setIsActive(false); // 수정기능 비활성화
-        setIsCancel(false);
         return;
       }
       await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/stickers`, {
@@ -280,12 +285,11 @@ function Rolling() {
   //     console.log(e);
   //   }
   // };
-  const submitPhoto = () => {
-    if (isCancel) {
+  const submitPhoto = a => {
+    if (a) {
       // 취소 버튼을 눌렀을 경우
-      setIsPhoto(false); // 메모기능 비활성화
+      setIsPhoto(false); // 사진기능 비활성화
       setIsActive(false); // 수정기능 비활성화
-      setIsCancel(false);
       return;
     }
     const formData = new FormData();
@@ -357,13 +361,13 @@ function Rolling() {
   }
 
   // 스티커?메모지?사진? 확인해주고 저장할때 어떤 post를 보낼지 정해주는 함수
-  function isSubmit() {
+  function isSubmit(a) {
     return isMemo ? (
-      submitMemo()
+      submitMemo(a)
     ) : isSticky ? (
-      submitSticky()
+      submitSticky(a)
     ) : isPhoto ? (
-      submitPhoto()
+      submitPhoto(a)
     ) : (
       <div />
     );
@@ -399,14 +403,14 @@ function Rolling() {
             <SaveBtn
               onClick={() => {
                 isSubmit();
+                console.log('saveBtn');
               }}
             >
               <FcExpand size="30" />
             </SaveBtn>
             <CancelBtn
               onClick={() => {
-                setIsCancel(true);
-                isSubmit();
+                isSubmit(true);
               }}
             >
               <FcCancel size="30" />
