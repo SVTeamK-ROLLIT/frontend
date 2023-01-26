@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
 
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond';
@@ -55,8 +56,39 @@ function Cartoonize({
 }) {
   const [resultImage, setResultImage] = useState({});
   const [imageUrl, setImageUrl] = useState(null);
+  // const [taskId, setTaskId] = useState('');
+  // const TaskPoller = ({ taskId }) => {
+  //   const { data1, status, refetch } = useQuery(['task', taskId], async () => {
+  //     const { data } = await axios.get(
+  //       `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${taskId}`,
+  //     );
+  //     return data;
+  //   });
 
-  const onSubmit = async () => {
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       refetch();
+  //     }, 1000);
+  //     return () => clearInterval(interval);
+  //   }, [refetch]);
+
+  //   if (status === 'loading') {
+  //     return 'Loading';
+  //   }
+
+  //   if (status === 'error') {
+  //     return 'Error!';
+  //   }
+
+  //   return `Task status: ${data1.status}`;
+  // };
+  // const fetchresult = taskId => {
+  //   return axios.get(
+  //     `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${taskId}`,
+  //   );
+  // };
+
+  async function run1() {
     const formData = new FormData();
     formData.append('image', files[0].file);
     const response = await axios.post(
@@ -68,49 +100,36 @@ function Cartoonize({
       'http://127.0.0.1:8080/api/v1/papers/cartoons',
       response.data,
     );
-    console.log(response2.data);
-    // let count = 0;
+    // console.log(response2.data);
+    return response2.data;
+  }
 
-    // const interval = setInterval(async () => {
-    //   const result = await axios.post(
-    //     'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-    //     response2.data,
-    //   );
-    //   console.log('함수내부2', resultImage);
-
-    //   if (result.data.message === 'still working') {
-    //     count += 1;
-    //   } else if (result.data.url) {
-    //     await setResultImage(result.data.url);
-    //     clearInterval(interval);
-    //     console.log('* get result success *');
-    //     console.log('함수내부1', resultImage);
-    //   } else if (count <= 20) {
-    //     // interval();
-    //     count += 1;
-    //   } else {
-    //     clearInterval(interval);
-    //     count += 1;
-    //     console.log('* time out *');
-    //   }
-    // }, 1000);
-    // console.log('함수외부', resultImage);
-    // // ##########################################################
-    // useEffect(() => {
-    //   const s3Url = resultImage;
-    //   axios({
-    //     url: s3Url,
-    //     method: 'GET',
-    //     responseType: 'blob', // important
-    //   }).then(response3 => {
-    //     const blob = new Blob([response3.data], { type: 'image/jpeg' });
-    //     const localUrl = URL.createObjectURL(blob);
-    //     setImageUrl(localUrl);
-    //   });
-    // });
-    // console.log('찍어줘', imageUrl);
-    // MyComponent(response2.data);
+  const onSubmit = async () => {
+    const run1Result = await run1();
+    console.log('2번쨰 데이터 값 ', run1Result.task_id);
+    let counter = 0;
+    const interval = setInterval(() => {
+      const datas = axios
+        .get(
+          `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${run1Result.task_id}`,
+        )
+        .then(response => {
+          /* eslint-disable no-plusplus */
+          counter++;
+          if (counter >= 7 || response.data.url) {
+            console.log('response: ', response.data);
+            setImageUrl(response.data.url);
+            clearInterval(interval);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          clearInterval(interval);
+        });
+      console.log('datas: ', datas);
+    }, 2000);
   };
+  console.log('@@@@@', imageUrl);
 
   return (
     <CartoonBtn type="button" onClick={onSubmit}>

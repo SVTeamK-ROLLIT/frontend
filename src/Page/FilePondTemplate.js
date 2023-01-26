@@ -113,7 +113,6 @@ function FilePondTemplate({
   //       });
   //     });
   // };
-        // console.log(formData);
   return (
     <div>
       <Modal
