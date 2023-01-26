@@ -1,5 +1,5 @@
 // import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
 import photoReSizing from './PhotoReSizing';
 

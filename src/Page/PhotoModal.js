@@ -77,7 +77,14 @@ const modalStyle = {
     zIndex: 9999,
   },
 };
-function PhotoModal({ isOpen, closeModal, setPhoto, setIsPhoto, setIsActive }) {
+function PhotoModal({
+  isOpen,
+  closeModal,
+  setPhoto,
+  setIsPhoto,
+  setIsActive,
+  setRawLog,
+}) {
   const [files, setFiles] = useState([]);
   return (
     <div>
@@ -118,7 +125,14 @@ function PhotoModal({ isOpen, closeModal, setPhoto, setIsPhoto, setIsActive }) {
         >
           업로드
         </SumbitBtn>
-        <Cartoonize files={files} />
+        <Cartoonize
+          files={files}
+          closeModal={closeModal}
+          setIsActive={setIsActive}
+          setIsPhoto={setIsPhoto}
+          setPhoto={setPhoto}
+          setRawLog={setRawLog}
+        />
       </Modal>
     </div>
   );
