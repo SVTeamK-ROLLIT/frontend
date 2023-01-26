@@ -1,0 +1,22 @@
+.hand {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 176px;
+  left: 340px;
+  animation-name: handmove;
+  animation-duration: 0.333s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+}
+
+@keyframes handmove {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  100% {
+    transform: rotate(2deg) translateY(-6px);
+  }
+}

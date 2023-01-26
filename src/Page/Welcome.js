@@ -1,7 +1,10 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Modal from './Login';
+// import HandMotion from './handMotion';
+import './welcome.css';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
@@ -79,7 +82,6 @@ function Welcome() {
   return (
     <div className="welcome">
       <AllWrap />
-
       {logState === null ? (
         <OnLog setLogState={setLogState} />
       ) : (
@@ -88,6 +90,7 @@ function Welcome() {
 
       <SketchbookImg src={sketchbook}>
         <StartWrap>
+          {/* <HandMotion /> */}
           <PencilImg src={pencil} />
           <StartBtn onClick={onClick2}>만들어보기</StartBtn>
         </StartWrap>
