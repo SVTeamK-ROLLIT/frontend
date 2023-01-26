@@ -76,40 +76,8 @@ const modalStyle = {
     zIndex: 9999,
   },
 };
-function FilePondTemplate({
-  isOpen,
-  closeModal,
-  setPhoto,
-  setIsPhoto,
-  setIsActive,
-}) {
+function PhotoModal({ isOpen, closeModal, setPhoto, setIsPhoto, setIsActive }) {
   const [files, setFiles] = useState([]);
-  // const onSubmit = e => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('image', files[0].file);
-  //   formData.append('password', '1234');
-  //   formData.append('xcoor', '12');
-  //   formData.append('ycoor', '12');
-  //   formData.append('rotate', '20');
-  //   axios
-  //     .post('http://127.0.0.1:8080/api/v1/papers/1/photos', formData)
-  //     .then(res => {
-  //       console.log(formData);
-  //       toast.success(<h3>업로드 성공😎</h3>, {
-  //         position: 'top-center',
-  //         autoClose: 2000,
-  //       });
-  //       setTimeout(() => {
-  //         closeModal();
-  //       }, 2000);
-  //     })
-  //     .catch(err => {
-  //       toast.error(`${err.response.data.message} 😭`, {
-  //         position: 'top-center',
-  //       });
-  //     });
-  // };
   return (
     <div>
       <Modal
@@ -154,4 +122,4 @@ function FilePondTemplate({
   );
 }
 
-export default FilePondTemplate;
+export default PhotoModal;

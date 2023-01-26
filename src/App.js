@@ -7,7 +7,7 @@ import MakeRolling from './Page/MakeRolling';
 import Rolling from './Page/Rolling';
 import Register from './Page/Register';
 import Memo from './Page/Memo';
-import Photo from './Page/FilePondTemplate';
+import Photo from './Page/PhotoModal';
 
 import './App.css';
 
