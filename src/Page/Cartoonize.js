@@ -14,6 +14,8 @@ import axios from 'axios';
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const CartoonBtn = styled.button`
   width: 10rem;
   height: 10rem;
@@ -91,13 +93,10 @@ function Cartoonize({
   async function run1() {
     const formData = new FormData();
     formData.append('image', files[0].file);
-    const response = await axios.post(
-      'http://127.0.0.1:8080/api/v1/photos',
-      formData,
-    );
+    const response = await axios.post(`${backBaseUrl}/api/v1/photos`, formData);
     console.log(response.data);
     const response2 = await axios.post(
-      'http://127.0.0.1:8080/api/v1/papers/cartoons',
+      `${backBaseUrl}/api/v1/papers/cartoons`,
       response.data,
     );
     // console.log(response2.data);
@@ -111,7 +110,7 @@ function Cartoonize({
     const interval = setInterval(() => {
       const datas = axios
         .get(
-          `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${run1Result.task_id}`,
+          `${backBaseUrl}/api/v1/papers/cartoons/results/${run1Result.task_id}`,
         )
         .then(response => {
           /* eslint-disable no-plusplus */
