@@ -38,9 +38,11 @@ function MyPageItem({ dataColumn }, { myRollPageData }) {
           </div>
         </div>
       </ButtonItem>
-      <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.id}`)}>
-        링크복사
-      </LinkBtn>
+      <LinkBtnDiv>
+        <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.id}`)}>
+          링크복사
+        </LinkBtn>
+      </LinkBtnDiv>
     </div>
   );
 }
@@ -72,15 +74,20 @@ const ButtonItem = styled.button`
 //   align-items: flex-end;
 // `;
 
+const LinkBtnDiv = styled.div`
+  padding-left: 10rem;
+  border-color: blue;
+`;
+
 const LinkBtn = styled.button`
   width: 77px;
   height: 38px;
   border-radius: 13px;
-  background: #3a3a3a;
-  margin: 1rem;
+  background-color: yellow;
+  border-color: red;
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  display: block;
 `;
 
 export default MyPageItem;
