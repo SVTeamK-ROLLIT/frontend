@@ -32,7 +32,7 @@ function MakeRollingMypage() {
   const navigate = useNavigate();
   return (
     <BtnWrap>
-      <Mypagebtn onClick={() => navigate('/welcome')}>ㅤ뒤로가기</Mypagebtn>
+      <Mypagebtn onClick={() => navigate('/')}>ㅤ뒤로가기</Mypagebtn>
     </BtnWrap>
   );
 }
