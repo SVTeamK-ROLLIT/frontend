@@ -10,10 +10,14 @@ import sketchbook from '../Image/sketchbookWelcome.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  width: 122rem;
-  height: 65rem;
+  width: 75rem;
+  height: 50rem;
   // border: 5px solid #535353;
+  background-size: 90rem 50rem;
+  background-repeat: no-repeat;
+  background-position: center;
   background-image: url(${sketchbook});
+  display: flex;
 `;
 
 // const SketchbookImg = styled.img`
@@ -26,16 +30,15 @@ const SketchbookImg = styled.div`
 //   }
 // `;
 
-const ImgWrap = styled.div`
-  position: relative;
-  text-align: center;
-`;
+// const ImgWrap = styled.div`
+//   position: relative;
+//   text-align: center;
+// `;
 
 const AllWrap = styled.div`
   background-color: #fcedb0;
-  position: absolute; //absolute 추가(세로 중앙정렬)
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -100,16 +103,12 @@ const BoxWrap = styled.div`
 //   -webkit-text-stroke-color: black;
 // `;
 const StartWrap = styled.div`
-  position: fixed;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
+  margin: auto auto 12rem auto;
 `;
 const PencilImg = styled.img`
   width: 3.6rem;
   height: 3rem;
-  margin-top: 3%;
   // 스캐치북 위에 올리기
 `;
 
@@ -159,13 +158,12 @@ function Welcome() {
           <Outlog onClick={onClick} />
         )}
         <BoxWrap>
-          <ImgWrap>
-            <SketchbookImg src={sketchbook} />
-          </ImgWrap>
-          <StartWrap>
-            <PencilImg src={pencil} />
-            <StartBtn onClick={onClick2}>만들어보기</StartBtn>
-          </StartWrap>
+          <SketchbookImg src={sketchbook}>
+            <StartWrap>
+              <PencilImg src={pencil} />
+              <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+            </StartWrap>
+          </SketchbookImg>
         </BoxWrap>
       </AllWrap>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
