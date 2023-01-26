@@ -5,7 +5,7 @@ import photoReSizing from './PhotoReSizing';
 
 // import img from '../Image/ID.png';
 
-export default function NewPhoto({ parentFunction, photo }) {
+export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
   //   const [width2, setWidth] = useState(200);
   //   const [height2, setHeight] = useState(100);
   //   const [top2, setTop] = useState(100);
