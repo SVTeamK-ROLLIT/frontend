@@ -17,47 +17,50 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 const Container = styled.div``;
 
 const To = styled.div`
-  width: 88px;
-  height: 60px;
+  width: 50rem;
   font-size: 50px;
   font-weight: 700;
   color: #000;
   margin: auto;
-  padding-right: 55rem;
-  margin-bottom: 1rem;
 `;
 
 const TitleInput = styled.input`
-  width: 867px;
-  height: 30px;
+  width: 50rem;
+  height: 3.3rem;
+  padding: 1rem;
+  margin: auto;
   background: #ffffff;
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  margin-left: 21vw;
-  margin-bottom: 10vh;
-  padding: 1.7rem;
   display: block;
   &:focus {
     outline: none;
   }
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
   ::placeholder {
     color: #d9d9d9;
   }
 `;
 
+const ToTitleWrap = styled.div`
+  margin: auto;
+  margin-bottom: 3rem;
+`;
+
 const StyledSlider = styled(Slider)`
   .slick-slide div {
     outline: none;
+    margin-bottom: 0.3rem;
+    /* margin-left: -0.7rem; */
   }
   .slick-arrow {
     display: flex;
     z-index: 1;
     height: 1vw;
+    /* right: 1vw; */
     position: absolute;
-    right: 1vw;
     width: 60vw;
   }
 `;
@@ -77,7 +80,9 @@ const Count = styled.button`
   font-weight: 1000;
   color: #fff;
   text-align: center;
-  margin-left: 43.8vw;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
   font-family: 'Cafe24Ssurround';
   text-shadow: 1.5px 1.5px 1.5px gray;
   -webkit-text-stroke-width: 1.3px;
@@ -167,15 +172,18 @@ class SimpleSlider extends Component {
     return (
       <Container>
         {console.log(this.state.value)}
-        <To>To.</To>
-        <TitleInput
-          type="text"
-          name="message"
-          placeholder="제목을 입력해주세요"
-          onChange={e => {
-            this.setState({ value: e.target.value });
-          }}
-        />
+        <ToTitleWrap>
+          <To>To.</To>
+          <TitleInput
+            type="text"
+            name="message"
+            placeholder="제목을 입력해주세요"
+            onChange={e => {
+              this.setState({ value: e.target.value });
+            }}
+          />
+        </ToTitleWrap>
+
         <StyledSlider {...settings}>
           {items.map(item => {
             return (
