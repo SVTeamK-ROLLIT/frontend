@@ -33,6 +33,7 @@
     "react-filepond": "^7.1.2",
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
+    "react-query": "^3.39.3",
     "react-resizable-rotatable-draggable": "^0.2.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
