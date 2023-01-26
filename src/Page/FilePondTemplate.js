@@ -83,6 +83,7 @@ function FilePondTemplate({
   setPhoto,
   setIsPhoto,
   setIsActive,
+  setRawLog,
 }) {
   const [files, setFiles] = useState([]);
 
@@ -154,11 +155,11 @@ function FilePondTemplate({
         </SumbitBtn>
         <Cartoonize
           files={files}
-          isOpen={isOpen}
           closeModal={closeModal}
           setIsActive={setIsActive}
           setIsPhoto={setIsPhoto}
           setPhoto={setPhoto}
+          setRawLog={setRawLog}
         />
       </Modal>
     </div>

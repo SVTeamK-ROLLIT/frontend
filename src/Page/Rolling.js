@@ -139,6 +139,8 @@ const SaveBtn = styled.button`
 // const [background, setBackground] = useState();
 
 function Rolling() {
+  const [rawLog, setRawLog] = useState();
+
   const location = useLocation();
   const navigate = useNavigate();
   const [backgroundImg, setBackgroundImg] = useState();
@@ -317,7 +319,12 @@ function Rolling() {
     ) : isSticky ? (
       <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
     ) : isPhoto ? (
-      <NewPhoto parentFunction={parentFunction} photo={photo} />
+      <NewPhoto
+        parentFunction={parentFunction}
+        photo={photo}
+        rawLog={rawLog}
+        setRawLog={setRawLog}
+      />
     ) : (
       <div />
     );
@@ -382,6 +389,7 @@ function Rolling() {
               setIsActive={setIsActive}
               setIsPhoto={setIsPhoto}
               setPhoto={setPhoto}
+              setRawLog={setRawLog}
             />
             <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
