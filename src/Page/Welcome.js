@@ -10,9 +10,7 @@ import sketchbook from '../Image/sketchbookWelcome.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  width: 75rem;
   height: 50rem;
-  // border: 5px solid #535353;
   background-size: 90rem 50rem;
   background-repeat: no-repeat;
   background-position: center;
@@ -20,88 +18,14 @@ const SketchbookImg = styled.div`
   display: flex;
 `;
 
-// const SketchbookImg = styled.img`
-//   //뒷 배경
-//   width: 150vh;
-//   height: 85vh;
-
-//   @media screen and (max-width: 70vh) {
-//     top: 55%;
-//   }
-// `;
-
-// const ImgWrap = styled.div`
-//   position: relative;
-//   text-align: center;
-// `;
-
 const AllWrap = styled.div`
-  background-color: #fcedb0;
-  width: 100vw;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  width: 100%;
+  z-index: -1;
+  background-color: #fcedb0;
+  position: fixed;
 `;
 
-const BoxWrap = styled.div`
-  position: relative;
-`;
-
-// const LoginBtn = styled.button`
-//   //상단 로그인 버튼
-//   width: 12vh;
-//   height: 5.5vh;
-//   font-size: 3.7vh;
-//   font-weight: 1000;
-//   position: absolute;
-//   top: 7%;
-//   left: 80%;
-//   transform: translate(-50%, -50%);
-//   z-index: 10;
-//   color: white;
-//   font-family: 'Cafe24Ssurround';
-//   text-shadow: 1.5px 1.5px 1.5px gray;
-//   -webkit-text-stroke-width: 1.1px;
-//   -webkit-text-stroke-color: black;
-// `;
-
-// const MypageBtn = styled.button`
-//   //상단 로그인 버튼
-//   width: 12vh;
-//   height: 5.5vh;
-//   font-size: 3.7vh;
-//   font-weight: 1000;
-//   position: absolute;
-//   top: 7%;
-//   left: 72%;
-//   transform: translate(-50%, -50%);
-//   z-index: 10;
-//   color: white;
-//   font-family: 'Cafe24Ssurround';
-//   text-shadow: 1.5px 1.5px 1.5px gray;
-//   -webkit-text-stroke-width: 1.1px;
-//   -webkit-text-stroke-color: black;
-// `;
-
-// const SignupBtn = styled.button`
-//   //상단 회원가입 버튼
-//   width: 15vh;
-//   height: 5.5vh;
-//   font-size: 3.7vh;
-//   font-weight: bold;
-//   // 스캐치북 위에 올리기
-//   position: absolute;
-//   top: 7%;
-//   left: 88%;
-//   transform: translate(-50%, -50%);
-//   z-index: 10;
-//   color: white;
-//   font-family: 'Cafe24Ssurround';
-//   text-shadow: 1.5px 1.5px 1.5px gray;
-//   -webkit-text-stroke-width: 1.1px;
-//   -webkit-text-stroke-color: black;
-// `;
 const StartWrap = styled.div`
   display: flex;
   margin: auto auto 12rem auto;
@@ -109,6 +33,7 @@ const StartWrap = styled.div`
 const PencilImg = styled.img`
   width: 3.6rem;
   height: 3rem;
+  margin-top: 0.5rem;
   // 스캐치북 위에 올리기
 `;
 
@@ -151,21 +76,20 @@ function Welcome() {
 
   return (
     <div className="welcome">
-      <AllWrap>
-        {logState === null ? (
-          <OnLog setLogState={setLogState} />
-        ) : (
-          <Outlog onClick={onClick} />
-        )}
-        <BoxWrap>
-          <SketchbookImg src={sketchbook}>
-            <StartWrap>
-              <PencilImg src={pencil} />
-              <StartBtn onClick={onClick2}>만들어보기</StartBtn>
-            </StartWrap>
-          </SketchbookImg>
-        </BoxWrap>
-      </AllWrap>
+      <AllWrap />
+
+      {logState === null ? (
+        <OnLog setLogState={setLogState} />
+      ) : (
+        <Outlog onClick={onClick} />
+      )}
+
+      <SketchbookImg src={sketchbook}>
+        <StartWrap>
+          <PencilImg src={pencil} />
+          <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+        </StartWrap>
+      </SketchbookImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );

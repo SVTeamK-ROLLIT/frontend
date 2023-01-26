@@ -3,13 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Modal from './Login';
 
+const TopPosition = styled.div`
+  /* background-color: #fcedb0; */
+  /* width: 90rem; */
+`;
+
 const LoginWrap = styled.div`
-  position: fixed;
-  top: 7%;
-  left: 90%;
-  transform: translate(-50%, -50%);
   display: flex;
   z-index: 999;
+  /* height: 3rem; */
+  width: 20rem;
+  margin: 0 2rem auto auto;
+  padding-top: 1rem;
 `;
 
 const SignupBtn = styled.button`
@@ -48,13 +53,19 @@ function Onlog({ setLogState }) {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
   return (
-    <LoginWrap>
-      <LoginBtn type="button" value="Open modal" onClick={openModal}>
-        로그인
-      </LoginBtn>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
-      <SignupBtn onClick={() => navigate('/register')}>회원가입</SignupBtn>
-    </LoginWrap>
+    <TopPosition>
+      <LoginWrap>
+        <LoginBtn type="button" value="Open modal" onClick={openModal}>
+          로그인
+        </LoginBtn>
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          setLogState={setLogState}
+        />
+        <SignupBtn onClick={() => navigate('/register')}>회원가입</SignupBtn>
+      </LoginWrap>
+    </TopPosition>
   );
 }
 
