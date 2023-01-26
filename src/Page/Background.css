@@ -19,10 +19,10 @@ body .mypage {
   min-height: 100%;
 }
 
-body .makerolling {
+/* body .makerolling {
   background-color: #fcedb0;
   height: 100vh;
-}
+} */
 
 body .login {
   background: url(../Image/sketchbookLogin.png);
