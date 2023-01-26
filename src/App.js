@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Routes>
           {/* 첫 시작 화면 */}
-          <Route path="/Welcome" element={<Welcome />} />
+          <Route path="/" element={<Welcome />} />
           {/* 회원가입 페이지 */}
           <Route path="/Register" element={<Register />} />
           {/* 마이페이지 */}
