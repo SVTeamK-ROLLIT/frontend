@@ -70,10 +70,7 @@ function Cartoonize({
   async function run1() {
     const formData = new FormData();
     formData.append('image', files[0].file);
-    const response = await axios.post(
-      'http://127.0.0.1:8080/api/v1/photos',
-      formData,
-    );
+    const response = await axios.post(`${backBaseUrl}/api/v1/photos`, formData);
     console.log(response.data);
     const response2 = await axios.post(
       `${backBaseUrl}/api/v1/papers/cartoons`,
@@ -83,36 +80,30 @@ function Cartoonize({
     return response2.data;
   }
 
-    const interval = await setInterval(async () => {
-      const result = await axios.post(
-        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-        response2.data,
-      );
-      seturl(response.data);
-      console.log(response.data);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
-    try {
-      const response2 = await axios.post(
-        'http://127.0.0.1:8080/api/v1/papers/cartoons',
-        url,
-      );
-      console.log(response2.data);
-      setTaskId(response2.data);
-      console.log('taskId: ', taskId);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
-    try {
-      const response3 = await axios.post(
-        'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-        taskId,
-      );
-      console.log(response3.data);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
+  const onSubmit = async () => {
+    const run1Result = await run1();
+    console.log('2번쨰 데이터 값 ', run1Result.task_id);
+    let counter = 0;
+    const interval = setInterval(() => {
+      const datas = axios
+        .get(
+          `${backBaseUrl}/api/v1/papers/cartoons/results/${run1Result.task_id}`,
+        )
+        .then(response => {
+          /* eslint-disable no-plusplus */
+          counter++;
+          if (counter >= 7 || response.data.url) {
+            console.log('response: ', response.data);
+            setImageUrl(response.data.url);
+            clearInterval(interval);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          clearInterval(interval);
+        });
+      console.log('datas: ', datas);
+    }, 2000);
   };
   console.log('@@@@@', imageUrl);
 
