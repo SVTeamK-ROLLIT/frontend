@@ -17,33 +17,34 @@ const CartoonBtn = styled.button`
   width: 10rem;
   height: 10rem;
   background-color: red;
+  //
 `;
-function MyComponent({ taskId }) {
-  const [result, setResult] = useState(null);
-  const [count, setCount] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+// function MyComponent({ taskId }) {
+//   const [result, setResult] = useState(null);
+//   const [count, setCount] = useState(0);
+//   const [intervalId, setIntervalId] = useState(null);
 
-  useEffect(() => {
-    if (intervalId === null) {
-      const id = setInterval(async () => {
-        const response = await axios.post(
-          'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-          { taskId },
-        );
-        // eslint-disable-next-line
-        const data = response.data;
-        setResult(data.status);
-        if (data.status !== 'still working' || count >= 10) {
-          clearInterval(intervalId);
-          setIntervalId(null);
-        }
-        setCount(count + 1);
-      }, 2000);
-      setIntervalId(id);
-    }
-  }, [intervalId, count, taskId]);
-  console.log('result', result);
-}
+//   useEffect(() => {
+//     if (intervalId === null) {
+//       const id = setInterval(async () => {
+//         const response = await axios.post(
+//           'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+//           { taskId },
+//         );
+//         // eslint-disable-next-line
+//         const data = response.data;
+//         setResult(data.status);
+//         if (data.status !== 'still working' || count >= 10) {
+//           clearInterval(intervalId);
+//           setIntervalId(null);
+//         }
+//         setCount(count + 1);
+//       }, 2000);
+//       setIntervalId(id);
+//     }
+//   }, [intervalId, count, taskId]);
+//   console.log('result', result);
+// }
 function Cartoonize({
   files,
   isOpen,
@@ -108,7 +109,7 @@ function Cartoonize({
     //   });
     // });
     // console.log('찍어줘', imageUrl);
-    MyComponent(response2.data);
+    // MyComponent(response2.data);
   };
 
   return (
