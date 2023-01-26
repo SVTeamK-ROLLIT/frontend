@@ -67,11 +67,12 @@ const RightUpWrap = styled.div`
 `;
 
 const NickName = styled.div`
-  width: 24rem;
-  height: 74px;
+  width: 20rem;
+  height: 4rem;
   font-size: 42px;
   font-weight: 700;
   margin: ${props => props.margin};
+  font-family: 'Cafe24Ssurround';
 `;
 
 // const ChangeBtn = styled.button`

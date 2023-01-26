@@ -5,7 +5,7 @@ function MyPageLine({ myRollPageData }) {
   return (
     <Line>
       {myRollPageData?.user_data[0].nickname}
-      님의 롤링페이지 목록입니다
+      님의 롤링페이퍼
     </Line>
   );
 }
@@ -13,13 +13,13 @@ function MyPageLine({ myRollPageData }) {
 export default MyPageLine;
 
 const Line = styled.div`
-  width: 1353px;
-  height: 61px;
-  border-radius: 10px;
+  width: 700px;
+  border-radius: 30px;
   background: #fffaf0;
   margin-top: 4rem;
   margin: 4rem auto 0 auto;
   font-size: 36px;
   text-align: center;
-  color: #000;
+  color: black;
+  font-family: 'Cafe24Ssurround';
 `;
