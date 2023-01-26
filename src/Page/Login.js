@@ -161,7 +161,7 @@ function Register({ isOpen, setIsOpen, setLogState }) {
       localStorage.clear();
       localStorage.setItem('id', data.user_id);
       setTimeout(() => {
-        navigate('/welcome');
+        navigate('/');
         setLogState(false);
         closeModal();
       }, 2000);

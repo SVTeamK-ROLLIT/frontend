@@ -173,7 +173,7 @@ function Register({ setLogState }) {
         },
       );
       setTimeout(() => {
-        navigate('/welcome');
+        navigate('/');
       }, 1800);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
@@ -188,7 +188,7 @@ function Register({ setLogState }) {
   };
   return (
     <div className="register">
-      <HomeBtn onClick={() => navigate('/Welcome')}>ㅤ뒤로가기</HomeBtn>
+      <HomeBtn onClick={() => navigate('/')}>ㅤ뒤로가기</HomeBtn>
       <Background>
         <KeysWrap>
           <TextWrap>
