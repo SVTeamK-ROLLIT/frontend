@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useCallback, useEffect, useState } from 'react';
 import Snowfall from 'react-snowfall';
-import { FcExpand } from 'react-icons/fc';
+import { FcExpand, FcCancel } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -136,6 +136,14 @@ const SaveBtn = styled.button`
   margin: 0.5rem;
   z-index: 50;
 `;
+
+const CancelBtn = styled.button`
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+  z-index: 50;
+`;
+
 // const [background, setBackground] = useState();
 
 function Rolling() {
@@ -168,6 +176,7 @@ function Rolling() {
   const [sticky, setSticky] = useState(); // 스티커 ID저장
   const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
   const [photo, setPhoto] = useState();
+  const [isCancel, setIsCancel] = useState(false);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -191,6 +200,16 @@ function Rolling() {
 
   // post로 ###메모지### 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
   const submitMemo = async () => {
+    console.log('hi');
+    if (setIsCancel) {
+      // 취소 버튼을 눌렀을 경우
+      setIsMemo(false); // 메모기능 비활성화
+      setIsActive(false); // 수정기능 비활성화
+      setIsCancel(false);
+      localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
+      return;
+    }
+
     const textcaseString = localStorage.getItem('textcase');
     const textcase = JSON.parse(textcaseString);
     textcase.textcase.xcoor = coor.x;
@@ -219,6 +238,13 @@ function Rolling() {
 
   const submitSticky = async () => {
     try {
+      if (isCancel) {
+        // 취소 버튼을 눌렀을 경우
+        setIsSticky(false); // 메모기능 비활성화
+        setIsActive(false); // 수정기능 비활성화
+        setIsCancel(false);
+        return;
+      }
       await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/stickers`, {
         default_sticker_id: sticky,
         password: '1',
@@ -255,6 +281,13 @@ function Rolling() {
   //   }
   // };
   const submitPhoto = () => {
+    if (isCancel) {
+      // 취소 버튼을 눌렀을 경우
+      setIsPhoto(false); // 메모기능 비활성화
+      setIsActive(false); // 수정기능 비활성화
+      setIsCancel(false);
+      return;
+    }
     const formData = new FormData();
     formData.append('image', photo);
     formData.append('password', '1234');
@@ -362,7 +395,7 @@ function Rolling() {
         </UserWrap>
         <MemoWrap />
         {isActive ? (
-          <IconWrap height="5rem">
+          <IconWrap height="8rem">
             <SaveBtn
               onClick={() => {
                 isSubmit();
@@ -370,6 +403,14 @@ function Rolling() {
             >
               <FcExpand size="30" />
             </SaveBtn>
+            <CancelBtn
+              onClick={() => {
+                setIsCancel(true);
+                isSubmit();
+              }}
+            >
+              <FcCancel size="30" />
+            </CancelBtn>
           </IconWrap>
         ) : (
           <IconWrap height="10rem">
