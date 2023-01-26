@@ -77,7 +77,14 @@ const modalStyle = {
     zIndex: 9999,
   },
 };
-function FilePondTemplate({ isOpen, closeModal }) {
+function FilePondTemplate({
+  isOpen,
+  closeModal,
+  setPhoto,
+  setIsPhoto,
+  setIsActive,
+  setRawLog,
+}) {
   const [files, setFiles] = useState([]);
 
   console.log('@@@@files', files);
@@ -142,11 +149,11 @@ function FilePondTemplate({ isOpen, closeModal }) {
         </SumbitBtn>
         <Cartoonize
           files={files}
-          isOpen={isOpen}
           closeModal={closeModal}
           setIsActive={setIsActive}
           setIsPhoto={setIsPhoto}
           setPhoto={setPhoto}
+          setRawLog={setRawLog}
         />
       </Modal>
     </div>

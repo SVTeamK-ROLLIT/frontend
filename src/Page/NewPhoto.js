@@ -53,15 +53,13 @@ export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
   };
   parentFunction(position);
 
-  const [rawLog, setRawLog] = useState();
-  useEffect(() => {
-    const reader = new FileReader();
-    reader.readAsDataURL(photo); // 파일을 읽는 메서드
-    reader.onload = () => {
-      setRawLog(reader.result);
-      console.log(rawLog);
-    };
-  }, []);
+  // const [rawLog, setRawLog] = useState();
+  const reader = new FileReader();
+  reader.readAsDataURL(photo); // 파일을 읽는 메서드
+  reader.onload = () => {
+    setRawLog(reader.result);
+    console.log('@@@@@@@@@@@@@@@@', rawLog);
+  };
 
   photoReSizing(rawLog, setRawLog);
 

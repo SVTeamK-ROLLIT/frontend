@@ -50,22 +50,13 @@ const CartoonBtn = styled.button`
 // }
 function Cartoonize({
   files,
-  isOpen,
   closeModal,
-  setisActivate,
+  setIsActive,
   setIsPhoto,
   setPhoto,
+  setRawLog,
 }) {
-  const [resultImage, setResultImage] = useState({});
   const [imageUrl, setImageUrl] = useState(null);
-  // const [taskId, setTaskId] = useState('');
-  // const TaskPoller = ({ taskId }) => {
-  //   const { data1, status, refetch } = useQuery(['task', taskId], async () => {
-  //     const { data } = await axios.get(
-  //       `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${taskId}`,
-  //     );
-  //     return data;
-  //   });
 
   async function run1() {
     const formData = new FormData();
@@ -92,7 +83,7 @@ function Cartoonize({
         .then(response => {
           /* eslint-disable no-plusplus */
           counter++;
-          if (counter >= 7 || response.data.url) {
+          if (counter >= 10 || response.data.url) {
             console.log('response: ', response.data);
             setImageUrl(response.data.url);
             clearInterval(interval);
@@ -104,6 +95,10 @@ function Cartoonize({
         });
       console.log('datas: ', datas);
     }, 2000);
+    await closeModal();
+    await setRawLog(imageUrl);
+    await setIsPhoto(true);
+    await setIsActive(true);
   };
   console.log('@@@@@', imageUrl);
 
