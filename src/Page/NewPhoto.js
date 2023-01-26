@@ -5,7 +5,7 @@ import photoReSizing from './PhotoReSizing';
 
 // import img from '../Image/ID.png';
 
-export default function NewPhoto({ parentFunction, photo }) {
+export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
   //   const [width2, setWidth] = useState(200);
   //   const [height2, setHeight] = useState(100);
   //   const [top2, setTop] = useState(100);
@@ -53,15 +53,13 @@ export default function NewPhoto({ parentFunction, photo }) {
   };
   parentFunction(position);
 
-  const [rawLog, setRawLog] = useState();
-  useEffect(() => {
-    const reader = new FileReader();
-    reader.readAsDataURL(photo); // 파일을 읽는 메서드
-    reader.onload = () => {
-      setRawLog(reader.result);
-      console.log(rawLog);
-    };
-  }, []);
+  // const [rawLog, setRawLog] = useState();
+  const reader = new FileReader();
+  reader.readAsDataURL(photo); // 파일을 읽는 메서드
+  reader.onload = () => {
+    setRawLog(reader.result);
+    console.log('@@@@@@@@@@@@@@@@', rawLog);
+  };
 
   photoReSizing(rawLog, setRawLog);
 
