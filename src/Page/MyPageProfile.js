@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import user from '../Image/user.png';
 
 function Profile({ myRollPageData }) {
   return (
     <ChoiceContainer>
       <LeftWrap>
-        <ProfileImg />
+        <ProfileImg>
+          <img src={user} alt="" />
+        </ProfileImg>
       </LeftWrap>
       <RightWrap>
         <RightUpWrap>
@@ -29,24 +32,25 @@ export default Profile;
 
 const ChoiceContainer = styled.div`
   display: flex;
-  align-items: stretch;
+  align-items: center;
   height: 100%;
+  width: 81rem;
   z-index: 90;
+  background-color: white;
 `;
 
 const LeftWrap = styled.div`
   //background-color: red;
-  flex: 1;
   text-align: center;
-  display: flex;
+  display: block;
   align-items: center;
 `;
 const ProfileImg = styled.div`
-  background-color: #d9d9d9;
   width: 10rem;
-  height: 10rem;
-  border-radius: 100%;
-  margin: auto 0 auto 14rem;
+  height: 11rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
 `;
 
 const RightWrap = styled.div`
@@ -68,9 +72,8 @@ const RightUpWrap = styled.div`
 
 const NickName = styled.div`
   width: 20rem;
-  height: 4rem;
-  font-size: 42px;
-  font-weight: 700;
+  height: 2rem;
+  font-size: 2rem;
   margin: ${props => props.margin};
   font-family: 'Cafe24Ssurround';
 `;
