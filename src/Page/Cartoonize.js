@@ -119,3 +119,5 @@ function Cartoonize({
 }
 
 export default Cartoonize;
+
+// Register the plugins
