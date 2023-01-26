@@ -27,27 +27,27 @@ const CartoonBtn = styled.button`
 //   const [count, setCount] = useState(0);
 //   const [intervalId, setIntervalId] = useState(null);
 
-  useEffect(() => {
-    if (intervalId === null) {
-      const id = setInterval(async () => {
-        const response = await axios.post(
-          'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-          { taskId },
-        );
-        // eslint-disable-next-line
-        const data = response.data;
-        setResult(data.status);
-        if (data.status !== 'still working' || count >= 10) {
-          clearInterval(intervalId);
-          setIntervalId(null);
-        }
-        setCount(count + 1);
-      }, 2000);
-      setIntervalId(id);
-    }
-  }, [intervalId, count, taskId]);
-  console.log('result', result);
-}
+//   useEffect(() => {
+//     if (intervalId === null) {
+//       const id = setInterval(async () => {
+//         const response = await axios.post(
+//           'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
+//           { taskId },
+//         );
+//         // eslint-disable-next-line
+//         const data = response.data;
+//         setResult(data.status);
+//         if (data.status !== 'still working' || count >= 10) {
+//           clearInterval(intervalId);
+//           setIntervalId(null);
+//         }
+//         setCount(count + 1);
+//       }, 2000);
+//       setIntervalId(id);
+//     }
+//   }, [intervalId, count, taskId]);
+//   console.log('result', result);
+// }
 function Cartoonize({
   files,
   isOpen,
