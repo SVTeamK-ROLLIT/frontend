@@ -3,7 +3,7 @@ body .welcome {
   background-repeat: no-repeat;
   background-color: #FFECA8;
   background-size: cover;
-  background-size: 100rem 100rem;
+  background-size: 90rem 90rem;
 }
 @media screen and (max-width: 63rem) {
   body .welcome {

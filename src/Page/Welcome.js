@@ -10,11 +10,11 @@ import logo from '../Image/logo.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  width: 60rem;
-  height: 30rem;
+  width: 90rem;
+  height: 60rem;
   // border: 5px solid #535353;
   background-image: url(${logo});
-  background-size: 60rem;
+  background-size: 90rem;
 `;
 
 // const SketchbookImg = styled.img`
