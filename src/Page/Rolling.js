@@ -5,12 +5,14 @@ import { FcExpand, FcCancel } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import photoReSizing from './PhotoReSizing';
+
 import image1 from '../Image/image1.png';
 import image2 from '../Image/image2.png';
 import image3 from '../Image/image3.png';
 import image4 from '../Image/image4.png';
 import image5 from '../Image/image5.png';
-import PhotoModal from './FilePondTemplate';
+import PhotoModal from './PhotoModal';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
 import Photo from './RollingPhoto';
@@ -292,6 +294,9 @@ function Rolling() {
       setIsActive(false); // 수정기능 비활성화
       return;
     }
+    console.log('start Resizing');
+    photoReSizing(photo, setPhoto);
+
     const formData = new FormData();
     formData.append('image', photo);
     formData.append('password', '1234');

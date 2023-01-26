@@ -3172,7 +3172,7 @@ braces@^3.0.2, braces@~3.0.2:
 
 browser-image-compression@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.npmjs.org/browser-image-compression/-/browser-image-compression-2.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/browser-image-compression/-/browser-image-compression-2.0.0.tgz#f421381a76d474d4da7dcd82810daf595b09bef6"
   integrity sha512-kBlkZo13yOOfcmrPW0M0K/UdZPogIQj2gRvXIM3FktAnfW6VRq9aY2RI+F6O0x6DMj1Xm+WLGgWcFK8Fu/ddnw==
   dependencies:
     uzip "0.20201231.0"
