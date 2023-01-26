@@ -58,6 +58,14 @@ function Cartoonize({
 }) {
   const [resultImage, setResultImage] = useState({});
   const [imageUrl, setImageUrl] = useState(null);
+  // const [taskId, setTaskId] = useState('');
+  // const TaskPoller = ({ taskId }) => {
+  //   const { data1, status, refetch } = useQuery(['task', taskId], async () => {
+  //     const { data } = await axios.get(
+  //       `http://127.0.0.1:8080/api/v1/papers/cartoons/results/${taskId}`,
+  //     );
+  //     return data;
+  //   });
 
   async function run1() {
     const formData = new FormData();
@@ -71,8 +79,9 @@ function Cartoonize({
       `${backBaseUrl}/api/v1/papers/cartoons`,
       response.data,
     );
-    console.log(response2.data);
-    // let count = 0;
+    // console.log(response2.data);
+    return response2.data;
+  }
 
     const interval = await setInterval(async () => {
       const result = await axios.post(
