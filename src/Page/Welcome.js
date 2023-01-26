@@ -6,14 +6,15 @@ import Modal from './Login';
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
-import sketchbook from '../Image/sketchbookWelcome.png';
+import logo from '../Image/logo.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  width: 122rem;
-  height: 65rem;
+  width: 60rem;
+  height: 30rem;
   // border: 5px solid #535353;
-  background-image: url(${sketchbook});
+  background-image: url(${logo});
+  background-size: 60rem;
 `;
 
 // const SketchbookImg = styled.img`
@@ -28,11 +29,10 @@ const SketchbookImg = styled.div`
 
 const ImgWrap = styled.div`
   position: relative;
-  text-align: center;
 `;
 
 const AllWrap = styled.div`
-  background-color: #fcedb0;
+  background-color: #ffeca8;
   position: absolute; //absolute 추가(세로 중앙정렬)
   width: 100%;
   height: 100%;
@@ -160,7 +160,7 @@ function Welcome() {
         )}
         <BoxWrap>
           <ImgWrap>
-            <SketchbookImg src={sketchbook} />
+            <SketchbookImg src={logo} />
           </ImgWrap>
           <StartWrap>
             <PencilImg src={pencil} />

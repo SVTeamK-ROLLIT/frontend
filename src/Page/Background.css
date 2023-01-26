@@ -1,7 +1,7 @@
 body .welcome {
-  background: url(../Image/sketchbookWelcome.png);
+  background: url(../Image/logo2.png);
   background-repeat: no-repeat;
-  background-color: #fcedb0;
+  background-color: #FFECA8;
   background-size: cover;
   background-size: 100rem 100rem;
 }
@@ -26,8 +26,8 @@ body .register {
 }
 
 body .mypage {
-  background-color: #fcedb0;
-  height: 100vh;
+  background-color: #FFECA8;
+  height: 100%;
   /* width: 100vw; */
   min-height: 100%;
 }
