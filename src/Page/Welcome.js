@@ -6,16 +6,18 @@ import Modal from './Login';
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
-import sketchbook from '../Image/sketchbookWelcome.png';
+import sketchbook from '../Image/RollIT.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  height: 50rem;
-  background-size: 90rem 50rem;
+  height: 45rem;
+  background-size: 40rem 30rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${sketchbook});
   display: flex;
+  /* margin-top: 20rem; */
+  background-position-y: 6rem;
 `;
 
 const AllWrap = styled.div`
@@ -28,7 +30,7 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 12rem auto;
+  margin: auto auto 7rem auto;
 `;
 const PencilImg = styled.img`
   width: 3.6rem;
