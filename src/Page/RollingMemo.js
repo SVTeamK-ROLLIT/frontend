@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 
 // import axios from 'axios';
 
-export default function App({ list, isAdmin, HandleDelete }) {
+export default function App({ list, isAdmin, HandleMemoDelete }) {
   const nodeRef = useRef(null);
 
   const { xcoor, ycoor, content, font, font_color, color, nickname, memo_id } =
@@ -36,7 +36,7 @@ export default function App({ list, isAdmin, HandleDelete }) {
       onStart={handleStart}
       onStop={handleEnd}
       defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
+      disabled={!isAdmin}
     >
       <MemoBox
         background={color}
@@ -51,7 +51,7 @@ export default function App({ list, isAdmin, HandleDelete }) {
           {isAdmin ? (
             <DeleteBtn
               onClick={() => {
-                HandleDelete(memo_id);
+                HandleMemoDelete(memo_id);
               }}
             />
           ) : (

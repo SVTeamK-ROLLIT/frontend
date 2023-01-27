@@ -1,17 +1,17 @@
 /* eslint-disable camelcase */
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
 // import img from '../Image/ID.png';
 
-export default function NewPhoto({ list }) {
+export default function NewPhoto({ list, HandlePhotoDelete }) {
   //   const [width2, setWidth] = useState(200);
   //   const [height2, setHeight] = useState(100);
   //   const [top2, setTop] = useState(100);
   //   const [left2, setLeft] = useState(100);
   //   const [rotateAngle, setRotateAngle] = useState(0);
-  const { image_url, xcoor, ycoor, rotate, width, height } = list;
+  const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
   console.log(list);
   const [position, setPosition] = useState({
     width2: 200,
@@ -71,6 +71,7 @@ export default function NewPhoto({ list }) {
           zIndex: 1,
         }}
       />
+
       <img
         src={image_url}
         style={{
@@ -84,6 +85,7 @@ export default function NewPhoto({ list }) {
         }}
         alt=""
       />
+
       <ResizableRect
         left={xcoor + 1}
         top={ycoor + 1}
@@ -106,9 +108,23 @@ export default function NewPhoto({ list }) {
         // onDrag={handleDrag}
         // onDragEnd={this.handleDragEnd}
       />
+      <DeleteBtn
+        onClick={() => {
+          HandlePhotoDelete(image_id);
+        }}
+      />
     </div>
   );
 }
+
+const DeleteBtn = styled.button`
+  background-color: red;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  right: 5%;
+  z-index: 2;
+`;
 
 // const Image = styled.div`
 //   width: 100%;

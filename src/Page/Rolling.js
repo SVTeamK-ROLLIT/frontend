@@ -293,11 +293,32 @@ function Rolling() {
       });
   };
 
-  const HandleDelete = useCallback(id => {
-    console.log(id);
+  const HandleMemoDelete = useCallback(id => {
     axios
-      .post(`${backBaseUrl}/api/v1/papers/${id}`, {
-        memo_id: id,
+      .post(`${backBaseUrl}/api/v1/papers/memos/${id}`, {
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+  const HandleStickyDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/stickers/${id}`, {
+        sticker_id: id,
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+
+  const HandlePhotoDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/images/${id}`, {
+        image_id: id,
         password: '1',
       })
       .then(() => {
@@ -384,17 +405,31 @@ function Rolling() {
                   isAdmin={isAdmin}
                   list={list}
                   key={list.id}
-                  HandleDelete={HandleDelete}
+                  HandleMemoDelete={HandleMemoDelete}
                 />
               );
             })}
           {items.sticker &&
             items.sticker.map(list => {
-              return <Sticky list={list} key={list.id} />;
+              return (
+                <Sticky
+                  isAdmin={isAdmin}
+                  list={list}
+                  key={list.id}
+                  HandleStickyDelete={HandleStickyDelete}
+                />
+              );
             })}
           {items.image &&
             items.image.map(list => {
-              return <Photo list={list} key={list.id} />;
+              return (
+                <Photo
+                  isAdmin={isAdmin}
+                  list={list}
+                  key={list.id}
+                  HandleDelete={HandlePhotoDelete}
+                />
+              );
             })}
           {isItem()}
         </Container>
