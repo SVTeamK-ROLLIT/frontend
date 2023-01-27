@@ -26,13 +26,14 @@ const Mypagebtn = styled.button`
 
 const BtnWrap = styled.div`
   display: flex;
+  width: 9rem;
 `;
 
 function MakeRollingMypage() {
   const navigate = useNavigate();
   return (
     <BtnWrap>
-      <Mypagebtn onClick={() => navigate('/')}>ㅤ뒤로가기</Mypagebtn>
+      <Mypagebtn onClick={() => navigate('/')}>＜뒤로가기</Mypagebtn>
     </BtnWrap>
   );
 }
