@@ -2,12 +2,15 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+
 // import axios from 'axios';
 
-export default function App({ list }) {
+export default function App({ list, isAdmin, HandleDelete }) {
   const nodeRef = useRef(null);
 
-  const { xcoor, ycoor, content, font, font_color, color, nickname } = list;
+  const { xcoor, ycoor, content, font, font_color, color, nickname, memo_id } =
+    list;
+  console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -45,6 +48,15 @@ export default function App({ list }) {
         }}
       >
         <MemoText font={font} color={font_color}>
+          {isAdmin ? (
+            <DeleteBtn
+              onClick={() => {
+                HandleDelete(memo_id);
+              }}
+            />
+          ) : (
+            <div />
+          )}
           {content}
         </MemoText>
         <Name>
@@ -80,4 +92,12 @@ const MemoText = styled.div`
 const Name = styled.div`
   text-align: right;
   align-items: end;
+`;
+
+const DeleteBtn = styled.button`
+  background-color: red;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  right: 5%;
 `;
