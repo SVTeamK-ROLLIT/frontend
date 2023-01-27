@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import user from '../Image/user.png';
+import profile from '../Image/profile.png';
 
 function Profile({ myRollPageData }) {
   return (
     <ChoiceContainer>
+      <img src={profile} alt="" />
       <LeftWrap>
-        <ProfileImg />
+        <ProfileImg>
+          <img src={user} alt="" />
+        </ProfileImg>
       </LeftWrap>
       <RightWrap>
         <RightUpWrap>
           <NickName margin="0rem 0rem 0rem 2rem">
-            {myRollPageData?.user_data[0].nickname} 님
+            {myRollPageData?.user_data[0].nickname}
           </NickName>
           {/* <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn> */}
         </RightUpWrap>
@@ -29,24 +34,26 @@ export default Profile;
 
 const ChoiceContainer = styled.div`
   display: flex;
-  align-items: stretch;
-  height: 100%;
+  align-items: center;
+  height: 20rem;
+  width: 81rem;
   z-index: 90;
+  position: relative;
 `;
 
 const LeftWrap = styled.div`
   //background-color: red;
-  flex: 1;
   text-align: center;
-  display: flex;
-  align-items: center;
+  display: block;
+  position: absolute;
 `;
 const ProfileImg = styled.div`
-  background-color: #d9d9d9;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 100%;
-  margin: auto 0 auto 14rem;
+  width: 15rem;
+  height: 12rem;
+  border-radius: 50%;
+  margin-left: 10rem;
+
+  display: flex;
 `;
 
 const RightWrap = styled.div`
@@ -56,22 +63,24 @@ const RightWrap = styled.div`
   flex-direction: column;
   display: flex;
   align-items: stretch;
+  position: absolute;
   width: 100%;
 `;
 
 const RightUpWrap = styled.div`
   //background-color: green;
-  flex: 1;
-  align-items: flex-end;
-  display: flex;
+  position: absolute;
+  margin-left: 22rem;
+  margin-top: -3rem;
 `;
 
 const NickName = styled.div`
-  width: 24rem;
-  height: 74px;
-  font-size: 42px;
-  font-weight: 700;
+  width: 26rem;
+  height: 2rem;
+  font-size: 2.2rem;
   margin: ${props => props.margin};
+  font-family: 'SUIT-SemiBold';
+  position: absolute;
 `;
 
 // const ChangeBtn = styled.button`
@@ -90,4 +99,5 @@ const RightDownWrap = styled.div`
   //background-color: tomato;
   flex: 1;
   display: flex;
+  margin-left: 22rem;
 `;

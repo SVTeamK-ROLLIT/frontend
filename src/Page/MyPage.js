@@ -9,22 +9,40 @@ import './Background.css';
 import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
+import logo from '../Image/smallpoplogo.png';
+
+import './Mypage.css';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
+const BtnWrap = styled.div`
+  position: relative;
+  text-align: center;
+  height: 20rem;
+`;
 const BackBtn = styled.button`
-  //상단 로그인 버튼
+  //상단 뒤로가기 버튼
   width: 14rem;
   height: 5.5rem;
 
-  font-size: 2.5rem;
-  font-weight: 1000;
+  font-size: 2rem;
 
   color: white;
   font-family: 'Cafe24Ssurround';
   text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
+`;
+
+const HomeBtn = styled.button`
+  //상단 로그인 버튼
+  width: 20rem;
+  height: 4rem;
+
+  font-size: 2.5rem;
+  font-weight: 1000;
+
+  color: white;
 `;
 
 function MyPage() {
@@ -52,7 +70,12 @@ function MyPage() {
   const navigate = useNavigate();
   return (
     <div className="mypage">
-      <BackBtn onClick={() => navigate('/')}>ㅤ뒤로가기</BackBtn>
+      <BackBtn onClick={() => navigate('/')}>＜뒤로가기</BackBtn>
+      <BtnWrap>
+        <HomeBtn onClick={() => navigate('/')}>
+          <img src={logo} alt="" />
+        </HomeBtn>
+      </BtnWrap>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />

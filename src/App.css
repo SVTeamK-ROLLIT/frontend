@@ -23,6 +23,10 @@
   font-family: Ansungtangmyun;
   src: URL('./Styles/fonts/Ansungtangmyun.ttf');
 }
+@font-face {
+  font-family: SUIT-SemiBold;
+  src: URL('./Styles/fonts/SUIT-SemiBold.ttf');
+}
 
 /* 카페24서라운드 */
 /* @font-face {

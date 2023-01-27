@@ -9,7 +9,7 @@ const SketchBookImg = styled.div`
   // border: 5px solid #535353;
   background-color: #fcedb0;
   background-size: 80rem 25rem;
-  background-image: url(${sketchbook});
+  /* background-image: url(${sketchbook}); */
   margin: auto;
 `;
 

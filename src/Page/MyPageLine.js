@@ -1,25 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MyPageLine({ myRollPageData }) {
-  return (
-    <Line>
-      {myRollPageData?.user_data[0].nickname}
-      님의 롤링페이지 목록입니다
-    </Line>
-  );
+function MyPageLine() {
+  return <Line>ROLLING PAPER LIST</Line>;
 }
 
 export default MyPageLine;
 
 const Line = styled.div`
-  width: 1353px;
-  height: 61px;
-  border-radius: 10px;
-  background: #fffaf0;
-  margin-top: 4rem;
+  width: 50rem;
+  height: 5rem;
+  border-radius: 2rem;
   margin: 4rem auto 0 auto;
-  font-size: 36px;
+  font-size: 3.5rem;
   text-align: center;
-  color: #000;
+  color: white;
+  position: relative;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 1.5px 1.5px 1.5px gray;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: gray;
 `;
