@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import Modal from './Login';
 // import HandMotion from './handMotion';
 import './welcome.css';
+import './button.css';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
 import background from '../Image/welcome1.png';
 import logo from '../Image/newlogo.png';
-import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
   height: 67rem;
@@ -39,26 +39,22 @@ const StartWrap = styled.div`
   display: flex;
   margin: auto auto 7rem auto;
 `;
-const PencilImg = styled.img`
-  width: 3.6rem;
-  height: 3rem;
-  margin-top: 0.5rem;
-  // 스캐치북 위에 올리기
-`;
+// const PencilImg = styled.img`
+//   width: 3.6rem;
+//   height: 3rem;
+//   margin-top: 0.5rem;
+//   // 스캐치북 위에 올리기
+// `;
 
 const StartBtn = styled.button`
-  width: 15rem;
+  width: 30rem;
   height: 3.5rem;
   border-radius: 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
 
   font-family: 'Cafe24Ssurround';
-  color: white;
   text-shadow: 2px 2px 1.5px gray;
-  opacity: 0.8;
-  -webkit-text-stroke-width: 1.5px;
-  -webkit-text-stroke-color: black;
 `;
 
 function Welcome() {
@@ -95,8 +91,11 @@ function Welcome() {
       <SketchbookImg src={logo}>
         <StartWrap>
           {/* <HandMotion /> */}
-          <PencilImg src={pencil} />
-          <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+          <StartBtn onClick={onClick2}>
+            <button type="button" className="learn-more">
+              만들어보기
+            </button>
+          </StartBtn>
         </StartWrap>
       </SketchbookImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
