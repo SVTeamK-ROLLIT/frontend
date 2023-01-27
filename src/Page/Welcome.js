@@ -9,6 +9,7 @@ import './welcome.css';
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
+import background from '../Image/welcome1.png';
 import sketchbook from '../Image/RollIT.png';
 import pencil from '../Image/pencil.png';
 
@@ -29,6 +30,7 @@ const AllWrap = styled.div`
   z-index: -1;
   background-color: #fcedb0;
   position: fixed;
+  background-image: url(${background});
 `;
 
 const StartWrap = styled.div`
