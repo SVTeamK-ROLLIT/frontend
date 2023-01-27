@@ -4,23 +4,21 @@ import user from '../Image/user.png';
 
 function Profile({ myRollPageData }) {
   return (
-    <div>
-      <Container>
-        <Container1>
-          <ProfileImg> </ProfileImg>
-        </Container1>
-        <Container2>
-          <NickName margin="0rem 0rem 0rem 0rem">
-            {myRollPageData?.user_data[0].nickname}
-          </NickName>
-          {/* <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn> */}
-          <NickName margin="1.5rem 0rem 0 2rem">
-            {myRollPageData?.user_data[0].email}
-          </NickName>
-          {/* <ChangeBtn margin="2rem 14rem 0 auto">변경</ChangeBtn> */}
-        </Container2>
-      </Container>
-    </div>
+    <Container>
+      <Container1>
+        <ProfileImg> </ProfileImg>
+      </Container1>
+      <Container2>
+        <NickName margin="0rem 0rem 0rem 0rem">
+          {myRollPageData?.user_data[0].nickname} 님
+        </NickName>
+        {/* <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn> */}
+        <NickName margin="1.5rem 0rem 0 2rem">
+          {myRollPageData?.user_data[0].email}
+        </NickName>
+        {/* <ChangeBtn margin="2rem 14rem 0 auto">변경</ChangeBtn> */}
+      </Container2>
+    </Container>
   );
 }
 
@@ -29,38 +27,35 @@ export default Profile;
 const Container = styled.div`
   text-align: center;
   z-index: 90;
-  position: absolute;
-  width: 80rem;
-  height: 20rem;
-  justify-content: center;
-  display: block;
+  width: 30rem;
+  position: relative;
+  height: 34rem;
+  border-radius: 5rem;
+  background-color: whitesmoke;
+  border: 2.8px solid skyblue;
+  margin: auto;
 `;
 
 const Container1 = styled.div`
-  text-align: center;
   z-index: 90;
-  position: absolute;
-  width: 80rem;
-  justify-content: center;
-  display: flex;
+  position: relative;
 `;
 
 const Container2 = styled.div`
-  text-align: center;
   z-index: 90;
-  position: absolute;
-  width: 80rem;
+  width: 30rem;
   justify-content: center;
-  margin-top: 15rem;
+  margin-top: -3rem;
 `;
 
 const ProfileImg = styled.div`
-  width: 15rem;
-  height: 15rem;
   background-image: url(${user});
-  background-size: cover;
-  display: flex;
-  justify-content: center;
+  height: 25rem;
+  background-size: 20rem 20rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* margin-top: 20rem; */
+  background-position-y: 1rem;
 `;
 
 const NickName = styled.div`
@@ -68,4 +63,5 @@ const NickName = styled.div`
   margin: ${props => props.margin};
   font-family: 'SUIT-SemiBold';
   position: relative;
+  height: 2rem;
 `;
