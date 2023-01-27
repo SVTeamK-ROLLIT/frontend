@@ -10,18 +10,18 @@ import OnLog from './Onlog';
 import Outlog from './Outlog';
 
 import background from '../Image/welcome1.png';
-import sketchbook from '../Image/RollIT.png';
+import logo from '../Image/newlogo.png';
 import pencil from '../Image/pencil.png';
 
 const SketchbookImg = styled.div`
-  height: 45rem;
-  background-size: 40rem 30rem;
+  height: 67rem;
+  background-size: 50rem 40rem;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(${sketchbook});
+  background-image: url(${logo});
   display: flex;
   /* margin-top: 20rem; */
-  background-position-y: 6rem;
+  background-position-y: 15rem;
 `;
 
 const AllWrap = styled.div`
@@ -55,9 +55,9 @@ const StartBtn = styled.button`
 
   font-family: 'Cafe24Ssurround';
   color: white;
-  text-shadow: 1.5px 1.5px 1.5px gray;
+  text-shadow: 2px 2px 1.5px gray;
   opacity: 0.8;
-  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: black;
 `;
 
@@ -92,7 +92,7 @@ function Welcome() {
         <Outlog onClick={onClick} />
       )}
 
-      <SketchbookImg src={sketchbook}>
+      <SketchbookImg src={logo}>
         <StartWrap>
           {/* <HandMotion /> */}
           <PencilImg src={pencil} />
