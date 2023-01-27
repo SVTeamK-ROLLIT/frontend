@@ -38,7 +38,9 @@ function MyPageItem({ dataColumn }) {
         </div>
       </ButtonItem>
       <ButtonTitle
-        onClick={() => handleCopyClipBoard(`rollit5/rolling/${dataColumn.id}`)}
+        onClick={() =>
+          handleCopyClipBoard(`www.rollit5.link/rolling/${dataColumn.id}`)
+        }
       >
         {/* {dataColumn.title} */} 링크복사
       </ButtonTitle>

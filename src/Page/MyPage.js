@@ -70,9 +70,9 @@ function MyPage() {
   const navigate = useNavigate();
   return (
     <div className="mypage">
-      <BackBtn onClick={() => navigate('/welcome')}>＜뒤로가기</BackBtn>
+      <BackBtn onClick={() => navigate('/')}>＜뒤로가기</BackBtn>
       <BtnWrap>
-        <HomeBtn onClick={() => navigate('/welcome')}>
+        <HomeBtn onClick={() => navigate('/')}>
           <img src={logo} alt="" />
         </HomeBtn>
       </BtnWrap>
