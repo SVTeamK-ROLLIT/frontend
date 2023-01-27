@@ -62,7 +62,6 @@ const ButtonItem = styled.button`
   font-size: 2rem;
   text-align: center;
   font-family: 'Cafe24Ssurround';
-  z-index: -10;
 `;
 const ButtonTitle = styled.button`
   width: 10rem;
@@ -81,10 +80,10 @@ const ButtonTitle = styled.button`
 //   height: 300px;
 //   background: #f5f5f5;
 //   margin: 0 2rem 2rem 0;
-// //   display: flex;
-// //   justify-content: flex-end;
-// //   align-items: flex-end;
-// // `;
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+// `;
 
 // const LinkBtnDiv = styled.div`
 //   padding-left: 12rem;
