@@ -12,6 +12,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import './button.css';
+
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Container = styled.div``;
@@ -30,8 +32,7 @@ const TitleInput = styled.input`
   padding: 1rem;
   margin: auto;
   background: #ffffff;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   display: block;
   &:focus {
@@ -52,16 +53,32 @@ const ToTitleWrap = styled.div`
 const StyledSlider = styled(Slider)`
   .slick-slide div {
     outline: none;
-    margin-bottom: 0.3rem;
-    /* margin-left: -0.7rem; */
+    margin-bottom: 1rem;
   }
   .slick-arrow {
     display: flex;
     z-index: 1;
-    height: 1vw;
+    height: 1vh;
     /* right: 1vw; */
-    position: absolute;
     width: 60vw;
+  }
+  .slick-next:before {
+    color: orangered;
+    position: relative;
+    width: 20rem;
+  }
+  .slick-prev:before {
+    color: orangered;
+    position: relative;
+    width: 20rem;
+  }
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+    bottom: 5px;
+    li button:before {
+      color: orangered;
+    }
   }
 `;
 
@@ -70,12 +87,12 @@ const ImageContainer = styled.div``;
 const Image = styled.img`
   width: 27vw;
   height: 30vh;
-  margin-left: 33vw;
+  margin-left: 34vw;
   z-index: 10;
 `;
 
 const Count = styled.button`
-  height: 20vh;
+  height: 10vh;
   font-size: 40px;
   font-weight: 1000;
   color: #fff;
@@ -84,9 +101,6 @@ const Count = styled.button`
   margin: auto;
   margin-top: 2rem;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1.5px 1.5px 1.5px gray;
-  -webkit-text-stroke-width: 1.3px;
-  -webkit-text-stroke-color: black;
 `;
 
 // const Text = styled.button`
@@ -139,8 +153,10 @@ class SimpleSlider extends Component {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 1300,
       slidesToShow: 1,
+      fade: true,
+      // autoplay: true,
       slidesToScroll: 1,
       arrows: true,
       centerMode: true,
@@ -173,7 +189,7 @@ class SimpleSlider extends Component {
       <Container>
         {console.log(this.state.value)}
         <ToTitleWrap>
-          <To>To.</To>
+          <To> </To>
           <TitleInput
             type="text"
             name="message"
@@ -196,9 +212,10 @@ class SimpleSlider extends Component {
           })}
         </StyledSlider>
         <Count type="submit" onClick={submit}>
-          <strong>테마 {this.state.activeSlide + 1}</strong>
-          <br />
-          만들어보기
+          <button type="button" className="learn-more">
+            테마 {this.state.activeSlide + 1}
+            <br /> SELECT
+          </button>
         </Count>
         {console.log(this.state.activeSlide + 1)}
       </Container>
