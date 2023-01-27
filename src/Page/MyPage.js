@@ -9,7 +9,7 @@ import './Background.css';
 import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
-import logo from '../Image/smallLogo.png';
+import logo from '../Image/smallpoplogo.png';
 
 import './Mypage.css';
 
@@ -18,10 +18,10 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 const BtnWrap = styled.div`
   position: relative;
   text-align: center;
-  height: 12rem;
+  height: 20rem;
 `;
 const BackBtn = styled.button`
-  //상단 로그인 버튼
+  //상단 뒤로가기 버튼
   width: 14rem;
   height: 5.5rem;
 
@@ -36,9 +36,8 @@ const BackBtn = styled.button`
 
 const HomeBtn = styled.button`
   //상단 로그인 버튼
-  width: 18rem;
-  height: 5rem;
-  display: inline-block;
+  width: 20rem;
+  height: 4rem;
 
   font-size: 2.5rem;
   font-weight: 1000;
