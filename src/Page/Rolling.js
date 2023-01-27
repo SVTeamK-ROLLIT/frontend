@@ -179,7 +179,7 @@ function Rolling() {
   const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
   const [photo, setPhoto] = useState();
   const [deleteAction, setDeleteAction] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
