@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-function MyPageItem({ dataColumn }, { myRollPageData }) {
+function MyPageItem({ dataColumn }) {
   const handleCopyClipBoard = async text => {
     try {
       await navigator.clipboard.writeText(text);
@@ -17,7 +17,6 @@ function MyPageItem({ dataColumn }, { myRollPageData }) {
   return (
     <div>
       <ButtonItem onClick={() => navigate(`/rolling/${dataColumn.id}`)}>
-        {dataColumn.title}
         <div className="wrapper">
           <div className="cols">
             <div className="col" onTouchStart="this.classList.toggle('hover');">
@@ -30,7 +29,7 @@ function MyPageItem({ dataColumn }, { myRollPageData }) {
                 </div>
                 <div className="back">
                   <div className="inner">
-                    <p>{myRollPageData}님의 롤링페이퍼입니다.</p>
+                    <p>작성된 메모 수 :</p>
                   </div>
                 </div>
               </div>
@@ -38,11 +37,11 @@ function MyPageItem({ dataColumn }, { myRollPageData }) {
           </div>
         </div>
       </ButtonItem>
-      <LinkBtnDiv>
-        <LinkBtn onClick={() => handleCopyClipBoard(`${dataColumn.id}`)}>
-          링크복사
-        </LinkBtn>
-      </LinkBtnDiv>
+      <ButtonTitle
+        onClick={() => handleCopyClipBoard(`rollit5/rolling/${dataColumn.id}`)}
+      >
+        {/* {dataColumn.title} */} 링크복사
+      </ButtonTitle>
     </div>
   );
 }
@@ -57,37 +56,51 @@ function MyPageItem({ dataColumn }, { myRollPageData }) {
 
 const ButtonItem = styled.button`
   width: 25rem;
-  height: 25rem;
-  font-size: 2.5rem;
+  height: 20rem;
+  font-size: 2rem;
   text-align: center;
+  font-family: 'Cafe24Ssurround';
+  z-index: -10;
+`;
+const ButtonTitle = styled.button`
+  width: 10rem;
+  height: 5rem;
+  padding-left: 2.5rem;
+  font-size: 1.5rem;
+  display: flex;
   color: white;
   font-family: 'Cafe24Ssurround';
+  text-shadow: 1px 1px 1px gray;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 `;
-
 // const PageItem = styled.button`
 //   width: 298px;
 //   height: 300px;
 //   background: #f5f5f5;
 //   margin: 0 2rem 2rem 0;
-//   display: flex;
-//   justify-content: flex-end;
-//   align-items: flex-end;
+// //   display: flex;
+// //   justify-content: flex-end;
+// //   align-items: flex-end;
+// // `;
+
+// const LinkBtnDiv = styled.div`
+//   padding-left: 12rem;
+//   margin-top: -1.5rem;
+//   position: absolute;
+//   z-index: 1;
 // `;
 
-const LinkBtnDiv = styled.div`
-  padding-left: 10rem;
-  border-color: blue;
-`;
-
-const LinkBtn = styled.button`
-  width: 77px;
-  height: 38px;
-  border-radius: 13px;
-  background-color: yellow;
-  border-color: red;
-  font-size: 14px;
-  font-weight: 700;
-  display: block;
-`;
+// const LinkBtn = styled.button`
+//   width: 2rem;
+//   height: 2rem;
+//   border-radius: 13px;
+//   color: black;
+//   font-size: 14px;
+//   font-weight: 700;
+//   display: block;
+//   z-index: 1;
+//   /* border: 1px solid gray; */
+// `;
 
 export default MyPageItem;
