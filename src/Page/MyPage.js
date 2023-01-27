@@ -30,8 +30,21 @@ const BackBtn = styled.button`
   //상단 뒤로가기 버튼
   width: 14rem;
   height: 5.5rem;
+  font-size: 2.5rem;
 
-  font-size: 2rem;
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 2px 2px 2px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
+`;
+const MakeBtn = styled.button`
+  //상단 만들기 버튼
+  width: 15rem;
+  height: 5.5rem;
+  float: right;
+  font-size: 2.5rem;
+  font-weight: 1000;
 
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -67,6 +80,7 @@ function MyPage() {
     <div>
       <AllWrap />
       <BackBtn onClick={() => navigate('/')}>＜뒤로가기</BackBtn>
+      <MakeBtn onClick={() => navigate('/makerolling')}>또 만들기</MakeBtn>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />
