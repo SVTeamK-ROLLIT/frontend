@@ -25,6 +25,8 @@ const SketchbookImg = styled.div`
 `;
 
 const AllWrap = styled.div`
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   width: 100%;
   z-index: -1;
