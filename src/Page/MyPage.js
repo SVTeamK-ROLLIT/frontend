@@ -5,21 +5,27 @@ import { useNavigate } from 'react-router-dom';
 
 // import styled from 'styled-components';
 
-import './Background.css';
 import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
-import logo from '../Image/smallpoplogo.png';
+
+import background from '../Image/welcome1.png';
 
 import './Mypage.css';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
-const BtnWrap = styled.div`
-  position: relative;
-  text-align: center;
-  height: 20rem;
+const AllWrap = styled.div`
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  background-color: #fcedb0;
+  position: fixed;
+  background-image: url(${background});
 `;
+
 const BackBtn = styled.button`
   //상단 뒤로가기 버튼
   width: 14rem;
@@ -32,17 +38,6 @@ const BackBtn = styled.button`
   text-shadow: 2px 2px 2px gray;
   -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: black;
-`;
-
-const HomeBtn = styled.button`
-  //상단 로그인 버튼
-  width: 20rem;
-  height: 4rem;
-
-  font-size: 2.5rem;
-  font-weight: 1000;
-
-  color: white;
 `;
 
 function MyPage() {
@@ -69,13 +64,9 @@ function MyPage() {
   // console.log(myRollPageData);
   const navigate = useNavigate();
   return (
-    <div className="mypage">
+    <div>
+      <AllWrap />
       <BackBtn onClick={() => navigate('/')}>＜뒤로가기</BackBtn>
-      <BtnWrap>
-        <HomeBtn onClick={() => navigate('/')}>
-          <img src={logo} alt="" />
-        </HomeBtn>
-      </BtnWrap>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />
