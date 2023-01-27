@@ -23,6 +23,7 @@ const SketchbookImg = styled.div`
   background-position-y: 6rem;
 `;
 
+
 const AllWrap = styled.div`
   height: 100vh;
   width: 100%;
