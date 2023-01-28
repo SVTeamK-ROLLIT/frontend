@@ -7,6 +7,7 @@ import DeleteBtn from './DeleteBtn';
 export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
   const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
   // console.log(list);
+  // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({
     width2: width,
     height2: height,
@@ -15,7 +16,7 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
     rotate2: rotate,
   });
   // console.log(position);
-  console.log(setPosition);
+  // console.log(setPosition);
 
   // const handleDrag = (deltaX, deltaY) => {
   //   setPosition(prevState => ({

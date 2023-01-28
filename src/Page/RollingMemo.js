@@ -23,7 +23,7 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
     // password,
   } = list;
 
-  console.log(list);
+  // console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 

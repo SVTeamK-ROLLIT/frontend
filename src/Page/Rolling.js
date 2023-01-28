@@ -149,6 +149,8 @@ const CancelBtn = styled.button`
 // const [background, setBackground] = useState();
 
 function Rolling() {
+  const [rawLog, setRawLog] = useState();
+
   const location = useLocation();
   const navigate = useNavigate();
   const [backgroundImg, setBackgroundImg] = useState();
@@ -272,24 +274,27 @@ function Rolling() {
     }
     console.log('start Resizing');
     photoReSizing(photo, setPhoto);
-
-    const formData = new FormData();
-    formData.append('image', photo);
-    formData.append('password', '1234');
-    formData.append('xcoor', coor.left2);
-    formData.append('ycoor', coor.top2);
-    formData.append('rotate', coor.rotate2);
-    formData.append('width', coor.width2);
-    formData.append('height', coor.height2);
+    console.log(photo.image_id);
+    console.log(coor);
+    console.log(paperId);
     axios
-      .post(`${backBaseUrl}/api/v1/papers/${paperId}/photos`, formData)
+      .post(`${backBaseUrl}/api/v1/papers/${paperId}/xyphotos`, {
+        image_id: photo.image_id,
+        password: '1234',
+        xcoor: coor.left2,
+        ycoor: coor.top2,
+        rotate: coor.rotate2,
+        width: coor.width2,
+        height: coor.height2,
+      })
       .then(() => {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
         setIsActive(false); // 수정 기능 비활성화
       })
-      .catch(err => {
-        console.log(err.response.data.message);
+      .catch(() => {
+        console.log(photo.image_id);
+        console.log('fail save photo');
       });
   };
 
@@ -335,10 +340,10 @@ function Rolling() {
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
         // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
-        console.log(item.data);
+        // console.log(item.data);
         if (item.data.user === localStorage.getItem('id')) {
           setIsAdmin(true);
-          console.log('hihihihihihi');
+          // console.log('hihihihihihi');
         }
         // /###########################
         setItems(item.data);
@@ -364,7 +369,7 @@ function Rolling() {
     // console.log(coor);
   };
 
-  console.log(items.image);
+  // console.log(items.image);
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (
@@ -375,7 +380,12 @@ function Rolling() {
     ) : isSticky ? (
       <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
     ) : isPhoto ? (
-      <NewPhoto parentFunction={parentFunction} photo={photo} />
+      <NewPhoto
+        parentFunction={parentFunction}
+        photo={photo}
+        rawLog={rawLog}
+        setRawLog={setRawLog}
+      />
     ) : (
       <div />
     );
@@ -469,7 +479,9 @@ function Rolling() {
               setIsActive={setIsActive}
               setIsPhoto={setIsPhoto}
               setPhoto={setPhoto}
+              setRawLog={setRawLog}
             />
+            {console.log(photo)}
             <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
