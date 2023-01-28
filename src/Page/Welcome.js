@@ -14,14 +14,14 @@ import background from '../Image/welcome1.png';
 import logo from '../Image/newlogo.png';
 
 const SketchbookImg = styled.div`
-  height: 67rem;
-  background-size: 50rem 40rem;
+  height: 60rem;
+  background-size: 50rem 39rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${logo});
   display: flex;
   /* margin-top: 20rem; */
-  background-position-y: 15rem;
+  background-position-y: 4rem;
 `;
 
 const AllWrap = styled.div`
@@ -37,7 +37,7 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 7rem auto;
+  margin: auto auto 12rem auto;
 `;
 // const PencilImg = styled.img`
 //   width: 3.6rem;
