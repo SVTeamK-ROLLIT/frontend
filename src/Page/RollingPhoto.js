@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
 // import img from '../Image/ID.png';
 
-export default function NewPhoto({ list, isAdmin }) {
-  const { image_url, xcoor, ycoor, rotate, width, height } = list;
+export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
+  const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
   // console.log(list);
   const [position, setPosition] = useState({
     width2: width,
@@ -16,40 +16,40 @@ export default function NewPhoto({ list, isAdmin }) {
     rotate2: rotate,
   });
   // console.log(position);
-  // console.log(setPosition);
+  console.log(setPosition);
 
-  const handleDrag = (deltaX, deltaY) => {
-    setPosition(prevState => ({
-      ...prevState,
-      top2: position.top2 + deltaY,
-      left2: position.left2 + deltaX,
-    }));
-    // console.log(position);
-  };
+  // const handleDrag = (deltaX, deltaY) => {
+  //   setPosition(prevState => ({
+  //     ...prevState,
+  //     top2: position.top2 + deltaY,
+  //     left2: position.left2 + deltaX,
+  //   }));
+  //   // console.log(position);
+  // };
 
-  const handleResize = style => {
-    // eslint-disable-next-line no-shadow
-    let { top, left, width, height } = style;
-    top = Math.round(top);
-    left = Math.round(left);
-    width = Math.round(width);
-    height = Math.round(height);
-    setPosition(prevState => ({
-      ...prevState,
-      width2: width,
-      top2: top,
-      height2: height,
-      left2: left,
-    }));
-    // console.log(position);
-  };
-  const handleRotate = rotateAngle2 => {
-    setPosition(prevState => ({
-      ...prevState,
-      rotate2: rotateAngle2,
-    }));
-    // console.log(position);
-  };
+  // const handleResize = style => {
+  //   // eslint-disable-next-line no-shadow
+  //   let { top, left, width, height } = style;
+  //   top = Math.round(top);
+  //   left = Math.round(left);
+  //   width = Math.round(width);
+  //   height = Math.round(height);
+  //   setPosition(prevState => ({
+  //     ...prevState,
+  //     width2: width,
+  //     top2: top,
+  //     height2: height,
+  //     left2: left,
+  //   }));
+  //   // console.log(position);
+  // };
+  // const handleRotate = rotateAngle2 => {
+  //   setPosition(prevState => ({
+  //     ...prevState,
+  //     rotate2: rotateAngle2,
+  //   }));
+  //   // console.log(position);
+  // };
   return (
     <div>
       {isAdmin ? (
@@ -57,49 +57,54 @@ export default function NewPhoto({ list, isAdmin }) {
           <img
             src={image_url}
             style={{
-              width: position.width2,
-              height: position.height2,
-              left: position.left2,
-              top: position.top2,
-              rotate: `${position.rotate2}deg`,
+              width,
+              height,
+              left: xcoor,
+              top: ycoor,
+              rotate: `${rotate}deg`,
               position: 'absolute',
+              zIndex: 1,
               // border: '1px solid black',
             }}
             alt=""
           />
           <div
             style={{
-              width: position.width2,
-              height: position.height2,
-              left: position.left2 + 1,
-              top: position.top2 + 1,
+              width,
+              height,
+              left: xcoor,
+              top: ycoor,
               position: 'absolute',
               // border: '1px solid black',
-              rotate: `${position.rotate2}deg`,
+              rotate: `${rotate}deg`,
               // zIndex: 0,
             }}
           >
-            <DeleteBtn />
+            <DeleteBtn
+              onClick={() => {
+                HandlePhotoDelete(image_id);
+              }}
+            />
           </div>
           <ResizableRect
-            left={position.left2}
-            top={position.top2}
-            width={position.width2}
-            height={position.height2}
-            rotateAngle={position.rotate2}
+            left={xcoor}
+            top={ycoor}
+            width={width}
+            height={height}
+            rotateAngle={rotate}
             minWidth={100} // 최소크기
             // aspectRatio={false}
             minHeight={100}
-            zoomable="n, w, s, e, nw, ne, se, sw"
+            // zoomable="n, w, s, e, nw, ne, se, sw"
             // rotatable={true}
             // onRotateStart={this.handleRotateStart}
-            onRotate={handleRotate}
+            // onRotate={handleRotate}
             // onRotateEnd={this.handleRotateEnd}
             // onResizeStart={this.handleResizeStart}
-            onResize={handleResize}
+            // onResize={handleResize}
             // onResizeEnd={this.handleUp}
             // onDragStart={this.handleDragStart}
-            onDrag={handleDrag}
+            // onDrag={handleDrag}
             // onDragEnd={this.handleDragEnd}
           />
         </>
@@ -108,11 +113,11 @@ export default function NewPhoto({ list, isAdmin }) {
           <img
             src={image_url}
             style={{
-              width: position.width2,
-              height: position.height2,
-              left: position.left2,
-              top: position.top2,
-              rotate: `${position.rotate2}deg`,
+              width,
+              height,
+              left: xcoor,
+              top: ycoor,
+              rotate: `${rotate}deg`,
               position: 'absolute',
               zIndex: 1,
               // border: '1px solid black',
@@ -120,11 +125,11 @@ export default function NewPhoto({ list, isAdmin }) {
             alt=""
           />
           <ResizableRect
-            left={position.left2}
-            top={position.top2}
-            width={position.width2}
-            height={position.height2}
-            rotateAngle={position.rotate2}
+            left={position.xcoor}
+            top={position.ycoor}
+            width={position.width}
+            height={position.height}
+            rotateAngle={position.rotate}
             minWidth={100} // 최소크기
             // aspectRatio={false}
             minHeight={100}

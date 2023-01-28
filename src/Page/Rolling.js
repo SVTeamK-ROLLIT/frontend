@@ -306,7 +306,6 @@ function Rolling() {
   const HandleStickyDelete = useCallback(id => {
     axios
       .post(`${backBaseUrl}/api/v1/papers/stickers/${id}`, {
-        sticker_id: id,
         password: '1',
       })
       .then(() => {
@@ -318,8 +317,7 @@ function Rolling() {
   const HandlePhotoDelete = useCallback(id => {
     axios
       .post(`${backBaseUrl}/api/v1/papers/images/${id}`, {
-        image_id: id,
-        password: '1',
+        password: '1234',
       })
       .then(() => {
         console.log('delete!!!!!!!!!!!!!!');
@@ -337,8 +335,10 @@ function Rolling() {
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
         // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
-        if (item.data.user_id === localStorage.getItem('id')) {
+        console.log(item.data);
+        if (item.data.user === localStorage.getItem('id')) {
           setIsAdmin(true);
+          console.log('hihihihihihi');
         }
         // /###########################
         setItems(item.data);
@@ -404,7 +404,7 @@ function Rolling() {
                 <Memo
                   isAdmin={isAdmin}
                   list={list}
-                  key={list.id}
+                  key={list.memo_id}
                   HandleMemoDelete={HandleMemoDelete}
                 />
               );
@@ -415,7 +415,7 @@ function Rolling() {
                 <Sticky
                   isAdmin={isAdmin}
                   list={list}
-                  key={list.id}
+                  key={list.sticker_id}
                   HandleStickyDelete={HandleStickyDelete}
                 />
               );
@@ -426,8 +426,8 @@ function Rolling() {
                 <Photo
                   isAdmin={isAdmin}
                   list={list}
-                  key={list.id}
-                  HandleDelete={HandlePhotoDelete}
+                  key={list.image_id}
+                  HandlePhotoDelete={HandlePhotoDelete}
                 />
               );
             })}
