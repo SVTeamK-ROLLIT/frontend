@@ -94,7 +94,7 @@ function PhotoModal({
 
   const ClickUpload = async () => {
     const formData = new FormData();
-    console.log(files[0].file);
+    // console.log(files[0].file);
     formData.append('image', files[0].file);
 
     const res = await axios.post(

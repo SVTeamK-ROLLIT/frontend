@@ -5,6 +5,8 @@ import styled from 'styled-components';
 // Import React FilePond
 
 import axios from 'axios';
+import { data } from 'autoprefixer';
+import { useLocation } from 'react-router-dom';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -23,6 +25,8 @@ function Cartoonize({
   setPhoto,
   setRawLog,
 }) {
+  const location = useLocation();
+  const paperId = location.pathname.slice(9);
   const [imageUrl, setImageUrl] = useState(null);
 
   async function run1() {
@@ -42,17 +46,22 @@ function Cartoonize({
     const interval = setInterval(() => {
       const datas = axios
         .get(
-          `${backBaseUrl}/api/v1/papers/cartoons/results/${run1Result.task_id}`,
+          `${backBaseUrl}/api/v1/papers/cartoons/results/${run1Result.task_id}/${paperId}`,
         )
         .then(response => {
           /* eslint-disable no-plusplus */
           counter++;
-          if (counter >= 10 || response.data.url) {
+          console.log(response.data);
+          if (counter >= 50 || response.data.image_url) {
             console.log('response: ', response.data);
-            setImageUrl(response.data.url);
             clearInterval(interval);
+            setPhoto(response.data);
+            closeModal();
+            setIsPhoto(true);
+            setIsActive(true);
           }
         })
+
         .catch(error => {
           console.log(error);
           clearInterval(interval);
@@ -61,14 +70,11 @@ function Cartoonize({
     }, 2000);
   }
 
-  const run3 = async () => {
+  const onSubmit = async () => {
     const run1Result = await run1();
     console.log('2번쨰 데이터 값 ', run1Result.task_id);
     const run2Result = await run2(run1Result);
 
-    await setPhoto(imageUrl);
-
-    await console.log('setPhoto', setPhoto);
     await console.log(1111);
     await console.log(2222);
     await console.log(3333);
@@ -81,7 +87,7 @@ function Cartoonize({
   };
   // console.log('@@@@@', imageUrl);
 
-  const onSubmit = () => {};
+  // const onSubmit = () => {};
   return <CartoonBtn type="button" onClick={onSubmit} />;
 }
 
