@@ -68,11 +68,6 @@ const StartBtn = styled.button`
   font-family: 'Cafe24Ssurround';
   text-shadow: 2px 2px 1.5px gray;
 `;
-const $topBtn = document.querySelector('.moveTopBtn');
-
-$topBtn.onclick = () => {
-  window.scrollTo({ top: 1500, behavior: 'smooth' });
-};
 
 function Welcome() {
   const navigate = useNavigate();
@@ -95,6 +90,12 @@ function Welcome() {
     }
     navigate('../makeRolling');
   };
+
+  // const $topBtn = document.querySelector('.moveTopBtn');
+
+  // $topBtn.onclick = () => {
+  //   window.scrollTo({ top: 1500, behavior: 'smooth' });
+  // };
 
   return (
     <div className="welcome">
