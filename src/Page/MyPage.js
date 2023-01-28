@@ -80,7 +80,7 @@ function MyPage() {
     <div>
       <AllWrap />
       <BackBtn onClick={() => navigate('/')}>＜뒤로가기</BackBtn>
-      <MakeBtn onClick={() => navigate('/makerolling')}>또 만들기</MakeBtn>
+      <MakeBtn onClick={() => navigate('/makerolling')}>만들어보기</MakeBtn>
       <SketchBook myRollPageData={myRollPageData} />
       <Line myRollPageData={myRollPageData} />
       <MyPageItems myRollPageData={myRollPageData} />
