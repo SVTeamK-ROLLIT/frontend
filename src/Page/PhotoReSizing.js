@@ -12,7 +12,7 @@ const PhotoReSizing = async function resizing(unReSizePhoto, setUnReSizePhoto) {
   try {
     const compressedFile = await imageCompression(file, options);
     setUnReSizePhoto(compressedFile);
-    console.log('PhotoResizing Success');
+    // console.log('PhotoResizing Success');
 
     // resize된 이미지의 url을 받아 fileUrl에 저장
     // const promise = imageCompression.getDataUrlFromFile(compressedFile);
@@ -20,7 +20,7 @@ const PhotoReSizing = async function resizing(unReSizePhoto, setUnReSizePhoto) {
     //   setFileUrl(result);
     // });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 

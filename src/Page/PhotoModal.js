@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import './Background.css';
@@ -23,6 +24,8 @@ import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
 import Cartoonize from './Cartoonize';
+
+const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SumbitBtn = styled.button`
   width: 100px;
@@ -85,7 +88,22 @@ function PhotoModal({
   setIsActive,
   setRawLog,
 }) {
+  const location = useLocation();
+  const paperId = location.pathname.slice(9); // 이거 url에서 paperId를 가져옴
   const [files, setFiles] = useState([]);
+
+  const ClickUpload = async () => {
+    const formData = new FormData();
+    console.log(files[0].file);
+    formData.append('image', files[0].file);
+
+    const res = await axios.post(
+      `${backBaseUrl}/api/v1/papers/${paperId}/photos`,
+      formData,
+    );
+    setPhoto(res.data);
+  };
+
   return (
     <div>
       <Modal
@@ -114,8 +132,8 @@ function PhotoModal({
         <SumbitBtn
           type="button"
           onClick={() => {
-            console.log(files[0].file);
-            setPhoto(files[0].file);
+            // console.log(files[0].file);
+            ClickUpload();
             closeModal();
             setIsPhoto(true);
             setIsActive(true);

@@ -1,5 +1,6 @@
 // import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import ResizableRect from 'react-resizable-rotatable-draggable';
 import photoReSizing from './PhotoReSizing';
 
@@ -54,12 +55,14 @@ export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
   parentFunction(position);
 
   // const [rawLog, setRawLog] = useState();
-  const reader = new FileReader();
-  reader.readAsDataURL(photo); // 파일을 읽는 메서드
-  reader.onload = () => {
-    setRawLog(reader.result);
-    console.log('@@@@@@@@@@@@@@@@', rawLog);
-  };
+  useEffect(() => {
+    const reader = new FileReader();
+    reader.readAsDataURL(photo); // 파일을 읽는 메서드
+    reader.onload = () => {
+      setRawLog(reader.result);
+      // console.log('@@@@@@@@@@@@@@@@', rawLog);
+    };
+  }, []);
 
   photoReSizing(rawLog, setRawLog);
 

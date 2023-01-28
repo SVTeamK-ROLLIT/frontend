@@ -337,10 +337,10 @@ function Rolling() {
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
         // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
-        console.log(item.data);
+        // console.log(item.data);
         if (item.data.user === localStorage.getItem('id')) {
           setIsAdmin(true);
-          console.log('hihihihihihi');
+          // console.log('hihihihihihi');
         }
         // /###########################
         setItems(item.data);
@@ -366,7 +366,7 @@ function Rolling() {
     // console.log(coor);
   };
 
-  console.log(items.image);
+  // console.log(items.image);
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (
