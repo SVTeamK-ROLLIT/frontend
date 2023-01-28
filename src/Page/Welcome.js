@@ -93,7 +93,7 @@ function Welcome() {
           {/* <HandMotion /> */}
           <StartBtn onClick={onClick2}>
             <button type="button" className="learn-more">
-              만들어보기
+              시작하기
             </button>
           </StartBtn>
         </StartWrap>
