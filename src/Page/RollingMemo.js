@@ -2,12 +2,28 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import DeleteBtn from './DeleteBtn';
 // import axios from 'axios';
 
-export default function App({ list }) {
+// import axios from 'axios';
+// const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+
+export default function App({ list, isAdmin, HandleMemoDelete }) {
   const nodeRef = useRef(null);
 
-  const { xcoor, ycoor, content, font, font_color, color, nickname } = list;
+  const {
+    xcoor,
+    ycoor,
+    content,
+    font,
+    font_color,
+    color,
+    nickname,
+    memo_id,
+    // password,
+  } = list;
+
+  console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -20,9 +36,25 @@ export default function App({ list }) {
   const handleStart = () => {
     setOpacity(true);
   };
-  const handleEnd = () => {
-    // submit();
+  // const paperId = localStorage.getItem('paperId');
+
+  const handleEnd = async () => {
     setOpacity(false);
+    // try {
+    //   // ###############새로운 api들어와야 함!!!!!!!!!!!!!!!!!!!!!!!!########
+    //   await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/memos`, {
+    //     content,
+    //     nickname,
+    //     font,
+    //     password,
+    //     color,
+    //     font_color,
+    //     xcoor,
+    //     ycoor,
+    //   });
+    // } catch (e) {
+    //   console.log('error!!!!!!!!!!!');
+    // }
   };
 
   return (
@@ -33,7 +65,7 @@ export default function App({ list }) {
       onStart={handleStart}
       onStop={handleEnd}
       defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
+      disabled={!isAdmin}
     >
       <MemoBox
         background={color}
@@ -45,6 +77,16 @@ export default function App({ list }) {
         }}
       >
         <MemoText font={font} color={font_color}>
+          {isAdmin ? (
+            <DeleteBtn
+              right="5%"
+              onClick={() => {
+                HandleMemoDelete(memo_id);
+              }}
+            />
+          ) : (
+            <div />
+          )}
           {content}
         </MemoText>
         <Name>

@@ -2,12 +2,14 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import DeleteBtn from './DeleteBtn';
+
 // import axios from 'axios';
 
-export default function App({ list }) {
+export default function App({ list, HandleStickyDelete, isAdmin }) {
   const nodeRef = useRef(null);
 
-  const { sticker_url, xcoor, ycoor } = list; // 좌표랑, 스티커주소 불러옴
+  const { sticker_url, xcoor, ycoor, sticker_id } = list; // 좌표랑, 스티커주소 불러옴
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -33,7 +35,7 @@ export default function App({ list }) {
       onStart={handleStart}
       onStop={handleEnd}
       defaultPosition={{ x: xcoor, y: ycoor }}
-      disabled
+      disabled={!isAdmin}
     >
       <MemoBox
         ref={nodeRef}
@@ -43,7 +45,18 @@ export default function App({ list }) {
           position: 'absolute',
         }}
         background={sticker_url}
-      />
+      >
+        {isAdmin ? (
+          <DeleteBtn
+            right="0"
+            onClick={() => {
+              HandleStickyDelete(sticker_id);
+            }}
+          />
+        ) : (
+          <div />
+        )}
+      </MemoBox>
     </Draggable>
   );
 }

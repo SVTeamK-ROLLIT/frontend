@@ -178,6 +178,8 @@ function Rolling() {
   const [sticky, setSticky] = useState(); // 스티커 ID저장
   const [skickyUrl, setStickyUrl] = useState(); // 스티커 주소 저장
   const [photo, setPhoto] = useState();
+  const [deleteAction, setDeleteAction] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -235,15 +237,7 @@ function Rolling() {
       console.log(e);
     }
   };
-  // const submitMemoCancel = async () => {
-  //   setIsActive(false); // 수정기능 비활성화
-  //   setIsCancel(false);
-  //   localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
 
-  //   const textcaseString = localStorage.getItem('textcase');
-  //   const textcase = JSON.parse(textcaseString);
-  //   textcase.textcase.xcoor = coor.x;
-  // };
   const submitSticky = async a => {
     try {
       if (a) {
@@ -269,24 +263,6 @@ function Rolling() {
     }
   };
 
-  // const submitPhoto = async () => {
-  //   try {
-  //     await axios.post('http://127.0.0.1:8080/ api/v1/papers/1/photos', {
-  //       default_sticker_id: sticky,
-  //       password: '1',
-  //       xcoor: coor.x,
-  //       ycoor: coor.y,
-  //       rotate: 30,
-  //     });
-
-  //     console.log('successSticky!!!!');
-  //     setIsPhoto(false); // 스티커 기능 비활성화
-  //     setIsActive(false); // 수정 기능 비활성화
-  //   } catch (e) {
-  //     // 서버에서 받은 에러 메시지 출력
-  //     console.log(e);
-  //   }
-  // };
   const submitPhoto = a => {
     if (a) {
       // 취소 버튼을 눌렀을 경우
@@ -317,6 +293,38 @@ function Rolling() {
       });
   };
 
+  const HandleMemoDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/memos/${id}`, {
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+  const HandleStickyDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/stickers/${id}`, {
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+
+  const HandlePhotoDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/images/${id}`, {
+        password: '1234',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
   const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
@@ -326,29 +334,37 @@ function Rolling() {
         const item = await axios.get(
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
-        setItems(item.data);
+        // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
         console.log(item.data);
+        if (item.data.user === localStorage.getItem('id')) {
+          setIsAdmin(true);
+          console.log('hihihihihihi');
+        }
+        // /###########################
+        setItems(item.data);
         setLength(
           item.data.memo.length +
             item.data.image.length +
             item.data.sticker.length,
         );
-        console.log(item.data.paper_url);
         bgimage(item.data.paper_url);
         // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         console.log('FailGet');
       }
+      setDeleteAction(false);
     };
     getMemos();
-  }, [isActive]);
-  console.log(backgroundImg);
+  }, [isActive, deleteAction]);
+
+  // console.log(backgroundImg);
   const parentFunction = positon => {
     setCoor(positon);
-    console.log(coor);
+    // console.log(coor);
   };
 
+  console.log(items.image);
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (
@@ -384,15 +400,36 @@ function Rolling() {
         <Container>
           {items.memo &&
             items.memo.map(list => {
-              return <Memo list={list} key={list.id} />;
+              return (
+                <Memo
+                  isAdmin={isAdmin}
+                  list={list}
+                  key={list.memo_id}
+                  HandleMemoDelete={HandleMemoDelete}
+                />
+              );
             })}
           {items.sticker &&
             items.sticker.map(list => {
-              return <Sticky list={list} key={list.id} />;
+              return (
+                <Sticky
+                  isAdmin={isAdmin}
+                  list={list}
+                  key={list.sticker_id}
+                  HandleStickyDelete={HandleStickyDelete}
+                />
+              );
             })}
           {items.image &&
             items.image.map(list => {
-              return <Photo list={list} key={list.id} />;
+              return (
+                <Photo
+                  isAdmin={isAdmin}
+                  list={list}
+                  key={list.image_id}
+                  HandlePhotoDelete={HandlePhotoDelete}
+                />
+              );
             })}
           {isItem()}
         </Container>
