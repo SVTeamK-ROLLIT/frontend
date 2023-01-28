@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import anonymous from './anonymous';
 
 import sketchbook from '../Image/Sketchbook2.png';
-import pencil from '../Image/pencil.png';
 
 const Div = styled.div`
   flex-grow: 3;
@@ -24,17 +23,19 @@ const Text = styled.div`
   width: 55rem;
   /* background-color: red; */
   /* height: 1vh; */
-  font-size: 3vh;
-  font-weight: 800;
+  font-size: 2.5rem;
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
-  padding-left: 7rem;
-  padding-top: 8rem;
-  color: black;
+  padding-left: 6rem;
+  padding-top: 12rem;
+  color: white;
   display: block;
+  text-shadow: 2px 2px 2px gray;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: black;
   @media (max-width: 800px) {
     padding-left: 5rem;
-    width: 40rem;
+    width: 60rem;
   } ;
 `;
 
@@ -42,7 +43,7 @@ const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 60rem;
   height: 33rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   /* background-size: 80rem 25rem; */
   background-size: 100% 100%;
   background-image: url(${sketchbook});
@@ -75,22 +76,10 @@ const InputMemo = styled(Field)`
   resize: none;
 `;
 
-const PencilImg = styled.img`
-  width: 5rem;
-  height: 5rem;
-
-  // 스캐치북 위에 올리기
-  /* position: absolute; */
-  /* transform: translate(-50%, -50%); */
-  /* padding-top: 7rem; */
-  /* margin-left: 46.5vw; */
-`;
-
 const MakeBtn = styled.button`
-  width: 8rem;
+  width: 12rem;
   border-radius: 1rem;
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2.8rem;
   // 스캐치북 위에 올리기
   font-family: 'Cafe24Ssurround';
   color: white;
@@ -103,6 +92,7 @@ const BtnWrap = styled.div`
   //만들기랑 연필 이미지 버튼 감싸줌
   display: flex;
   justify-content: center;
+  margin-top: 4rem;
 `;
 
 function MemoText({
@@ -172,8 +162,9 @@ function MemoText({
                 />
               </SketchbookImg>
               <BtnWrap>
-                <PencilImg src={pencil} />
-                <MakeBtn type="submit">만들기</MakeBtn>
+                <button type="button" className="learn-more">
+                  <MakeBtn type="submit">만들기</MakeBtn>
+                </button>
               </BtnWrap>
             </InputWrap>
           </Form>
