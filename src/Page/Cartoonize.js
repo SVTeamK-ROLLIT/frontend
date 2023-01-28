@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
 // Import React FilePond
-import { FilePond, File, registerPlugin } from 'react-filepond';
+import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
@@ -70,10 +70,7 @@ function Cartoonize({
     // console.log(response2.data);
     return response2.data;
   }
-
-  const onSubmit = async () => {
-    const run1Result = await run1();
-    console.log('2번쨰 데이터 값 ', run1Result.task_id);
+  function run2(run1Result) {
     let counter = 0;
     const interval = setInterval(() => {
       const datas = axios
@@ -95,13 +92,29 @@ function Cartoonize({
         });
       console.log('datas: ', datas);
     }, 2000);
-    await closeModal();
-    await setRawLog(imageUrl);
-    await setIsPhoto(true);
-    await setIsActive(true);
-  };
-  console.log('@@@@@', imageUrl);
+  }
 
+  const run3 = async () => {
+    const run1Result = await run1();
+    console.log('2번쨰 데이터 값 ', run1Result.task_id);
+    const run2Result = await run2(run1Result);
+
+    await setPhoto(imageUrl);
+
+    await console.log('setPhoto', setPhoto);
+    await console.log(1111);
+    await console.log(2222);
+    await console.log(3333);
+    await console.log(4444);
+
+    // await closeModal();
+    // await setRawLog(imageUrl);
+    // await setIsPhoto(true);
+    // await setIsActive(true);
+  };
+  // console.log('@@@@@', imageUrl);
+
+  const onSubmit = () => {};
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
       <ToastContainer />
