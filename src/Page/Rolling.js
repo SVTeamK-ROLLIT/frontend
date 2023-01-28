@@ -92,7 +92,6 @@ const UserNum = styled.div`
   line-height: 24px;
   margin-left: 1rem;
   text-align: center;
-
   color: #ffffff;
 `;
 
@@ -110,7 +109,6 @@ const IconBtn = styled.button`
 `;
 
 const IconWrap = styled.div`
-  position: fixed;
   background: #292c33;
   border-radius: 100px;
   padding: 0.2rem;
@@ -122,10 +120,6 @@ const IconWrap = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 1000;
-  right: 3%;
-  bottom: 5%;
-  transform: translate(0%, 0%);
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
@@ -146,6 +140,22 @@ const CancelBtn = styled.button`
   height: 2rem;
   margin: 0.5rem;
   z-index: 50;
+`;
+
+const KakaoBtnWrap = styled.div`
+  position: fixed;
+
+  /* width: 12rem; */
+  text-align: center;
+  height: ${props => props.height};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+  right: 3%;
+  bottom: 5%;
+  transform: translate(0%, 0%);
 `;
 
 // const [background, setBackground] = useState();
@@ -471,35 +481,43 @@ function Rolling() {
             </CancelBtn>
           </IconWrap>
         ) : (
-          <IconWrap height="10rem">
+          <KakaoBtnWrap>
             <KakaoShare />
-            <IconBtn onClick={openMemo}>
-              <img src={pencilicon} alt="" />
-            </IconBtn>
-            <PhotoModal
-              isOpen={isPhotoOpen}
-              closeModal={closePhotoModal}
-              setIsActive={setIsActive}
-              setIsPhoto={setIsPhoto}
-              setPhoto={setPhoto}
-              setRawLog={setRawLog}
-            />
-            {console.log(photo)}
-            <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
-              <img src={galleryicon} alt="" />
-            </IconBtn>
-            <StickerModal
-              isOpen={isStickyOpen}
-              closeModal={closeStickyModal}
-              setSticky={setSticky}
-              setStickyUrl={setStickyUrl}
-              setIsActive={setIsActive}
-              setIsSticky={setIsSticky}
-            />
-            <IconBtn type="button" value="Open modal" onClick={openStickyModal}>
-              <img src={memoicon} alt="" />
-            </IconBtn>
-          </IconWrap>
+            <IconWrap height="10rem">
+              <IconBtn onClick={openMemo}>
+                <img src={pencilicon} alt="" />
+              </IconBtn>
+              <PhotoModal
+                isOpen={isPhotoOpen}
+                closeModal={closePhotoModal}
+                setIsActive={setIsActive}
+                setIsPhoto={setIsPhoto}
+                setPhoto={setPhoto}
+              />
+              <IconBtn
+                type="button"
+                value="Open modal"
+                onClick={openPhotoModal}
+              >
+                <img src={galleryicon} alt="" />
+              </IconBtn>
+              <StickerModal
+                isOpen={isStickyOpen}
+                closeModal={closeStickyModal}
+                setSticky={setSticky}
+                setStickyUrl={setStickyUrl}
+                setIsActive={setIsActive}
+                setIsSticky={setIsSticky}
+              />
+              <IconBtn
+                type="button"
+                value="Open modal"
+                onClick={openStickyModal}
+              >
+                <img src={memoicon} alt="" />
+              </IconBtn>
+            </IconWrap>
+          </KakaoBtnWrap>
         )}
       </AllWrap>
     </SketchBookImg>
