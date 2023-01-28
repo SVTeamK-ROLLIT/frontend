@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 
 import ResizableRect from 'react-resizable-rotatable-draggable';
-import photoReSizing from './PhotoReSizing';
+// import photoReSizing from './PhotoReSizing';
 
 // import img from '../Image/ID.png';
 
-export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
+export default function NewPhoto({ parentFunction, photo }) {
   //   const [width2, setWidth] = useState(200);
   //   const [height2, setHeight] = useState(100);
   //   const [top2, setTop] = useState(100);
@@ -55,16 +55,19 @@ export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
   parentFunction(position);
 
   // const [rawLog, setRawLog] = useState();
-  useEffect(() => {
-    const reader = new FileReader();
-    reader.readAsDataURL(photo); // 파일을 읽는 메서드
-    reader.onload = () => {
-      setRawLog(reader.result);
-      // console.log('@@@@@@@@@@@@@@@@', rawLog);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(photo); // 파일을 읽는 메서드
+  //   reader.onload = () => {
+  //     setRawLog(reader.result);
+  //     // console.log('@@@@@@@@@@@@@@@@', rawLog);
+  //   };
+  // }, []);
 
-  photoReSizing(rawLog, setRawLog);
+  // photoReSizing(rawLog, setRawLog);
+  useEffect(() => {
+    console.log(photo);
+  }, [photo]);
 
   return (
     <div
@@ -78,7 +81,7 @@ export default function NewPhoto({ parentFunction, photo, rawLog, setRawLog }) {
       }}
     >
       <img
-        src={rawLog}
+        src={photo?.image_url}
         style={{
           width: position.width2,
           height: position.height2,

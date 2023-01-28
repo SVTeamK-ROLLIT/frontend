@@ -275,16 +275,16 @@ function Rolling() {
     console.log('start Resizing');
     photoReSizing(photo, setPhoto);
 
-    const formData = new FormData();
-    formData.append('image', photo);
-    formData.append('password', '1234');
-    formData.append('xcoor', coor.left2);
-    formData.append('ycoor', coor.top2);
-    formData.append('rotate', coor.rotate2);
-    formData.append('width', coor.width2);
-    formData.append('height', coor.height2);
     axios
-      .post(`${backBaseUrl}/api/v1/papers/${paperId}/photos`, formData)
+      .post(`${backBaseUrl}/api/v1/papers/${paperId}/photos`, {
+        image_id: photo.image_id,
+        password: '1234',
+        xcoor: coor.left2,
+        ycoor: coor.top2,
+        rotate: coor.rotate2,
+        width: coor.width2,
+        height: coor.height2,
+      })
       .then(() => {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
@@ -478,6 +478,7 @@ function Rolling() {
               setPhoto={setPhoto}
               setRawLog={setRawLog}
             />
+            {console.log(photo)}
             <IconBtn type="button" value="Open modal" onClick={openPhotoModal}>
               <img src={galleryicon} alt="" />
             </IconBtn>
