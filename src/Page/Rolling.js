@@ -108,7 +108,7 @@ const IconBtn = styled.button`
   z-index: 10000;
 `;
 
-const IconWrap = styled.div`
+const KakaoIconWrap = styled.div`
   background: #292c33;
   border-radius: 100px;
   padding: 0.2rem;
@@ -153,6 +153,25 @@ const KakaoBtnWrap = styled.div`
   justify-content: center;
   flex-direction: column;
   z-index: 1000;
+  right: 3%;
+  bottom: 5%;
+  transform: translate(0%, 0%);
+`;
+
+const IconWrap = styled.div`
+  background: #292c33;
+  position: fixed;
+
+  border-radius: 100px;
+  padding: 0.2rem;
+  margin-top: 1rem;
+  /* width: 12rem; */
+  text-align: center;
+  height: ${props => props.height};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   right: 3%;
   bottom: 5%;
   transform: translate(0%, 0%);
@@ -483,7 +502,7 @@ function Rolling() {
         ) : (
           <KakaoBtnWrap>
             <KakaoShare />
-            <IconWrap height="10rem">
+            <KakaoIconWrap height="10rem">
               <IconBtn onClick={openMemo}>
                 <img src={pencilicon} alt="" />
               </IconBtn>
@@ -516,7 +535,7 @@ function Rolling() {
               >
                 <img src={memoicon} alt="" />
               </IconBtn>
-            </IconWrap>
+            </KakaoIconWrap>
           </KakaoBtnWrap>
         )}
       </AllWrap>
