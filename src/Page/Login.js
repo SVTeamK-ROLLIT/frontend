@@ -29,7 +29,7 @@ const modalStyle = {
   content: {
     display: 'flex',
     justifyContent: 'center',
-    background: '#ffffe7',
+    background: 'white',
     overflow: 'auto',
     top: '20vh',
     left: '20vw',
@@ -63,6 +63,7 @@ const RegText = styled.div`
   font-weight: 800;
   display: inline-block;
   margin-bottom: 3rem;
+  color: palevioletred;
 `;
 
 // 스케치북 안에 있는 모든 요소들을 감싸줍니다
@@ -84,13 +85,13 @@ const KeyWrap = styled.div`
   border-radius: ${props => props.border};
   background: #fff;
   border-width: 0.063rem;
-  border-color: #000;
+  border-color: palevioletred;
   box-shadow: 0rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
   display: flex;
   margin-bottom: 1rem;
   /*화면이 작아지면 크기를 작게하고 겉에 radius속성을 없애줍니다*/
-  @media screen and (max-width: 63rem) {
-    width: 37.5rem;
+  @media screen and (max-width: 70rem) {
+    width: 30.5rem;
     height: 3.125rem;
     border-radius: 0;
   }
@@ -105,12 +106,12 @@ const IconImg = styled.img`
   margin: auto 1rem auto 1rem;
 `;
 
-// 회원가입 버튼
-const SignupBtn = styled.button`
+// 로그인 버튼
+const LoginBtn = styled.button`
   width: 16.25rem;
   height: 2.813rem;
   border-radius: 0.813rem;
-  background: #3a3a3a;
+  background: palevioletred;
   font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
@@ -118,8 +119,8 @@ const SignupBtn = styled.button`
   margin: 3rem auto 1.2rem;
 `;
 
-// 로그인 버튼
-const LoginBtn = styled.button`
+// 회원가입 버튼
+const SignupBtn = styled.button`
   width: 4.438rem;
   height: 1.75rem;
   font-size: 1.125rem;
@@ -127,6 +128,7 @@ const LoginBtn = styled.button`
   margin-top: 2rem;
   display: block;
   margin: 0rem auto 0rem;
+  color: palevioletred;
 `;
 const FieldStyle = styled(Field)`
   width: 100%;
@@ -231,19 +233,19 @@ function Register({ isOpen, setIsOpen, setLogState }) {
                     />
 
                     <ErrorMessage component="div" name="nickname" />
-                    <SignupBtn
+                    <LoginBtn
                       disabled={localStorage.getItem('id')} // 로컬에 아이디 비번 들어갔을 경우 버튼 비활성화
                       type="submit"
                     >
                       로그인
-                    </SignupBtn>
+                    </LoginBtn>
                   </Form>
-                  <LoginBtn
+                  <SignupBtn
                     disabled={localStorage.getItem('id')} // 로컬에 아이디 비번 들어갔을 경우 버튼 비활성화
                     onClick={() => navigate('/register')}
                   >
                     회원가입
-                  </LoginBtn>
+                  </SignupBtn>
                 </div>
               )}
             </Formik>
