@@ -6,8 +6,8 @@ import KakaoBtn from '../Image/kakaobtn.png';
 // const kakaoJSKey = process.env.REACT_APP_KAKAO_KEY;
 
 const KakaoShareBtn = styled.button`
-  width: 10rem;
-  height: 10rem;
+  width: 3rem;
+  height: 3rem;
   /* background-color: red; */
   z-index: 10000;
 `;
