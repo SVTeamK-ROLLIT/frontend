@@ -117,6 +117,7 @@ function Welcome() {
           <button type="button" className="moveTopBtn">
             {' '}
           </button>
+              시작하기
         </StartWrap>
       </SketchbookImg>
       <BackImg src={back}> </BackImg>
