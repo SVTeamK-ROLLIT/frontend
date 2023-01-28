@@ -29,6 +29,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './snow.css';
 
+import KakaoShare from './KakaoShare';
+
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SketchBookImg = styled.div`
@@ -433,7 +435,10 @@ function Rolling() {
             })}
           {isItem()}
         </Container>
+        {/* {/* <div> */}
         <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
+        <KakaoShare />
+        {/* </div> */}
         <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
