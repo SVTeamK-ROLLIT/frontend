@@ -12,9 +12,10 @@ import Outlog from './Outlog';
 
 import background from '../Image/welcome1.png';
 import logo from '../Image/newlogo.png';
+import back from '../Image/welcome3.png';
 
 const SketchbookImg = styled.div`
-  height: 60rem;
+  height: 70rem;
   background-size: 50rem 39rem;
   background-repeat: no-repeat;
   background-position: center;
@@ -22,6 +23,17 @@ const SketchbookImg = styled.div`
   display: flex;
   /* margin-top: 20rem; */
   background-position-y: 4rem;
+`;
+const BackImg = styled.div`
+  height: 70rem;
+  background-color: lightpink;
+  background-size: 90rem 55rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${back});
+  display: flex;
+  /* margin-top: 20rem; */
+  background-position-y: 12rem;
 `;
 
 const AllWrap = styled.div`
@@ -37,7 +49,7 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 12rem auto;
+  margin: auto auto 22rem auto;
 `;
 // const PencilImg = styled.img`
 //   width: 3.6rem;
@@ -79,6 +91,12 @@ function Welcome() {
     navigate('../makeRolling');
   };
 
+  const $topBtn = document.querySelector('.moveTopBtn');
+
+  $topBtn.onclick = () => {
+    window.scrollTo({ top: 1500, behavior: 'smooth' });
+  };
+
   return (
     <div className="welcome">
       <AllWrap />
@@ -96,8 +114,12 @@ function Welcome() {
               시작하기
             </button>
           </StartBtn>
+          <button type="button" className="moveTopBtn">
+            {' '}
+          </button>
         </StartWrap>
       </SketchbookImg>
+      <BackImg src={back}> </BackImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );
