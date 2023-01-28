@@ -10,7 +10,7 @@ function Profile({ myRollPageData }) {
       </Container1>
       <Container2>
         <NickName margin="0rem 0rem 0rem 0rem">
-          {myRollPageData?.user_data[0].nickname} 님
+          {myRollPageData?.user_data[0].nickname}
         </NickName>
         {/* <ChangeBtn margin="0rem 14rem 0.7rem auto">변경</ChangeBtn> */}
         <NickName margin="1.5rem 0rem 0 2rem">
