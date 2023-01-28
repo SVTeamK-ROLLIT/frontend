@@ -435,10 +435,7 @@ function Rolling() {
             })}
           {isItem()}
         </Container>
-        {/* {/* <div> */}
         <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
-        <KakaoShare />
-        {/* </div> */}
         <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
@@ -465,6 +462,7 @@ function Rolling() {
           </IconWrap>
         ) : (
           <IconWrap height="10rem">
+            <KakaoShare />
             <IconBtn onClick={openMemo}>
               <img src={pencilicon} alt="" />
             </IconBtn>
