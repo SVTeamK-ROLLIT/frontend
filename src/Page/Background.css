@@ -1,15 +1,13 @@
 
 body .register {
-  background: url(../Image/sketchbookLogin.png);
+  background: url(../Image/welcome1.png);
   background-repeat: no-repeat;
-  background-color: #fcedb0;
   background-size: cover;
-  background-size: 75rem 50rem;
   background-position: center;
 }
-@media screen and (max-width: 63rem) {
+@media screen and (max-width: 70rem) {
   body .register {
-    background-size: 50rem 40rem;
+    background-size: 70rem 80rem;
   }
 }
 

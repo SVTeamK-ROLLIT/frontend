@@ -19,7 +19,7 @@ const HomeBtn = styled.button`
   //상단 회원가입 버튼
   width: 13rem;
   height: 5.5rem;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: bold;
   position: absolute;
   // 스캐치북 위에 올리기
@@ -43,6 +43,7 @@ const Background = styled.div`
 // 회원가입 Text를 감싸줍니다
 const TextWrap = styled.div`
   text-align: center; /*"회원가입"을 가운데 정렬시켜줍니다*/
+
   @media screen and (max-width: 63rem) {
     display: none; /*화면이 작아지면 "회원가입 글씨를 사라지게 합니다"*/
   }
@@ -55,6 +56,7 @@ const RegText = styled.div`
   font-weight: 800;
   display: inline-block;
   margin-bottom: 3rem;
+  color: palevioletred;
 `;
 
 // 스케치북 안에 있는 모든 요소들을 감싸줍니다
@@ -76,7 +78,7 @@ const KeyWrap = styled.div`
   border-radius: ${props => props.border};
   background: #fff;
   border-width: 0.063rem;
-  border-color: #000;
+  border-color: palevioletred;
   box-shadow: 0rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
   display: flex;
   margin-bottom: 1rem;
@@ -102,7 +104,7 @@ const SignupBtn = styled.button`
   width: 16.25rem;
   height: 2.813rem;
   border-radius: 0.813rem;
-  background: #3a3a3a;
+  background: palevioletred;
   font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
@@ -119,6 +121,7 @@ const LoginBtn = styled.button`
   margin-top: 2rem;
   display: block;
   margin: 0rem auto 0rem;
+  color: palevioletred;
 `;
 
 const FieldStyle = styled(Field)`
@@ -188,7 +191,7 @@ function Register({ setLogState }) {
   };
   return (
     <div className="register">
-      <HomeBtn onClick={() => navigate('/')}>ㅤ뒤로가기</HomeBtn>
+      <HomeBtn onClick={() => navigate('/')}>＜뒤로가기</HomeBtn>
       <Background>
         <KeysWrap>
           <TextWrap>
