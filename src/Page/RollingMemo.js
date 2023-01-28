@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import DeleteBtn from './DeleteBtn';
 // import axios from 'axios';
 
 // import axios from 'axios';
@@ -78,6 +79,7 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
         <MemoText font={font} color={font_color}>
           {isAdmin ? (
             <DeleteBtn
+              right="5%"
               onClick={() => {
                 HandleMemoDelete(memo_id);
               }}
@@ -120,12 +122,4 @@ const MemoText = styled.div`
 const Name = styled.div`
   text-align: right;
   align-items: end;
-`;
-
-const DeleteBtn = styled.button`
-  background-color: red;
-  width: 1rem;
-  height: 1rem;
-  position: absolute;
-  right: 5%;
 `;

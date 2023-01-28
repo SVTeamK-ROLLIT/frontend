@@ -2,6 +2,8 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import DeleteBtn from './DeleteBtn';
+
 // import axios from 'axios';
 
 export default function App({ list, HandleStickyDelete, isAdmin }) {
@@ -46,6 +48,7 @@ export default function App({ list, HandleStickyDelete, isAdmin }) {
       >
         {isAdmin ? (
           <DeleteBtn
+            right="0"
             onClick={() => {
               HandleStickyDelete(sticker_id);
             }}
@@ -66,12 +69,4 @@ const MemoBox = styled.div`
   background-size: cover;
   border-radius: 15px;
   z-index: 1100;
-`;
-
-const DeleteBtn = styled.button`
-  background-color: red;
-  width: 1rem;
-  height: 1rem;
-  position: absolute;
-  right: 5%;
 `;

@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
-import styled from 'styled-components';
 
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
-// import img from '../Image/ID.png';
+import DeleteBtn from './DeleteBtn';
 
 export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
   const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
@@ -81,6 +80,8 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
             }}
           >
             <DeleteBtn
+              right="-1rem"
+              top="-1.2rem"
               onClick={() => {
                 HandlePhotoDelete(image_id);
               }}
@@ -150,26 +151,3 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
     </div>
   );
 }
-
-const DeleteBtn = styled.button`
-  background-color: red;
-  width: 1rem;
-  height: 1rem;
-  position: absolute;
-  right: 0;
-  top: -1rem;
-  z-index: 10;
-`;
-
-// const Image = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   background-image: url(https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047);
-//   background-size: 100% 100%;
-// `;
-// const MemoBox = styled.div`
-//   width: 160px;
-//   height: 160px;
-//   background-color: yellow;
-//   border-radius: 15px;
-// `;
