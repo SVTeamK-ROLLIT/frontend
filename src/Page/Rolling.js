@@ -276,8 +276,9 @@ function Rolling() {
     photoReSizing(photo, setPhoto);
     console.log(photo.image_id);
     console.log(coor);
+    console.log(paperId);
     axios
-      .post(`${backBaseUrl}api/v1/papers/${paperId}/xyphotos`, {
+      .post(`${backBaseUrl}/api/v1/papers/${paperId}/xyphotos`, {
         image_id: photo.image_id,
         password: '1234',
         xcoor: coor.left2,
@@ -292,6 +293,7 @@ function Rolling() {
         setIsActive(false); // 수정 기능 비활성화
       })
       .catch(() => {
+        console.log(photo.image_id);
         console.log('fail save photo');
       });
   };
