@@ -1,18 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useQuery } from 'react-query';
 
 // Import React FilePond
-import { FilePond, registerPlugin } from 'react-filepond';
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import { toast, ToastContainer } from 'react-toastify';
-import axios from 'axios';
 
-// Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+import axios from 'axios';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -22,32 +14,7 @@ const CartoonBtn = styled.button`
   background-color: red;
   //
 `;
-// function MyComponent({ taskId }) {
-//   const [result, setResult] = useState(null);
-//   const [count, setCount] = useState(0);
-//   const [intervalId, setIntervalId] = useState(null);
 
-//   useEffect(() => {
-//     if (intervalId === null) {
-//       const id = setInterval(async () => {
-//         const response = await axios.post(
-//           'http://127.0.0.1:8080/api/v1/papers/cartoons/results',
-//           { taskId },
-//         );
-//         // eslint-disable-next-line
-//         const data = response.data;
-//         setResult(data.status);
-//         if (data.status !== 'still working' || count >= 10) {
-//           clearInterval(intervalId);
-//           setIntervalId(null);
-//         }
-//         setCount(count + 1);
-//       }, 2000);
-//       setIntervalId(id);
-//     }
-//   }, [intervalId, count, taskId]);
-//   console.log('result', result);
-// }
 function Cartoonize({
   files,
   closeModal,
@@ -115,11 +82,7 @@ function Cartoonize({
   // console.log('@@@@@', imageUrl);
 
   const onSubmit = () => {};
-  return (
-    <CartoonBtn type="button" onClick={onSubmit}>
-      <ToastContainer />
-    </CartoonBtn>
-  );
+  return <CartoonBtn type="button" onClick={onSubmit} />;
 }
 
 export default Cartoonize;
