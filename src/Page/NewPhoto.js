@@ -66,7 +66,7 @@ export default function NewPhoto({ parentFunction, photo }) {
 
   // photoReSizing(rawLog, setRawLog);
   useEffect(() => {
-    console.log(photo);
+    // console.log(photo);
   }, [photo]);
 
   return (
