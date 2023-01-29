@@ -9,12 +9,12 @@ const TopPosition = styled.div`
 `;
 
 const LoginWrap = styled.div`
+  position: fixed;
+  top: 5%;
+  left: 88%;
+  transform: translate(-50%, -50%);
   display: flex;
   z-index: 999;
-  /* height: 3rem; */
-  width: 20rem;
-  margin: 0 2rem auto auto;
-  padding-top: 1rem;
 `;
 
 const SignupBtn = styled.button`

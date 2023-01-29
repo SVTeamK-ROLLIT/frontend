@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const ColorDiv = styled.div`
   flex-grow: 2;
   /* height: 100rem; */
-  background-color: #fcedb0;
 
   @media (max-width: 1100px) {
     margin: auto;
@@ -27,7 +26,8 @@ const BgColorText = styled.div`
   //##배경색##
   width: 10rem;
   height: 3rem;
-  margin-top: 8rem;
+  margin-top: 11rem;
+
   font-size: 2rem;
   font-weight: 700;
   color: white;

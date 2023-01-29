@@ -52,29 +52,37 @@ const AllWrap = styled.div`
   z-index: 50;
 `;
 const MyPageBtn = styled.button`
-  margin: 2% 11% 0 auto;
+  margin: 2% 7% 0 auto;
   z-index: 50;
   height: 4rem;
   display: block;
   width: 12rem;
   font-size: 40px;
   font-weight: 700;
-  color: #fff;
-  //텍스트 검정 태두리 주기
-  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-  line-height: 47px;
+  font-family: 'Cafe24Ssurround';
+  color: white;
+  text-shadow: 2px 2px 1.5px gray;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: black;
 `;
 const Text = styled.div`
-  height: 5rem;
+  height: 3rem;
+  margin-top: -1rem;
   width: 100%;
-  color: white;
+  color: whitesmoke;
   text-align: center;
   font-size: 50px;
   font-weight: 700;
+  font-family: 'Cafe24Ssurround';
+  z-index: 999;
+  text-shadow: 2px 2px 1.7px gray;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: black;
 `;
 
 const UserWrap = styled.div`
   padding-right: 5rem;
+  margin-top: 1rem;
   height: 2rem;
   display: flex;
   align-items: center;

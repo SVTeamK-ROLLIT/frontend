@@ -4,14 +4,23 @@ import styled from 'styled-components';
 import MemoText from './MemoText';
 import MemoColor from './MemoColor';
 
+import background from '../Image/welcome1.png';
+
 const AllWrap = styled.div`
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  background-color: #fcedb0;
+  position: fixed;
   display: flex;
-  margin: auto;
+  background-image: url(${background});
 
   @media (max-width: 1100px) {
     flex-direction: column;
     justify-content: center;
-    background-color: #fcedb0;
+    background-color: url(${background});
   }
 `;
 
@@ -23,7 +32,7 @@ function Memo() {
   const [memoContent, setMemoContent] = useState('');
   return (
     <div className="mypage">
-      <AllWrap>
+      <AllWrap src={background}>
         <MemoText
           memoContent={memoContent}
           setMemoContent={setMemoContent}

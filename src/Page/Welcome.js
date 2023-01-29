@@ -5,26 +5,49 @@ import { useNavigate } from 'react-router-dom';
 import Modal from './Login';
 // import HandMotion from './handMotion';
 import './welcome.css';
+import './button.css';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
 import background from '../Image/welcome1.png';
-import sketchbook from '../Image/RollIT.png';
-import pencil from '../Image/pencil.png';
+import logo from '../Image/newlogo.png';
+import back from '../Image/welcome3.png';
+import down from '../Image/down.png';
 
+const DownBtn = styled.button`
+  display: inline;
+  /* margin: auto; */
+`;
+const DownBtnWrap = styled.div`
+  margin: 0 auto 11rem auto;
+`;
 const SketchbookImg = styled.div`
-  height: 45rem;
-  background-size: 40rem 30rem;
+  height: 75rem;
+  background-size: 50rem 39rem;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(${sketchbook});
+  background-image: url(${logo});
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 20rem; */
+  background-position-y: 4rem;
+`;
+const BackImg = styled.div`
+  height: 71rem;
+  background-color: lightpink;
+  background-size: 90rem 55rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${back});
   display: flex;
   /* margin-top: 20rem; */
-  background-position-y: 6rem;
+  background-position-y: 12rem;
 `;
 
 const AllWrap = styled.div`
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   width: 100%;
   z-index: -1;
@@ -35,31 +58,26 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 7rem auto;
-`;
-const PencilImg = styled.img`
-  width: 3.6rem;
-  height: 3rem;
-  margin-top: 0.5rem;
-  // 스캐치북 위에 올리기
+  margin: auto auto 5rem auto;
 `;
 
 const StartBtn = styled.button`
-  width: 15rem;
-  height: 3.5rem;
+  width: 10rem;
+  height: 9rem;
   border-radius: 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
-
+  padding-bottom: 1rem;
   font-family: 'Cafe24Ssurround';
-  color: white;
-  text-shadow: 1.5px 1.5px 1.5px gray;
-  opacity: 0.8;
-  -webkit-text-stroke-width: 1.1px;
-  -webkit-text-stroke-color: black;
 `;
 
 function Welcome() {
+  const handleTop = () => {
+    window.scrollTo({
+      top: 2000,
+      behavior: 'smooth',
+    });
+  };
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
@@ -90,13 +108,24 @@ function Welcome() {
         <Outlog onClick={onClick} />
       )}
 
-      <SketchbookImg src={sketchbook}>
+      <SketchbookImg src={logo}>
         <StartWrap>
           {/* <HandMotion /> */}
-          <PencilImg src={pencil} />
-          <StartBtn onClick={onClick2}>만들어보기</StartBtn>
+
+          <StartBtn onClick={onClick2} type="button" className="learn-more">
+            시작하기
+          </StartBtn>
+          <button type="button" className="moveTopBtn">
+            {' '}
+          </button>
         </StartWrap>
+        <DownBtnWrap>
+          <DownBtn type="button" onClick={handleTop}>
+            <img src={down} alt="" />
+          </DownBtn>
+        </DownBtnWrap>
       </SketchbookImg>
+      <BackImg src={back}> </BackImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );

@@ -42,7 +42,9 @@ function MyPageItem({ dataColumn }) {
           handleCopyClipBoard(`www.rollit5.link/rolling/${dataColumn.id}`)
         }
       >
-        {/* {dataColumn.title} */} 링크복사
+        <button type="button" className="learn-more">
+          {/* {dataColumn.title} */} COPY
+        </button>
       </ButtonTitle>
     </div>
   );
@@ -62,29 +64,25 @@ const ButtonItem = styled.button`
   font-size: 2rem;
   text-align: center;
   font-family: 'Cafe24Ssurround';
-  z-index: -10;
 `;
 const ButtonTitle = styled.button`
-  width: 10rem;
-  height: 5rem;
-  padding-left: 2.5rem;
-  font-size: 1.5rem;
+  width: 6rem;
+  height: 7rem;
+  padding-left: 2rem;
+  font-size: 1rem;
   display: flex;
   color: white;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 1px 1px 1px gray;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
 `;
 // const PageItem = styled.button`
 //   width: 298px;
 //   height: 300px;
 //   background: #f5f5f5;
 //   margin: 0 2rem 2rem 0;
-// //   display: flex;
-// //   justify-content: flex-end;
-// //   align-items: flex-end;
-// // `;
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+// `;
 
 // const LinkBtnDiv = styled.div`
 //   padding-left: 12rem;
