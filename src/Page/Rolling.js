@@ -17,8 +17,8 @@ import PhotoModal from './PhotoModal';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
 import Photo from './RollingPhoto';
-import NewMemo from './newMemo';
 import NewPhoto from './NewPhoto';
+import NewMemo from './newMemo';
 import NewSticky from './NewSticky';
 
 import pencilicon from '../Image/pencilicon.png';
@@ -237,6 +237,38 @@ function Rolling() {
     navigate('/Memo');
   }, []);
 
+  const HandleMemoDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/memos/${id}`, {
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+  const HandleStickyDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/stickers/${id}`, {
+        password: '1',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+
+  const HandlePhotoDelete = useCallback(id => {
+    axios
+      .post(`${backBaseUrl}/api/v1/papers/images/${id}`, {
+        password: '1234',
+      })
+      .then(() => {
+        console.log('delete!!!!!!!!!!!!!!');
+        setDeleteAction(true);
+      });
+  }, []);
+
   // post로 ###메모지### 최종좌표, 위치, 색, 폰트 등을 백엔드로 보내준다
   const submitMemo = async a => {
     if (a) {
@@ -304,6 +336,8 @@ function Rolling() {
       // 취소 버튼을 눌렀을 경우
       setIsPhoto(false); // 사진기능 비활성화
       setIsActive(false); // 수정기능 비활성화
+      console.log(photo.image_id);
+      HandlePhotoDelete(photo.image_id);
       return;
     }
     console.log('start Resizing');
@@ -331,38 +365,6 @@ function Rolling() {
         console.log('fail save photo');
       });
   };
-
-  const HandleMemoDelete = useCallback(id => {
-    axios
-      .post(`${backBaseUrl}/api/v1/papers/memos/${id}`, {
-        password: '1',
-      })
-      .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
-        setDeleteAction(true);
-      });
-  }, []);
-  const HandleStickyDelete = useCallback(id => {
-    axios
-      .post(`${backBaseUrl}/api/v1/papers/stickers/${id}`, {
-        password: '1',
-      })
-      .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
-        setDeleteAction(true);
-      });
-  }, []);
-
-  const HandlePhotoDelete = useCallback(id => {
-    axios
-      .post(`${backBaseUrl}/api/v1/papers/images/${id}`, {
-        password: '1234',
-      })
-      .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
-        setDeleteAction(true);
-      });
-  }, []);
 
   // 모닫창
   const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
