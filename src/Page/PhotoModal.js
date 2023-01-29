@@ -87,12 +87,14 @@ function PhotoModal({
   setIsPhoto,
   setIsActive,
   setRawLog,
+  setLoading,
 }) {
   const location = useLocation();
   const paperId = location.pathname.slice(9); // 이거 url에서 paperId를 가져옴
   const [files, setFiles] = useState([]);
 
   const ClickUpload = async () => {
+    setLoading(true);
     const formData = new FormData();
     // console.log(files[0].file);
     formData.append('image', files[0].file);
@@ -101,6 +103,7 @@ function PhotoModal({
       `${backBaseUrl}/api/v1/papers/${paperId}/photos`,
       formData,
     );
+    setLoading(false);
     setPhoto(res.data);
   };
 

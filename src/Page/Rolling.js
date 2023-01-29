@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import photoReSizing from './PhotoReSizing';
+import Loading from './Loading';
 
 import image1 from '../Image/image1.png';
 import image2 from '../Image/image2.png';
@@ -213,6 +214,8 @@ function Rolling() {
   const [photo, setPhoto] = useState();
   const [deleteAction, setDeleteAction] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -437,113 +440,120 @@ function Rolling() {
   return (
     <SketchBookImg className="snow" bgimage={backgroundImg}>
       <Snowfall />
-      <AllWrap>
-        <Container>
-          {items.memo &&
-            items.memo.map(list => {
-              return (
-                <Memo
-                  isAdmin={isAdmin}
-                  list={list}
-                  key={list.memo_id}
-                  HandleMemoDelete={HandleMemoDelete}
-                />
-              );
-            })}
-          {items.sticker &&
-            items.sticker.map(list => {
-              return (
-                <Sticky
-                  isAdmin={isAdmin}
-                  list={list}
-                  key={list.sticker_id}
-                  HandleStickyDelete={HandleStickyDelete}
-                />
-              );
-            })}
-          {items.image &&
-            items.image.map(list => {
-              return (
-                <Photo
-                  isAdmin={isAdmin}
-                  list={list}
-                  key={list.image_id}
-                  HandlePhotoDelete={HandlePhotoDelete}
-                />
-              );
-            })}
-          {isItem()}
-        </Container>
-        {isAdmin ? (
-          <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
-        ) : (
-          <div />
-        )}
+      {loading ? (
+        <Loading />
+      ) : (
+        <AllWrap>
+          <Container>
+            {items.memo &&
+              items.memo.map(list => {
+                return (
+                  <Memo
+                    isAdmin={isAdmin}
+                    list={list}
+                    key={list.memo_id}
+                    HandleMemoDelete={HandleMemoDelete}
+                  />
+                );
+              })}
+            {items.sticker &&
+              items.sticker.map(list => {
+                return (
+                  <Sticky
+                    isAdmin={isAdmin}
+                    list={list}
+                    key={list.sticker_id}
+                    HandleStickyDelete={HandleStickyDelete}
+                  />
+                );
+              })}
+            {items.image &&
+              items.image.map(list => {
+                return (
+                  <Photo
+                    isAdmin={isAdmin}
+                    list={list}
+                    key={list.image_id}
+                    HandlePhotoDelete={HandlePhotoDelete}
+                  />
+                );
+              })}
+            {isItem()}
+          </Container>
+          {isAdmin ? (
+            <MyPageBtn onClick={() => navigate('/mypage')}>
+              마이페이지
+            </MyPageBtn>
+          ) : (
+            <div />
+          )}
 
-        <Text>to.{items.title}</Text>
-        <UserWrap>
-          <UserIcon src={usericon} alt="" />
-          <UserNum>{length}</UserNum>
-        </UserWrap>
-        <MemoWrap />
-        {isActive ? (
-          <IconWrap height="8rem">
-            <SaveBtn
-              onClick={() => {
-                isSubmit();
-                console.log('saveBtn');
-              }}
-            >
-              <FcExpand size="30" />
-            </SaveBtn>
-            <CancelBtn
-              onClick={() => {
-                isSubmit(true);
-              }}
-            >
-              <FcCancel size="30" />
-            </CancelBtn>
-          </IconWrap>
-        ) : (
-          <KakaoBtnWrap>
-            <KakaoShare />
-            <KakaoIconWrap height="10rem">
-              <IconBtn onClick={openMemo}>
-                <img src={pencilicon} alt="" />
-              </IconBtn>
-              <PhotoModal
-                isOpen={isPhotoOpen}
-                closeModal={closePhotoModal}
-                setIsActive={setIsActive}
-                setIsPhoto={setIsPhoto}
-                setPhoto={setPhoto}
-              />
-              <IconBtn
-                type="button"
-                value="Open modal"
-                onClick={openPhotoModal}
+          <Text>to.{items.title}</Text>
+          <UserWrap>
+            <UserIcon src={usericon} alt="" />
+            <UserNum>{length}</UserNum>
+          </UserWrap>
+          <MemoWrap />
+          {isActive ? (
+            <IconWrap height="8rem">
+              <SaveBtn
+                onClick={() => {
+                  isSubmit();
+                  console.log('saveBtn');
+                }}
               >
-                <img src={galleryicon} alt="" />
-              </IconBtn>
-              <StickerModal
-                isOpen={isStickyOpen}
-                closeModal={closeStickyModal}
-                setSticky={setSticky}
-                setStickyUrl={setStickyUrl}
-                setIsActive={setIsActive}
-                setIsSticky={setIsSticky}
-              />
-              <IconBtn
-                type="button"
-                value="Open modal"
-                onClick={openStickyModal}
+                <FcExpand size="30" />
+              </SaveBtn>
+              <CancelBtn
+                onClick={() => {
+                  isSubmit(true);
+                }}
               >
-                <img src={memoicon} alt="" />
-              </IconBtn>
-            </KakaoIconWrap>
-          </KakaoBtnWrap>
-        )}
-      </AllWrap>
+                <FcCancel size="30" />
+              </CancelBtn>
+            </IconWrap>
+          ) : (
+            <KakaoBtnWrap>
+              <KakaoShare />
+              <KakaoIconWrap height="10rem">
+                <IconBtn onClick={openMemo}>
+                  <img src={pencilicon} alt="" />
+                </IconBtn>
+                <PhotoModal
+                  isOpen={isPhotoOpen}
+                  closeModal={closePhotoModal}
+                  setIsActive={setIsActive}
+                  setIsPhoto={setIsPhoto}
+                  setPhoto={setPhoto}
+                  setLoading={setLoading}
+                />
+                <IconBtn
+                  type="button"
+                  value="Open modal"
+                  onClick={openPhotoModal}
+                >
+                  <img src={galleryicon} alt="" />
+                </IconBtn>
+                <StickerModal
+                  isOpen={isStickyOpen}
+                  closeModal={closeStickyModal}
+                  setSticky={setSticky}
+                  setStickyUrl={setStickyUrl}
+                  setIsActive={setIsActive}
+                  setIsSticky={setIsSticky}
+                />
+                <IconBtn
+                  type="button"
+                  value="Open modal"
+                  onClick={openStickyModal}
+                >
+                  <img src={memoicon} alt="" />
+                </IconBtn>
+              </KakaoIconWrap>
+            </KakaoBtnWrap>
+          )}
+        </AllWrap>
+      )}
     </SketchBookImg>
   );
 }
