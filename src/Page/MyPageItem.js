@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+
+import image1 from '../Image/smallimage1.png';
+import image2 from '../Image/smallimage2.png';
+import image3 from '../Image/smallimage3.png';
+import image4 from '../Image/smallimage4.png';
+import image5 from '../Image/smallimage5.png';
+
+const ButtonItem = styled.button`
+  width: 25rem;
+  height: 20rem;
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Cafe24Ssurround';
+  background-image: url(${props => props.bgimage});
+`;
+const ButtonTitle = styled.button`
+  width: 6rem;
+  height: 7rem;
+  padding-left: 2rem;
+  font-size: 1rem;
+  display: flex;
+  color: white;
+  font-family: 'Cafe24Ssurround';
+`;
+
+const BgImg = styled.div`
+  background: #cedce7;
+  background-image: url(${props => props.bgimage});
+`;
 
 function MyPageItem({ dataColumn }) {
   const handleCopyClipBoard = async text => {
@@ -12,11 +41,33 @@ function MyPageItem({ dataColumn }) {
       alert('복사 실패!');
     }
   };
-  console.log(dataColumn.title);
+  // console.log(dataColumn.title);
+  // console.log(dataColumn.create_at);
+  const [backgroundImg, setBackgroundImg] = useState();
+  function bgimage(paperUrl) {
+    if (paperUrl === '1') {
+      setBackgroundImg(image1);
+    } else if (paperUrl === '2') {
+      setBackgroundImg(image2);
+    } else if (paperUrl === '3') {
+      setBackgroundImg(image3);
+    } else if (paperUrl === '4') {
+      setBackgroundImg(image4);
+    } else if (paperUrl === '5') {
+      setBackgroundImg(image5);
+    }
+  }
+  useEffect(() => {
+    bgimage(dataColumn.paper_url);
+  }, []);
+
   const navigate = useNavigate();
   return (
     <div>
-      <ButtonItem onClick={() => navigate(`/rolling/${dataColumn.id}`)}>
+      <ButtonItem
+        // bgimage={backgroundImg}
+        onClick={() => navigate(`/rolling/${dataColumn.id}`)}
+      >
         <div className="wrapper">
           <div className="cols">
             <div className="col" onTouchStart="this.classList.toggle('hover');">
@@ -27,11 +78,11 @@ function MyPageItem({ dataColumn }) {
                     <span> </span>
                   </div>
                 </div>
-                <div className="back">
+                <BgImg bgimage={backgroundImg} className="back">
                   <div className="inner">
-                    <p>작성된 메모 수 :</p>
+                    <p>작성날짜 : {dataColumn.create_at}</p>
                   </div>
-                </div>
+                </BgImg>
               </div>
             </div>
           </div>
@@ -58,22 +109,6 @@ function MyPageItem({ dataColumn }) {
 //   text-align: center;
 // `;
 
-const ButtonItem = styled.button`
-  width: 25rem;
-  height: 20rem;
-  font-size: 2rem;
-  text-align: center;
-  font-family: 'Cafe24Ssurround';
-`;
-const ButtonTitle = styled.button`
-  width: 6rem;
-  height: 7rem;
-  padding-left: 2rem;
-  font-size: 1rem;
-  display: flex;
-  color: white;
-  font-family: 'Cafe24Ssurround';
-`;
 // const PageItem = styled.button`
 //   width: 298px;
 //   height: 300px;
