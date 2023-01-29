@@ -371,6 +371,7 @@ function Rolling() {
   const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   useEffect(() => {
     const getMemos = async () => {
+      setLoading(true);
       try {
         const item = await axios.get(
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
@@ -389,6 +390,7 @@ function Rolling() {
             item.data.sticker.length,
         );
         bgimage(item.data.paper_url);
+        setLoading(false);
         // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
