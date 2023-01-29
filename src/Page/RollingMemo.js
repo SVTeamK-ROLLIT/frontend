@@ -89,7 +89,7 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
           )}
           {content}
         </MemoText>
-        <Name>
+        <Name color={color}>
           <b>from.</b>
           {nickname}{' '}
         </Name>
@@ -123,4 +123,5 @@ const MemoText = styled.div`
 const Name = styled.div`
   text-align: right;
   align-items: end;
+  color: ${props => (props.color === 'white' ? 'black' : 'white')};
 `;
