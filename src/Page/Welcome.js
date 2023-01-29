@@ -13,7 +13,15 @@ import Outlog from './Outlog';
 import background from '../Image/welcome1.png';
 import logo from '../Image/newlogo.png';
 import back from '../Image/welcome3.png';
+import down from '../Image/down.png';
 
+const DownBtn = styled.button`
+  display: inline;
+  /* margin: auto; */
+`;
+const DownBtnWrap = styled.div`
+  margin: auto;
+`;
 const SketchbookImg = styled.div`
   height: 70rem;
   background-size: 50rem 39rem;
@@ -21,6 +29,7 @@ const SketchbookImg = styled.div`
   background-position: center;
   background-image: url(${logo});
   display: flex;
+  flex-direction: column;
   /* margin-top: 20rem; */
   background-position-y: 4rem;
 `;
@@ -49,14 +58,8 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 22rem auto;
+  margin: auto auto 0 auto;
 `;
-// const PencilImg = styled.img`
-//   width: 3.6rem;
-//   height: 3rem;
-//   margin-top: 0.5rem;
-//   // 스캐치북 위에 올리기
-// `;
 
 const StartBtn = styled.button`
   width: 30rem;
@@ -68,7 +71,14 @@ const StartBtn = styled.button`
   font-family: 'Cafe24Ssurround';
   text-shadow: 2px 2px 1.5px gray;
 `;
+
 function Welcome() {
+  const handleTop = () => {
+    window.scrollTo({
+      top: 1200,
+      behavior: 'smooth',
+    });
+  };
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const openModal = useCallback(() => setIsOpen(true), []);
@@ -90,14 +100,6 @@ function Welcome() {
     navigate('../makeRolling');
   };
 
-  const handleTop = () => {
-    // 클릭하면 스크롤이 위로 올라가는 함수
-    window.scrollTo({
-      top: 1200,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <div className="welcome">
       <AllWrap />
@@ -115,10 +117,12 @@ function Welcome() {
               시작하기
             </button>
           </StartBtn>
-          <button type="button" className="topBtn" onClick={handleTop}>
-            {' '}
-          </button>
         </StartWrap>
+        <DownBtnWrap>
+          <DownBtn type="button" onClick={handleTop}>
+            <img src={down} alt="" />
+          </DownBtn>
+        </DownBtnWrap>
       </SketchbookImg>
       <BackImg src={back}> </BackImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
