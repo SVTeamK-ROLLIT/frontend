@@ -5,7 +5,6 @@ import { FcExpand, FcCancel } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import photoReSizing from './PhotoReSizing';
 import Loading from './Loading';
 
 import image1 from '../Image/image1.png';
@@ -341,7 +340,7 @@ function Rolling() {
       return;
     }
     console.log('start Resizing');
-    photoReSizing(photo, setPhoto);
+    console.log(photo);
     console.log(photo.image_id);
     console.log(coor);
     console.log(paperId);
