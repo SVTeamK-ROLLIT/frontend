@@ -11,17 +11,6 @@
   animation-delay: 0s;
   animation-timing-function: linear;
 }
-.moveTopBtn {
-  background: url(../Image/down.png);
-  background-repeat: no-repeat;
-  position: absolute;
-  margin:auto auto auto 12rem;
-  bottom: 0rem;
-  width: 7rem;
-  height: 7rem;
-  opacity: 0.9;
-
-}
 
 @keyframes handmove {
   0% {

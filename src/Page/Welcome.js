@@ -91,12 +91,6 @@ function Welcome() {
     navigate('../makeRolling');
   };
 
-  // const $topBtn = document.querySelector('.moveTopBtn');
-
-  // $topBtn.onclick = () => {
-  //   window.scrollTo({ top: 1500, behavior: 'smooth' });
-  // };
-
   return (
     <div className="welcome">
       <AllWrap />
