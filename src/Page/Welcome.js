@@ -91,12 +91,6 @@ function Welcome() {
     navigate('../makeRolling');
   };
 
-  // const $topBtn = document.querySelector('.moveTopBtn');
-
-  // $topBtn.onclick = () => {
-  //   window.scrollTo({ top: 1500, behavior: 'smooth' });
-  // };
-
   return (
     <div className="welcome">
       <AllWrap />
@@ -114,10 +108,6 @@ function Welcome() {
               시작하기
             </button>
           </StartBtn>
-          <button type="button" className="moveTopBtn">
-            {' '}
-          </button>
-              시작하기
         </StartWrap>
       </SketchbookImg>
       <BackImg src={back}> </BackImg>
