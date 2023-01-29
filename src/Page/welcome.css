@@ -13,11 +13,9 @@
 }
 
 .topBtn {
-  background: url(../Image/down.png);
+  background-image: url(../Image/down.png);
   background-size: cover;
-  background-repeat: no-repeat;
   margin-left: 12.5rem;
-  position: relative;
   position: absolute; 
   bottom: 2rem;
   width: 5rem; 
@@ -26,11 +24,6 @@
   cursor: pointer;
 }
 
-.topBtn:hover,
-.topBtn:focus,
-.topBtn:active { 
-  outline: 0 none; 
-}
 
 
 @keyframes handmove {
