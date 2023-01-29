@@ -66,10 +66,10 @@ const ButtonItem = styled.button`
   font-family: 'Cafe24Ssurround';
 `;
 const ButtonTitle = styled.button`
-  width: 20rem;
+  width: 6rem;
   height: 7rem;
   padding-left: 2rem;
-  font-size: 0.7rem;
+  font-size: 1rem;
   display: flex;
   color: white;
   font-family: 'Cafe24Ssurround';
