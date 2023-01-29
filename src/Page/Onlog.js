@@ -10,7 +10,7 @@ const TopPosition = styled.div`
 
 const LoginWrap = styled.div`
   position: fixed;
-  top: 7%;
+  top: 5%;
   left: 88%;
   transform: translate(-50%, -50%);
   display: flex;

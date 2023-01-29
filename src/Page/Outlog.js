@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const LogoutWrap = styled.div`
   position: fixed;
-  top: 7%;
+  top: 5%;
   left: 88%;
   transform: translate(-50%, -50%);
   display: flex;
