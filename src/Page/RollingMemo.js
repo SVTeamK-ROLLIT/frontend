@@ -117,6 +117,7 @@ const MemoText = styled.div`
   word-break: break-all;
   color: ${props => props.color};
   font-family: ${props => props.font};
+  font-size: 1.3rem;
 `;
 
 const Name = styled.div`
