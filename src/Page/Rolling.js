@@ -474,7 +474,12 @@ function Rolling() {
             })}
           {isItem()}
         </Container>
-        <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
+        {isAdmin ? (
+          <MyPageBtn onClick={() => navigate('/mypage')}>마이페이지</MyPageBtn>
+        ) : (
+          <div />
+        )}
+
         <Text>to.{items.title}</Text>
         <UserWrap>
           <UserIcon src={usericon} alt="" />
