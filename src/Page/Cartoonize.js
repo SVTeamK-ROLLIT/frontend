@@ -5,8 +5,8 @@ import styled from 'styled-components';
 // Import React FilePond
 
 import axios from 'axios';
-import { data } from 'autoprefixer';
 import { useLocation } from 'react-router-dom';
+import PhotoReSizing from './PhotoReSizing';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -32,7 +32,9 @@ function Cartoonize({
 
   async function run1() {
     const formData = new FormData();
-    formData.append('image', files[0].file);
+    const resizeFile = await PhotoReSizing(files[0].file);
+    await formData.append('image', resizeFile);
+
     const response = await axios.post(`${backBaseUrl}/api/v1/photos`, formData);
     console.log(response.data);
     const response2 = await axios.post(

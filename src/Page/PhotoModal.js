@@ -24,6 +24,7 @@ import axios from 'axios';
 
 import { BsX } from 'react-icons/bs';
 import Cartoonize from './Cartoonize';
+import PhotoReSizing from './PhotoReSizing';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -96,8 +97,8 @@ function PhotoModal({
   const ClickUpload = async () => {
     setLoading(true);
     const formData = new FormData();
-    // console.log(files[0].file);
-    formData.append('image', files[0].file);
+    const resizeFile = await PhotoReSizing(files[0].file);
+    await formData.append('image', resizeFile);
 
     const res = await axios.post(
       `${backBaseUrl}/api/v1/papers/${paperId}/photos`,
