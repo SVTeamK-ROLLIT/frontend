@@ -20,10 +20,10 @@ const DownBtn = styled.button`
   /* margin: auto; */
 `;
 const DownBtnWrap = styled.div`
-  margin: auto;
+  margin: 0 auto 3rem auto;
 `;
 const SketchbookImg = styled.div`
-  height: 70rem;
+  height: 60rem;
   background-size: 50rem 39rem;
   background-repeat: no-repeat;
   background-position: center;
@@ -58,16 +58,16 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 0 auto;
+  margin: auto auto 3rem auto;
 `;
 
 const StartBtn = styled.button`
-  width: 30rem;
-  height: 3.5rem;
+  width: 20rem;
+  height: 6rem;
   border-radius: 1rem;
   font-size: 2.5rem;
   font-weight: 800;
-
+  padding-bottom: 1rem;
   font-family: 'Cafe24Ssurround';
   text-shadow: 2px 2px 1.5px gray;
 `;
@@ -112,10 +112,9 @@ function Welcome() {
       <SketchbookImg src={logo}>
         <StartWrap>
           {/* <HandMotion /> */}
-          <StartBtn onClick={onClick2}>
-            <button type="button" className="learn-more">
-              시작하기
-            </button>
+
+          <StartBtn onClick={onClick2} type="button" className="learn-more">
+            시작하기
           </StartBtn>
           <button type="button" className="moveTopBtn">
             {' '}
