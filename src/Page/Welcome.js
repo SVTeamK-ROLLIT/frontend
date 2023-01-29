@@ -118,7 +118,6 @@ function Welcome() {
           <button type="button" className="moveTopBtn">
             {' '}
           </button>
-
         </StartWrap>
         <DownBtnWrap>
           <DownBtn type="button" onClick={handleTop}>
