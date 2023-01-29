@@ -20,10 +20,10 @@ const DownBtn = styled.button`
   /* margin: auto; */
 `;
 const DownBtnWrap = styled.div`
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 11rem auto;
 `;
 const SketchbookImg = styled.div`
-  height: 60rem;
+  height: 75rem;
   background-size: 50rem 39rem;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,7 +34,7 @@ const SketchbookImg = styled.div`
   background-position-y: 4rem;
 `;
 const BackImg = styled.div`
-  height: 70rem;
+  height: 71rem;
   background-color: lightpink;
   background-size: 90rem 55rem;
   background-repeat: no-repeat;
@@ -58,24 +58,23 @@ const AllWrap = styled.div`
 
 const StartWrap = styled.div`
   display: flex;
-  margin: auto auto 3rem auto;
+  margin: auto auto 5rem auto;
 `;
 
 const StartBtn = styled.button`
-  width: 20rem;
-  height: 6rem;
+  width: 10rem;
+  height: 9rem;
   border-radius: 1rem;
   font-size: 2.5rem;
   font-weight: 800;
   padding-bottom: 1rem;
   font-family: 'Cafe24Ssurround';
-  text-shadow: 2px 2px 1.5px gray;
 `;
 
 function Welcome() {
   const handleTop = () => {
     window.scrollTo({
-      top: 1200,
+      top: 2000,
       behavior: 'smooth',
     });
   };
