@@ -24,6 +24,7 @@ function Cartoonize({
   setIsPhoto,
   setPhoto,
   setRawLog,
+  setLoading,
 }) {
   const location = useLocation();
   const paperId = location.pathname.slice(9);
@@ -56,6 +57,7 @@ function Cartoonize({
             console.log('response: ', response.data);
             clearInterval(interval);
             setPhoto(response.data);
+            setLoading(false);
             closeModal();
             setIsPhoto(true);
             setIsActive(true);
@@ -71,10 +73,10 @@ function Cartoonize({
   }
 
   const onSubmit = async () => {
+    setLoading(true);
     const run1Result = await run1();
     console.log('2번쨰 데이터 값 ', run1Result.task_id);
     const run2Result = await run2(run1Result);
-
     await console.log(1111);
     await console.log(2222);
     await console.log(3333);

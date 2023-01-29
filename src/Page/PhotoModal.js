@@ -153,6 +153,7 @@ function PhotoModal({
           setIsPhoto={setIsPhoto}
           setPhoto={setPhoto}
           setRawLog={setRawLog}
+          setLoading={setLoading}
         />
       </Modal>
     </div>
