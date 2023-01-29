@@ -68,7 +68,6 @@ const StartBtn = styled.button`
   font-family: 'Cafe24Ssurround';
   text-shadow: 2px 2px 1.5px gray;
 `;
-
 function Welcome() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -91,6 +90,14 @@ function Welcome() {
     navigate('../makeRolling');
   };
 
+  const handleTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1200,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className="welcome">
       <AllWrap />
@@ -108,6 +115,9 @@ function Welcome() {
               시작하기
             </button>
           </StartBtn>
+          <button type="button" className="topBtn" onClick={handleTop}>
+            {' '}
+          </button>
         </StartWrap>
       </SketchbookImg>
       <BackImg src={back}> </BackImg>
