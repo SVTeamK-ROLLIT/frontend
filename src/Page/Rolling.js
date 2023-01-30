@@ -35,12 +35,13 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
-  width: 105rem; //Props 사용하기
+  /* width: 100rem; */
   background-image: url(${props => props.bgimage});
   margin: 0 auto;
   background-position: center;
+  background-size: 110rem 60rem;
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
   /* background-position: center; */
 `;
 
