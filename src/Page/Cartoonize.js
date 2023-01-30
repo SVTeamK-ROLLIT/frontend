@@ -12,15 +12,15 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const CartoonBtn = styled.button`
   width: 100px;
-  height: 40px;
+  height: 80px;
   border-radius: 15px;
   background: #ffd7e3;
   color: white;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
-  margin: 1rem auto 0 auto;
-  display: block;
+  display: inline;
+  margin-left: 1rem;
 `;
 
 function Cartoonize({
@@ -105,7 +105,8 @@ function Cartoonize({
   // const onSubmit = () => {};
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
-      필터적용
+      만화필터로 <br />
+      업로드
     </CartoonBtn>
   );
 }

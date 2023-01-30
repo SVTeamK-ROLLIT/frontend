@@ -9,18 +9,18 @@ import image4 from '../Image/smallimage4.png';
 import image5 from '../Image/smallimage5.png';
 
 const ButtonItem = styled.button`
-  width: 25rem;
-  height: 20rem;
+  width: 20rem;
+  height: 19rem;
   font-size: 2rem;
   text-align: center;
   font-family: 'Cafe24Ssurround';
   background-image: url(${props => props.bgimage});
 `;
 const ButtonTitle = styled.button`
-  width: 6rem;
+  width: 5rem;
   height: 7rem;
-  padding-left: 2rem;
-  font-size: 1rem;
+  padding-left: 1.5rem;
+  font-size: 0.6rem;
   display: flex;
   color: white;
   font-family: 'Cafe24Ssurround';

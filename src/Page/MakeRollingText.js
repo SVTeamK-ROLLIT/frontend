@@ -8,7 +8,7 @@ function MakeRollingText() {
 const Text = styled.div`
   /* width: 387px; */
   height: 5rem;
-  font-size: 4rem;
+  font-size: 3.3rem;
   font-weight: 700;
   color: whitesmoke;
   text-align: center;

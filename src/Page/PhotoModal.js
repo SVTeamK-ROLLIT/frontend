@@ -31,16 +31,18 @@ import PhotoReSizing from './PhotoReSizing';
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SumbitBtn = styled.button`
+  display: block;
   width: 100px;
-  height: 40px;
+  height: 80px;
   border-radius: 15px;
   background: #ffd7e3;
   color: white;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
-  margin: 1rem auto 0 auto;
-  display: block;
+  display: inline;
+  margin-right: 1rem;
+
   :active {
     // 버튼 클릭시 효과
     box-shadow: inset -0.1rem -0.1rem 0.1rem #fbfbfb,
@@ -54,6 +56,12 @@ const CloseBtn = styled.button`
   margin: 0 0 1rem auto;
   padding-top: 0;
   color: white;
+`;
+
+const BtnWrap = styled.div`
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
 `;
 
 // Register the plugins
@@ -71,7 +79,7 @@ const modalStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.45)',
+    backgroundColor: 'rgba(255, 255, 255, 0.35)',
     zIndex: 9998,
   },
   content: {
@@ -79,10 +87,10 @@ const modalStyle = {
     justifyContent: 'center',
     // background: '#ffffe7',
     overflow: 'auto',
-    top: '16vh',
-    left: '20vw',
-    right: '20vw',
-    bottom: '20vh',
+    top: '7vh',
+    left: '25vw',
+    right: '25vw',
+    bottom: '16vh',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '14px',
     outline: 'none',
@@ -148,28 +156,29 @@ function PhotoModal({
           imagePreviewHeight={400}
           labelIdle=""
         />
-
-        <SumbitBtn
-          type="button"
-          onClick={() => {
-            // console.log(files[0].file);
-            ClickUpload();
-            closeModal();
-          }}
-          variant="contained"
-          component="label"
-        >
-          업로드
-        </SumbitBtn>
-        <Cartoonize
-          files={files}
-          closeModal={closeModal}
-          setIsActive={setIsActive}
-          setIsPhoto={setIsPhoto}
-          setPhoto={setPhoto}
-          setRawLog={setRawLog}
-          setLoading={setLoading}
-        />
+        <BtnWrap>
+          <SumbitBtn
+            type="button"
+            onClick={() => {
+              // console.log(files[0].file);
+              ClickUpload();
+              closeModal();
+            }}
+            variant="contained"
+            component="label"
+          >
+            업로드
+          </SumbitBtn>
+          <Cartoonize
+            files={files}
+            closeModal={closeModal}
+            setIsActive={setIsActive}
+            setIsPhoto={setIsPhoto}
+            setPhoto={setPhoto}
+            setRawLog={setRawLog}
+            setLoading={setLoading}
+          />
+        </BtnWrap>
       </Modal>
     </div>
   );

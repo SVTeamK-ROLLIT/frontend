@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LogoutWrap = styled.div`
   position: fixed;
   top: 5%;
-  left: 88%;
+  left: 85%;
   transform: translate(-50%, -50%);
   display: flex;
   z-index: 999;
@@ -13,10 +13,10 @@ const LogoutWrap = styled.div`
 
 const MypageBtn = styled.button`
   //상단 로그인 버튼
-  width: 12rem;
+  width: 10rem;
   height: 5.5rem;
 
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 1000;
 
   color: white;
@@ -29,7 +29,7 @@ const SignupBtn = styled.button`
   //상단 회원가입 버튼
   width: 12rem;
   height: 5.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   // 스캐치북 위에 올리기
 

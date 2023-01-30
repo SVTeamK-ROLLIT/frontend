@@ -15,34 +15,46 @@ import logo from '../Image/newlogo.png';
 import back from '../Image/welcome3.png';
 import down from '../Image/down.png';
 
-const DownBtn = styled.button`
+const UpBtn = styled.button`
   display: inline;
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  width: 4rem;
+  transform: rotate(180deg);
   /* margin: auto; */
 `;
-const DownBtnWrap = styled.div`
-  margin: 0 auto 11rem auto;
+
+const DownBtn = styled.button`
+  display: inline;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+
+  /* margin: auto; */
 `;
-const SketchbookImg = styled.div`
-  height: 75rem;
-  background-size: 50rem 39rem;
+
+const RollITLogo = styled.div`
+  height: 40rem;
+  width: 40rem;
+  background-size: 40rem 33rem;
   background-repeat: no-repeat;
   background-position: center;
+  margin-top: -7rem;
   background-image: url(${logo});
-  display: flex;
-  flex-direction: column;
+
   /* margin-top: 20rem; */
   background-position-y: 4rem;
 `;
 const BackImg = styled.div`
-  height: 71rem;
+  height: 100vh;
   background-color: #ffcdcd;
-  background-size: 90rem 55rem;
+  background-size: 68rem 43rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${back});
   display: flex;
-  /* margin-top: 20rem; */
-  background-position-y: 12rem;
 `;
 
 const AllWrap = styled.div`
@@ -57,24 +69,32 @@ const AllWrap = styled.div`
 `;
 
 const StartWrap = styled.div`
+  height: 100vh;
   display: flex;
-  margin: auto auto 5rem auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto auto 0 auto;
 `;
 
 const StartBtn = styled.button`
-  width: 10rem;
-  height: 9rem;
   border-radius: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 800;
   padding-bottom: 1rem;
   font-family: 'Cafe24Ssurround';
 `;
 
 function Welcome() {
-  const handleTop = () => {
+  const handleBottom = () => {
     window.scrollTo({
       top: 2000,
+      behavior: 'smooth',
+    });
+  };
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
       behavior: 'smooth',
     });
   };
@@ -108,24 +128,24 @@ function Welcome() {
         <Outlog onClick={onClick} />
       )}
 
-      <SketchbookImg src={logo}>
-        <StartWrap>
-          {/* <HandMotion /> */}
+      <StartWrap>
+        <RollITLogo />
 
-          <StartBtn onClick={onClick2} type="button" className="learn-more">
-            시작하기
-          </StartBtn>
-          <button type="button" className="moveTopBtn">
-            {' '}
-          </button>
-        </StartWrap>
-        <DownBtnWrap>
-          <DownBtn type="button" onClick={handleTop}>
-            <img src={down} alt="" />
-          </DownBtn>
-        </DownBtnWrap>
-      </SketchbookImg>
-      <BackImg src={back}> </BackImg>
+        {/* <HandMotion /> */}
+
+        <StartBtn onClick={onClick2} type="button" className="learn-more2">
+          시작하기
+        </StartBtn>
+        <DownBtn type="button" onClick={handleBottom}>
+          <img src={down} alt="" />
+        </DownBtn>
+      </StartWrap>
+
+      <BackImg src={back}>
+        <UpBtn type="button" onClick={handleTop}>
+          <img src={down} alt="" />
+        </UpBtn>
+      </BackImg>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} setLogState={setLogState} />
     </div>
   );

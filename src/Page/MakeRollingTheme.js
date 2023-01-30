@@ -85,7 +85,7 @@ const StyledSlider = styled(Slider)`
 const ImageContainer = styled.div``;
 
 const Image = styled.img`
-  width: 27vw;
+  width: 25vw;
   height: 30vh;
   margin-left: 34vw;
   z-index: 10;
@@ -93,13 +93,13 @@ const Image = styled.img`
 
 const Count = styled.button`
   height: 10vh;
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: 1000;
   color: #fff;
   text-align: center;
   display: block;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-family: 'Cafe24Ssurround';
 `;
 

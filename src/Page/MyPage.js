@@ -28,9 +28,9 @@ const AllWrap = styled.div`
 
 const BackBtn = styled.button`
   //상단 뒤로가기 버튼
-  width: 14rem;
+  width: 13rem;
   height: 5.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
 
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -43,7 +43,7 @@ const MakeBtn = styled.button`
   width: 15rem;
   height: 5.5rem;
   float: right;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 1000;
 
   color: white;

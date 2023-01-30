@@ -11,8 +11,8 @@ const Line = styled.div`
   width: 50rem;
   height: 6rem;
   border-radius: 2rem;
-  margin: 15rem auto 0 auto;
-  font-size: 3.5rem;
+  margin: 11rem auto 0 auto;
+  font-size: 3rem;
   text-align: center;
   color: white;
   position: relative;
