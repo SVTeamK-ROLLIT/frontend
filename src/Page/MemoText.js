@@ -79,15 +79,14 @@ const InputMemo = styled(Field)`
 
 const MakeBtn = styled.button`
   width: 10rem;
-  height: 4rem;
+  height: 7rem;
   border-radius: 1rem;
   font-size: 2.5rem;
   // 스캐치북 위에 올리기
   font-family: 'Cafe24Ssurround';
   color: white;
-  text-shadow: 1.5px 1.5px 1.5px gray;
-  -webkit-text-stroke-width: 1.1px;
-  -webkit-text-stroke-color: black;
+
+  margin-bottom: 5rem;
 `;
 
 const BtnWrap = styled.div`
@@ -164,9 +163,9 @@ function MemoText({
                 />
               </SketchbookImg>
               <BtnWrap>
-                <button type="button" className="learn-more">
-                  <MakeBtn type="submit">만들기</MakeBtn>
-                </button>
+                <MakeBtn type="submit" className="learn-more">
+                  만들기
+                </MakeBtn>
               </BtnWrap>
             </InputWrap>
           </Form>
