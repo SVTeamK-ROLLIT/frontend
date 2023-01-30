@@ -35,7 +35,7 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SketchBookImg = styled.div`
   background-repeat: no-repeat;
-  width: 100rem;
+  width: 95rem;
   background-image: url(${props => props.bgimage});
   margin: 0 auto;
   background-position: center;
@@ -133,7 +133,7 @@ const KakaoIconWrap = styled.div`
 `;
 const Container = styled.div`
   //메모가 움직이는 영역입니다.
-  height: 63rem;
+  height: 61rem;
   width: 90rem; // 배경과 같은 너비
   position: absolute;
 `;
@@ -171,7 +171,6 @@ const KakaoBtnWrap = styled.div`
 const IconWrap = styled.div`
   background: #292c33;
   position: fixed;
-
   border-radius: 100px;
   padding: 0.2rem;
   margin-top: 1rem;
