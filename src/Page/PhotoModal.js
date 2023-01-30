@@ -19,6 +19,8 @@ import 'filepond/dist/filepond.min.css';
 // `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import axios from 'axios';
 
@@ -53,7 +55,11 @@ const CloseBtn = styled.button`
 `;
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+registerPlugin(
+  FilePondPluginImageExifOrientation,
+  FilePondPluginImagePreview,
+  FilePondPluginFileValidateType,
+);
 
 // 모달 스타일
 const modalStyle = {
@@ -127,6 +133,7 @@ function PhotoModal({
         <ToastContainer />
         <FilePond
           // files={files}
+          acceptedFileTypes={['image/*']}
           allowMultiple={false}
           onupdatefiles={setFiles} // 파일을 업로드하면 files에 저장해줌
           imagePreviewHeight={400}
