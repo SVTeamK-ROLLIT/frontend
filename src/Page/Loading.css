@@ -1,76 +1,106 @@
-svg {
-  max-width: 100%;
+.container {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  filter: url('#goo');
+  animation: rotate-move 2s ease-in-out infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+.dot {
+  width: 70px;
+  height: 70px;
+  border-radius: 80%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dot-3 {
+  background-color: #f74d75;
+  animation: dot-3-move 2s ease infinite;
+}
+
+.dot-2 {
+  background-color: #10beae;
+  animation: dot-2-move 2s ease infinite;
+}
+
+.dot-1 {
+  background-color: #ffe386;
+  animation: dot-1-move 2s ease infinite;
+}
+
+@keyframes dot-3-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translateY(-18px) scale(0.45);
+  }
+  60% {
+    transform: translateY(-40px) scale(0.45);
+  }
+  80% {
+    transform: translateY(-40px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
   }
 }
-.loader {
-  animation: spin 1s ease-in-out infinite alternate both;
-  height: 100px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-}
-.loader svg:not(#circle-middle) {
-  animation: spin 1s ease-in-out infinite alternate both;
-  position: absolute;
-  top: -50%;
-  left: 0;
-  transform-origin: bottom center;
+
+@keyframes dot-2-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translate(-16px, 12px) scale(0.45);
+  }
+  60% {
+    transform: translate(-40px, 40px) scale(0.45);
+  }
+  80% {
+    transform: translate(-40px, 40px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
 }
 
-.loader svg:nth-of-type(1):not(#circle-middle) {
-  transform: rotate(30deg);
+@keyframes dot-1-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translate(16px, 12px) scale(0.45);
+  }
+  60% {
+    transform: translate(40px, 40px) scale(0.45);
+  }
+  80% {
+    transform: translate(40px, 40px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
 }
 
-.loader svg:nth-of-type(2):not(#circle-middle) {
-  transform: rotate(60deg);
-}
-
-.loader svg:nth-of-type(3):not(#circle-middle) {
-  transform: rotate(90deg);
-}
-
-.loader svg:nth-of-type(4):not(#circle-middle) {
-  transform: rotate(120deg);
-}
-
-.loader svg:nth-of-type(5):not(#circle-middle) {
-  transform: rotate(150deg);
-}
-
-.loader svg:nth-of-type(6):not(#circle-middle) {
-  transform: rotate(180deg);
-}
-
-.loader svg:nth-of-type(7):not(#circle-middle) {
-  transform: rotate(210deg);
-}
-
-.loader svg:nth-of-type(8):not(#circle-middle) {
-  transform: rotate(240deg);
-}
-
-.loader svg:nth-of-type(9):not(#circle-middle) {
-  transform: rotate(270deg);
-}
-
-.loader svg:nth-of-type(10):not(#circle-middle) {
-  transform: rotate(300deg);
-}
-
-.loader svg:nth-of-type(11):not(#circle-middle) {
-  transform: rotate(330deg);
-}
-
-.loader svg:nth-of-type(12):not(#circle-middle) {
-  transform: rotate(360deg);
-}
-
-.loader svg:nth-of-type(13):not(#circle-middle) {
-  transform: rotate(390deg);
+@keyframes rotate-move {
+  55% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
