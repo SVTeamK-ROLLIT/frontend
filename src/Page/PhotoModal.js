@@ -49,10 +49,11 @@ const SumbitBtn = styled.button`
   }
 `;
 const CloseBtn = styled.button`
-  background-color: red;
+  background-color: pink;
+  border-radius: 4rem;
   margin: 0 0 1rem auto;
   padding-top: 0;
-  display: block;
+  color: white;
 `;
 
 // Register the plugins
@@ -79,8 +80,8 @@ const modalStyle = {
     // background: '#ffffe7',
     overflow: 'auto',
     top: '16vh',
-    left: '24vw',
-    right: '24vw',
+    left: '20vw',
+    right: '20vw',
     bottom: '20vh',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '14px',

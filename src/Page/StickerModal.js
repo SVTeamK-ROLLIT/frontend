@@ -19,7 +19,7 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 const CloseBtn = styled.button`
   display: flex;
   height: 16px;
-  background-color: red;
+  background-color: pink;
   border-radius: 10px;
   color: white;
 `;
