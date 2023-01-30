@@ -35,7 +35,7 @@ const SketchbookImg = styled.div`
 `;
 const BackImg = styled.div`
   height: 71rem;
-  background-color: lightpink;
+  background-color: #ffcdcd;
   background-size: 90rem 55rem;
   background-repeat: no-repeat;
   background-position: center;

@@ -15,7 +15,7 @@
   }
   
   .wrapper{
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     max-width: 80rem;
   }
@@ -46,7 +46,7 @@
   
   .front,
   .back{
-    background-size: cover;
+    background-size: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
     border-radius: 10px;
     background-position: center;
@@ -56,17 +56,16 @@
     transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
     transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
     text-align: center;
-    min-height: 280px;
+    min-height: 265px;
     height: auto;
     border-radius: 10px;
-    color: #fff;
+    color:white;
     font-size: 1.5rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
   }
   
-  .back{
-    background: #cedce7;
-    background: url(../Image/image1.png);
-  }
+
   
   .front:after{
     position: absolute;
@@ -148,7 +147,7 @@
   
   .front .inner p:after{
     content: '';
-    width: 4rem;
+    width: 10rem;
     height: 2px;
     position: absolute;
     background: #C6D4DF;
