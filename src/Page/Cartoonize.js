@@ -11,10 +11,16 @@ import PhotoReSizing from './PhotoReSizing';
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const CartoonBtn = styled.button`
-  width: 10rem;
-  height: 10rem;
-  background-color: red;
-  //
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  background: #ffd7e3;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin: 1rem auto 0 auto;
+  display: block;
 `;
 
 function Cartoonize({
@@ -92,7 +98,11 @@ function Cartoonize({
   // console.log('@@@@@', imageUrl);
 
   // const onSubmit = () => {};
-  return <CartoonBtn type="button" onClick={onSubmit} />;
+  return (
+    <CartoonBtn type="button" onClick={onSubmit}>
+      필터적용
+    </CartoonBtn>
+  );
 }
 
 export default Cartoonize;
