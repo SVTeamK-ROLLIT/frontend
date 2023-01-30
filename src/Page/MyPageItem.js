@@ -71,7 +71,7 @@ function MyPageItem({ dataColumn }) {
         <div className="wrapper">
           <div className="cols">
             <div className="col" onTouchStart="this.classList.toggle('hover');">
-              <div className="container">
+              <div className="mypageContainer">
                 <div className="front">
                   <div className="inner">
                     <p>TO. {dataColumn.title}</p>
