@@ -9,9 +9,9 @@ import background from '../Image/welcome1.png';
 
 const BackBtn = styled.button`
   //상단 뒤로가기 버튼
-  width: 17rem;
+  width: 12rem;
   height: 6rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   position: absolute;
 
   color: white;
@@ -31,6 +31,7 @@ const AllWrap = styled.div`
   position: fixed;
   display: flex;
   background-image: url(${background});
+  overflow: auto;
 
   @media (max-width: 1100px) {
     flex-direction: column;
@@ -51,7 +52,6 @@ function Memo() {
   return (
     <div className="mypage">
       <AllWrap src={background}>
-        <BackBtn onClick={() => navigate(-1)}>＜뒤로가기</BackBtn>
         <MemoText
           memoContent={memoContent}
           setMemoContent={setMemoContent}
@@ -61,6 +61,7 @@ function Memo() {
           rollBackColor={rollBackColor}
           rollTypeColor={rollTypeColor}
         />
+        <BackBtn onClick={() => navigate(-1)}>＜뒤로가기</BackBtn>
         <MemoColor
           memoName={memoName}
           setMemoName={setMemoName}

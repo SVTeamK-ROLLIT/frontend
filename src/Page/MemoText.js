@@ -20,10 +20,11 @@ const InputWrap = styled.div`
 `;
 const Text = styled.div`
   //내용은 최대 40자 까지 입력가능합니다
-  width: 55rem;
+  width: 45rem;
   /* background-color: red; */
   /* height: 1vh; */
-  font-size: 2.5rem;
+  font-size: 2rem;
+  text-align: center;
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
   padding-left: 6rem;
@@ -41,9 +42,9 @@ const Text = styled.div`
 
 const SketchbookImg = styled.div`
   //스케치북 이미지
-  width: 60rem;
-  height: 33rem;
-  margin-top: 1rem;
+  width: 50rem;
+  height: 29rem;
+  margin-top: 0rem;
   /* background-size: 80rem 25rem; */
   background-size: 100% 100%;
   background-image: url(${sketchbook});
@@ -77,9 +78,10 @@ const InputMemo = styled(Field)`
 `;
 
 const MakeBtn = styled.button`
-  width: 12rem;
+  width: 10rem;
+  height: 4rem;
   border-radius: 1rem;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   // 스캐치북 위에 올리기
   font-family: 'Cafe24Ssurround';
   color: white;
@@ -92,7 +94,7 @@ const BtnWrap = styled.div`
   //만들기랑 연필 이미지 버튼 감싸줌
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
 `;
 
 function MemoText({
