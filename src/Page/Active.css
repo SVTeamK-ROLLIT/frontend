@@ -9,6 +9,7 @@
 .circle {
   position: relative;
 }
+
 .circle:before {
   border-radius: 80%;
   content: '';
@@ -24,6 +25,7 @@
   transform-origin: center center;
 }
 .circle:after {
+  border: 1px solid black;
   border-radius: 1rem;
   content: '';
   display: block;
