@@ -75,6 +75,11 @@ function Cartoonize({
   }
 
   const onSubmit = async () => {
+    if (files.length === 0) {
+      alert('사진을 업로드해주세요!');
+      closeModal();
+      return;
+    }
     setLoading(true);
     const run1Result = await run1();
     console.log('2번쨰 데이터 값 ', run1Result.task_id);
