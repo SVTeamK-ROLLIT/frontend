@@ -27,7 +27,7 @@ const Text = styled.div`
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
   padding-left: 6rem;
-  padding-top: 6rem;
+  padding-top: 5rem;
   color: white;
   display: block;
   text-shadow: 2px 2px 2px gray;
@@ -43,7 +43,7 @@ const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 60rem;
   height: 33rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   /* background-size: 80rem 25rem; */
   background-size: 100% 100%;
   background-image: url(${sketchbook});
@@ -77,8 +77,7 @@ const InputMemo = styled(Field)`
 `;
 
 const MakeBtn = styled.button`
-  width: 10rem;
-  height: 5rem;
+  width: 12rem;
   border-radius: 1rem;
   font-size: 2.8rem;
   // 스캐치북 위에 올리기
@@ -93,7 +92,7 @@ const BtnWrap = styled.div`
   //만들기랑 연필 이미지 버튼 감싸줌
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
+  margin-top: 4rem;
 `;
 
 function MemoText({

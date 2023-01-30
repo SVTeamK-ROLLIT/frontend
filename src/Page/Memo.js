@@ -39,14 +39,14 @@ const AllWrap = styled.div`
     overflow: auto;
   }
 `;
-
+const navigate = useNavigate();
 function Memo() {
   const [rollBackColor, setRollBackColor] = useState('white');
   const [rollTypeColor, setRollTypeColor] = useState('black');
   const [pontType, setPontType] = useState('Cafe24Ssurround');
   const [memoName, setMemoName] = useState('');
   const [memoContent, setMemoContent] = useState('');
-  const navigate = useNavigate();
+
   return (
     <div className="mypage">
       <AllWrap src={background}>
