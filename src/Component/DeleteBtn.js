@@ -7,6 +7,7 @@ const DelBtn = styled.button`
   width: 1rem;
   height: 1rem;
   position: absolute;
+  z-index: 10000;
   right: ${props => props.right};
   top: ${props => props.top};
 `;

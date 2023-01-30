@@ -65,9 +65,10 @@ const MyPageBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 const Text = styled.div`
+  margin: 0 auto;
   height: 3rem;
   margin-top: -1rem;
-  width: 100%;
+  width: 1rem;
   color: whitesmoke;
   text-align: center;
   font-size: 50px;
@@ -87,7 +88,7 @@ const UserWrap = styled.div`
   align-items: center;
   justify-content: flex-end;
   margin-right: 1rem;
-  z-index: 100;
+  /* z-index: 100; */
 `;
 const UserIcon = styled.img`
   width: 2rem;

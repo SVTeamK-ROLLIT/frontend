@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ResizableRect from 'react-resizable-rotatable-draggable';
-import DeleteBtn from './DeleteBtn';
+import DeleteBtn from '../Component/DeleteBtn';
 
 export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
   const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
