@@ -80,7 +80,7 @@ function MyPageItem({ dataColumn }) {
                 </div>
                 <BgImg bgimage={backgroundImg} className="back">
                   <div className="inner">
-                    <p>작성날짜 : {dataColumn.create_at}</p>
+                    <p>작성날짜 : {dataColumn.create_at.slice(0, 10)}</p>
                   </div>
                 </BgImg>
               </div>
