@@ -26,7 +26,7 @@ const BgColorText = styled.div`
   //##배경색##
   width: 10rem;
   height: 3rem;
-  margin-top: 11rem;
+  margin-top: 5rem;
 
   font-size: 2rem;
   font-weight: 700;

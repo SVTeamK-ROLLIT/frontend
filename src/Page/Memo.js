@@ -12,7 +12,7 @@ const BackBtn = styled.button`
   width: 17rem;
   height: 6rem;
   font-size: 2rem;
-  position: fixed;
+  position: absolute;
 
   color: white;
   font-family: 'Cafe24Ssurround';
@@ -24,7 +24,7 @@ const BackBtn = styled.button`
 const AllWrap = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: -1;
   background-color: #fcedb0;
@@ -36,6 +36,7 @@ const AllWrap = styled.div`
     flex-direction: column;
     justify-content: center;
     background-color: url(${background});
+    overflow: auto;
   }
 `;
 

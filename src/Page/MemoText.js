@@ -27,7 +27,7 @@ const Text = styled.div`
   font-family: 'Cafe24Ssurround';
   // 스캐치북 위에 올리기
   padding-left: 6rem;
-  padding-top: 12rem;
+  padding-top: 6rem;
   color: white;
   display: block;
   text-shadow: 2px 2px 2px gray;
@@ -43,7 +43,7 @@ const SketchbookImg = styled.div`
   //스케치북 이미지
   width: 60rem;
   height: 33rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   /* background-size: 80rem 25rem; */
   background-size: 100% 100%;
   background-image: url(${sketchbook});
