@@ -101,6 +101,11 @@ function PhotoModal({
   const [files, setFiles] = useState([]);
 
   const ClickUpload = async () => {
+    if (files.length === 0) {
+      alert('사진을 업로드해주세요!');
+      return;
+    }
+
     setLoading(true);
     const formData = new FormData();
     const resizeFile = await PhotoReSizing(files[0].file);
@@ -110,6 +115,8 @@ function PhotoModal({
       `${backBaseUrl}/api/v1/papers/${paperId}/photos`,
       formData,
     );
+    setIsPhoto(true);
+    setIsActive(true);
     setLoading(false);
     setPhoto(res.data);
   };
@@ -146,8 +153,6 @@ function PhotoModal({
             // console.log(files[0].file);
             ClickUpload();
             closeModal();
-            setIsPhoto(true);
-            setIsActive(true);
           }}
           variant="contained"
           component="label"

@@ -65,9 +65,9 @@ const MyPageBtn = styled.button`
   -webkit-text-stroke-color: black;
 `;
 const Text = styled.div`
+  margin: 0 auto;
   height: 3rem;
   margin-top: -1rem;
-  width: 100%;
   color: whitesmoke;
   text-align: center;
   font-size: 50px;
@@ -87,7 +87,7 @@ const UserWrap = styled.div`
   align-items: center;
   justify-content: flex-end;
   margin-right: 1rem;
-  z-index: 100;
+  /* z-index: 100; */
 `;
 const UserIcon = styled.img`
   width: 2rem;
@@ -347,10 +347,19 @@ function Rolling() {
       // 취소 버튼을 눌렀을 경우
       setIsPhoto(false); // 사진기능 비활성화
       setIsActive(false); // 수정기능 비활성화
+      setPhoto('');
       console.log(photo.image_id);
       HandlePhotoDelete(photo.image_id);
       return;
     }
+    console.log(photo);
+    // if (photo === '') {
+    //   setIsPhoto(false); // 사진기능 비활성화
+    //   setIsActive(false); // 수정기능 비활성화
+    // }
+
+    setLoading(true);
+
     console.log('start Resizing');
     console.log(photo);
     console.log(photo.image_id);
@@ -370,10 +379,13 @@ function Rolling() {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
         setIsActive(false); // 수정 기능 비활성화
+        setPhoto('');
+        setLoading(false);
       })
       .catch(() => {
         console.log(photo.image_id);
         console.log('fail save photo');
+        setLoading(true);
       });
   };
 
@@ -382,7 +394,6 @@ function Rolling() {
   const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   useEffect(() => {
     const getMemos = async () => {
-      setLoading(true);
       try {
         const item = await axios.get(
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
@@ -401,7 +412,6 @@ function Rolling() {
             item.data.sticker.length,
         );
         bgimage(item.data.paper_url);
-        setLoading(false);
         // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
@@ -514,7 +524,6 @@ function Rolling() {
               <SaveBtn
                 onClick={() => {
                   isSubmit();
-                  console.log('saveBtn');
                 }}
               >
                 <FcExpand size="30" />
