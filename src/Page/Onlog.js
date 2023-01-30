@@ -21,7 +21,7 @@ const SignupBtn = styled.button`
   //상단 회원가입 버튼
   width: 12rem;
   height: 5.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   // 스캐치북 위에 올리기
 
@@ -38,7 +38,7 @@ const LoginBtn = styled.button`
   width: 8rem;
   height: 5.5rem;
 
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 1000;
 
   color: white;

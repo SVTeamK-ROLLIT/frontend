@@ -38,10 +38,10 @@ const DownBtn = styled.button`
 const RollITLogo = styled.div`
   height: 40rem;
   width: 40rem;
-  background-size: 50rem 39rem;
+  background-size: 40rem 33rem;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: -10rem;
+  margin-top: -7rem;
   background-image: url(${logo});
 
   /* margin-top: 20rem; */
@@ -50,7 +50,7 @@ const RollITLogo = styled.div`
 const BackImg = styled.div`
   height: 100vh;
   background-color: #ffcdcd;
-  background-size: 90rem 45rem;
+  background-size: 68rem 43rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${back});
@@ -79,7 +79,7 @@ const StartWrap = styled.div`
 
 const StartBtn = styled.button`
   border-radius: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 800;
   padding-bottom: 1rem;
   font-family: 'Cafe24Ssurround';
@@ -133,7 +133,7 @@ function Welcome() {
 
         {/* <HandMotion /> */}
 
-        <StartBtn onClick={onClick2} type="button" className="learn-more">
+        <StartBtn onClick={onClick2} type="button" className="learn-more2">
           시작하기
         </StartBtn>
         <DownBtn type="button" onClick={handleBottom}>

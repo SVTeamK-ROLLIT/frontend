@@ -7,7 +7,7 @@ import Theme from './MakeRollingTheme';
 import background from '../Image/welcome1.png';
 
 const AllWrap = styled.div`
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   z-index: -1;
   position: fixed;

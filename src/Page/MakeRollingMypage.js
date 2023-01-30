@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const BackBtn = styled.button`
   width: 170px;
   height: 40px;
-  font-size: 30px;
+  font-size: 1.8rem;
   font-weight: 700;
   margin-top: 1vh;
   color: white;
@@ -20,7 +20,7 @@ const MypageBtn = styled.button`
   width: 15rem;
   height: 5.5rem;
   float: right;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 1000;
 
   color: white;
