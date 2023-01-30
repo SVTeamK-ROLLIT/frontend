@@ -513,7 +513,7 @@ function Rolling() {
             <MypageDiv />
           )}
 
-          <Text>to.{items.title}</Text>
+          <Text>TO. {items.title}</Text>
           <UserWrap>
             <UserIcon src={usericon} alt="" />
             <UserNum>{length}</UserNum>
