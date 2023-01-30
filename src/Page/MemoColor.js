@@ -45,6 +45,7 @@ const BgColorSet = styled.button`
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1.1rem;
+  border: ${props => props.border};
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
@@ -73,6 +74,8 @@ const BgColorSet2 = styled.button`
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1.1rem;
+  border: ${props => props.border};
+
   background: ${props => props.color};
   justify-content: space-between;
   margin: 0.5rem;
@@ -211,6 +214,7 @@ function MemoColor({
         <BgColorText>배경색</BgColorText>
         <BgColorSet
           color="white"
+          border="1px solid gray"
           onClick={() => {
             onbackClick('white');
           }}
@@ -260,6 +264,7 @@ function MemoColor({
         <FontColorText>글자색</FontColorText>
         <BgColorSet2
           color="white"
+          border="1px solid gray"
           onClick={() => {
             ontypeClick('white');
           }}
