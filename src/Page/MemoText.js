@@ -77,7 +77,8 @@ const InputMemo = styled(Field)`
 `;
 
 const MakeBtn = styled.button`
-  width: 12rem;
+  width: 10rem;
+  height: 5rem;
   border-radius: 1rem;
   font-size: 2.8rem;
   // 스캐치북 위에 올리기
@@ -92,7 +93,7 @@ const BtnWrap = styled.div`
   //만들기랑 연필 이미지 버튼 감싸줌
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 6rem;
 `;
 
 function MemoText({
