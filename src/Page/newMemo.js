@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import './Active.css';
 
 export default function newMemo({ list, setCoor }) {
   const nodeRef = useRef(null);
@@ -32,7 +33,7 @@ export default function newMemo({ list, setCoor }) {
       <MemoBox
         background={color}
         ref={nodeRef}
-        className="box"
+        className="box circle"
         style={{
           opacity: Opacity ? '0.6' : '1',
           position: 'absolute',
@@ -59,6 +60,9 @@ const MemoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  ::after {
+    border: 1px solid ${props => props.background};
+  }
 `;
 
 const MemoText = styled.div`

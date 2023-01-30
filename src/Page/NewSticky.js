@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import './Active.css';
 
 export default function NewSticky({ skickyUrl, setCoor }) {
   const nodeRef = useRef(null);
@@ -31,7 +32,7 @@ export default function NewSticky({ skickyUrl, setCoor }) {
     >
       <MemoBox
         ref={nodeRef}
-        className="box"
+        className="box circle"
         style={{
           opacity: Opacity ? '0.6' : '1',
           position: 'absolute',
@@ -48,4 +49,8 @@ const MemoBox = styled.div`
   background: url(${props => props.background});
   background-size: cover;
   border-radius: 15px;
+  ::after {
+    border: 1px solid tomato;
+    border-radius: 2rem;
+  }
 `;
