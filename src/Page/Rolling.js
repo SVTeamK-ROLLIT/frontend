@@ -347,6 +347,7 @@ function Rolling() {
       // 취소 버튼을 눌렀을 경우
       setIsPhoto(false); // 사진기능 비활성화
       setIsActive(false); // 수정기능 비활성화
+      setPhoto('');
       console.log(photo.image_id);
       HandlePhotoDelete(photo.image_id);
       return;
@@ -370,6 +371,7 @@ function Rolling() {
         console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
         setIsActive(false); // 수정 기능 비활성화
+        setPhoto('');
       })
       .catch(() => {
         console.log(photo.image_id);
@@ -514,7 +516,6 @@ function Rolling() {
               <SaveBtn
                 onClick={() => {
                   isSubmit();
-                  console.log('saveBtn');
                 }}
               >
                 <FcExpand size="30" />
