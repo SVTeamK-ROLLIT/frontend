@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import MemoText from './MemoText';
 import MemoColor from './MemoColor';
 
 import background from '../Image/welcome1.png';
 
-// const BackBtn = styled.button`
-//   //상단 뒤로가기 버튼
-//   width: 12rem;
-//   height: 6rem;
-//   font-size: 1.6rem;
-//   position: absolute;
-
-//   color: white;
-//   font-family: 'Cafe24Ssurround';
-//   text-shadow: 2px 2px 2px gray;
-//   -webkit-text-stroke-width: 1.1px;
-//   -webkit-text-stroke-color: black;
-// `;
+const BackBtn = styled.button`
+  //상단 뒤로가기 버튼
+  width: 12rem;
+  height: 6rem;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 1rem;
+  color: white;
+  font-family: 'Cafe24Ssurround';
+  text-shadow: 2px 2px 2px gray;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: black;
+`;
 
 const AllWrap = styled.div`
   background-repeat: no-repeat;
@@ -48,7 +48,7 @@ function Memo() {
   const [memoName, setMemoName] = useState('');
   const [memoContent, setMemoContent] = useState('');
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="mypage">
@@ -62,7 +62,7 @@ function Memo() {
           rollBackColor={rollBackColor}
           rollTypeColor={rollTypeColor}
         />
-        {/* <BackBtn onClick={() => navigate(-1)}>＜뒤로가기</BackBtn> */}
+        <BackBtn onClick={() => navigate(-1)}>＜뒤로가기</BackBtn>
         <MemoColor
           memoName={memoName}
           setMemoName={setMemoName}
