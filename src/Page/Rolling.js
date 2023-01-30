@@ -185,6 +185,10 @@ const IconWrap = styled.div`
   transform: translate(0%, 0%);
 `;
 
+const MypageDiv = styled.div`
+  height: 5rem;
+`;
+
 // const [background, setBackground] = useState();
 
 function Rolling() {
@@ -496,7 +500,7 @@ function Rolling() {
               마이페이지
             </MyPageBtn>
           ) : (
-            <div />
+            <MypageDiv />
           )}
 
           <Text>to.{items.title}</Text>

@@ -7,7 +7,7 @@ const PhotoReSizing = async function resizing(unReSizePhoto) {
   // 이미지 resize 옵션 설정 (최대 width을 100px로 지정)
   const options = {
     maxSizeMB: 1,
-    maxWidthOrHeight: 1000,
+    maxWidthOrHeight: 500,
   };
 
   try {
