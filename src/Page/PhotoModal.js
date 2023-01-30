@@ -32,9 +32,10 @@ const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const SumbitBtn = styled.button`
   width: 100px;
-  height: 35px;
+  height: 40px;
   border-radius: 15px;
-  background: #9f8772;
+  background: #ffd7e3;
+  color: white;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
@@ -78,8 +79,8 @@ const modalStyle = {
     // background: '#ffffe7',
     overflow: 'auto',
     top: '16vh',
-    left: '16vw',
-    right: '20vw',
+    left: '24vw',
+    right: '24vw',
     bottom: '20vh',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '14px',
