@@ -76,7 +76,7 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
           position: 'absolute',
         }}
       >
-        <MemoText font={font} color={font_color}>
+        <MemoText font={font} font_color={font_color}>
           {isAdmin ? (
             <DeleteBtn
               right="5%"
@@ -115,7 +115,7 @@ const MemoBox = styled.div`
 const MemoText = styled.div`
   width: 170px;
   word-break: break-all;
-  color: ${props => props.color};
+  color: ${props => props.font_color};
   font-family: ${props => props.font};
   font-size: 1.3rem;
 `;

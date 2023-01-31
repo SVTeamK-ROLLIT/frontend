@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
@@ -5,7 +6,7 @@ import './Active.css';
 
 export default function newMemo({ list, setCoor, setMemoData }) {
   const nodeRef = useRef(null);
-  const { content, color, font, fontColor, nickname } = list;
+  const { content, color, font, font_color, nickname } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [Opacity, setOpacity] = useState(false);
 
@@ -44,7 +45,7 @@ export default function newMemo({ list, setCoor, setMemoData }) {
           position: 'absolute',
         }}
       >
-        <MemoText font={font} color={fontColor}>
+        <MemoText font={font} color={font_color}>
           {content}
         </MemoText>
         <Name>
