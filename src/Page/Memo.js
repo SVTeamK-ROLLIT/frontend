@@ -49,8 +49,6 @@ function Memo() {
   const [memoContent, setMemoContent] = useState('');
   const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
   return (
     <div className="mypage">
       <AllWrap src={background}>
