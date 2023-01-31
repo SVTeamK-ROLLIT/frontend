@@ -55,7 +55,7 @@ function MyPageItem({ dataColumn }) {
       document.body.removeChild($textarea);
       alert('복사 성공!');
     } catch (error) {
-      alert('복사 실패!');
+      alert('복사 실패! (지원하지 않는 환경입니다)');
     }
   };
   // console.log(dataColumn.title);
