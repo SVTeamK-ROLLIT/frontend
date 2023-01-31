@@ -27,6 +27,8 @@ import usericon from '../Image/usericon.png';
 import StickerModal from './StickerModal';
 import 'react-toastify/dist/ReactToastify.css';
 
+import userback from '../Image/userbackimg.png';
+
 import './snow.css';
 
 import KakaoShare from './KakaoShare';
@@ -84,22 +86,29 @@ const Text = styled.div`
 const UserWrap = styled.div`
   padding-right: 5rem;
   margin-top: 1rem;
-  height: 2rem;
+  height: 10rem;
   display: flex;
-  align-items: center;
+  align-items: right;
   justify-content: flex-end;
-  margin-right: 1rem;
+  margin-right: 5rem;
+  background-image: url(${userback});
+  background-size: 17rem;
+  background-repeat: no-repeat;
+  background-position-x: 74.5rem;
+  background-position-y: -6.8rem;
+
   /* z-index: 100; */
 `;
 const UserIcon = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 1.1rem;
 `;
 const UserNum = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 4rem;
   margin-left: 1rem;
   text-align: center;
   color: #ffffff;
@@ -549,7 +558,7 @@ function Rolling() {
           )}
 
           <Text>TO. {items.title}</Text>
-          <UserWrap>
+          <UserWrap bgimage={userback}>
             <UserIcon src={usericon} alt="" />
             <UserNum>{length}</UserNum>
           </UserWrap>
