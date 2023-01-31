@@ -303,7 +303,6 @@ function Rolling() {
       setIsMemo(false); // 메모기능 비활성화
       setIsActive(false); // 수정기능 비활성화
       // setIsCancel(false);
-      localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
       return;
     }
 
