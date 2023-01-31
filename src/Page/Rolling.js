@@ -229,6 +229,43 @@ function Rolling() {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [memoData, setMemoData] = useState({});
+  const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
+  const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
+
+  const dataApi = async () => {
+    try {
+      const item = await axios.get(`${backBaseUrl}/api/v1/papers/${paperId}/`);
+      // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
+      // console.log(item.data);
+      if (item.data.user === localStorage.getItem('id')) {
+        setIsAdmin(true);
+        // console.log('hihihihihihi');
+      }
+      // /###########################
+      console.log('폴링 중입니다!!!!!!!!!!!');
+      setItems(item.data);
+      setLength(
+        item.data.memo.length +
+          item.data.image.length +
+          item.data.sticker.length,
+      );
+      // console.log(backgroundImg);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      console.log('FailGet');
+    }
+  };
+
+  useEffect(() => {
+    const polling = setInterval(() => {
+      dataApi();
+    }, 2000);
+
+    // 페이지에 벗어날 경우 polling X
+    return () => {
+      clearInterval(polling);
+    };
+  }, []);
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
@@ -391,9 +428,6 @@ function Rolling() {
       });
   };
 
-  // 모닫창
-  const [items, setItems] = useState([]); // 화면에 스티커들 get으로 받아오기 위한 item
-  const [length, setLength] = useState(); // 스티커, 메모, 사진의 개수를 더해서 저장해줌
   useEffect(() => {
     const getMemos = async () => {
       try {
