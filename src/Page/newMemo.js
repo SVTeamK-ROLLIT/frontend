@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import './Active.css';
 
-export default function newMemo({ list, setCoor }) {
+export default function newMemo({ list, setCoor, setMemoData }) {
   const nodeRef = useRef(null);
   const { content, color, font, fontColor, nickname } = list;
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -19,6 +19,11 @@ export default function newMemo({ list, setCoor }) {
   const handleEnd = () => {
     setOpacity(false);
     setCoor(position);
+    setMemoData(prevState => ({
+      ...prevState,
+      xcoor: position.x,
+      ycoor: position.y,
+    }));
   };
 
   return (

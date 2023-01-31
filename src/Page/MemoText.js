@@ -119,6 +119,7 @@ function MemoText({
     if (textcase.nickname === '') {
       textcase.nickname = anonymous();
     }
+    localStorage.removeItem('textcase');
     localStorage.setItem('textcase', JSON.stringify({ textcase }));
     const paperId = localStorage.getItem('paperId');
     navigate(`/rolling/${paperId}`);
