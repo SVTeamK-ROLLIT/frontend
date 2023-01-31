@@ -228,15 +228,30 @@ function Rolling() {
   const [isAdmin, setIsAdmin] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
+  const [memoData, setMemoData] = useState({});
 
   useEffect(() => {
     // 로컬에 ###메모지#### 내용이 들어있으면
     if (localStorage.getItem('textcase') !== null) {
       setIsMemo(true);
       setIsActive(true);
+      const textcaseString = localStorage.getItem('textcase');
+      const textcase = JSON.parse(textcaseString);
+      setMemoData({
+        content: textcase.textcase.content,
+        nickname: textcase.textcase.nickname,
+        font: textcase.textcase.font,
+        password: textcase.textcase.password,
+        color: textcase.textcase.color,
+        font_color: textcase.textcase.fontColor,
+      });
+      localStorage.removeItem('textcase');
     }
   }, []);
 
+  useEffect(() => {
+    console.log(memoData);
+  }, [memoData]);
   const openPhotoModal = useCallback(() => setIsPhotoOpen(true), []); // 사진 모달창 열기
   const closePhotoModal = useCallback(() => setIsPhotoOpen(false), []); // 사진 모달창 닫기
   const openStickyModal = useCallback(() => setIsStickyOpen(true), []); // 스티커 모달창 열기
@@ -292,26 +307,17 @@ function Rolling() {
       return;
     }
 
-    const textcaseString = localStorage.getItem('textcase');
-    const textcase = JSON.parse(textcaseString);
-    textcase.textcase.xcoor = coor.x;
-    textcase.textcase.ycoor = coor.y;
+    console.log(memoData);
+
     try {
-      await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/memos`, {
-        content: textcase.textcase.content,
-        nickname: textcase.textcase.nickname,
-        font: textcase.textcase.font,
-        password: textcase.textcase.password,
-        color: textcase.textcase.color,
-        font_color: textcase.textcase.fontColor,
-        xcoor: textcase.textcase.xcoor,
-        ycoor: textcase.textcase.ycoor,
-      });
+      await axios.post(
+        `${backBaseUrl}/api/v1/papers/${paperId}/memos`,
+        memoData,
+      );
 
       console.log('successSave!!!!');
       setIsMemo(false); // 메모기능 비활성화
       setIsActive(false); // 수정기능 비활성화
-      localStorage.removeItem('textcase'); // 로컬에 저장돼있던 메모지 내용 지움
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       console.log(e);
@@ -362,10 +368,6 @@ function Rolling() {
     setLoading(true);
 
     console.log('start Resizing');
-    console.log(photo);
-    console.log(photo.image_id);
-    console.log(coor);
-    console.log(paperId);
     axios
       .post(`${backBaseUrl}/api/v1/papers/${paperId}/xyphotos`, {
         image_id: photo.image_id,
@@ -433,12 +435,13 @@ function Rolling() {
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (
-      <NewMemo
-        setCoor={setCoor}
-        list={JSON.parse(localStorage.getItem('textcase')).textcase}
-      />
+      <NewMemo setCoor={setCoor} setMemoData={setMemoData} list={memoData} />
     ) : isSticky ? (
-      <NewSticky setCoor={setCoor} skickyUrl={skickyUrl} />
+      <NewSticky
+        setCoor={setCoor}
+        setMemoData={setMemoData}
+        skickyUrl={skickyUrl}
+      />
     ) : isPhoto ? (
       <NewPhoto
         parentFunction={parentFunction}
