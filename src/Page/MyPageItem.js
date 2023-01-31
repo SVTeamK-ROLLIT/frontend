@@ -32,10 +32,27 @@ const BgImg = styled.div`
 `;
 
 function MyPageItem({ dataColumn }) {
-  const handleCopyClipBoard = async text => {
-    try {
-      await navigator.clipboard.writeText(text);
+  // const handleCopyClipBoard = async text => {
+  // try {
+  //   await navigator.clipboard.execCommand('copy');
 
+  //   alert('복사 성공!');
+  // } catch (error) {
+  //   alert('복사 실패!');
+  // }
+  // };
+  const handleCopyClipBoard = () => {
+    try {
+      // 1. 임시 textarea 요소를 생성하고 body에 부착
+      const $textarea = document.createElement('textarea');
+      document.body.appendChild($textarea);
+      // 2. props로 받은 text값을 textarea의 value로 대입하고 textarea 영역 내 모든 텍스트를 선택(드래그효과)
+      $textarea.value = `www.rollit5.link/rolling/${dataColumn.id}`;
+      $textarea.select();
+      // 3. execCommand 함수를 이용해 클립보드에 복사
+      document.execCommand('copy');
+      // 4. 임시 textarea 요소 제거
+      document.body.removeChild($textarea);
       alert('복사 성공!');
     } catch (error) {
       alert('복사 실패!');
@@ -90,7 +107,8 @@ function MyPageItem({ dataColumn }) {
       </ButtonItem>
       <ButtonTitle
         onClick={() =>
-          handleCopyClipBoard(`www.rollit5.link/rolling/${dataColumn.id}`)
+          // handleCopyClipBoard(`www.rollit5.link/rolling/${dataColumn.id}`)
+          handleCopyClipBoard()
         }
       >
         <button type="button" className="learn-more">
