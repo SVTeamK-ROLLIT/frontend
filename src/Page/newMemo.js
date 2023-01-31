@@ -60,6 +60,7 @@ export default function newMemo({ list, setCoor, setMemoData }) {
 const MemoBox = styled.div`
   padding: 0.4rem;
   width: 184px;
+  font-size: 1.2rem;
   height: 174px;
   background: ${props => props.background};
   border-radius: 15px;

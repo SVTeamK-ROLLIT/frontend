@@ -186,9 +186,7 @@ const IconWrap = styled.div`
   transform: translate(0%, 0%);
 `;
 
-const MypageDiv = styled.div`
-  height: 5rem;
-`;
+//
 
 // const [background, setBackground] = useState();
 
@@ -547,7 +545,7 @@ function Rolling() {
               마이페이지
             </MyPageBtn>
           ) : (
-            <MypageDiv />
+            <MyPageBtn onClick={() => navigate('/')}>홈으로</MyPageBtn>
           )}
 
           <Text>TO. {items.title}</Text>
