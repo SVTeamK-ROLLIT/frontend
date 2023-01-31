@@ -61,6 +61,7 @@ const SketchbookImg = styled.div`
 const Error = styled(ErrorMessage)`
   color: red;
   text-align: center;
+  font-family: ${props => props.pontType};
 `;
 const InputMemo = styled(Field)`
   //메모 입력하는 곳
@@ -161,6 +162,7 @@ function MemoText({
                   component="div"
                   name="text"
                   className="invalid-feedback"
+                  pontType={pontType}
                 />
               </SketchbookImg>
               <BtnWrap>
