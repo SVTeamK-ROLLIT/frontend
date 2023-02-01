@@ -45,10 +45,10 @@ export default function newMemo({ list, setCoor, setMemoData }) {
           position: 'absolute',
         }}
       >
-        <MemoText font={font} color={font_color}>
+        <MemoText font={font} font_color={font_color}>
           {content}
         </MemoText>
-        <Name>
+        <Name color={color}>
           <b>from.</b>
           {nickname}{' '}
         </Name>
@@ -60,7 +60,6 @@ export default function newMemo({ list, setCoor, setMemoData }) {
 const MemoBox = styled.div`
   padding: 0.4rem;
   width: 184px;
-  font-size: 1.2rem;
   height: 174px;
   background: ${props => props.background};
   border-radius: 15px;
@@ -75,12 +74,18 @@ const MemoBox = styled.div`
 
 const MemoText = styled.div`
   width: 170px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   word-break: break-all;
-  color: ${props => props.color};
+  color: ${props => props.font_color};
   font-family: ${props => props.font};
+  font-size: 1.2rem;
 `;
 
 const Name = styled.div`
   text-align: right;
   align-items: end;
+  color: ${props => (props.color === 'white' ? 'black' : 'white')};
 `;

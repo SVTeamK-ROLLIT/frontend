@@ -10,6 +10,7 @@ const DelBtn = styled.button`
   z-index: 10000;
   right: ${props => props.right};
   top: ${props => props.top};
+  color: black;
 `;
 
 export default function DeleteBtn({ onClick, right, top }) {

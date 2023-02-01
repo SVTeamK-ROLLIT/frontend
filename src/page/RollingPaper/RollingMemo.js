@@ -55,17 +55,17 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
           position: 'absolute',
         }}
       >
+        {isAdmin ? (
+          <DeleteBtn
+            right="5%"
+            onClick={() => {
+              HandleMemoDelete(memo_id);
+            }}
+          />
+        ) : (
+          <div />
+        )}
         <MemoText font={font} font_color={font_color}>
-          {isAdmin ? (
-            <DeleteBtn
-              right="5%"
-              onClick={() => {
-                HandleMemoDelete(memo_id);
-              }}
-            />
-          ) : (
-            <div />
-          )}
           {content}
         </MemoText>
         <Name color={color}>
@@ -94,10 +94,14 @@ const MemoBox = styled.div`
 
 const MemoText = styled.div`
   width: 170px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   word-break: break-all;
+  font-size: 1.2rem;
   color: ${props => props.font_color};
   font-family: ${props => props.font};
-  font-size: 1.2rem;
 `;
 
 const Name = styled.div`
