@@ -67,6 +67,7 @@ const MemoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
   ::after {
     border: 1px solid ${props => props.background};
   }

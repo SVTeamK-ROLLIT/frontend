@@ -40,6 +40,7 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
               top: ycoor,
               position: 'absolute',
               rotate: `${rotate}deg`,
+              zIndex: 1,
             }}
           >
             <DeleteBtn
@@ -83,7 +84,6 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
               top: ycoor,
               rotate: `${rotate}deg`,
               position: 'absolute',
-              zIndex: 1,
               // border: '1px solid black',
             }}
             alt=""

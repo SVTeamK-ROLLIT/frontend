@@ -49,6 +49,8 @@ const MemoBox = styled.div`
   background: url(${props => props.background});
   background-size: cover;
   border-radius: 15px;
+  z-index: 1;
+
   ::after {
     border: 1px solid tomato;
     border-radius: 2rem;
