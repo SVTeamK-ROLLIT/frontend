@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 // import styled from 'styled-components';
 
-import SketchBook from './MyPageSketch';
-import Line from './MyPageLine';
-import MyPageItems from './MyPageItems';
+import SketchBook from '../MyPageSketch';
+import Line from '../MyPageLine';
+import MyPageItems from '../MyPageItems';
 
 import background from '../assets/image/welcome1.png';
 

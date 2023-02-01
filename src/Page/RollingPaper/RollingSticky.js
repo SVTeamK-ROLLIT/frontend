@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import DeleteBtn from '../component/DeleteBtn';
+import DeleteBtn from '../../component/DeleteBtn';
 
 // import axios from 'axios';
 

@@ -5,33 +5,33 @@ import { FcExpand, FcCancel } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import Loading from './Loading';
+import Loading from '../Loading';
 
-import image1 from '../assets/image/image1.png';
-import image2 from '../assets/image/image2.png';
-import image3 from '../assets/image/image3.png';
-import image4 from '../assets/image/image4.png';
-import image5 from '../assets/image/image5.png';
-import PhotoModal from './PhotoModal';
+import image1 from '../../assets/image/image1.png';
+import image2 from '../../assets/image/image2.png';
+import image3 from '../../assets/image/image3.png';
+import image4 from '../../assets/image/image4.png';
+import image5 from '../../assets/image/image5.png';
+import PhotoModal from '../PhotoModal';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
 import Photo from './RollingPhoto';
-import NewPhoto from './NewPhoto';
 import NewMemo from './newMemo';
 import NewSticky from './NewSticky';
+import NewPhoto from './NewPhoto';
 
-import pencilicon from '../assets/image/pencilicon.png';
-import galleryicon from '../assets/image/galleryicon.png';
-import memoicon from '../assets/image/memoicon.svg';
-import usericon from '../assets/image/usericon.png';
-import StickerModal from './StickerModal';
+import pencilicon from '../../assets/image/pencilicon.png';
+import galleryicon from '../../assets/image/galleryicon.png';
+import memoicon from '../../assets/image/memoicon.svg';
+import usericon from '../../assets/image/usericon.png';
+import StickerModal from '../StickerModal';
 import 'react-toastify/dist/ReactToastify.css';
 
-import userback from '../assets/image/userbackimg.png';
+import userback from '../../assets/image/userbackimg.png';
 
-import '../style/snow.css';
+import '../../style/snow.css';
 
-import KakaoShare from './KakaoShare';
+import KakaoShare from '../KakaoShare';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import '../style/Active.css';
+import '../../style/Active.css';
 
 export default function NewSticky({ skickyUrl, setCoor }) {
   const nodeRef = useRef(null);
