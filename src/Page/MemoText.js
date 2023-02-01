@@ -116,7 +116,6 @@ function MemoText({
       fontColor: rollTypeColor,
       password: 1,
     };
-    console.log(textcase);
     if (textcase.nickname === '') {
       textcase.nickname = anonymous();
     }
@@ -125,11 +124,7 @@ function MemoText({
     const paperId = localStorage.getItem('paperId');
     navigate(`/rolling/${paperId}`);
   };
-  // const handleInputChange = e => {
-  //   setMemoContent(e.target.value);
-  //   // eslint-disable-next-line
-  //   console.log('작성내용: ', memoContent);
-  // };
+
   const MemoSchema = Yup.object().shape({
     text: Yup.string().max(40, '40자가 넘었습니다!').required('비어있습니다!'),
   });

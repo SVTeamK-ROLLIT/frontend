@@ -13,7 +13,6 @@ const KakaoShareBtn = styled.button`
 `;
 
 function KakaoShare() {
-  // console.log('@@@@@@@@@@@@@@@@@@@', kakaoJSKey);
   const location = useLocation();
   useEffect(() => {
     // 카카오톡 sdk 추가
@@ -23,9 +22,7 @@ function KakaoShare() {
     document.body.appendChild(script);
     return () => document.body.removeChild(script);
   }, []);
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
+  useEffect(() => {}, [location]);
 
   const shareToKatalk = () => {
     // kakao sdk script 부른 후 window.Kakao로 접근

@@ -243,23 +243,19 @@ function Rolling() {
     try {
       const item = await axios.get(`${backBaseUrl}/api/v1/papers/${paperId}/`);
       // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
-      // console.log(item.data);
       if (item.data.user === localStorage.getItem('id')) {
         setIsAdmin(true);
         // console.log('hihihihihihi');
       }
       // /###########################
-      console.log('폴링 중입니다!!!!!!!!!!!');
       setItems(item.data);
       setLength(
         item.data.memo.length +
           item.data.image.length +
           item.data.sticker.length,
       );
-      // console.log(backgroundImg);
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
-      console.log('FailGet');
     }
   };
 

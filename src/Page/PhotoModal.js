@@ -160,7 +160,6 @@ function PhotoModal({
           <SumbitBtn
             type="button"
             onClick={() => {
-              // console.log(files[0].file);
               ClickUpload();
               closeModal();
             }}

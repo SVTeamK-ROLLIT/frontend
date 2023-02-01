@@ -6,7 +6,6 @@ import DeleteBtn from '../Component/DeleteBtn';
 
 export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
   const { image_url, xcoor, ycoor, rotate, width, height, image_id } = list;
-  // console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({
     width2: width,
@@ -15,41 +14,7 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
     left2: ycoor,
     rotate2: rotate,
   });
-  // console.log(position);
-  // console.log(setPosition);
 
-  // const handleDrag = (deltaX, deltaY) => {
-  //   setPosition(prevState => ({
-  //     ...prevState,
-  //     top2: position.top2 + deltaY,
-  //     left2: position.left2 + deltaX,
-  //   }));
-  //   // console.log(position);
-  // };
-
-  // const handleResize = style => {
-  //   // eslint-disable-next-line no-shadow
-  //   let { top, left, width, height } = style;
-  //   top = Math.round(top);
-  //   left = Math.round(left);
-  //   width = Math.round(width);
-  //   height = Math.round(height);
-  //   setPosition(prevState => ({
-  //     ...prevState,
-  //     width2: width,
-  //     top2: top,
-  //     height2: height,
-  //     left2: left,
-  //   }));
-  //   // console.log(position);
-  // };
-  // const handleRotate = rotateAngle2 => {
-  //   setPosition(prevState => ({
-  //     ...prevState,
-  //     rotate2: rotateAngle2,
-  //   }));
-  //   // console.log(position);
-  // };
   return (
     <div>
       {isAdmin ? (
@@ -64,7 +29,6 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
               rotate: `${rotate}deg`,
               position: 'absolute',
               zIndex: 1,
-              // border: '1px solid black',
             }}
             alt=""
           />
@@ -75,9 +39,7 @@ export default function NewPhoto({ list, isAdmin, HandlePhotoDelete }) {
               left: xcoor,
               top: ycoor,
               position: 'absolute',
-              // border: '1px solid black',
               rotate: `${rotate}deg`,
-              // zIndex: 0,
             }}
           >
             <DeleteBtn

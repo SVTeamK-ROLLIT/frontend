@@ -42,12 +42,12 @@ function Cartoonize({
     await formData.append('image', resizeFile);
 
     const response = await axios.post(`${backBaseUrl}/api/v1/photos`, formData);
-    console.log(response.data);
+
     const response2 = await axios.post(
       `${backBaseUrl}/api/v1/papers/cartoons`,
       response.data,
     );
-    // console.log(response2.data);
+
     return response2.data;
   }
   function run2(run1Result) {
@@ -60,9 +60,8 @@ function Cartoonize({
         .then(response => {
           /* eslint-disable no-plusplus */
           counter++;
-          console.log(response.data);
+
           if (counter >= 50 || response.data.image_url) {
-            console.log('response: ', response.data);
             clearInterval(interval);
             setPhoto(response.data);
             setLoading(false);
@@ -73,10 +72,8 @@ function Cartoonize({
         })
 
         .catch(error => {
-          console.log(error);
           clearInterval(interval);
         });
-      console.log('datas: ', datas);
     }, 2000);
   }
 
@@ -88,19 +85,13 @@ function Cartoonize({
     }
     setLoading(true);
     const run1Result = await run1();
-    console.log('2번쨰 데이터 값 ', run1Result.task_id);
     const run2Result = await run2(run1Result);
-    await console.log(1111);
-    await console.log(2222);
-    await console.log(3333);
-    await console.log(4444);
 
     // await closeModal();
     // await setRawLog(imageUrl);
     // await setIsPhoto(true);
     // await setIsActive(true);
   };
-  // console.log('@@@@@', imageUrl);
 
   // const onSubmit = () => {};
   return (

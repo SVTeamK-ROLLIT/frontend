@@ -58,8 +58,6 @@ function MyPageItem({ dataColumn }) {
       alert('복사 실패! (지원하지 않는 환경입니다)');
     }
   };
-  // console.log(dataColumn.title);
-  // console.log(dataColumn.create_at);
   const [backgroundImg, setBackgroundImg] = useState();
   function bgimage(paperUrl) {
     if (paperUrl === '1') {

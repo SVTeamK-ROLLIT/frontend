@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import MyPageItem from './MyPageItem';
 
 function MyPageItems({ myRollPageData }) {
-  // console.log(myRollPageData?.paper_data);
   // const [isLoading, setIsLoading] = useState(false);
   const a = myRollPageData?.paper_data;
-  // console.log(a);
-  // console.log(typeof a);
   const paperList =
     a && a.map(dataColumn => <MyPageItem dataColumn={dataColumn} />);
   // setIsLoading(true);

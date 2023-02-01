@@ -34,14 +34,12 @@ export default function NewPhoto({ parentFunction, photo }) {
       height2: height,
       left2: left,
     }));
-    // console.log(position);
   };
   const handleRotate = rotateAngle2 => {
     setPosition(prevState => ({
       ...prevState,
       rotate2: rotateAngle2,
     }));
-    // console.log(position);
   };
 
   const handleDrag = (deltaX, deltaY) => {
@@ -50,24 +48,11 @@ export default function NewPhoto({ parentFunction, photo }) {
       top2: position.top2 + deltaY,
       left2: position.left2 + deltaX,
     }));
-    // console.log(position);
   };
   parentFunction(position);
 
-  // const [rawLog, setRawLog] = useState();
-  // useEffect(() => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(photo); // 파일을 읽는 메서드
-  //   reader.onload = () => {
-  //     setRawLog(reader.result);
-  //     // console.log('@@@@@@@@@@@@@@@@', rawLog);
-  //   };
-  // }, []);
-
   // photoReSizing(rawLog, setRawLog);
-  useEffect(() => {
-    // console.log(photo);
-  }, [photo]);
+  useEffect(() => {}, [photo]);
 
   return (
     <div

@@ -166,19 +166,6 @@ function MemoColor({
   pontType,
   setPontType,
 }) {
-  // const [pontType, setPontType] = useState('Cafe24Ssurround');
-
-  // const pontList = [
-  //   '카페24서라운드',
-  //   '땅스부대찌개',
-  //   '교보문고손글씨',
-  //   '안성탕면체',
-  //   '칠백삼체',
-  // ];
-  // const handleSelect = () => {
-  //   setPontType({ evalue });
-  //   console.log('글씨체: ', pontType);
-  // };
   const onChange = useCallback(
     e => {
       setPontType(e.target.value);
@@ -186,24 +173,19 @@ function MemoColor({
     [pontType],
   );
   // eslint-disable-next-line
-  console.log('글씨체: ', pontType);
 
-  // console.log(rollTypeColor);
   const onbackClick = a => {
     setRollBackColor(a);
     // eslint-disable-next-line
-    console.log('배경: ', rollBackColor);
   };
   const ontypeClick = a => {
     setRollTypeColor(a);
     // eslint-disable-next-line
-    console.log('글씨: ', rollTypeColor);
   };
 
   const handleInputChange = e => {
     setMemoName(e.target.value);
     // eslint-disable-next-line
-    console.log('작성: ', memoName);
   };
   useCallback(onbackClick, [rollBackColor]);
   useCallback(ontypeClick, [rollTypeColor]);

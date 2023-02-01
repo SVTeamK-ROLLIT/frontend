@@ -157,7 +157,6 @@ function Register({ setLogState }) {
     setIsSubmit(true);
 
     const { email, nickname, password } = values;
-    console.log(backBaseUrl);
     try {
       await axios.post(`${backBaseUrl}/api/v1/users/signup`, {
         email,

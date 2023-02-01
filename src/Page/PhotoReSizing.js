@@ -17,7 +17,6 @@ const PhotoReSizing = async function resizing(unReSizePhoto) {
     });
 
     return resultFile;
-    // console.log('PhotoResizing Success');
 
     // resize된 이미지의 url을 받아 fileUrl에 저장
     // const promise = imageCompression.getDataUrlFromFile(compressedFile);

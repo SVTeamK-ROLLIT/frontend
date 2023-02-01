@@ -64,8 +64,6 @@ function StickerModal({
     const GetStickers = async () => {
       try {
         setFiles(await axios.get(`${backBaseUrl}/api/v1/papers/sticker_list`));
-        console.log(files);
-        console.log('filesget');
       } catch (e) {
         console.log(e);
       }

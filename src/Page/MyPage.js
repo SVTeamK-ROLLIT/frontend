@@ -62,19 +62,15 @@ function MyPage() {
       try {
         const datas = await axios.get(`${backBaseUrl}/api/v1/users/${userId}`);
         // eslint-disable-next-line
-        console.log('successGet');
         setMyRollPageData(datas.data);
-        console.log(datas);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
         // eslint-disable-next-line
-        console.log(e);
       }
     };
     GetPapers();
   }, []);
   // eslint-disable-next-line
-  // console.log(myRollPageData);
   const navigate = useNavigate();
   return (
     <div>

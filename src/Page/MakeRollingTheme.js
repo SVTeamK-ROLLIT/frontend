@@ -165,7 +165,6 @@ class SimpleSlider extends Component {
     };
     const submit = async () => {
       const userId = localStorage.getItem('id');
-      console.log(userId);
 
       try {
         const { data } = await axios.post(
@@ -176,18 +175,14 @@ class SimpleSlider extends Component {
             title: this.state.value,
           },
         );
-        console.log('success');
-        console.log(data.paper_id);
         this.props.navigate(`/rolling/${data.paper_id}`);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
-        console.log('fail');
       }
     };
 
     return (
       <Container>
-        {console.log(this.state.value)}
         <ToTitleWrap>
           <To> </To>
           <TitleInput
@@ -217,7 +212,6 @@ class SimpleSlider extends Component {
             <br /> SELECT
           </button>
         </Count>
-        {console.log(this.state.activeSlide + 1)}
       </Container>
     );
   }
