@@ -121,7 +121,7 @@ const LoginBtn = styled.button`
 
 // 회원가입 버튼
 const SignupBtn = styled.button`
-  width: 4.438rem;
+  width: 6rem;
   height: 1.75rem;
   font-size: 1.125rem;
   font-weight: 700;
