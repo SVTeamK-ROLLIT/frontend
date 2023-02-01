@@ -6,7 +6,7 @@ import MyPage from './Page/MyPage/MyPage';
 import MakeRolling from './Page/MakeRolling/MakeRolling';
 import Rolling from './Page/RollingPaper/Rolling';
 import Register from './Page/Register';
-import Memo from './Page/Memo';
+import Memo from './Page/Memo/Memo';
 import Photo from './Page/PhotoModal';
 
 import './App.css';

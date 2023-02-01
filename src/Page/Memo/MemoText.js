@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
-import anonymous from './anonymous';
+import anonymous from '../anonymous';
 
-import sketchbook from '../assets/image/Sketchbook2.png';
+import sketchbook from '../../assets/image/Sketchbook2.png';
 
 const Div = styled.div`
   flex-grow: 3;
