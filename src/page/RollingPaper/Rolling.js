@@ -96,6 +96,7 @@ const UserWrap = styled.div`
   background-repeat: no-repeat;
   background-position-x: 74.5rem;
   background-position-y: -6.8rem;
+  z-index: 10000;
 
   /* z-index: 100; */
 `;

@@ -88,7 +88,7 @@ const MemoBox = styled.div`
   justify-content: space-between;
   z-index: 1;
   :hover {
-    z-index: 1000;
+    z-index: 10001;
   }
 `;
 
