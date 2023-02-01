@@ -4,7 +4,7 @@ import MakeRoll from './MakeRollingMypage';
 import RollText from './MakeRollingText';
 import Theme from './MakeRollingTheme';
 
-import background from '../assets/image/welcome1.png';
+import background from '../../assets/image/welcome1.png';
 
 const AllWrap = styled.div`
   height: 120vh;

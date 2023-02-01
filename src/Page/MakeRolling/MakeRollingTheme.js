@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import '../style/button.css';
+import '../../style/button.css';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -116,11 +116,11 @@ const Count = styled.button`
 //   -webkit-text-stroke-color: black;
 // `;
 
-const imgUrl = require('../assets/image/image1.png');
-const imgUrl2 = require('../assets/image/image2.png');
-const imgUrl3 = require('../assets/image/image3.png');
-const imgUrl4 = require('../assets/image/image4.png');
-const imgUrl5 = require('../assets/image/image5.png');
+const imgUrl = require('../../assets/image/image1.png');
+const imgUrl2 = require('../../assets/image/image2.png');
+const imgUrl3 = require('../../assets/image/image3.png');
+const imgUrl4 = require('../../assets/image/image4.png');
+const imgUrl5 = require('../../assets/image/image5.png');
 
 const items = [
   { id: 1, url: imgUrl },

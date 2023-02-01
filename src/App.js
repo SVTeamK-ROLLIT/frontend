@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import axios from 'axios';
 import Welcome from './Page/Welcome';
 import MyPage from './Page/MyPage/MyPage';
-import MakeRolling from './Page/MakeRolling';
+import MakeRolling from './Page/MakeRolling/MakeRolling';
 import Rolling from './Page/RollingPaper/Rolling';
 import Register from './Page/Register';
 import Memo from './Page/Memo';
