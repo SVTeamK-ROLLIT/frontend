@@ -1,31 +1,32 @@
-.App{}
+.App {
+}
 @font-face {
   font-family: Cafe24Ssurround;
-  src: URL('./Styles/fonts/Cafe24Ssurround.ttf');
+  src: URL('./assets/font/Cafe24Ssurround.ttf');
 }
 
 @font-face {
   font-family: establishRoomNo703OTF;
-  src: URL('./Styles/fonts/establishRoomNo703OTF.ttf');
+  src: URL('./assets/font/establishRoomNo703OTF.ttf');
 }
 
 @font-face {
   font-family: KyoboHandwriting2021sjy;
-  src: URL('./Styles/fonts/KyoboHandwriting2021sjy.ttf');
+  src: URL('./assets/font/KyoboHandwriting2021sjy.ttf');
 }
 
 @font-face {
   font-family: TTTtangsbudaejjigaeB;
-  src: URL('./Styles/fonts/TTTtangsbudaejjigaeB.ttf');
+  src: URL('./assets/font/TTTtangsbudaejjigaeB.ttf');
 }
 
 @font-face {
   font-family: Ansungtangmyun;
-  src: URL('./Styles/fonts/Ansungtangmyun.ttf');
+  src: URL('./assets/font/Ansungtangmyun.ttf');
 }
 @font-face {
   font-family: SUIT-SemiBold;
-  src: URL('./Styles/fonts/SUIT-SemiBold.ttf');
+  src: URL('./assets/font/SUIT-SemiBold.ttf');
 }
 
 /* 카페24서라운드 */
@@ -62,4 +63,4 @@
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRoomNo703OTF.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-} */ 
+} */

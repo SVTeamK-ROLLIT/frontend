@@ -1,0 +1,52 @@
+body .register {
+  background: url(../assets/image/welcome1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (max-width: 70rem) {
+  body .register {
+    background-size: 70rem 80rem;
+  }
+}
+
+body .mypage {
+  background: url(../assets/image/welcome1.png);
+  /* width: 100vw; */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* body .makerolling {
+  background-color: #fcedb0;
+  height: 100vh;
+} */
+
+body .filepond--root,
+.filepond--root {
+  height: 30rem;
+  background-color: white;
+  margin: auto;
+  border-color: #ffd7e3;
+  border-width: 10px;
+  border-style: dashed;
+  border-radius: 25px;
+}
+body .filepond--drop-label {
+  height: 29rem;
+  background-color: white;
+  background-image: url(../assets/image/upload.png);
+  background-position: center;
+
+  background-repeat: no-repeat;
+  border-radius: 10px;
+
+  /* box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25); */
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
