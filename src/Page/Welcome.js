@@ -50,7 +50,7 @@ const RollITLogo = styled.div`
 const BackImg = styled.div`
   height: 100vh;
   background-color: #ffd7e9;
-  background-size: 55rem 35rem;
+  background-size: 53rem 38rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${back});
