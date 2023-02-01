@@ -202,39 +202,39 @@ function MemoColor({
           }}
         />
         <BgColorSet
-          color="#FF8381"
+          color="#F4EBD3"
           onClick={() => {
-            onbackClick('#FF8381');
+            onbackClick('#F4EBD3');
           }}
         />
         <BgColorSet
-          color="#FC95FC"
+          color="#FAE1EC"
           onClick={() => {
-            onbackClick('#FC95FC');
+            onbackClick('#FAE1EC');
           }}
         />
         <BgColorSet
-          color="#9BFE99"
+          color="#FBE54D"
           onClick={() => {
-            onbackClick('#9BFE99');
+            onbackClick('#FBE54D');
           }}
         />
         <BgColorSet
-          color="#6FA1F9"
+          color="#C9E5C5"
           onClick={() => {
-            onbackClick('#6FA1F9');
+            onbackClick('#C9E5C5');
           }}
         />
         <BgColorSet
-          color="#8086FF"
+          color="#C0E6F3"
           onClick={() => {
-            onbackClick('#8086FF');
+            onbackClick('#C0E6F3');
           }}
         />
         <BgColorSet
-          color="#B57DFD"
+          color="#D6D3EA"
           onClick={() => {
-            onbackClick('#B57DFD');
+            onbackClick('#D6D3EA');
           }}
         />
         <BgColorSet
@@ -264,9 +264,15 @@ function MemoColor({
           }}
         />
         <BgColorSet2
-          color="#9BFE99"
+          color="#B57DFD"
           onClick={() => {
-            ontypeClick('#9BFE99');
+            ontypeClick('#B57DFD');
+          }}
+        />
+        <BgColorSet2
+          color="#5FBB71"
+          onClick={() => {
+            ontypeClick('#5FBB71');
           }}
         />
         <BgColorSet2
@@ -279,12 +285,6 @@ function MemoColor({
           color="#8086FF"
           onClick={() => {
             ontypeClick('#8086FF');
-          }}
-        />
-        <BgColorSet2
-          color="#B57DFD"
-          onClick={() => {
-            ontypeClick('#B57DFD');
           }}
         />
         <BgColorSet2

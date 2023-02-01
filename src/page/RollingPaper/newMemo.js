@@ -87,5 +87,5 @@ const MemoText = styled.div`
 const Name = styled.div`
   text-align: right;
   align-items: end;
-  color: ${props => (props.color === 'white' ? 'black' : 'white')};
+  color: ${props => (props.color === '#504E4A' ? 'white' : '504E4A')};
 `;
