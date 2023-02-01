@@ -2,11 +2,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import DeleteBtn from '../Component/DeleteBtn';
-// import axios from 'axios';
-
-// import axios from 'axios';
-// const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
+import DeleteBtn from '../component/DeleteBtn';
 
 export default function App({ list, isAdmin, HandleMemoDelete }) {
   const nodeRef = useRef(null);
@@ -23,7 +19,6 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
     // password,
   } = list;
 
-  // console.log(list);
   // eslint-disable-next-line no-unused-vars
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -36,25 +31,9 @@ export default function App({ list, isAdmin, HandleMemoDelete }) {
   const handleStart = () => {
     setOpacity(true);
   };
-  // const paperId = localStorage.getItem('paperId');
 
   const handleEnd = async () => {
     setOpacity(false);
-    // try {
-    //   // ###############새로운 api들어와야 함!!!!!!!!!!!!!!!!!!!!!!!!########
-    //   await axios.post(`${backBaseUrl}/api/v1/papers/${paperId}/memos`, {
-    //     content,
-    //     nickname,
-    //     font,
-    //     password,
-    //     color,
-    //     font_color,
-    //     xcoor,
-    //     ycoor,
-    //   });
-    // } catch (e) {
-    //   console.log('error!!!!!!!!!!!');
-    // }
   };
 
   return (

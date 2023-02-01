@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import './Active.css';
+import '../style/Active.css';
 
 export default function newMemo({ list, setCoor, setMemoData }) {
   const nodeRef = useRef(null);

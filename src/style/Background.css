@@ -1,5 +1,5 @@
 body .register {
-  background: url(../Image/welcome1.png);
+  background: url(../assets/image/welcome1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11,7 +11,7 @@ body .register {
 }
 
 body .mypage {
-  background: url(../Image/welcome1.png);
+  background: url(../assets/image/welcome1.png);
   /* width: 100vw; */
   background-repeat: no-repeat;
   background-size: cover;
@@ -23,7 +23,7 @@ body .mypage {
 } */
 
 body .login {
-  background: url(../Image/sketchbookLogin.png);
+  background: url(../assets/image/sketchbookLogin.png);
   background-repeat: no-repeat;
   background-color: #fcedb0;
   background-size: cover;
@@ -41,7 +41,7 @@ body .filepond--root,
   height: 30rem;
   background-color: white;
   margin: auto;
-  border-color: #FFD7E3;
+  border-color: #ffd7e3;
   border-width: 10px;
   border-style: dashed;
   border-radius: 25px;
@@ -49,7 +49,7 @@ body .filepond--root,
 body .filepond--drop-label {
   height: 29rem;
   background-color: white;
-  background-image: url(../Image/upload.png);
+  background-image: url(../assets/image/upload.png);
   background-position: center;
 
   background-repeat: no-repeat;

@@ -8,10 +8,10 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
 
-import './Background.css';
+import '../style/Background.css';
 
-import ID from '../Image/ID.png';
-import PW from '../Image/PW.png';
+import ID from '../assets/image/ID.png';
+import PW from '../assets/image/PW.png';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 

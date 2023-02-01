@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import MemoText from './MemoText';
 import MemoColor from './MemoColor';
 
-import background from '../Image/welcome1.png';
+import background from '../assets/image/welcome1.png';
 
 const BackBtn = styled.button`
   //상단 뒤로가기 버튼

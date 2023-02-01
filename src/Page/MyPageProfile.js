@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import user from '../Image/user.png';
+import user from '../assets/image/user.png';
 
 function Profile({ myRollPageData }) {
   return (

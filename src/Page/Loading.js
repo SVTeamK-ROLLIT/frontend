@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css';
+import '../style/Loading.css';
 
 function Loading() {
   return (

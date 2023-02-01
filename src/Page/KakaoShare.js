@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import KakaoBtn from '../Image/kakaobtn.png';
+import KakaoBtn from '../assets/image/kakaobtn.png';
 
 // const kakaoJSKey = process.env.REACT_APP_KAKAO_KEY;
 

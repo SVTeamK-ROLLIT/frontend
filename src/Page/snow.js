@@ -1,7 +1,7 @@
 import React from 'react';
 import Snowfall from 'react-snowfall';
 import styled from 'styled-components';
-import './snow.css';
+import '../style/snow.css';
 
 const Bgcolor = styled.div`
   color: white;

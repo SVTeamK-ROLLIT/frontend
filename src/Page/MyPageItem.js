@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-import image1 from '../Image/smallimage1.png';
-import image2 from '../Image/smallimage2.png';
-import image3 from '../Image/smallimage3.png';
-import image4 from '../Image/smallimage4.png';
-import image5 from '../Image/smallimage5.png';
+import image1 from '../assets/image/smallimage1.png';
+import image2 from '../assets/image/smallimage2.png';
+import image3 from '../assets/image/smallimage3.png';
+import image4 from '../assets/image/smallimage4.png';
+import image5 from '../assets/image/smallimage5.png';
 
 const ButtonItem = styled.button`
   width: 20rem;

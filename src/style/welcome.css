@@ -13,18 +13,16 @@
 }
 
 .topBtn {
-  background-image: url(../Image/down.png);
+  background-image: url(../assets/image/down.png);
   background-size: cover;
   margin-left: 12.5rem;
-  position: absolute; 
+  position: absolute;
   bottom: 2rem;
-  width: 5rem; 
+  width: 5rem;
   height: 5rem;
   border-radius: 100%;
   cursor: pointer;
 }
-
-
 
 @keyframes handmove {
   0% {

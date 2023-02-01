@@ -9,9 +9,9 @@ import SketchBook from './MyPageSketch';
 import Line from './MyPageLine';
 import MyPageItems from './MyPageItems';
 
-import background from '../Image/welcome1.png';
+import background from '../assets/image/welcome1.png';
 
-import './Mypage.css';
+import '../style/Mypage.css';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 

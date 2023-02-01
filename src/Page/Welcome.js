@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Modal from './Login';
 // import HandMotion from './handMotion';
-import './welcome.css';
-import './button.css';
+import '../style/welcome.css';
+import '../style/button.css';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
-import background from '../Image/welcome1.png';
-import logo from '../Image/newlogo.png';
-import back from '../Image/welcome3.png';
-import down from '../Image/down.png';
+import background from '../assets/image/welcome1.png';
+import logo from '../assets/image/newlogo.png';
+import back from '../assets/image/welcome3.png';
+import down from '../assets/image/down.png';
 
 const UpBtn = styled.button`
   display: inline;

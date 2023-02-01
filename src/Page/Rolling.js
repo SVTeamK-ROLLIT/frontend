@@ -7,11 +7,11 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Loading from './Loading';
 
-import image1 from '../Image/image1.png';
-import image2 from '../Image/image2.png';
-import image3 from '../Image/image3.png';
-import image4 from '../Image/image4.png';
-import image5 from '../Image/image5.png';
+import image1 from '../assets/image/image1.png';
+import image2 from '../assets/image/image2.png';
+import image3 from '../assets/image/image3.png';
+import image4 from '../assets/image/image4.png';
+import image5 from '../assets/image/image5.png';
 import PhotoModal from './PhotoModal';
 import Memo from './RollingMemo';
 import Sticky from './RollingSticky';
@@ -20,16 +20,16 @@ import NewPhoto from './NewPhoto';
 import NewMemo from './newMemo';
 import NewSticky from './NewSticky';
 
-import pencilicon from '../Image/pencilicon.png';
-import galleryicon from '../Image/galleryicon.png';
-import memoicon from '../Image/memoicon.svg';
-import usericon from '../Image/usericon.png';
+import pencilicon from '../assets/image/pencilicon.png';
+import galleryicon from '../assets/image/galleryicon.png';
+import memoicon from '../assets/image/memoicon.svg';
+import usericon from '../assets/image/usericon.png';
 import StickerModal from './StickerModal';
 import 'react-toastify/dist/ReactToastify.css';
 
-import userback from '../Image/userbackimg.png';
+import userback from '../assets/image/userbackimg.png';
 
-import './snow.css';
+import '../style/snow.css';
 
 import KakaoShare from './KakaoShare';
 
@@ -245,7 +245,6 @@ function Rolling() {
       // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
       if (item.data.user === localStorage.getItem('id')) {
         setIsAdmin(true);
-        // console.log('hihihihihihi');
       }
       // /###########################
       setItems(item.data);
@@ -289,9 +288,7 @@ function Rolling() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(memoData);
-  }, [memoData]);
+  useEffect(() => {}, [memoData]);
   const openPhotoModal = useCallback(() => setIsPhotoOpen(true), []); // 사진 모달창 열기
   const closePhotoModal = useCallback(() => setIsPhotoOpen(false), []); // 사진 모달창 닫기
   const openStickyModal = useCallback(() => setIsStickyOpen(true), []); // 스티커 모달창 열기
@@ -310,7 +307,6 @@ function Rolling() {
         password: '1',
       })
       .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
         setDeleteAction(true);
       });
   }, []);
@@ -320,7 +316,6 @@ function Rolling() {
         password: '1',
       })
       .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
         setDeleteAction(true);
       });
   }, []);
@@ -331,7 +326,6 @@ function Rolling() {
         password: '1234',
       })
       .then(() => {
-        console.log('delete!!!!!!!!!!!!!!');
         setDeleteAction(true);
       });
   }, []);
@@ -346,20 +340,16 @@ function Rolling() {
       return;
     }
 
-    console.log(memoData);
-
     try {
       await axios.post(
         `${backBaseUrl}/api/v1/papers/${paperId}/memos`,
         memoData,
       );
 
-      console.log('successSave!!!!');
       setIsMemo(false); // 메모기능 비활성화
       setIsActive(false); // 수정기능 비활성화
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
-      console.log(e);
     }
   };
 
@@ -379,12 +369,10 @@ function Rolling() {
         rotate: 30,
       });
 
-      console.log('successSticky!!!!');
       setIsSticky(false); // 스티커 기능 비활성화
       setIsActive(false); // 수정 기능 비활성화
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
-      console.log(e);
     }
   };
 
@@ -394,11 +382,9 @@ function Rolling() {
       setIsPhoto(false); // 사진기능 비활성화
       setIsActive(false); // 수정기능 비활성화
       setPhoto('');
-      console.log(photo.image_id);
       HandlePhotoDelete(photo.image_id);
       return;
     }
-    console.log(photo);
     // if (photo === '') {
     //   setIsPhoto(false); // 사진기능 비활성화
     //   setIsActive(false); // 수정기능 비활성화
@@ -406,7 +392,6 @@ function Rolling() {
 
     setLoading(true);
 
-    console.log('start Resizing');
     axios
       .post(`${backBaseUrl}/api/v1/papers/${paperId}/xyphotos`, {
         image_id: photo.image_id,
@@ -418,15 +403,12 @@ function Rolling() {
         height: coor.height2,
       })
       .then(() => {
-        console.log('successPhoto!!!!');
         setIsPhoto(false); // 사진 기능 비활성화
         setIsActive(false); // 수정 기능 비활성화
         setPhoto('');
         setLoading(false);
       })
       .catch(() => {
-        console.log(photo.image_id);
-        console.log('fail save photo');
         setLoading(true);
       });
   };
@@ -438,10 +420,8 @@ function Rolling() {
           `${backBaseUrl}/api/v1/papers/${paperId}/`,
         );
         // ###관리자로 로그인 돼있을 경우 IsAdmin활성화!#######
-        // console.log(item.data);
         if (item.data.user === localStorage.getItem('id')) {
           setIsAdmin(true);
-          // console.log('hihihihihihi');
         }
         // /###########################
         setItems(item.data);
@@ -451,23 +431,18 @@ function Rolling() {
             item.data.sticker.length,
         );
         bgimage(item.data.paper_url);
-        // console.log(backgroundImg);
       } catch (e) {
         // 서버에서 받은 에러 메시지 출력
-        console.log('FailGet');
       }
       setDeleteAction(false);
     };
     getMemos();
   }, [isActive, deleteAction]);
 
-  // console.log(backgroundImg);
   const parentFunction = positon => {
     setCoor(positon);
-    // console.log(coor);
   };
 
-  // console.log(items.image);
   // 스티커?메모지?사진? 확인해주고 어떤 것이 새로 생겨서 움직일 것인지 정해주는 함수
   function isItem() {
     return isMemo ? (

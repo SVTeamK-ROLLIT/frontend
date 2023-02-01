@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import './Background.css';
+import '../style/Background.css';
 import styled from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
