@@ -84,26 +84,25 @@ const Text = styled.div`
 `;
 
 const UserWrap = styled.div`
-  padding-right: 5rem;
-  margin-top: 1rem;
-  height: 10rem;
+  margin: 1rem 5rem auto auto;
+  /* height: 10rem; */
+  padding-top: 1rem;
   display: flex;
-  align-items: right;
-  justify-content: flex-end;
-  margin-right: 5rem;
+  align-items: center;
+  justify-content: center;
   background-image: url(${userback});
   background-size: 17rem;
   background-repeat: no-repeat;
-  background-position-x: 74.5rem;
-  background-position-y: -6.8rem;
+  width: 9rem;
+  height: 5rem;
   z-index: 10000;
-
+  /* background-color: red; */
+  background-position: center;
   /* z-index: 100; */
 `;
 const UserIcon = styled.img`
   width: 1.8rem;
   height: 1.8rem;
-  margin-top: 1.1rem;
 `;
 const UserNum = styled.div`
   font-style: normal;
