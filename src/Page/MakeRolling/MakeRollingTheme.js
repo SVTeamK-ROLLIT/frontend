@@ -16,9 +16,7 @@ import '../../style/button.css';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
-const Container = styled.div`
-  background-color: red;
-`;
+const Container = styled.div``;
 
 const To = styled.div`
   width: 50rem;
