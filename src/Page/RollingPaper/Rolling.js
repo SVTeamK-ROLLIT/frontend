@@ -5,7 +5,7 @@ import { FcExpand, FcCancel } from 'react-icons/fc';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import Loading from '../Loading';
+import Loading from '../../component/Loading';
 
 import image1 from '../../assets/image/image1.png';
 import image2 from '../../assets/image/image2.png';
@@ -31,7 +31,7 @@ import userback from '../../assets/image/userbackimg.png';
 
 import '../../style/snow.css';
 
-import KakaoShare from '../KakaoShare';
+import KakaoShare from '../../component/KakaoShare';
 
 const backBaseUrl = process.env.REACT_APP_BACKEND_URL;
 

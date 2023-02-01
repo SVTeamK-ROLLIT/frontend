@@ -22,20 +22,6 @@ body .mypage {
   height: 100vh;
 } */
 
-body .login {
-  background: url(../assets/image/sketchbookLogin.png);
-  background-repeat: no-repeat;
-  background-color: #fcedb0;
-  background-size: cover;
-  background-size: 90rem 50rem;
-  background-position: center;
-}
-@media screen and (max-width: 63rem) {
-  body .login {
-    background-size: 50rem 40rem;
-  }
-}
-
 body .filepond--root,
 .filepond--root {
   height: 30rem;

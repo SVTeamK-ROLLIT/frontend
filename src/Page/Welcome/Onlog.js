@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Modal from './Login';
+import Modal from '../Login';
 
 const TopPosition = styled.div`
   /* background-color: #fcedb0; */

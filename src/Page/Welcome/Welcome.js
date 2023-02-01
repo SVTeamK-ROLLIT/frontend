@@ -2,18 +2,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import Modal from './Login';
+import Modal from '../Login';
 // import HandMotion from './handMotion';
-import '../style/welcome.css';
-import '../style/button.css';
+import '../../style/welcome.css';
+import '../../style/button.css';
 
 import OnLog from './Onlog';
 import Outlog from './Outlog';
 
-import background from '../assets/image/welcome1.png';
-import logo from '../assets/image/newlogo.png';
-import back from '../assets/image/welcome3.png';
-import down from '../assets/image/down.png';
+import background from '../../assets/image/welcome1.png';
+import logo from '../../assets/image/newlogo.png';
+import back from '../../assets/image/welcome3.png';
+import down from '../../assets/image/down.png';
 
 const UpBtn = styled.button`
   display: inline;

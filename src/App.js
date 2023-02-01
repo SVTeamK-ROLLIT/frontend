@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import axios from 'axios';
-import Welcome from './Page/Welcome';
-import MyPage from './Page/MyPage/MyPage';
-import MakeRolling from './Page/MakeRolling/MakeRolling';
-import Rolling from './Page/RollingPaper/Rolling';
-import Register from './Page/Register';
-import Memo from './Page/Memo/Memo';
-import Photo from './Page/PhotoModal';
+import Welcome from './page/Welcome/Welcome';
+import MyPage from './page/MyPage/MyPage';
+import MakeRolling from './page/MakeRolling/MakeRolling';
+import Rolling from './page/RollingPaper/Rolling';
+import Register from './page/Register';
+import Memo from './page/Memo/Memo';
+import Photo from './page/PhotoModal';
 
 import './App.css';
 
