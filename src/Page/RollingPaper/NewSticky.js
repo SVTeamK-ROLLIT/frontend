@@ -5,7 +5,7 @@ import '../../style/Active.css';
 
 export default function NewSticky({ skickyUrl, setCoor }) {
   const nodeRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 70, y: 70 });
 
   const [Opacity, setOpacity] = useState(false);
 
