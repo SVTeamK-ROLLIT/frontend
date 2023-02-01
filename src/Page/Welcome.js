@@ -12,7 +12,7 @@ import Outlog from './Outlog';
 
 import background from '../Image/welcome1.png';
 import logo from '../Image/newlogo.png';
-import back from '../Image/welcome3.png';
+import back from '../Image/welcomedown.png';
 import down from '../Image/down.png';
 
 const UpBtn = styled.button`
@@ -49,8 +49,8 @@ const RollITLogo = styled.div`
 `;
 const BackImg = styled.div`
   height: 100vh;
-  background-color: #ffcdcd;
-  background-size: 68rem 43rem;
+  background-color: #ffd7e9;
+  background-size: 55rem 35rem;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${back});
