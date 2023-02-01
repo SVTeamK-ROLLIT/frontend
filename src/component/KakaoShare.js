@@ -38,10 +38,10 @@ function KakaoShare() {
       kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: '당신의 말을 익명으로 전달하세요',
-          description: '버튼을 누르면 사이트로 이동합니다',
+          title: '큰 종이 한편에 당신의 마음을 전달해보세요',
+          description: '아래 버튼을 누르면 롤링페이퍼로 이동합니다',
           imageUrl:
-            'https://sangwon-bucket.s3.ap-northeast-1.amazonaws.com/rollit',
+            'https://user-images.githubusercontent.com/87285536/216062573-70e5f02e-fdbd-4576-86c0-a1f9c88cac6f.png',
           link: {
             mobileWebUrl: `http://www.rollit5.link`,
             webUrl: `http://www.rollit5.link`,
