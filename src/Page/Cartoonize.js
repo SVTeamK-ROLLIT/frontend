@@ -86,14 +86,8 @@ function Cartoonize({
     setLoading(true);
     const run1Result = await run1();
     const run2Result = await run2(run1Result);
-
-    // await closeModal();
-    // await setRawLog(imageUrl);
-    // await setIsPhoto(true);
-    // await setIsActive(true);
   };
 
-  // const onSubmit = () => {};
   return (
     <CartoonBtn type="button" onClick={onSubmit}>
       만화필터로 <br />

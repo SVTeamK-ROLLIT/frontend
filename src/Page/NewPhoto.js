@@ -1,17 +1,9 @@
 // import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import ResizableRect from 'react-resizable-rotatable-draggable';
-// import photoReSizing from './PhotoReSizing';
-
-// import img from '../Image/ID.png';
 
 export default function NewPhoto({ parentFunction, photo }) {
-  //   const [width2, setWidth] = useState(200);
-  //   const [height2, setHeight] = useState(100);
-  //   const [top2, setTop] = useState(100);
-  //   const [left2, setLeft] = useState(100);
-  //   const [rotateAngle, setRotateAngle] = useState(0);
   const [position, setPosition] = useState({
     width2: 100,
     height2: 100,
@@ -51,16 +43,11 @@ export default function NewPhoto({ parentFunction, photo }) {
   };
   parentFunction(position);
 
-  // photoReSizing(rawLog, setRawLog);
-  useEffect(() => {}, [photo]);
-
   return (
     <div
       style={{
         width: position.width2,
         height: position.height2,
-        // left: position.left2 + 1,
-        // top: position.top2 + 1,
         position: 'absolute',
         zIndex: 1,
       }}
@@ -101,16 +88,3 @@ export default function NewPhoto({ parentFunction, photo }) {
     </div>
   );
 }
-
-// const Image = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   background-image: url(https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047);
-//   background-size: 100% 100%;
-// `;
-// const MemoBox = styled.div`
-//   width: 160px;
-//   height: 160px;
-//   background-color: yellow;
-//   border-radius: 15px;
-// `;
