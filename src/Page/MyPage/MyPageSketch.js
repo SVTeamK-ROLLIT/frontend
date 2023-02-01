@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import sketchbook from '../assets/image/sketchbookLogin.png';
+import sketchbook from '../../assets/image/sketchbookLogin.png';
 import Profile from './MyPageProfile';
 
 const SketchBookImg = styled.div`
